@@ -117,10 +117,17 @@ In het algemeen werd er in het kader van dark patterns voornamelijk onderzocht w
 \vspace{1em}
 
 %---------- Methodologie ------------------------------------------------------
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{../graphics/gantt}
+    \caption{\label{fig:gantt}Gantt diagram met de verschillende fasen en milestones van het onderzoek}
+\end{figure*}
+
 \section{Methodologie}%
 \label{sec:methodologie}
 
-Zoals in het begin van dit voorstel werd aangehaald, richt dit onderzoek zich op het zoeken naar een geschikte tool die jongvolwassen gebruikers in staat stelt om dark patterns op streamingdiensten te herkennen, en zo bewustwording rond dit onderwerp te creëren. Om de onderzoeksvraag te beantwoorden, wordt een weloverwogen plan gevolgd dat bestaat uit \textbf{zes verschillende fasen}: het onderzoeken van de stand van zaken, het verzamelen van requirements, het opstellen van zowel een longlist als een shortlist, het ontwikkelen van een Proof of Concept, en het formuleren van een conclusie. Iedere fase is zorgvuldig gepland om een optimaal verloop van de bachelorproef te garanderen. Een overzicht van het verloop van het onderzoek wordt weergegeven in Figuur 1. De onderzoeksperiode spreidt zicht over \textbf{11 weken}, gevolgd door 3 weken waarin feedback kan worden verwerkt en de eindpresentatie kan worden voorbereid. Binnen de onderzoeksperiode zal er \textbf{wekelijks één tot twee dagen} gewerkt worden aan de bachelorproef: op de bachelorproefdag en, indien mogelijk, één dag in het weekend.
+Zoals in het begin van dit voorstel werd aangehaald, richt dit onderzoek zich op het zoeken naar een geschikte tool die jongvolwassen gebruikers in staat stelt om dark patterns op streamingdiensten te herkennen, en zo bewustwording rond dit onderwerp te creëren. Om de onderzoeksvraag te beantwoorden, wordt een weloverwogen plan gevolgd dat bestaat uit \textbf{zes verschillende fasen}. In eerste instantie wordt de huidige stand van zaken onderzocht aan de hand van literatuurstudie. Nadien worden hieruit de requirements waaraan de tool moet voldoen opgesteld. Vervolgens zal een longlist gemaakt worden van alle mogelijke oplossingen en zal deze verder vernauwd worden tot een shortlist die de beste ideeën bevat. Hieruit zal het beste alternatief gekozen en uitgewerkt worden als Proof of Concept. Tot slot zal uit dit onderzoek een conclusie geformuleerd worden. Naast deze gedefinieerde fasen wordt er tijdens het volledige verloop van het onderzoek continu documentatie bijgehouden. Iedere fase is zorgvuldig gepland om een optimaal verloop van de bachelorproef te garanderen. Een overzicht van het verloop van het onderzoek wordt weergegeven in Figuur~\ref{fig:gantt}. De onderzoeksperiode spreidt zicht over \textbf{11 weken}, gevolgd door 3 weken waarin feedback kan worden verwerkt en de eindpresentatie kan worden voorbereid. Binnen de onderzoeksperiode zal er \textbf{wekelijks één tot twee dagen} gewerkt worden aan de bachelorproef: op de bachelorproefdag en, indien mogelijk, één dag in het weekend.
 
 \vspace{1em}
 
@@ -135,7 +142,7 @@ Zoals in het begin van dit voorstel werd aangehaald, richt dit onderzoek zich op
 
 Tijdens de eerste twee weken van het onderzoek wordt het onderzoeksdomein uitvoerig verkend om op die manier een goed theoretisch kader op te bouwen. Via literatuuronderzoek wordt onderzocht wat dark patterns zijn, welke er bestaan, welke negatieve gevolgen deze kunnen hebben en hoe bewust mensen zijn van de patronen en hun gevolgen. Verder wordt nagegaan waar deze patronen het vaakst voorkomen (websites en apps) en of er verschillen zijn per platform. Daarnaast wordt ook de huidige wet- en regelgeving en de mogelijk link tussen de businessdoelstellingen van streamingdiensten en het gebruik van dark patterns onder de loep genomen. Aanvullend aan dit literatuuronderzoek, wordt in kaart gebracht welke streamingdiensten het populairst zijn in België en welke dark patterns zij toepassen, onderverdeeld per platform. Tot slot worden bestaande tools geanalyseerd om hun sterktes en beperkingen te identificeren. Het literatuuronderzoek zal gedaan worden gebruikmakend van \emph{Google Scholar} en wetenschappelijke databanken zoals \emph{ACM digital library}, \emph{Springer Online Journals} en \emph{JSTOR}.
 
-Het doel van deze fase is het verder verwerven van kennis van het probleemdomein, zodat in de volgende fase de requirements op een onderbouwde manier kunnen worden opgesteld. Dit resulteert zich in het uitwerken van een overzicht van gebruikersproblemen rond dark patterns op streamingdiensten, een lijst van populaire streamingdiensten en de patronen die ze bevatten, en een analyse van bestaande tools met hun sterke en zwakke punten.
+Het doel van deze fase is het verder verwerven van kennis omtrent het probleemdomein, zodat in de volgende fase de requirements op een onderbouwde manier kunnen worden opgesteld. Dit resulteert zich in het uitwerken van een overzicht van gebruikersproblemen rond dark patterns op streamingdiensten, een lijst van populaire streamingdiensten en de patronen die ze bevatten, en een analyse van bestaande tools met hun sterke en zwakke punten.
 
 \vspace{1em}
 
@@ -148,7 +155,7 @@ Het doel van deze fase is het verder verwerven van kennis van het probleemdomein
 
 \vspace{1em}
 
-In fase~2 ligt de focus op het verzamelen van alle vereisten waaraan de nieuwe tool moet voldoen. Op basis van de resultaten uit het literatuuronderzoek worden de requirements opgesteld. Er wordt onder andere rekening gehouden met welke dark patterns het belangrijkste zijn, waar de tool moet ingezet worden, welke aspecten overgenomen kunnen worden van andere tools en welke toevoegingen nodig zijn voor een betere digitale oplossing. Aanvullend worden de voorlopige requirements afgetoetst en aangevuld via interviews met experts, waaronder een UI/UX-designer en een front-end developer. Deze fase zal worden afgerond door het opstellen van een volledige en geprioriteerde lijst van criteria die het \emph{minimum viable product (MVP)} definiëren. Het concrete resultaat bestaat uit een lijst van functionele en niet-functionele requirements, geordend volgens hun belang. Voor de ordening zal gebruikgemaakt worden van de \emph{MoSCoW}-methode.
+In fase~2 ligt de focus op het verzamelen van alle vereisten waaraan de nieuwe tool moet voldoen. Op basis van de resultaten uit het literatuuronderzoek worden de requirements opgesteld. Er wordt onder andere rekening gehouden met welke dark patterns het belangrijkste zijn, waar de tool moet ingezet worden, welke aspecten overgenomen kunnen worden van andere tools en welke toevoegingen nodig zijn voor een betere digitale oplossing. Aanvullend worden de voorlopige requirements afgetoetst en aangevuld via interviews met experts, waaronder een UI/UX-designer en een front-end developer. Deze fase zal worden afgerond door het opstellen van een volledige en geprioriteerde lijst van criteria die het \emph{minimum viable product (MVP)} definiëren. Het concrete resultaat bestaat uit een lijst van functionele en niet-functionele requirements, geordend volgens hun belang. Voor de ordening zal de \emph{MoSCoW}-methode gebruikt worden.
 
 
 \vspace{1em}
