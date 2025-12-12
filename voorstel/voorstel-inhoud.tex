@@ -3,78 +3,226 @@
 \section{Inleiding}%
 \label{sec:inleiding}
 
-Waarover zal je bachelorproef gaan? Introduceer het thema en zorg dat volgende zaken zeker duidelijk aanwezig zijn:
+De voorbije jaren wordt er steeds meer gestreamd in België. Populaire streamingdiensten zoals \emph{Netflix}, \emph{Disney+} en \emph{Spotify} zijn haast niet meer weg te denken. Daarnaast springt ook de Vlaamse entertainmentindustrie volop op deze trend. Enkele populaire Vlaamse zenders en productiehuizen kwamen de voorbije jaren met hun eigen platformen. Denk maar aan \emph{Streamz}, \emph{VRT MAX} en \emph{VTM GO}. Door het stijgende aanbod aan streamingdiensten en doordat live televisie in populariteit daalt, sluiten steeds meer Belgen, waaronder Vlamingen, streamingabonnementen af.
 
-\begin{itemize}
-  \item kaderen thema
-  \item de doelgroep
-  \item de probleemstelling en (centrale) onderzoeksvraag
-  \item de onderzoeksdoelstelling
-\end{itemize}
+\vspace{1em}
 
-Denk er aan: een typische bachelorproef is \textit{toegepast onderzoek}, wat betekent dat je start vanuit een concrete probleemsituatie in bedrijfscontext, een \textbf{casus}. Het is belangrijk om je onderwerp goed af te bakenen: je gaat voor die \textit{ene specifieke probleemsituatie} op zoek naar een goede oplossing, op basis van de huidige kennis in het vakgebied.
+Echter wat een groot aantal Belgen niet weet, is dat veel van deze platformen gebruikmaken van dark patterns. Het gaat hierbij om misleidende technieken die online gebruikers subtiel beïnvloeden om bepaalde keuzes te maken die ze anders niet zouden maken \autocite{FODEconomie2024}. Voorbeelden hiervan zijn onder andere moeilijk vindbare annulatieknoppen of vooraf aangevinkte selectievakjes. Niet enkel is het gebruik van deze patronen ethisch onverantwoord, het maakt gebruikers ook enorm kwetsbaar doordat ze deze patronen onvoldoende of niet opmerken. Daarnaast wordt de ernst van de gevolgen vaak onderschat, zoals het onbewust afsluiten van een abonnement of het betalen van een verborgen extra kost.
 
-De doelgroep moet ook concreet en duidelijk zijn, dus geen algemene of vaag gedefinieerde groepen zoals \emph{bedrijven}, \emph{developers}, \emph{Vlamingen}, enz. Je richt je in elk geval op it-professionals, een bachelorproef is geen populariserende tekst. Eén specifiek bedrijf (die te maken hebben met een concrete probleemsituatie) is dus beter dan \emph{bedrijven} in het algemeen.
+\vspace{1em}
 
-Formuleer duidelijk de onderzoeksvraag! De begeleiders lezen nog steeds te veel voorstellen waarin we geen onderzoeksvraag terugvinden.
+Ondanks dat er veel onderzoek werd gedaan naar dark patterns vanuit het standpunt van zij die er gebruik van maken, zijn er weinig studies die de effecten van deze patronen op de gebruikers (lees \emph{slachtoffers}) onder de loep nemen. Daarbovenop is er nood aan onderzoek naar hoe de gebruikers hier meer bewust van kunnen worden. Uit deze bevindingen werd onderstaande onderzoeksvraag opgesteld:
 
-Schrijf ook iets over de doelstelling. Wat zie je als het concrete eindresultaat van je onderzoek, naast de uitgeschreven scriptie? Is het een proof-of-concept, een rapport met aanbevelingen, \ldots Met welk eindresultaat kan je je bachelorproef als een succes beschouwen?
+\vspace{1em}
+
+\begin{quote}
+    \textit{``Welke digitale tool kan ontwikkeld worden om jongvolwassen Vlamingen tussen 21 en 25 jaar te helpen dark patterns op streamingdiensten sneller te herkennen, zodat onbewuste beïnvloeding voorkomen wordt?''}
+\end{quote}
+
+\vspace{1em}
+
+Om de doelgroep van dit onderzoek te bepalen is er in eerste instantie gekeken naar de leeftijdsgroep die het meest actief gebruikmaakt van streamingdiensten in België. Uit de statistieken van \textcite{StatistiekVlaanderen2025} blijkt dat dit vooral jongvolwassenen zijn tussen 18 en 34 jaar. Daarnaast is de doelgroep verder vernauwd, om het onderzoek haalbaarder te maken. Hierdoor ligt de uiteindelijke focus op Vlaamse gebruikers tussen 21 en 25 jaar die actief gebruikmaken van streamingdiensten en interesse tonen in het afsluiten van een abonnement.
+
+\vspace{1em}
+
+Aanvullend werden enkele deelvragen geformuleerd die ondersteuning bieden bij het beter begrijpen van het probleem en het zoeken naar een mogelijke oplossing.
+
+\vspace{2em}
+
+\noindent
+\textbf{Deelvragen probleemdomein:}
+\begin{enumerate}
+    \item Welke dark patterns komen het meest voor op websites en apps van streamingdiensten die door jongvolwassenen tussen 21 en 25 gebruikt worden?
+    \item In welke mate zijn jongvolwassenen zich bewust van de aanwezigheid van dark patterns bij het gebruik van streamingdiensten?
+    \item Welke verbanden bestaan er tussen de aanwezigheid van specifieke dark patterns en de businessdoelstellingen van streaming-\newline diensten?
+    \item Op welk platform (website of mobiele app) komen dark patterns het vaakst voor en waar kan een digitale tool de grootste impact hebben op gebruikersbewustzijn?
+\end{enumerate}
+
+\noindent
+\textbf{Deelvragen oplossingsdomein:}
+\begin{enumerate}
+    \item Welke wet- en regelgeving, richtlijnen of aanbevelingen bestaan er rond het gebruik van dark patterns in België en de Europese Unie?
+    \item Welke bestaande tools die gebruikers waarschuwen voor dark patterns bestaan er al, en hoe effectief zijn deze in het verhogen van bewustzijn?
+    \item Op welke manier kunnen jongvolwassenen het best ondersteund worden bij het herkennen van dark patterns zonder dat hun gebruikerservaring negatief beïnvloed wordt?
+    \item Welke digitale of interactieve oplossing kan het meest bijdragen aan het verhogen van bewustzijn, en welke (niet-)functionele vereisten zijn hiervoor essentieel?
+    \item In welke mate verhoogt het gebruik van de ontwikkelde digitale tool het bewustzijn van gebruikers over dark patterns, en welke verbeterpunten kunnen worden geïdentificeerd op basis van gebruikersfeedback?
+\end{enumerate}
+
+\vspace{1em}
+
+Als uiteindelijk doel van dit onderzoek wordt er achterhaald welke digitale tool het meest geschikt is om gebruikers meer attent te maken op de aanwezigheid van dark patterns zodat ze hier bewuster van worden. Naast de scriptie wordt als concreet eindresultaat eveneens een Proof of Concept (PoC) uitgewerkt in de vorm van een tool die Vlamingen tussen 21 en 25 jaar tijdens het gebruik van streamingplatformen bewust maakt van en waarschuwt voor de aanwezigheid van dark patterns. Tot slot moet deze tool hen assisteren bij het maken van bewustere, weloverwogen keuzes bij onder meer het afsluiten en opzeggen van abonnementen.
+
+\vspace{1em}
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{Literatuurstudie}%
 \label{sec:literatuurstudie}
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
+\subsection{Definitie van dark patterns}
+\label{subsec:definitie}
 
-Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek?
+\vspace{1em}
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Hykes2013}! Denk zeker goed na welke werken je refereert en waarom.
+Voor online verkoop een prominente rol speelde op de handelsmarkt, werden volgens \textcite{Kollmer2022} technieken voor manipulatie en misleiding voornamelijk toegepast in fysieke winkels. Echter werden deze methodes door de digitalisering ook overgebracht naar de wereld van e-commerce. Hierdoor ontstonden de zogenaamde dark patterns. Deze term deed dankzij Harry Brignull in 2010 zijn intrede, die deze patronen omschreef als \textbf{trucs} gebruikt op websites en apps \textbf{om gebruikers tegen hun wil dingen te laten doen}, zoals iets aankopen of zich ergens voor inschrijven \autocite{Kollmer2022}. 
 
-Draag zorg voor correcte literatuurverwijzingen! Een bronvermelding hoort thuis \emph{binnen} de zin waar je je op die bron baseert, dus niet er buiten! Maak meteen een verwijzing als je gebruik maakt van een bron. Doe dit dus \emph{niet} aan het einde van een lange paragraaf. Baseer nooit teveel aansluitende tekst op eenzelfde bron.
+\vspace{1em}
 
-Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle nodige info aanwezig is om de bron terug te vinden (zoals uitvoerig besproken in de lessen Research Methods).
+Bovendien kunnen deze patronen, zoals beschreven door \textcite{DiGeronimo2020}, verder onderverdeeld worden in vijf categorieën. Ten eerste is er \emph{nagging}, het herhaaldelijk vragen aan de gebruiker om iets anders te doen. Ten tweede \emph{obstruction}, het opzettelijk moeilijker maken van het uitvoeren van acties. Vervolgens bestaat \emph{sneaking}, het verbergen van relevante informatie zoals bijvoorbeeld verborgen kosten. Daarnaast is er sprake van \emph{interface interference}: het verwarrend, misleidend of slecht leesbaar maken van user interface elementen. Tot slot is er \emph{forced action} waarbij de gebruiker gedwongen wordt om ongewenste keuzes te maken.
 
-Dit is een testalinea met mijn autocite poging :)~\autocite{BongardBlanchy2022}
+\vspace{1em}
 
-Dit is een testalinea met mijn autocite poging :) \autocite{BongardBlanchy2022}
+\subsection{Gebruik van dark patterns op digitale platformen}
+\label{subsec:verspreiding}
 
-Dit is voor als ik het wil gebruiken based op een persoon \textcite{BongardBlanchy2022}
+\vspace{1em}
 
-Hopelijk werkt dit!
+Uit een rapport van het \textcite{ICPEN2024} is gebleken dat dark patterns voorkomen in een wijde selectie aan sectoren. Denk onder meer aan de entertainment-, streaming-, fitness- en e-commerce industrie. Eveneens bleek uit dit onderzoek dat zo’n 75,7\% van apps en websites die abonnementen verkopen minstens één dark pattern gebruiken. Aanvullend werd er geconstateerd dat bij 66,8\% van deze onderzochte websites en apps twee of meer patronen terug te vinden zijn. Verder concludeerden \textcite{Nygren2024} dat binnen de streamingsector, zowel de gratis als de te betalen platformen, uitgebreid gebruikmaken van deze patronen. Ook werd dankzij de studie van \textcite{Gunawan2021} duidelijk dat zowel de desktop- als mobiele versies dark patterns bevatten, maar dat de versies van éénzelfde dienst daarvoor niet meteen dezelfde patronen inzetten.
 
-% Voor literatuurverwijzingen zijn er twee belangrijke commando's:
-% \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
-%   geen onderdeel is van de zin.
-% \textcite{KEY} => Auteur (jaartal)  Gebruik dit als de auteursnaam wel een
-%   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
-%   ...'')
 
-Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
+\vspace{1em}
+
+\subsection{Bewustzijn van dark patterns en de effecten op gebruikersgedrag}
+\label{subsec:effecten}
+
+\vspace{1em}
+
+Zoals de definitie van een dark pattern aanhaalt is zo’n patroon bedoelt om de gebruiker te manipuleren \autocite{Kollmer2022}. Maar wat is de invloed hiervan op het bewustzijn en gebruikersgedrag? \textcite{OECD2022} onderzocht dit en constateerde dat de meeste gebruikers moeite hebben bij het herkennen van deze technieken, terwijl sommige gebruikers ze wel opmerken maar er toch slachtoffer van worden. Volgens \textcite{BongardBlanchy2021} is een aanzienlijk deel van de gebruikers op de hoogte van het gebruik van deze patronen en verwachten ze het bij bekende diensten zoals bijvoorbeeld Amazon en Netflix. Echter beseffen ze niet de mate waarin deze patronen schade kunnen aanrichten. Ook zij halen aan dat het herkennen lastig blijft, waardoor gebruikers hun nog altijd laten beïnvloeden, zelfs als ze weten dat deze praktijken worden toegepast. Hieruit konden ze concluderen dat gebruikers zich niet bewust zijn van hoe deze ontwerpkeuzes hun concreet kunnen schaden \autocite{BongardBlanchy2021}. 
+
+\vspace{1em}
+
+Aanvullend werd door \textcite{OECD2022} onderzocht welke patronen het gedrag het meest beïnvloeden. Hieruit konden ze 2 types onderscheiden: de “\emph{mild}” en “\emph{aggressive}” dark patterns. Volgens hen zijn de “\emph{mild}” dark patterns (de minder opvallende patronen) vaak effectiever doordat ze zo moeilijk op te merken zijn. Verder werd door \textcite{OECD2022} onderzocht wat de effecten zijn op de gebruiker. Zo schaadt het de autonomie, kan het leiden tot financieel verlies, als ook zorgen de technieken voor privacy schending en kunnen gebruikers emotionele stress en tijdverlies ervaren. 
+
+
+\vspace{1em}
+
+\subsection{De ethiek achter het gebruik van dark patterns}
+\label{subsec:ethisch-ontwerp}
+
+\vspace{1em}
+
+Hoewel niet alle dark patterns manipulatief zijn \autocite{Kitkowska2023}, moet er  nagedacht worden over de ethiek die hierachter schuilgaat. En hoe ethisch is ontwerp in het algemeen? \textcite{DiGeronimo2020} stelt dat een bruikbare applicatie niet per se duidt op een ethische applicatie. Volgens hen hebben ontwerpers de rol om met hun ontwerp de gebruiker te overtuigen, echter wordt die macht vaak misbruikt. Dit uit zich onder andere in de vorm van dark patterns. Tot dusver is er volgens deze studie nog geen éénduidige definitie voor wat een ethische user interface juist inhoudt, echter hebben de meeste experts een gelijkaardige mening: een user interface wordt als ethisch beschouwd wanneer het ontwerp meer bijdraagt tot het leven van de gebruiker dan dat het de gebruiker schaadt. Dit brengt echter volgende vraag met zich mee: \emph{``Op welk punt gaat een ontwerp van het ondersteunen over naar het misleiden en/of misbruiken van de gebruiker?''}. Tot slot gaven \textcite{Vandenberghe2016} nog een belangrijk inzicht mee: stel niet meteen user-centered design gelijk aan ethisch ontwerp. Bepaalde methoden kunnen namelijk nog steeds schadelijke effecten hebben. Volgens hen bestaat er een \emph{Ethical Design Manifesto} dat benadrukt dat een ontwerp niet enkel moet verleiden of esthetisch zijn, maar het gebruikers ook kritisch moet laten nadenken over de impact van technologie op hun leven.
+
+\vspace{1em}
+
+\subsection{Onderzoek en tools met betrekking tot dark patterns}
+\label{subsec:huidig-onderzoek}
+
+\vspace{1em}
+
+In het algemeen werd er in het kader van dark patterns voornamelijk onderzocht welke verschillende soorten dark patterns bestaan en waar deze het frequentst voorkomen \autocite{Luguri2021}. Naast deze studies is er volgens \textcite{Luguri2021} nog te weinig onderzoek gedaan op andere gebieden binnen dit domein. Ook de studie van \textcite{DiGeronimo2020} benadrukt de nood naar verder onderzoek. Volgens hen is het belangrijk dat de focus wordt gelegd op het vinden van manieren om bewustwording bij gebruikers te stimuleren, onder meer via de ontwikkeling van geautomatiseerde en educatieve tools. Hoewel er volgens \textcite{Nie2024} al redelijk wat detectietools bestaan die door middel van AI dark patterns opsporen, bieden deze een te lage dekking.  \textcite{Nie2024} identificeerden maar liefst 64 types dark patterns, waarvan slechts de helft werd gedetecteerd door de acht onderzochte geautomatiseerde tools. 
+
+\vspace{1em}
 
 %---------- Methodologie ------------------------------------------------------
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth]{../graphics/gantt}
+    \caption{\label{fig:gantt}Gantt diagram met de verschillende fasen van het onderzoek}
+\end{figure*}
+
 \section{Methodologie}%
 \label{sec:methodologie}
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
+Zoals in het begin van dit voorstel werd aangehaald, richt dit onderzoek zich op het zoeken naar een geschikte tool die jongvolwassen gebruikers in staat stelt om dark patterns op streamingdiensten te herkennen, en zo bewustwording rond dit onderwerp te creëren. Om de onderzoeksvraag te beantwoorden, wordt een weloverwogen plan gevolgd dat bestaat uit \textbf{zes verschillende fasen}. In eerste instantie wordt de huidige stand van zaken onderzocht aan de hand van literatuurstudie. Nadien worden hieruit de requirements waaraan de tool moet voldoen opgesteld. Vervolgens zal een longlist gemaakt worden van alle mogelijke oplossingen en zal deze verder vernauwd worden tot een shortlist die de beste ideeën bevat. Hieruit zal het beste alternatief gekozen en uitgewerkt worden als Proof of Concept. Tot slot zal uit dit onderzoek een conclusie geformuleerd worden. Naast deze gedefinieerde fasen wordt er tijdens het volledige verloop van het onderzoek continu documentatie bijgehouden. Iedere fase is zorgvuldig gepland om een optimaal verloop van de bachelorproef te garanderen. Een overzicht van het verloop van het onderzoek wordt weergegeven in Figuur~\ref{fig:gantt}. De onderzoeksperiode spreidt zich over \textbf{11 weken}, gevolgd door 3 weken waarin feedback kan worden verwerkt en de eindpresentatie kan worden voorbereid. Binnen de onderzoeksperiode zal er \textbf{wekelijks één tot twee dagen} gewerkt worden aan de bachelorproef: op de bachelorproefdag en, indien mogelijk, één dag in het weekend.
 
-Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
+\vspace{1em}
 
-Vermijd onderzoekstechnieken die geen objectieve, meetbare resultaten kunnen opleveren. Enquêtes, bijvoorbeeld, zijn voor een bachelorproef informatica meestal \textbf{niet geschikt}. De antwoorden zijn eerder meningen dan feiten en in de praktijk blijkt het ook bijzonder moeilijk om voldoende respondenten te vinden. Studenten die een enquête willen voeren, hebben meestal ook geen goede definitie van de populatie, waardoor ook niet kan aangetoond worden dat eventuele resultaten representatief zijn.
+\subsection{Fase 1: Stand van zaken}
+\label{subsec:stand-van-zaken}
 
-Uit dit onderdeel moet duidelijk naar voor komen dat je bachelorproef ook technisch voldoen\-de diepgang zal bevatten. Het zou niet kloppen als een bachelorproef informatica ook door bv.\ een student marketing zou kunnen uitgevoerd worden.
+\begin{tabular}{ll}
+    \hspace{0.3em} \textbf{Periode:} & 16/02 – 01/03 (Week 1 - 2)
+\end{tabular}
 
-Je beschrijft ook al welke tools (hardware, software, diensten, \ldots) je denkt hiervoor te gebruiken of te ontwikkelen.
+\vspace{1em}
 
-Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
+Tijdens de eerste twee weken van het onderzoek wordt het onderzoeksdomein uitvoerig verkend om op die manier een goed theoretisch kader op te bouwen. Via literatuuronderzoek wordt onderzocht wat dark patterns zijn, welke er bestaan, welke negatieve gevolgen deze kunnen hebben en hoe bewust mensen zijn van de patronen en hun gevolgen. Verder wordt nagegaan waar deze patronen het vaakst voorkomen (websites en apps) en of er verschillen zijn per platform. Daarnaast wordt ook de huidige wet- en regelgeving en de mogelijk link tussen de businessdoelstellingen van streamingdiensten en het gebruik van dark patterns onder de loep genomen. Aanvullend aan dit literatuuronderzoek, wordt in kaart gebracht welke streamingdiensten het populairst zijn in België en welke dark patterns zij toepassen, onderverdeeld per platform. Tot slot worden bestaande tools geanalyseerd om hun sterktes en beperkingen te identificeren. Het literatuuronderzoek zal gedaan worden gebruikmakend van \emph{Google Scholar} en wetenschappelijke databanken zoals \emph{ACM digital library}, \emph{Springer Online Journals} en \emph{JSTOR}.
+
+Het doel van deze fase is het verder verwerven van kennis omtrent het probleemdomein, zodat in de volgende fase de requirements op een onderbouwde manier kunnen worden opgesteld. Dit resulteert zich in het uitwerken van een overzicht van gebruikersproblemen rond dark patterns op streamingdiensten, een lijst van populaire streamingdiensten en de patronen die ze bevatten, en een analyse van bestaande tools met hun sterke en zwakke punten.
+
+\vspace{1em}
+
+\subsection{Fase 2: Requirements verzamelen}
+\label{subsec:requirements-verzamelen}
+
+\begin{tabular}{ll}
+    \hspace{0.3em} \textbf{Periode:} & 02/03 – 08/03 (Week 3)
+\end{tabular}
+
+\vspace{1em}
+
+In fase~2 ligt de focus op het verzamelen van alle vereisten waaraan de nieuwe tool moet voldoen. Op basis van de resultaten uit het literatuuronderzoek worden de requirements opgesteld. Er wordt onder andere rekening gehouden met welke dark patterns het belangrijkste zijn, waar de tool moet ingezet worden, welke aspecten overgenomen kunnen worden van andere tools en welke toevoegingen nodig zijn voor een betere digitale oplossing. Aanvullend worden de voorlopige requirements afgetoetst en aangevuld via interviews met experts, waaronder een UI/UX-designer en een front-end developer. Deze fase zal worden afgerond door het opstellen van een volledige en geprioriteerde lijst van criteria die het \emph{minimum viable product (MVP)} definiëren. Het concrete resultaat bestaat uit een lijst van functionele en niet-functionele requirements, geordend volgens hun belang. Voor de ordening zal de \emph{MoSCoW}-methode gebruikt worden.
+
+
+\vspace{1em}
+
+\subsection{Fase 3: Longlist}
+\label{subsec:longlist}
+
+\begin{tabular}{ll}
+    \hspace{0.3em} \textbf{Periode:} & 09/03 – 15/03 (Week 4)
+\end{tabular}
+
+\vspace{1em}
+
+Na het opstellen van de requirements zal er gezocht worden naar een zo groot mogelijk aantal digitale oplossingen die gebruikers kunnen helpen om dark patterns op streamingdiensten te herkennen. Door middel van aanvullend literatuuronderzoek, gebruikmakend van de voorgaande vermelde databanken, worden alle mogelijke oplossingen overwogen en opgelijst. Ieder alternatief zal worden afgetoetst aan de requirementslijst die werd opgesteld in fase~2 als ook worden de voor- en nadelen genoteerd. Op deze manier wordt er zekerheid ingebouwd dat er geen alternatief over het hoofd gezien wordt. Op het einde van fase~3 moet een longlist opgesteld zijn van alle mogelijke digitale oplossingen die geschikt zouden kunnen zijn om in een verder stadium verder uit te werken. Deze longlist zal dienen voor het opstellen van de shortlist in de volgende fase.
+
+
+\vspace{1em}
+
+\subsection{Fase 4: Shortlist}
+\label{subsec:shortlist}
+
+\begin{tabular}{ll}
+    \hspace{0.3em} \textbf{Periode:} & 16/03 – 22/03 (Week 5)
+\end{tabular}
+
+\vspace{1em}
+
+Vooraleer een Proof of Concept uitgewerkt kan worden, wordt er gekeken welke oplossing uit de longlist het meest beloftevol en waardevol is voor het onderzoek. Daarvoor worden in een vierde fase alle alternatieven systematisch met elkaar vergeleken op basis van de functionele en niet-functionele requirements uit fase~2 door middel van een overzichtelijke vergelijkingstabel. Hieruit wordt de beste optie gekozen. Indien één of meerdere alternatieven dicht bij elkaar scoren, worden bijkomende criteria zoals voor- en nadelen en de verwachte impact op de gebruiker ook in rekening gebracht. Op basis van deze analyse zal een shortlist worden opgesteld, waaruit uiteindelijk de meest beloftevolle oplossing geselecteerd zal worden. Tot slot wordt de keuze voor deze tool grondig onderbouwd door middel van een duidelijke motivatie. De tool die uit deze analyse als meest geschikt wordt bevonden, zal in de voorlaatste fase verder uitgewerkt worden.
+
+\vspace{1em}
+
+\subsection{Fase 5: Proof of Concept}
+\label{subsec:proof-of-concept}
+
+\begin{tabular}{ll}
+    \hspace{0.3em} \textbf{Periode:} & 23/03 – 26/04 (Week 6 - 10)
+\end{tabular}
+
+\vspace{1em}
+
+Fase~5, de fase die het meeste tijd in beslag zal nemen, omvat de uitwerking van een Proof of Concept (PoC). De geselecteerde oplossing uit fase~4 wordt in deze fase uitgewerkt tot een eerste Minimum Viable Product (MVP). In eerste instantie zullen er wireframes en mockups uitgewerkt worden in \emph{AdobeXD} om de algemene flow van de tool te bepalen. Nadien zullen in overleg met de co-promotor de meest geschikte technologieën (zoals \emph{React}, \emph{Node.js}, \emph{Python}, \ldots) gekozen worden. Daarna start de implementatie van de tool. Tijdens de ontwikkeling wordt er iteratief en agile gewerkt, waarbij elke iteratie het resultaat zal worden afgetoetst bij de co-promotor. Daarnaast zullen er testen geschreven worden die de goede werking van de tool controleren.
+
+\vspace{1em}
+
+Op het einde van de fase is er een werkend prototype die de belangrijkste functionaliteiten van de tool bevat, aangevuld met een korte documentatie over de werking en functionaliteiten. Eveneens zal gevalideerd worden of de uitgewerkte tool al dan niet een oplossing biedt voor het gestelde probleem. Dit zal gedaan worden aan de hand van een digitale test bij enkele testgebruikers die tot de doelgroep behoren. Zij zullen een aantal taken uitvoeren op een streamingplatform die gebruikmaakt van dark patterns, zowel zonder als met de tool. Uit deze test wordt afgeleid in welke mate de proefpersonen de patronen herkennen, hoe snel zij de taken kunnen voltooien en hoeveel gebruikersacties er nodig zijn om de taken af te ronden. De resultaten hiervan zullen bepalen of de PoC een meerwaarde biedt.
+
+\vspace{1em}
+
+\subsection{Fase 6: Conclusie}
+\label{subsec:conclusie}
+
+\begin{tabular}{ll}
+    \hspace{0.3em} \textbf{Periode:} & 20/04 – 03/05 (Week 10 - 11)
+\end{tabular}
+
+\vspace{1em}
+
+De laatste fase omvat het trekken van een conclusie over de werking van de uitgewerkte tool. Eveneens zal een antwoord geformuleerd worden op de onderzoeksvraag en zullen aanbevelingen opgesteld worden voor verder onderzoek. Tot slot worden de overblijvende hiaten in de tool geïdentificeerd. Hiervoor wordt een heuristische evaluatie uitgevoerd op basis van de requirements uit fase~2 en de UX-principes van Nielsen. De evaluatie wordt zowel door de onderzoeker als door de co-promotor uitgevoerd om objectiviteit te waarborgen. De bevindingen uit deze evaluatie worden gedocumenteerd en samengevat.
+
+\vspace{1em}
 
 %---------- Verwachte resultaten ----------------------------------------------
-\section{Verwacht resultaat, conclusie}%
+\section{Verwacht resultaat}%
 \label{sec:verwachte_resultaten}
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de onderdelen van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet welk soort data je moet verzamelen en hoe je die moet meten.
+Het verwachte resultaat van dit onderzoek is een digitale tool die Vlamingen tussen 21 en 25 jaar helpt bij het opmerken van dark patterns op streamingdiensten zodat ze veiliger en bewuster met deze platformen omgaan. De tool zal hen ondersteunen bij het herkennen van misleidende technieken en zal de gebruikers informeren over de intentie en gevaren ervan. Deze verwachting baseert zich op bevindingen uit de literatuurstudie, namelijk dat gebruikers regelmatig moeite hebben bij het herkennen van dark patterns \autocite{OECD2022} en dat ze niet bewust zijn van de gevaren ervan \autocite{BongardBlanchy2021}. Daarnaast wordt verwacht dat de tool geen AI zal gebruiken aangezien uit de literatuurstudie gebleken is dat bestaande detectietools gebruikmakend van AI een beperkte dekking hebben \autocite{Nie2024} en dus onmogelijk alle patronen kunnen herkennen en ervoor waarschuwen. Eveneens wordt, naast de uitgewerkte tool, aangenomen dat het onderzoek inzichten zal geven in op welke manier gebruikers het best geïnformeerd en gewaarschuwd kunnen worden. 
 
-Wat heeft de doelgroep van je onderzoek aan het resultaat? Op welke manier zorgt jouw bachelorproef voor een meerwaarde?
+\vspace{1em}
 
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
+De verwachte meerwaarde van dit onderzoek voor de doelgroep ligt in het verhogen van hun bewustzijn over dark patterns en het vergroten van hun gevoel van controle bij het gebruik van streamingplatformen. De tool helpt bij het maken van bewustere keuzes doordat gebruikers beter begrijpen hoe interfaces hen beïnvloeden. Verder biedt dit onderzoek waardevolle inzichten voor de wereld van UI/UX en softwareontwikkeling, doordat het kan dienen als voorbeeld voor het ontwerpen van soortgelijke tools in andere domeinen waar dark patterns voorkomen, zoals webshops of reiswebsites.
 
+\vspace{1em}
