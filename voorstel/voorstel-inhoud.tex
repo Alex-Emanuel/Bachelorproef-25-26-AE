@@ -3,7 +3,7 @@
 \section{Inleiding}%
 \label{sec:inleiding}
 
-De voorbije jaren wordt er steeds meer gestreamd in België. Populaire streamingdiensten zoals \emph{Netflix}, \emph{Disney+} en \emph{Spotify} zijn haast niet meer weg te denken. Daarnaast springt ook de Vlaamse entertainmentindustrie volop op deze trend. Enkele populaire Vlaamse zenders en productiehuizen kwamen de voorbije jaren met hun eigen platformen. Denk maar aan \emph{Streamz}, \emph{VRT MAX} en \emph{VTM GO}. Door het stijgende aanbod aan streamingdiensten en doordat live televisie in populariteit daalt, sluiten steeds meer Belgen, waaronder Vlamingen, streamingabonnementen af.
+Er wordt steeds meer gestreamd in België \autocite{BNA2025}. Populaire streamingdiensten zoals \emph{Netflix}, \emph{Disney+} en \emph{Spotify} zijn haast niet meer weg te denken. Daarnaast springt ook de Vlaamse entertainmentindustrie volop op deze trend. Enkele populaire Vlaamse zenders en productiehuizen kwamen de voorbije jaren met hun eigen platformen. Denk maar aan \emph{Streamz}, \emph{VRT MAX} en \emph{VTM GO}. Door de groei van streamingdiensten en doordat live televisie in populariteit daalt \autocite{Digimeter2024}, maken steeds meer Belgen, waaronder Vlamingen, gebruik van al dan niet betalende streamingdiensten \autocite{BNA2025}.
 
 \vspace{1em}
 
@@ -34,7 +34,7 @@ Aanvullend werden enkele deelvragen geformuleerd die ondersteuning bieden bij he
 \noindent
 \textbf{Deelvragen probleemdomein:}
 \begin{enumerate}
-    \item Welke dark patterns komen het meest voor op websites en apps van streamingdiensten die door jongvolwassenen tussen 21 en 25 gebruikt worden?
+    \item Welke dark patterns komen het meest voor op websites en apps van streamingdiensten die door jongvolwassenen tussen 18 en 34 gebruikt worden?
     \item In welke mate zijn jongvolwassenen zich bewust van de aanwezigheid van dark patterns bij het gebruik van streamingdiensten?
     \item Welke verbanden bestaan er tussen de aanwezigheid van specifieke dark patterns en de businessdoelstellingen van streaming-\newline diensten?
     \item Op welk platform (website of mobiele app) komen dark patterns het vaakst voor?
@@ -48,6 +48,7 @@ Aanvullend werden enkele deelvragen geformuleerd die ondersteuning bieden bij he
     \item Welke bestaande tools die gebruikers waarschuwen voor dark patterns bestaan er al, en hoe effectief zijn deze in het verhogen van bewustzijn?
     \item Op welke manier kunnen jongvolwassenen het best ondersteund worden bij het herkennen van dark patterns zonder dat hun gebruikerservaring negatief beïnvloed wordt?
     \item Welke digitale of interactieve oplossing kan het meest bijdragen aan het verhogen van bewustzijn, en welke (niet-)functionele vereisten zijn hiervoor essentieel?
+    \item In welke mate voldoet de uitgewerkte digitale oplossing aan de opgestelde requirements en welke verbeterpunten kunnen worden geïdentificeerd?
 \end{enumerate}
 
 \vspace{1em}
@@ -127,22 +128,28 @@ In het algemeen werd er in het kader van dark patterns voornamelijk onderzocht w
 \section{Methodologie}%
 \label{sec:methodologie}
 
-Zoals in het begin van dit voorstel werd aangehaald, richt dit onderzoek zich op het zoeken naar een geschikte tool die jongvolwassen gebruikers in staat stelt om dark patterns op streamingdiensten te herkennen, en zo bewustwording rond dit onderwerp te creëren. Om de onderzoeksvraag te beantwoorden, wordt een weloverwogen plan gevolgd dat bestaat uit \textbf{zes verschillende fasen}. In eerste instantie wordt de huidige stand van zaken onderzocht aan de hand van een literatuurstudie. Nadien worden hieruit de requirements waaraan de tool moet voldoen opgesteld. Vervolgens zal een longlist gemaakt worden van alle mogelijke oplossingen. Deze zal verder vernauwd worden tot een shortlist die de meest geschikte tools bevat voor deze casus die eveneens rekening houdt met de doelgroep. Hieruit zal de meest geschikte aanpak gekozen en uitgewerkt worden als Proof of Concept. Tot slot zal uit dit onderzoek een conclusie geformuleerd worden. Naast deze gedefinieerde fasen wordt er tijdens het volledige verloop van het onderzoek continu documentatie bijgehouden. Iedere fase is zorgvuldig gepland om een optimaal verloop van de bachelorproef te garanderen. Een overzicht van het verloop van het onderzoek wordt weergegeven in Figuur~\ref{fig:gantt}. De onderzoeksperiode spreidt zich over \textbf{11 weken}, gevolgd door 3 weken waarin feedback kan worden verwerkt en de eindpresentatie kan worden voorbereid. Binnen de onderzoeksperiode zal er \textbf{wekelijks één tot twee dagen} gewerkt worden aan de bachelorproef: op de bachelorproefdag en, indien mogelijk, één dag in het weekend.
+Zoals in het begin van dit voorstel werd aangehaald, richt dit onderzoek zich op het zoeken naar een geschikte tool die jongvolwassen gebruikers in staat stelt om dark patterns op streamingdiensten te herkennen, en zo bewustwording rond dit onderwerp te creëren. Om de onderzoeksvraag te beantwoorden, wordt een weloverwogen plan gevolgd dat bestaat uit \textbf{vijf verschillende fasen}. In eerste instantie wordt de huidige stand van zaken onderzocht aan de hand van een literatuurstudie en zal een longlist gemaakt worden van alle mogelijke oplossingen. Nadien worden uit het literatuuronderzoek de requirements waaraan de tool moet voldoen opgesteld. Aan de hand van deze vereisten zal de longlist uit fase 1 verder vernauwd worden tot een shortlist die de meest geschikte tools bevat voor deze casus. Hieruit zal de meest beloftevolle aanpak gekozen en uitgewerkt worden als een Proof of Concept door een bestaande open‑source tool verder uit te werken en te verbeteren voor deze specifieke use case. Tot slot zal uit dit onderzoek een conclusie geformuleerd worden. Naast deze gedefinieerde fasen wordt er tijdens het volledige verloop van het onderzoek continu documentatie bijgehouden. Iedere fase is zorgvuldig gepland om een optimaal verloop van de bachelorproef te garanderen. Een overzicht van het verloop van het onderzoek wordt weergegeven in Figuur~\ref{fig:gantt}. De onderzoeksperiode spreidt zich over \textbf{11 weken}, gevolgd door 3 weken waarin feedback kan worden verwerkt en de eindpresentatie kan worden voorbereid. Binnen de onderzoeksperiode zal er \textbf{wekelijks één tot twee dagen} gewerkt worden aan de bachelorproef: op de bachelorproefdag en, indien mogelijk, één dag in het weekend.
 
 \vspace{1em}
 
-\subsection{Fase 1: Stand van zaken}
+\subsection{Fase 1: Stand van zaken \& Longlist}
 \label{subsec:stand-van-zaken}
 
 \begin{tabular}{ll}
-    \hspace{0.3em} \textbf{Periode:} & 16/02 – 01/03 (Week 1 - 2)
+    \hspace{0.3em} \textbf{Periode:} & 16/02 – 08/03 (Week 1 - 3)
 \end{tabular}
 
 \vspace{1em}
 
 Tijdens de eerste twee weken van het onderzoek wordt het onderzoeksdomein uitvoerig verkend om op die manier een goed theoretisch kader op te bouwen. Via literatuuronderzoek wordt onderzocht wat dark patterns zijn, welke er bestaan, welke negatieve gevolgen deze kunnen hebben en hoe bewust mensen zijn van de patronen en hun gevolgen. Verder wordt nagegaan waar deze patronen het vaakst voorkomen (websites en apps) en of er verschillen zijn per platform. Daarnaast wordt ook de huidige wet- en regelgeving en de mogelijk link tussen de businessdoelstellingen van streamingdiensten en het gebruik van dark patterns onder de loep genomen. Aanvullend aan dit literatuuronderzoek, wordt in kaart gebracht welke streamingdiensten het populairst zijn in België en welke dark patterns zij toepassen, onderverdeeld per platform. Tot slot worden bestaande tools geanalyseerd om hun sterktes en beperkingen te identificeren. Het literatuuronderzoek zal gedaan worden gebruikmakend van \emph{Google Scholar} en wetenschappelijke databanken zoals \emph{ACM digital library}, \emph{Springer Online Journals} en \emph{JSTOR}.
 
-Het doel van deze fase is het verder verwerven van kennis omtrent het probleemdomein, zodat in de volgende fase de requirements op een onderbouwde manier kunnen worden opgesteld. Dit resulteert zich in het uitwerken van een overzicht van gebruikersproblemen rond dark patterns op streamingdiensten, een lijst van populaire streamingdiensten en de patronen die ze bevatten, en een analyse van bestaande tools met hun sterke en zwakke punten.
+\vspace{1em}
+
+Op basis van dit literatuuronderzoek wordt een \textbf{longlist} opgesteld van mogelijke digitale oplossingen die gebruikers kunnen helpen om dark patterns op streamingdiensten te herkennen. Ieder alternatief wordt gedocumenteerd met zijn voor- en nadelen. Het doel is om een zo compleet mogelijk overzicht te creëren van mogelijke oplossingen, dat later gebruikt zal worden voor het opstellen van de shortlist.
+
+\vspace{1em}
+
+Het doel van deze fase is het verder verwerven van kennis omtrent het probleemdomein, zodat in de volgende fase de requirements op een onderbouwde manier kunnen worden opgesteld. Dit resulteert zich in het uitwerken van een overzicht van gebruikersproblemen rond dark patterns op streamingdiensten, een lijst van populaire streamingdiensten en de patronen die ze bevatten, en een analyse van bestaande tools met hun sterke en zwakke punten. Tot slot moet in deze fase een longlist opgesteld zijn van alle mogelijke digitale oplossingen die geschikt zouden kunnen zijn om in een verder stadium uit te werken.
 
 \vspace{1em}
 
@@ -150,31 +157,16 @@ Het doel van deze fase is het verder verwerven van kennis omtrent het probleemdo
 \label{subsec:requirements-verzamelen}
 
 \begin{tabular}{ll}
-    \hspace{0.3em} \textbf{Periode:} & 02/03 – 08/03 (Week 3)
-\end{tabular}
-
-\vspace{1em}
-
-In fase~2 ligt de focus op het verzamelen van alle vereisten waaraan de nieuwe tool moet voldoen. Op basis van de resultaten uit het literatuuronderzoek worden de requirements opgesteld. Er wordt onder andere rekening gehouden met welke dark patterns het belangrijkste zijn, waar de tool moet ingezet worden, welke aspecten overgenomen kunnen worden van andere tools en welke toevoegingen nodig zijn voor een betere digitale oplossing. Aanvullend worden de voorlopige requirements afgetoetst en aangevuld via interviews met experts, waaronder een UI/UX-designer en een front-end developer. Deze fase zal worden afgerond door het opstellen van een volledige en geprioriteerde lijst van criteria die het \emph{minimum viable product (MVP)} definiëren. Het concrete resultaat bestaat uit een lijst van functionele en niet-functionele requirements, geordend volgens hun belang. Voor de ordening zal de \emph{MoSCoW}-methode gebruikt worden.
-
-
-\vspace{1em}
-
-\subsection{Fase 3: Longlist}
-\label{subsec:longlist}
-
-\begin{tabular}{ll}
     \hspace{0.3em} \textbf{Periode:} & 09/03 – 15/03 (Week 4)
 \end{tabular}
 
 \vspace{1em}
 
-Na het opstellen van de requirements zal er gezocht worden naar een zo groot mogelijk aantal digitale oplossingen die gebruikers kunnen helpen om dark patterns op streamingdiensten te herkennen. Door middel van aanvullend literatuuronderzoek, gebruikmakend van de voorgaande vermelde databanken, worden alle mogelijke oplossingen overwogen en opgelijst. Ieder alternatief zal worden afgetoetst aan de requirementslijst die werd opgesteld in fase~2 als ook worden de voor- en nadelen genoteerd. Op deze manier wordt er zekerheid ingebouwd dat er geen alternatief over het hoofd gezien wordt. Op het einde van fase~3 moet een longlist opgesteld zijn van alle mogelijke digitale oplossingen die geschikt zouden kunnen zijn om in een verder stadium verder uit te werken. Deze longlist zal dienen voor het opstellen van de shortlist in de volgende fase.
-
+In fase~2 ligt de focus op het verzamelen van alle vereisten waaraan de nieuwe tool moet voldoen. Op basis van de resultaten uit het literatuuronderzoek worden de requirements opgesteld. Er wordt onder andere rekening gehouden met welke dark patterns het belangrijkste zijn, waar de tool moet ingezet worden, welke aspecten overgenomen kunnen worden van andere tools en welke toevoegingen nodig zijn voor een betere digitale oplossing. Aanvullend worden de voorlopige requirements afgetoetst en aangevuld via interviews met een UI/UX-designer en een front-end developer. Deze fase zal worden afgerond door het opstellen van een volledige en geprioriteerde lijst van criteria die het \emph{minimum viable product (MVP)} definiëren. Het concrete resultaat bestaat uit een lijst van functionele en niet-functionele requirements, geordend volgens hun belang. Voor de ordening zal de \emph{MoSCoW}-methode gebruikt worden.
 
 \vspace{1em}
 
-\subsection{Fase 4: Shortlist}
+\subsection{Fase 3: Shortlist}
 \label{subsec:shortlist}
 
 \begin{tabular}{ll}
@@ -187,7 +179,7 @@ Vooraleer een Proof of Concept uitgewerkt kan worden, wordt er gekeken welke opl
 
 \vspace{1em}
 
-\subsection{Fase 5: Proof of Concept}
+\subsection{Fase 4: Proof of Concept}
 \label{subsec:proof-of-concept}
 
 \begin{tabular}{ll}
@@ -196,15 +188,20 @@ Vooraleer een Proof of Concept uitgewerkt kan worden, wordt er gekeken welke opl
 
 \vspace{1em}
 
-Fase~5, de fase die het meeste tijd in beslag zal nemen, omvat de uitwerking van een Proof of Concept (PoC). De geselecteerde oplossing uit fase~4 wordt in deze fase uitgewerkt tot een eerste Minimum Viable Product (MVP). In eerste instantie zullen er wireframes en mockups uitgewerkt worden in \emph{AdobeXD} om de algemene flow van de tool te bepalen. Nadien zullen in overleg met de co-promotor de meest geschikte technologieën (zoals \emph{React}, \emph{Node.js}, \emph{Python}, \ldots) gekozen worden. Daarna start de implementatie van de tool. Tijdens de ontwikkeling wordt er iteratief en agile gewerkt, waarbij elke iteratie het resultaat zal worden afgetoetst bij de co-promotor. Daarnaast zullen er testen geschreven worden die de goede werking van de tool controleren.
+Fase~4, de fase die het meeste tijd in beslag zal nemen, omvat de uitwerking van een Proof of Concept (PoC). De geselecteerde oplossing uit fase~4 wordt in deze fase uitgewerkt tot een eerste Minimum Viable Product (MVP). Aangezien er reeds bestaande open-source tools beschikbaar zijn, zal één van deze tools verder aangepast en uitgebreid worden voor de specifieke use case van dit onderzoek. 
 
 \vspace{1em}
 
-Op het einde van de fase is er een werkend prototype die de belangrijkste functionaliteiten van de tool bevat, aangevuld met een korte documentatie over de werking en functionaliteiten. Eveneens zal gevalideerd worden of de uitgewerkte tool al dan niet een oplossing biedt voor het gestelde probleem. Dit zal gedaan worden aan de hand van een digitale test bij enkele testgebruikers die tot de doelgroep behoren. Zij zullen een aantal taken uitvoeren op een streamingplatform die gebruikmaakt van dark patterns, zowel zonder als met de tool. Uit deze test wordt afgeleid in welke mate de proefpersonen de patronen herkennen, hoe snel zij de taken kunnen voltooien en hoeveel gebruikersacties er nodig zijn om de taken af te ronden. De resultaten hiervan zullen bepalen of de PoC een meerwaarde biedt.
+In eerste instantie zullen er wireframes en mockups uitgewerkt worden in \emph{AdobeXD} om de algemene flow van de tool te bepalen. Nadien zullen in overleg met de co-promotoren de meest geschikte technologieën (zoals \emph{React}, \emph{Node.js}, \emph{Python}, \ldots) gekozen worden. Daarna start de implementatie van de tool. Tijdens de ontwikkeling wordt er iteratief en agile gewerkt, waarbij het resultaat van elke iteratie zal worden afgetoetst bij de co-promotoren. Daarnaast zullen er testen geschreven worden die de goede werking van de tool waarborgen.
 
 \vspace{1em}
 
-\subsection{Fase 6: Conclusie}
+Op het einde van de fase is er een werkend prototype die de belangrijkste functionaliteiten van de tool bevat, aangevuld met een korte documentatie over de werking en functionaliteiten. Eveneens zal gevalideerd worden of de uitgewerkte tool al dan niet een oplossing biedt voor het gestelde probleem.
+Dit zal gedaan worden aan de hand van een digitale test bij enkele testgebruikers die tot de doelgroep behoren. Zij zullen een aantal taken uitvoeren op een streamingplatform dat gebruikmaakt van dark patterns, zowel zonder als met de tool. Uit deze test wordt een eerste indicatie afgeleid van in welke mate de proefpersonen de patronen herkennen en hoe snel zij deze waarnemen. De resultaten hiervan geven een eerste indicatie in de mogelijke meerwaarde van de PoC, zonder ervan uit te gaan dat dit geldt voor de hele doelgroep.
+
+\vspace{1em}
+
+\subsection{Fase 5: Conclusie}
 \label{subsec:conclusie}
 
 \begin{tabular}{ll}
@@ -213,18 +210,19 @@ Op het einde van de fase is er een werkend prototype die de belangrijkste functi
 
 \vspace{1em}
 
-De laatste fase omvat het trekken van een conclusie over de werking van de uitgewerkte tool. Eveneens zal een antwoord geformuleerd worden op de onderzoeksvraag en zullen aanbevelingen opgesteld worden voor verder onderzoek. Tot slot worden de overblijvende hiaten in de tool geïdentificeerd. Hiervoor wordt een heuristische evaluatie uitgevoerd op basis van de requirements uit fase~2 en de UX-principes van Nielsen. De evaluatie wordt zowel door de onderzoeker als door de co-promotor uitgevoerd om objectiviteit te waarborgen. De bevindingen uit deze evaluatie worden gedocumenteerd en samengevat.
+De laatste fase omvat het trekken van een conclusie over de werking van de uitgewerkte tool en het identificeren van verbeterpunten en overblijvende hiaten. Dit gebeurt door de gerealiseerde functionaliteiten te vergelijken met de vereisten die in fase~2 werden opgesteld. Daarnaast worden observaties uit de gebruikerstesten meegenomen om hiaten te identificeren en mogelijke verbeterpunten te formuleren.
 
 \vspace{1em}
+
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat}%
 \label{sec:verwachte_resultaten}
 
-Het verwachte resultaat van dit onderzoek is een digitale tool die Vlamingen tussen 21 en 25 jaar helpt bij het opmerken van dark patterns op streamingdiensten zodat ze veiliger en bewuster met deze platformen omgaan. De tool zal hen ondersteunen bij het herkennen van misleidende technieken en zal de gebruikers informeren over de intentie en gevaren ervan. Deze verwachting baseert zich op bevindingen uit de literatuurstudie, namelijk dat gebruikers regelmatig moeite hebben bij het herkennen van dark patterns \autocite{OECD2022} en dat ze niet bewust zijn van de gevaren ervan \autocite{BongardBlanchy2021}. Daarnaast wordt verwacht dat de tool geen AI zal gebruiken aangezien uit de literatuurstudie gebleken is dat bestaande detectietools gebruikmakend van AI een beperkte dekking hebben \autocite{Nie2024} en dus onmogelijk alle patronen kunnen herkennen en ervoor waarschuwen. Eveneens wordt, naast de uitgewerkte tool, aangenomen dat het onderzoek inzichten zal geven in op welke manier gebruikers het best geïnformeerd en gewaarschuwd kunnen worden. 
+Het verwachte resultaat van dit onderzoek is een digitale tool die Vlamingen tussen 18 en 34 jaar helpt bij het opmerken van dark patterns op streamingdiensten zodat ze deze sneller herkennen. De tool zal hen ondersteunen bij het opmerken van misleidende technieken en zal de gebruikers informeren over de intentie en gevaren ervan. Deze verwachting baseert zich op bevindingen uit de literatuurstudie, namelijk dat gebruikers regelmatig moeite hebben bij het herkennen van dark patterns \autocite{OECD2022} en dat ze niet bewust zijn van de gevaren ervan \autocite{BongardBlanchy2021}. Daarnaast wordt verwacht dat de tool geen AI zal gebruiken aangezien uit de literatuurstudie gebleken is dat bestaande detectietools gebruikmakend van AI een beperkte dekking hebben \autocite{Nie2024} en dus onmogelijk alle patronen kunnen herkennen en ervoor waarschuwen. Eveneens wordt, naast de uitgewerkte tool, aangenomen dat het onderzoek inzichten zal geven in op welke manier gebruikers het best geïnformeerd en gewaarschuwd kunnen worden. 
 
 \vspace{1em}
 
-De verwachte meerwaarde van dit onderzoek voor de doelgroep ligt in het verhogen van hun bewustzijn over dark patterns en het vergroten van hun gevoel van controle bij het gebruik van streamingplatformen. De tool helpt bij het maken van bewustere keuzes doordat gebruikers beter begrijpen hoe interfaces hen beïnvloeden. Verder biedt dit onderzoek waardevolle inzichten voor de wereld van UI/UX en softwareontwikkeling, doordat het kan dienen als voorbeeld voor het ontwerpen van soortgelijke tools in andere domeinen waar dark patterns voorkomen, zoals webshops of reiswebsites.
+De verwachte meerwaarde van dit onderzoek voor de doelgroep ligt in het verhogen van hun bewustzijn over dark patterns en het vergroten van hun gevoel van controle bij het gebruik van streamingplatformen. De tool ondersteunt gebruikers bij het maken van bewustere keuzes door hen te laten zien hoe interfaces hen kunnen beïnvloeden. Verder biedt dit onderzoek waardevolle inzichten voor de wereld van UI/UX en softwareontwikkeling, doordat het kan dienen als voorbeeld voor het ontwerpen van soortgelijke tools in andere domeinen waar dark patterns voorkomen, zoals webshops of reiswebsites.
 
 \vspace{1em}
