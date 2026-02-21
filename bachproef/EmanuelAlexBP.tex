@@ -46,14 +46,21 @@
 }
 
 % Other packages not already included can be imported here
+%% Glossaries and acronyms
+\usepackage[acronym,nomain,toc]{glossaries}
+
+\makeglossaries
+
+\newacronym{dp}{DP}{Deceptive Patterns}
+\newacronym{poc}{PoC}{Proof of Concept}
 
 %%---------- Document metadata -------------------------------------------------
 % TODO: Replace this with your own information
-\author{Ernst Aarden}
-\supervisor{Dhr. F. Van Houte}
-\cosupervisor{Mevr. S. Beeckman}
-\title[Optionele ondertitel]%
-    {Titel van de bachelorproef}
+\author{Alex Emanuel}
+\supervisor{Mevr. L. De Mol}
+\cosupervisor{Dhr. G. De Bruyn, Dhr. S. Hostyn}
+\title[Ontwikkeling van een Proof of Concept]%
+    {Detectie en signalering van misleidende technieken op streamingdiensten bij jongvolwassenen}
 \academicyear{\advance\year by -1 \the\year--\advance\year by 1 \the\year}
 \examperiod{1}
 \degreesought{\IfLanguageName{dutch}{Professionele bachelor in de toegepaste informatica}{Bachelor of applied computer science}}
@@ -120,6 +127,8 @@
 % hier thuis. Gebruik bijvoorbeeld de ``glossaries'' package.
 % https://www.overleaf.com/learn/latex/Glossaries
 
+\printglossary[title=Acroniemen, toctitle=Acroniemen]
+
 %---------- Kern ---------------------------------------------------------------
 
 \mainmatter{}
@@ -153,9 +162,10 @@
 Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat vooraf werd beoordeeld door de promotor. Dat voorstel is opgenomen in deze bijlage.
 
 %% TODO: 
-%\section*{Samenvatting}
+\section*{Samenvatting}
 
 % Kopieer en plak hier de samenvatting (abstract) van je onderzoeksvoorstel.
+Nu streamingdiensten niet meer weg te denken zijn uit het leven van Vlaamse jongvolwassenen, worden 18- tot 34-jarigen meer dan ooit blootgesteld aan zogenaamde dark patterns. Deze misleidende technieken beïnvloeden op een subtiele manier de keuzes van gebruikers, vaak wanneer ze zich hiervan onbewust zijn. In tegenstelling tot reclame, die gebruikers op een bewuste manier overtuigen, manipuleren dark patterns vaak onopgemerkt. Dit is bijzonder problematisch omdat gebruikers hierdoor handelingen doen die ze anders niet zouden doen en daardoor onbedoeld bijvoorbeeld abonnementen afsluiten of extra verdoken kosten maken. Dit is niet meer in het belang van de gebruiker. Deze bachelorproef onderzoekt hoe zo’n patronen het gedrag van Vlaamse jongvolwassenen beïnvloeden en op welke manier deze patronen opgespoord en gesignaleerd kunnen worden. Er wordt specifiek vertrokken vanuit de centrale onderzoeksvraag ``Hoe kunnen commerciële dark patterns van in Vlaanderen vaak gebruikte streamingdiensten automatisch opgespoord en aan de gebruikers gesignaleerd worden?’’. Dit onderzoek heeft als doel te bepalen welke manier het beste is om dark patterns op te sporen en signaleren en deze uit te werken in de vorm van een Proof of Concept. Dit wordt onderzocht door het doorlopen van vijf fasen: uitvoeren van een literatuurstudie en opstellen van een longlist van mogelijke oplossingen, verzamelen van requirements, de longlist verder vernauwen naar een shortlist, ontwikkelen en testen van een Proof of Concept, en afsluiten met een conclusie. Er wordt verwacht dat een doordacht uitgewerkte digitale tool een meerwaarde kan bieden bij het opmerken van misleidende technieken en gebruikers kan informeren over de intentie en gevaren ervan.
 
 % Verwijzing naar het bestand met de inhoud van het onderzoeksvoorstel
 \input{../voorstel/voorstel-inhoud}

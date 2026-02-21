@@ -16,36 +16,122 @@ Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ na
 Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
 
 \begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{grail.jpg}
-  \caption[Voorbeeld figuur.]{\label{fig:grail}Voorbeeld van invoegen van een figuur. Zorg altijd voor een uitgebreid bijschrift dat de figuur volledig beschrijft zonder in de tekst te moeten gaan zoeken. Vergeet ook je bronvermelding niet!}
+    \centering
+    \includegraphics[width=0.8\textwidth]{grail.jpg}
+    \caption[Voorbeeld figuur.]{\label{fig:grail}Voorbeeld van invoegen van een figuur. Zorg altijd voor een uitgebreid bijschrift dat de figuur volledig beschrijft zonder in de tekst te moeten gaan zoeken. Vergeet ook je bronvermelding niet!}
 \end{figure}
 
 \begin{listing}
-  \begin{minted}{python}
-    import pandas as pd
-    import seaborn as sns
-
-    penguins = sns.load_dataset('penguins')
-    sns.relplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
-  \end{minted}
-  \caption[Voorbeeld codefragment]{Voorbeeld van het invoegen van een codefragment.}
+    \begin{minted}{python}
+        import pandas as pd
+        import seaborn as sns
+        
+        penguins = sns.load_dataset('penguins')
+        sns.relplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
+    \end{minted}
+    \caption[Voorbeeld codefragment]{Voorbeeld van het invoegen van een codefragment.}
 \end{listing}
 
 \lipsum[7-20]
 
 \begin{table}
-  \centering
-  \begin{tabular}{lcr}
-    \toprule
-    \textbf{Kolom 1} & \textbf{Kolom 2} & \textbf{Kolom 3} \\
-    $\alpha$         & $\beta$          & $\gamma$         \\
-    \midrule
-    A                & 10.230           & a                \\
-    B                & 45.678           & b                \\
-    C                & 99.987           & c                \\
-    \bottomrule
-  \end{tabular}
-  \caption[Voorbeeld tabel]{\label{tab:example}Voorbeeld van een tabel.}
+    \centering
+    \begin{tabular}{lcr}
+        \toprule
+        \textbf{Kolom 1} & \textbf{Kolom 2} & \textbf{Kolom 3} \\
+        $\alpha$         & $\beta$          & $\gamma$         \\
+        \midrule
+        A                & 10.230           & a                \\
+        B                & 45.678           & b                \\
+        C                & 99.987           & c                \\
+        \bottomrule
+    \end{tabular}
+    \caption[Voorbeeld tabel]{\label{tab:example}Voorbeeld van een tabel.}
 \end{table}
+
+\section{Dark patterns in digitale omgevingen}
+\label{sec:dark-patterns-digitaal}
+
+\subsection{Definitie en oorsprong van dark patterns}
+\label{subsec:definitie-oorpsr}
+
+\subsection{Vormen van dark patterns}
+\label{subsec:vormen}
+
+\subsection{Dark patterns op digitale platformen}
+\label{subsec:platformen}
+
+\subsection{Doelstellingen en effectiviteit van dark patterns}
+\label{subsec:effectiviteit}
+
+
+\section{Het landschap van streamingdiensten in Vlaanderen}
+\label{sec:streaming-landschap}
+
+\subsection{Definitie en kenmerken van streamingdiensten}
+\label{subsec:definities-streaming}
+
+\subsection{Meest gebruikte streamingdiensten in Vlaanderen}
+\label{subsec:populaire-streaming}
+
+\subsection{Gebruik van streamingdiensten op verschillende apparaten en platformen}
+\label{subsec:apparaten-platformen}
+
+\subsection{Businessdoelstellingen van streamingdiensten}
+\label{subsec:businessdoelstellingen}
+
+
+\section{Dark patterns binnen streamingdiensten}
+\label{sec:dark-patterns-streaming}
+
+\subsection{Meest voorkomende dark patterns op streamingplatformen}
+\label{subsec:meest-voorkomend}
+
+\subsection{Platformvergelijking: websites versus mobiele applicaties}
+\label{subsec:platformvergelijking}
+
+\subsection{Relatie tussen dark patterns en businessdoelstellingen}
+\label{subsec:relatie-business}
+
+
+\section{Gebruikersbewustzijn en -impact}
+\label{sec:gebruikersbewustzijn}
+
+\subsection{Gebruikersbewustzijn van dark patterns}
+\label{subsec:bewustzijn-gebruikers}
+
+\subsection{Impact van dark patterns op gebruikers}
+\label{subsec:impact-gebruikers}
+
+
+\section{Juridisch en ethisch kader}
+\label{sec:juridisch-ethisch}
+
+\subsection{Europese wet- en regelgeving}
+\label{subsec:eu-regelgeving}
+
+\subsection{Belgische wet- en regelgeving}
+\label{subsec:belg-regelgeving}
+
+\subsection{Ethische blik op dark patterns}
+\label{subsec:ethiek}
+
+
+\section{Signalering van dark patterns}
+\label{sec:signalering}
+
+\subsection{Bestaand onderzoek naar automatische detectie}
+\label{subsec:bestaand-onderzoek}
+
+\subsection{Technologische tools en bewustwording}
+\label{subsec:tools-bewustwording}
+
+\subsection{Technologische signalisatiemogelijkheden}
+\label{subsec:signalisatie-mogelijkheden}
+
+\subsection{Ontwerpprincipes voor niet-storende signalering}
+\label{subsec:ontwerpprincipes}
+
+\subsection{Bestaande open source tools}
+\label{subsec:open-source-tools}
 
