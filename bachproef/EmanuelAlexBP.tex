@@ -5,13 +5,13 @@
 
 \documentclass[dutch,dit,thesis]{hogentreport}
 
-% TODO:
 % - If necessary, replace the option `dit`' with your own department!
 %   Valid entries are dbo, dbt, dgz, dit, dlo, dog, dsa, soa
 % - If you write your thesis in English (remark: only possible after getting
 %   explicit approval!), remove the option "dutch," or replace with "english".
 
 \usepackage{lipsum} % For blind text, can be removed after adding actual content
+\usepackage{longtable, booktabs, array}
 
 %% Pictures to include in the text can be put in the graphics/ folder
 \graphicspath{{../graphics/}}
@@ -51,11 +51,13 @@
 
 \makeglossaries
 
-\newacronym{dp}{DP}{Deceptive Patterns}
 \newacronym{poc}{PoC}{Proof of Concept}
+\newacronym{avod}{AVoD}{Ad-based Video-on-Demand}
+\newacronym{svod}{SVoD}{Subscription-based Video-on-Demand}
+\newacronym{tvod}{TVoD}{Transactional-based Video-on-Demand}
+\newacronym{bvod}{BVoD}{Broadcast Video-on-Demand}
 
 %%---------- Document metadata -------------------------------------------------
-% TODO: Replace this with your own information
 \author{Alex Emanuel}
 \supervisor{Mevr. L. De Mol}
 \cosupervisor{Dhr. G. De Bruyn, Dhr. S. Hostyn}
@@ -161,7 +163,7 @@
 
 Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat vooraf werd beoordeeld door de promotor. Dat voorstel is opgenomen in deze bijlage.
 
-%% TODO: 
+
 \section*{Samenvatting}
 
 % Kopieer en plak hier de samenvatting (abstract) van je onderzoeksvoorstel.

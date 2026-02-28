@@ -7,63 +7,273 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
-
-Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
-
-\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
-
-Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{grail.jpg}
-    \caption[Voorbeeld figuur.]{\label{fig:grail}Voorbeeld van invoegen van een figuur. Zorg altijd voor een uitgebreid bijschrift dat de figuur volledig beschrijft zonder in de tekst te moeten gaan zoeken. Vergeet ook je bronvermelding niet!}
-\end{figure}
-
-\begin{listing}
-    \begin{minted}{python}
-        import pandas as pd
-        import seaborn as sns
-        
-        penguins = sns.load_dataset('penguins')
-        sns.relplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
-    \end{minted}
-    \caption[Voorbeeld codefragment]{Voorbeeld van het invoegen van een codefragment.}
-\end{listing}
-
-\lipsum[7-20]
-
-\begin{table}
-    \centering
-    \begin{tabular}{lcr}
-        \toprule
-        \textbf{Kolom 1} & \textbf{Kolom 2} & \textbf{Kolom 3} \\
-        $\alpha$         & $\beta$          & $\gamma$         \\
-        \midrule
-        A                & 10.230           & a                \\
-        B                & 45.678           & b                \\
-        C                & 99.987           & c                \\
-        \bottomrule
-    \end{tabular}
-    \caption[Voorbeeld tabel]{\label{tab:example}Voorbeeld van een tabel.}
-\end{table}
+%Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
+%
+%Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
+%
+%\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
+%
+%Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
+%
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{grail.jpg}
+%    \caption[Voorbeeld figuur.]{\label{fig:grail}Voorbeeld van invoegen van een figuur. Zorg altijd voor een uitgebreid bijschrift dat de figuur volledig beschrijft zonder in de tekst te moeten gaan zoeken. Vergeet ook je bronvermelding niet!}
+%\end{figure}
+%
+%\begin{listing}
+%    \begin{minted}{python}
+%        import pandas as pd
+%        import seaborn as sns
+%        
+%        penguins = sns.load_dataset('penguins')
+%        sns.relplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
+%    \end{minted}
+%    \caption[Voorbeeld codefragment]{Voorbeeld van het invoegen van een codefragment.}
+%\end{listing}
+%
+%\begin{table}
+%    \centering
+%    \begin{tabular}{lcr}
+%        \toprule
+%        \textbf{Kolom 1} & \textbf{Kolom 2} & \textbf{Kolom 3} \\
+%        $\alpha$         & $\beta$          & $\gamma$         \\
+%        \midrule
+%        A                & 10.230           & a                \\
+%        B                & 45.678           & b                \\
+%        C                & 99.987           & c                \\
+%        \bottomrule
+%    \end{tabular}
+%    \caption[Voorbeeld tabel]{\label{tab:example}Voorbeeld van een tabel.}
+%\end{table}
 
 \section{Dark patterns in digitale omgevingen}
 \label{sec:dark-patterns-digitaal}
 
-\subsection{Definitie en oorsprong van dark patterns}
+\subsection{Oorsprong en definitie van dark patterns}
 \label{subsec:definitie-oorpsr}
+
+\vspace{1em}
+
+Voordat online verkoop een prominente rol speelde op de handelsmarkt, werden volgens \textcite{Kollmer2022} technieken voor manipulatie en misleiding voornamelijk toegepast in fysieke winkels met als doel de verkoop te verhogen, gegevens te verzamelen en de aandacht van de gebruikers te sturen. Volgens deze auteurs was in het eerste decennium van de eenentwintigste eeuw het gebruikmaken van zogenaamde growth hacking technieken één van de strategieën. Een voorbeeld hiervan is het misbruiken van gebruikersgegevens door zonder voorafgaande toestemming iedereen in een contactenlijst uit te nodigen om een bepaalde dienst te gebruiken \autocite{Kollmer2022}. 
+
+\vspace{1em}
+
+Door de toenemende digitalisering van zowel verkoop- als advertentieprocessen besloten organisaties deze manipulatieve en misleidende technieken ook in digitale omgevingen te gebruiken, wat leidde tot het ontstaan van zogenaamde dark patterns \autocite{Kollmer2022}.
+
+\vspace{1em}
+
+\textcite{Kollmer2022} merken op dat deze term dankzij Harry Brignull in 2010 zijn intrede deed, die deze patronen omschreef als 
+
+\begin{quote}
+    “trucs gebruikt op websites en apps om gebruikers tegen hun wil dingen te laten doen, zoals iets aankopen of zich ergens voor inschrijven”.
+\end{quote}
+
+De auteurs kaarten aan dat deze patronen gebruikers misleiden en manipuleren door gebruik te maken van elementen die betrekking hebben tot het keuzeproces als ook inspelen op psychologische kwetsbaarheden. 
+
+\vspace{1em}
+
+Hoewel deze definitie een bruikbaar uitgangspunt vormt, wijzen \textcite{Kollmer2022} erop dat deze tekortschiet. Volgens de auteurs suggereert de oorspronkelijke definitie dat het ondermijnen van gebruikersintenties het centrale kenmerk van een dark pattern is, terwijl patronen zoals bijvoorbeeld infinite scrolling en autoplay volgens hen ook worden ingezet om de tijd die gebruikers op digitale platformen doorbrengen te maximaliseren. \textcite{Kollmer2022} benadrukken dat deze patronen in lijn zijn met de intentie van de gebruiker, maar dat ze technologieverslaving bevorderen waardoor dit ook gezien wordt als een aantasting van de gebruikersautonomie. Daarom leggen ze volgende definitie vast:
+
+\begin{quote}
+    Dark patterns zijn “[...] ontwerpelementen van gebruikersinterfaces die de autonomie van gebruikers aantasten door geïnformeerde keuzes te verhinderen en die kunnen leiden tot nadelige gevolgen voor de gebruiker, zoals schending van de privacy, financieel verlies en technologieverslaving” \autocite{Kollmer2022}.
+\end{quote}
+
+Deze misleidende technieken hebben verder als voornaamste kenmerk dat ze inspelen op het door gedragseconoom Daniel Kahneman gedefinieerde “Systeem 1”-denken: besluitvorming die automatisch en intuïtief gebeurd met weinig cognitieve inspanning \autocite{OECD2022}.
+
+\vspace{1em}
+
+De patronen komen voor in een breed scala aan vormen en ontwerpen, tevens maken ze gebruik van zowel ontwerpelementen (zoals pop-updialoogvensters, kleurgebruik, de mate waarin opties opvallen…) als van tekstuele elementen (bijvoorbeeld het gebruiken van emotionele of beschuldigende taal) \autocite{OECD2022}.
+
+\vspace{1em}
 
 \subsection{Vormen van dark patterns}
 \label{subsec:vormen}
 
+\vspace{1em}
+
+Zoals eerder besproken, komen dark patterns in veel vormen voor. Het is daarom belangrijk om een beknopt overzicht te geven van deze patronen. Volgens \autocite{OECD2022} richtte onderzoek rond dark patterns zich de voorbije jaren voornamelijk op het verzamelen van voorbeelden en het categoriseren ervan via taxonomieën. Onderzoek van \textcite{Gray2018} en \textcite{DiGeronimo2020} zijn hier onder andere voorbeelden van. Echter benadrukt het onderzoek van \textcite{OECD2022} dat het vrijwel onmogelijk is dat er ooit een definitieve en complete taxonomie van dark patterns zal bestaan. Er blijven namelijk altijd nieuwe vormen van dark patterns ontstaan, aangezien technologie en gebruikersinterfaces continu evolueren, alsook weerspiegelt iedere taxonomie de doelstellingen van de onderzoekers op een manier die hun keuzes en interpretaties beïnvloeden \autocite{OECD2022}.
+
+\vspace{1em}
+
+Rekening houdend met deze bevindingen, wordt in het begin van dit onderzoek gebruikgemaakt van de taxonomie uit de recente studie van \textcite{Shi2025}, die zich richt op dark patterns op mobiele apps en websites. Deze taxonomie werd opgesteld door eerdere taxonomieën, waaronder die van \textcite{DiGeronimo2020}, te combineren en te verfijnen \autocite{Shi2025}. Om een nog duidelijker overzicht te creëren, is aan de taxonomie van \textcite{Shi2025} een extra kolom toegevoegd met de hoofdcategorieën volgens \textcite{DiGeronimo2020}, die vijf algemene categorieën definiëren: 
+
+\begin{itemize}
+    \item \textbf{Nagging}: Het herhaaldelijk vragen aan de gebruiker om een bepaalde actie te ondernemen.
+    \item \textbf{Obstruction}: Het opzettelijk bemoeilijken van het uitvoeren van acties.
+    \item \textbf{Sneaking}: Het verbergen van relevante informatie, zoals bijvoorbeeld verborgen kosten.
+    \item \textbf{Interface Interference}: Het verwarrend, misleidend of slecht leesbaar maken van user interface-elementen.
+    \item \textbf{Forced Action}: Het dwingen van de gebruiker om ongewenste keuzes te maken.
+\end{itemize}
+
+Deze categorieën werden eerder gekoppeld aan de typen in een eerdere taxonomie van \textcite{Chen2023}, die eveneens diende als basis voor de taxonomie van \textcite{Shi2025}. Tabel~\ref{tab:dpvormen} toont de onderverdeling van dark patterns die in het begin van dit onderzoek wordt gehanteerd.
+
+\vspace{1em}
+
+
+\begin{longtable}{>{\raggedright\arraybackslash\scriptsize}p{1.7cm} >{\raggedright\arraybackslash\scriptsize}p{1.7cm} >{\raggedright\arraybackslash\scriptsize}p{1.7cm} >{\raggedright\arraybackslash\scriptsize}p{4.3cm} >{\raggedright\arraybackslash\scriptsize}p{4.3cm}}
+    
+    \caption[Dark patterns taxonomie]{\label{tab:dpvormen}Gecombineerde taxonomie van dark patterns, gebaseerd op \textcite{Shi2025} (types) en \textcite{Chen2023} (categorieën). Van links naar rechts: categorie, type, subtype, definitie en cases.} \\
+   
+    \toprule
+    \textbf{Categorie} & \textbf{Type} & \textbf{Subtype} & \textbf{Definitie} & \textbf{Cases} \\
+    \midrule
+    \endfirsthead
+    
+    \multicolumn{5}{c}%
+    {\scriptsize{\tablename\ \thetable\ -- \textit{Vervolg van vorige pagina}}} \\
+    \toprule
+    \textbf{Categorie} & \textbf{Type} & \textbf{Subtype} & \textbf{Definitie} & \textbf{Cases} \\
+    \midrule
+    \endhead
+    
+    \midrule \multicolumn{5}{r}{\scriptsize\textit{Vervolg op volgende pagina}} \\
+    \endfoot
+    
+    \bottomrule
+    \endlastfoot
+    
+    Nagging
+    & -             
+    & -                
+    & Er verschijnt steeds een onverwacht pop-upvenster, waardoor de activiteiten van de gebruiker worden verstoord.               
+    & Pop-upadvertenties; pop-up om te beoordelen; pop-up om te upgraden. \\
+    \midrule
+    Obstruction
+    & \raggedright Roach Motel             
+    & -                
+    & Gemakkelijk om je aan te melden, maar onmogelijk of moeilijk om je af te melden.                  
+    & Het is onmogelijk/moeilijk om je voor sommige diensten uit te schrijven; het is onmogelijk/moeilijk om je geld terug te krijgen; het is onmogelijk/moeilijk om je account te verwijderen. \\
+    & Price Comparison Prevention
+    & -
+    & Het is moeilijk om een directe vergelijking met anderen te maken.
+    & Kan de productnaam niet kopiëren en plakken; kan niet alle andere plannen tegelijkertijd vergelijken. \\
+    & Intermediate Currency
+    & -
+    & Gebruikers worden van echt geld vervreemd door hen aan te sporen virtuele valuta te kopen.
+    & Om bepaalde interne diensten te kunnen blijven gebruiken, moet je virtuele munten, diamanten, gems of credits kopen. \\
+    \midrule
+    Sneaking
+    & Forced Continuity
+    & -
+    & Gebruikers worden nog steeds gefactureerd nadat de dienst is stopgezet.
+    & Het abonnement wordt automatisch verlengd na afloop van de gratis proefperiode of kortingsperiode. \\
+    & Hidden Costs
+    & -
+    & De kosten worden in de beginfase niet bekendgemaakt.
+    & Bezorgkosten, verzendkosten, servicekosten, belastingkosten en abonnementskosten worden in eerste instantie niet weergegeven. \\
+    & Sneak into Basket
+    & -
+    & Extra kosten worden toegevoegd zonder dat de gebruiker daarvoor heeft gekozen.
+    & Er wordt een donatie aan de rekening toegevoegd om deze af te ronden; een betaalde dienst, zoals een verzekering, wordt aan de rekening toegevoegd. \\
+    \midrule
+    Interface Interference
+    & Hidden Information
+    & -
+    & Opties of acties zijn voor de gebruiker moeilijk te lezen of te begrijpen.
+    & Relevante informatie, zoals servicevoorwaarden, wordt weergegeven in kleine, grijze tekst; gebruik hyperlinks voor relevante informatie (bijv. servicevoorwaarden, overeenkomst). \\
+    & Preselection
+    & -
+    & Sommige keuzes zijn standaard vooraf geselecteerd.
+    & Onnodige opties zijn vooraf geselecteerd (bijv. cookies, gegevens delen, beleid, voorwaarden, overeenkomst, kennisgeving); het dure abonnement is standaard vooraf geselecteerd. \\
+    & Aesthetic Manipulation 
+    & Toying with emotion
+    & Taal, kleur en stijl worden gebruikt om emoties op te roepen en gebruikers onder druk te zetten om een bepaalde actie te ondernemen.
+    & Afteltimer/beperkte beloningen; bevestiging van schaamte; nepschaarste (grote vraag, kleine voorraad). \\
+    && False Hierarchy
+    & Eén optie wordt prominenter weergegeven dan andere, eveneens beschikbare opties.
+    & De ene knop is opvallender dan de andere (bijvoorbeeld de knop ‘Accepteren’ en ‘Sluiten’). \\
+    && Disguised Ad
+    & Advertenties doen zich voor als normale inhoud.
+    & Gesponsorde advertenties of content worden vermomd als banners of ingevoegd in de normale content. \\
+    && Tricked Questions
+    & Er wordt verwarrende of te complexe bewoordingen gebruikt om iets uit te leggen of vragen te stellen.
+    & Dubbele ontkenning. \\
+    && Small Close Button
+    & De knop om de huidige inhoud te sluiten is moeilijk te vinden.
+    & De knop voor het sluiten van advertenties is erg klein of moeilijk te herkennen. \\
+    \midrule
+    Forced Action
+    & Social Pyramid
+    & -
+    & Gebruikers worden gevraagd om iets met vrienden te delen om beloningen te ontvangen of functies te ontgrendelen.
+    & Deel onnodige informatie met vrienden; nodig vrienden uit om vouchers / credits / punten /prijzen te krijgen. \\
+    & Privacy Zuckering
+    & -
+    & Onnodige informatie wordt standaard verzameld.
+    & Gedwongen om akkoord te gaan met overeenkomsten (bijvoorbeeld gebruiksvoorwaarden of privacybeleid) voordat de dienst wordt gebruikt. \\
+    & Gamification
+    & -
+    & Vereist dat gebruikers herhaaldelijk acties uitvoeren om iets te krijgen.
+    & Dagelijkse check-in beloningen, gelukswiel. \\
+    & Countdown timer
+    & -
+    & De kans eindigt binnenkort met een duidelijke visuele aanwijzing.
+    & De afteltimer op de advertenties. \\
+    & Watch Ads to Unlock Features or Rewards
+    & -
+    & Ontgrendel functies of ontvang beloningen door advertenties te bekijken.
+    & Gebruikers moeten advertenties bekijken om toegang te krijgen tot of een tool, dienst of functie te ontgrendelen. \\
+    & Pay to Avoid Ads
+    & -
+    & Geld gebruiken om advertenties te verwijderen.
+    & Upgrade naar de pro-versie of neem een betaald abonnement om advertenties te verwijderen; betaal voor een dienst om advertenties te verwijderen. \\
+    & Forced Enrollment
+    & -
+    & Gebruikers moeten zich registreren of aanmelden voordat ze toegang krijgen tot de dienst.
+    & Gebruikers moeten zich aanmelden of inloggen op de startpagina van de applicatie voordat ze verdere acties kunnen uitvoeren; gebruikers moeten zich aanmelden of inloggen voordat ze verder kunnen gaan met het bekijken van de inhoud. \\
+    
+\end{longtable}
+
+\vspace{1em}
+
 \subsection{Dark patterns op digitale platformen}
 \label{subsec:platformen}
+
+\vspace{1em}
+
+Dat er veel typen dark patterns zijn, dat is duidelijk. Maar hoe vaak wordt het gebruikt op digitale platformen? Uit een rapport van het \textcite{ICPEN2024} is gebleken dat dark patterns voorkomen in een wijde selectie aan sectoren. Denk onder meer aan de entertainment-, streaming-, fitness- en e-commerce industrie. Eveneens bleek uit dit onderzoek dat zo’n 75,7\% van apps en websites die abonnementen verkopen minstens één dark pattern gebruiken. Aanvullend werd er geconstateerd dat bij 66,8\% van deze onderzochte websites en apps twee of meer patronen terug te vinden zijn. 
+
+\vspace{1em}
+
+Verder concludeerden \textcite{Nygren2024} dat binnen de streamingsector, zowel de gratis als de te betalen platformen, uitgebreid gebruikgemaakt wordt van deze patronen. Ook werd dankzij de studie van \textcite{Gunawan2021} duidelijk dat zowel de desktop- als mobiele versies dark patterns bevatten, maar dat de versies van éénzelfde dienst daarvoor niet meteen dezelfde patronen inzetten.
+
+\vspace{1em}
+
+Aanvullend onderzocht de Economische Inspectie van de FOD Economie in 2024 hoe het gesteld is met het dark pattern gebruik op Belgische websites \autocite{FODEconomie2024}. Uit dit onderzoek bleek dat op alle onderzochte websites er minstens één dark pattern terug te vinden was. Sterker nog, hieruit bleek dat 69.23\% twee of meerdere patronen bevatte. Volgens \textcite{FODEconomie2024} waren het voornamelijk \textit{“sneaking”} en \textit{“interface interference”} praktijken die aan bod kwamen.
+
+\vspace{1em}
 
 \subsection{Doelstellingen en effectiviteit van dark patterns}
 \label{subsec:effectiviteit}
 
+\vspace{1em}
+
+Zoals uit de vorige sectie bleek, zijn er veel handelaars die gebruikmaken van minstens één dark pattern. Dit roept de vraag op waarom bedrijven deze patronen toepassen. Volgens de \textcite{OECD2022}  is het achterliggende doel voornamelijk het verhogen van bedrijfsinkomsten, hetzij via verkoop, hetzij via advertentieopbrengsten. De auteurs merken op dat dit op drie verschillende manieren kan. Ten eerste kunnen dark patterns consumenten aanzetten tot het (meer) aankopen van een product of dienst of het verlengen van de duur van een aankoop. Ten tweede kunnen de patronen ervoor zorgen dat consumenten meer geld uitgeven of meer tijd besteden dan oorspronkelijk beoogd. Ten slotte kunnen zij tot gevolg hebben dat consumenten meer persoonlijke gegevens vrijgeven dan gewenst. Ook onderzoek van \textcite{Kitkowska2023} merkt dit op. Volgens hen worden dark patterns voornamelijk gebruikt om bedrijfsmatige doelen te dienen, zoals gebruikers sneller keuzes te laten maken, meer geld te laten uitgeven of meer informatie vrij te geven.
+
+\vspace{1em}
+
+Wat duidelijk is volgens de \textcite{OECD2022} is dat de beweegredenen duidelijk verbonden zijn met het onderliggende businessmodel van het bedrijf. Wanneer de businessdoelstellingen gericht zijn op het vasthouden van aandacht en het verzamelen van data voor advertentiedoeleinden, zal een bedrijf sneller gebruikmaken van patronen die de consumenten ongewenst meer data laten delen en zullen consumenten gemanipuleerd worden om meer tijd op de website door te brengen \autocite{OECD2022}. Is het businessdoel eerder gericht op het snel vergroten van het gebruikersbestand zoals bij abonnementsdiensten, dan zal men in de verleiding komen om dark patterns toe te passen door een proefabonnement af te dwingen, een aankoop zonder toestemming automatisch te verlengen of door het opzeggen van een abonnement moeilijker te maken \autocite{OECD2022}.
+
+\vspace{1em}
+
+Maar wat maakt nu dat deze patronen zo goed werken en dat bedrijven deze blijven toepassen? Volgens \textcite{Kitkowska2023} maken dark patterns gebruik van psychologische principes zoals cognitieve biases en heuristieken. Ook de \textcite{OECD2022} bevestigt dat deze manipulatieve technieken hierop inspelen. Zij merken onder andere volgende biases en heuristieken op:
+\begin{itemize}
+    \item \textbf{Status quo bias}: gebruikers zijn geneigd om de vooraf geselecteerde standaardopties te verkiezen en te behouden
+    \item \textbf{Scarcity heuristic}: gebruikers kennen meer waarde toe aan opties die schaars zijn
+    \item \textbf{Social proof bias}: gebruikers neigen om keuzes te maken die anderen ook maken
+\end{itemize}
+Bedrijven spelen verder ook in op het “Systeem 1”-denken van de gebruikers dat omschreven wordt als een snelle, intuïtieve manier van denken \autocite{Kitkowska2023}. Volgens \textcite{Kitkowska2023} zijn mensen hierdoor sneller geneigd om op automatische piloot beslissingen te nemen. Net daarom zijn dark patterns zo effectief \autocite{Kitkowska2023}. Ze beïnvloeden beslissingen op momenten en manieren wanneer gebruikers eerder geneigd zijn om snel en intuïtief te handelen, zoals onder tijdsdruk of bij beperkte aandacht \autocite{Kitkowska2023}.
+
+\vspace{1em}
+
+Wat verder blijkt uit het rapport van de \textcite{OECD2022} is dat dark patterns een grotere effectiviteit kennen op mobiele apparaten of kleinere schermen. Verder merken ze eveneens op dat er meer cognitieve inspanning nodig is om verborgen reclame van nieuws te onderscheiden op mobiele apparaten.
+
+\vspace{1em}
+
+Verder volgt uit de bevindingen van de \textcite{OECD2022} dat niet alle dark patterns even effectief zijn. Zo blijkt volgens de auteurs dat verborgen informatie (\textit{Hidden Information}) effectiever is dan bijvoorbeeld confirmshaming (\textit{Toying with emotion}). Ten slotte wijst de \textcite{OECD2022} erop dat effectiviteit deels samenhangt met de detecteerbaarheid van deze manipulatieve patronen. Dark patterns die subtieler zijn en weinig weerstand opwekken bij consumenten (denk onder meer aan het vooraf selecteren van een optie, ook gekend als \textit{preselection}) kunnen namelijk even effectief zijn als meer opvallende, agressieve varianten zoals emotionele manipulatie \autocite{OECD2022}.
+
+\vspace{1em}
 
 \section{Het landschap van streamingdiensten in Vlaanderen}
 \label{sec:streaming-landschap}
@@ -71,15 +281,113 @@ Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je ve
 \subsection{Definitie en kenmerken van streamingdiensten}
 \label{subsec:definities-streaming}
 
+\vspace{1em}
+
+Binnen dit onderzoek ligt de focus op dark patterns op streamingdiensten. Daarom is een verduidelijking nodig over wat in deze studie onder een streamingdienst wordt verstaan. Daarvoor wordt de definitie uit onderzoek van \textcite{MuhdShukri2024} gehanteerd:
+\begin{quote}
+    “Een online streamingplatform, ook wel een streamingdienst genoemd, is een aanbieder van entertainment, zoals muziek, films en televisieseries (tv-series), die content via het internet naar het apparaat van de gebruiker levert voor onmiddellijke weergave of beluistering, zonder dat deze eerst moet worden gedownload” \autocite{MuhdShukri2024}.
+\end{quote}
+Bovendien wordt volgens \textcite{Kumar2025} ook verwezen naar streamingdiensten als \textbf{OTT-streaming}, wat staat voor ‘over-the-top’. Streamingdiensten laten toe om op elk moment, vanaf elke locatie toegang te krijgen tot on-demand content op verschillende apparaten zoals pc’s, smartphones en smart-tv’s \autocite{Kumar2025}. Bekende voorbeelden van streamingplatformen zijn onder andere \textit{Netflix}, \textit{Disney+}, \textit{Spotify} en \textit{Amazon Prime Video}. Aanvullend worden streamingdiensten gekenmerkt door hun gebruiksvriendelijkheid, snelheid, flexibiliteit en zetten ze in op gepersonaliseerde kijk- en luisterervaringen \autocite{Kumar2025}. De platformen analyseren gebruikersgedrag door middel van data-analyse en algoritmen, om zo content voor te stellen aan de gebruikers die op ieder individu afgestemd wordt. 
+
+\vspace{1em}
+
+Binnen de wereld van streaming kunnen er volgens \textcite{Mulla2022} verschillende categorieën waargenomen worden op basis van verdienmodel. Zo spreekt ze over Ad-based Video-on-Demand (\acrshort{avod}), Subscription-based Video-on-Demand (\acrshort{svod}), \newline Transactional-based Video-on-Demand (\acrshort{tvod}) en hybride modellen. 
+
+\subsubsection*{Ad-based Video-on-Demand (\acrshort{avod})}
+
+\acrshort{avod} is volgens \textcite{Mulla2022} een digitale videodienst die door middel van het weergeven van advertenties gratis toegankelijk is voor gebruikers. Adverteerders kunnen hierdoor doelgericht hun boodschappen verspreiden en tot de juiste doelgroep brengen \autocite{Mulla2022}. Deze diensten beschikken over informatie over gebruikersdemografie waardoor advertentietargeting mogelijk wordt \autocite{Mulla2022}. \textit{YouTube} en \textit{Spotify} zijn hier voorbeelden van. 
+
+\vspace{1em}
+
+\subsubsection*{\acrlong{svod} (\acrshort{svod})}
+
+\acrshort{svod} is een digitale dienst die hun gebruikers toegang geeft tot een volledige bibliotheek door het aankopen van een abonnement. De gebruikers kunnen deze content bekijken op verschillende toestellen zolang het abonnement betaald wordt. Voorbeelden hiervan zijn \textit{Netflix} en \textit{Amazon Prime Video}. \autocite{Mulla2022}
+
+\vspace{1em}
+
+\subsubsection*{\acrlong{tvod} (\acrshort{tvod})}
+
+\acrshort{tvod} is een dienst waarbij consumenten content afzonderlijk kopen of huren, ook wel gekend als \textit{pay-per-view} of \textit{pay-per-download}. \textit{Apple iTunes}, \textit{Google Play}, \textit{Disney+} en \textit{Amazon Prime} zijn hier voorbeelden van. \autocite{Mulla2022}
+
+\vspace{1em}
+
+\subsubsection*{Hybride modellen}
+
+Tenslotte categoriseert \textcite{Mulla2022} OTT-platformen die de drie voorgaande modellen combineren onder hybride modellen. Volgens de auteur kunnen streamingdiensten die elementen van de voorgaande modellen combineren de gebruikerservaring verder optimaliseren en een betere prijs-kwaliteitsverhouding bieden. Een voorbeeld hiervan is \textit{Disney+} die het \acrshort{svod}-model combineert met het \acrshort{tvod}-model \autocite{Mulla2022}. 
+
+\vspace{1em}
+
+\subsubsection*{Broadcast Video-on-Demand}
+
+Naast de voorgaande categorieën is er volgens het rapport van \textcite{Digimeter2024} nog een vijfde categorie, namelijk Broadcast Video-on-Demand (\acrshort{bvod}). Hieronder vallen gratis streamingplatformen die aangeboden worden door Vlaamse zenders zoals \textit{VRT MAX}, \textit{VTM GO} en \textit{GoPlay} \autocite{Digimeter2024}.
+
+\vspace{1em}
+
 \subsection{Meest gebruikte streamingdiensten in Vlaanderen}
 \label{subsec:populaire-streaming}
 
-\subsection{Gebruik van streamingdiensten op verschillende apparaten en platformen}
+Het voorbije decennia werd streaming steeds populairder in Vlaanderen \autocite{Digimeter2024}. Volgens \textcite{Digimeter2024} werd het online aanbod in het Vlaamse kijkgedrag sinds de opkomst van Netflix in 2014 steeds belangrijker. Uit het rapport van \textcite{Digimeter2024} blijkt dat zo'n 74\% van de Vlamingen maandelijks actief gebruikmaakt van ofwel \acrshort{svod}, enkel \acrshort{bvod} of een combinatie van de twee zoals te zien is in Figuur~\ref{fig:kijkgedrag}. 
+
+\vspace{1em}
+
+Binnen Vlaanderen zijn \acrlong{svod}-diensten het populairste met zo'n 57\% van de Vlamingen die hiervan gebruikmaken \autocite{Digimeter2024}. \acrlong{bvod}-diensten winnen ook aan populariteit met zo'n 52\% van de Vlamingen die hier maandelijks actief aanspraak op maken \autocite{Digimeter2024}. Wat de muziek-streamingdiensten betreft besluit \textcite{Digimeter2024} dat 52\% van de Vlamingen luistert naar \textit{Spotify}. Uit deze cijfers kunnen we concluderen dat \acrshort{svod}-diensten het vaakst gebruikt worden in Vlaanderen.
+
+\vspace{1em}
+
+Er zijn veel spelers op de \acrshort{svod}-markt. Wat de Vlaming betreft, is \textit{Netflix} nog steeds de grote winnaar \autocite{Digimeter2024}. Zoals te zien is in Figuur~\ref{fig:streamingdiensten} blijkt uit het rapport van \textcite{Digimeter2024} dat 47\% streamt via \textit{Netflix}, 19\% via \textit{Disney+}, 16\% via \textit{Streamz} en 11\% via \textit{Amazon Prime}. Als we kijken naar de cijfers bij 18 tot 24-jarigen en 25 tot 34 jarigen, constateren \textcite{Digimeter2024} dat ongeveer 60\% maandelijks en 50\% wekelijks gebruikmaakt van \textit{Netflix}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{actief-kijkgedrag.png}
+    \caption[Actief kijkgedrag in Vlaanderen opgesplitst naar live-kijken en streaming.]{\label{fig:kijkgedrag}Actief kijkgedrag in Vlaanderen opgesplitst naar live-kijken en streaming. De data toont dat 74\% van de Vlamingen maandelijks streamt, waarbij 33\% zowel \acrshort{bvod} als \acrshort{svod} gebruikt. Een gecombineerd gedrag van maandelijks live-kijken en streamen is met 47\% de meest voorkomende kijkgewoonte. (Bron: \textcite{Digimeter2024})}
+\end{figure}
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=1\textwidth]{streaming-flanders.png}
+    \caption[Populairste SVOD diensten in Vlaanderen.]{\label{fig:streamingdiensten}Evolutie van het marktaandeel van streamingdiensten in Vlaanderen van 2015 tot en met 2024. De grafiek toont de groei van Netflix en de opkomst van concurrenten zoals Disney+, Streamz en Amazon Prime. Ondanks een lichte daling in het laatste jaar behoudt Netflix een dominante marktpositie. (Bron: \textcite{Digimeter2024})}
+\end{figure}
+
+
+\vspace{1em}
+
+\subsection{Gebruik van streamingdiensten op verschillende apparaten}
 \label{subsec:apparaten-platformen}
+
+\vspace{1em}
+
+Uit de literatuurstudie van dit onderzoek blijkt dat \acrshort{svod}-diensten bij de beoogde doelgroep het meest populair zijn. Zoals eerder aangehaald, worden deze diensten gekenmerkt door hun flexibiliteit en kunnen ze op verschillende soorten apparaten geraadpleegd worden. Maar welke apparaten hebben daadwerkelijk de voorkeur bij het gebruik van \acrshort{svod}-diensten?
+
+\vspace{1em}
+
+Uit onderzoek van \textcite{Rahman2021} blijkt dat streamen op de smartphone het populairst is omwille van de draagbaarheid. Verder blijkt uit de studie dat, naast de smartphone (65,7\%), ook de laptop (45,7\%) en desktopcomputers (43,8\%) vaak worden gebruikt.
+
+\vspace{1em}
+
+Uit een studie van \textcite{Climaco2023} blijkt echter dat televisieseries voornamelijk via de televisie worden gestreamd. Tegelijkertijd blijkt uit dezelfde studie dat de smartphone populairder is voor content met een normale of korte duur.
+
+\vspace{1em}
 
 \subsection{Businessdoelstellingen van streamingdiensten}
 \label{subsec:businessdoelstellingen}
 
+Net zoals vele andere bedrijven hebben streamingdiensten duidelijke businessdoelstellingen. Volgens de studie van \textcite{Tang2023} zijn de belangrijkste:
+
+\begin{itemize}
+    
+    \item \textbf{Vergroten van gebruikersretentie:} Er ligt een grote focus op het behouden van bestaande abonnees en  het verder aangroeien van het klantenbestand door middel van het aanbieden van gepersonaliseerde content. \autocite{Tang2023}
+    
+%    \item \textbf{Strategisch gebruik van gebruikersdata:} Platforms analyseren kijkgedrag en voorkeuren om aanbevelingsalgoritmes te optimaliseren, contentbeslissingen te sturen en het abonnementsaanbod te verbeteren.
+%    
+%    \item \textbf{Diversificatie van inkomstenmodellen:} Naast abonnementen gebruiken diensten ook advertentie-ondersteunde modellen en andere hybride strategieën om verschillende marktsegmenten en prijsniveaus te bedienen.
+%    
+%    \item \textbf{Internationale expansie:} Door samenwerking met lokale contentleveranciers en aanpassing van het aanbod aan culturele voorkeuren, streven streamingdiensten naar een globale aanwezigheid.
+%    
+%    \item \textbf{Balans tussen gebruikerservaring en commerciële belangen:} Diensten combineren gepersonaliseerde, aantrekkelijke content met commerciële doelen zoals premium content, advertenties en aanvullende diensten.
+    
+\end{itemize}
+
+\vspace{1em}
 
 \section{Dark patterns binnen streamingdiensten}
 \label{sec:dark-patterns-streaming}
@@ -107,13 +415,10 @@ Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je ve
 \section{Juridisch en ethisch kader}
 \label{sec:juridisch-ethisch}
 
-\subsection{Europese wet- en regelgeving}
-\label{subsec:eu-regelgeving}
+\subsection{Bestaande wet- en regelgeving}
+\label{subsec:regelgeving}
 
-\subsection{Belgische wet- en regelgeving}
-\label{subsec:belg-regelgeving}
-
-\subsection{Ethische blik op dark patterns}
+\subsection{Ethische blik op dark patterns: persuasief of manipulatief}
 \label{subsec:ethiek}
 
 
