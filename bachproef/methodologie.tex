@@ -26,5 +26,65 @@
 %% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
 %% en geef het een gepaste titel.
 
-\lipsum[21-25]
+Zoals in het begin van dit voorstel werd aangehaald, richt dit onderzoek zich op het vinden van een oplossing die commerciële dark patterns van in Vlaanderen vaak gebruikte streamingdiensten automatisch opspoort en aan de gebruikers signaleert. Om de onderzoeksvraag te beantwoorden, wordt een weloverwogen plan gevolgd dat bestaat uit \textbf{vijf verschillende fasen}. In eerste instantie wordt de huidige stand van zaken onderzocht aan de hand van een literatuurstudie en zal een longlist gemaakt worden van alle mogelijke oplossingen. Nadien worden uit het literatuuronderzoek de requirements waaraan de tool moet voldoen opgesteld. Aan de hand van deze vereisten zal de longlist uit fase 1 verder vernauwd worden tot een shortlist die de best geschikte tools bevat voor deze casus. Hieruit zal de meest beloftevolle aanpak gekozen en uitgewerkt worden als een \acrlong{poc} door een bestaande open‑source tool verder uit te werken en te verbeteren voor deze specifieke use case. Tot slot zal uit dit onderzoek een conclusie geformuleerd worden. 
 
+\vspace{1em}
+
+\section{Stand van zaken \& Longlist}
+\label{sec:stand-van-zaken-en-longlist}
+
+\vspace{1em}
+
+In de eerste fase van het onderzoek wordt het onderzoeksdomein uitvoerig verkend om op die manier een goed theoretisch kader op te bouwen. Via literatuuronderzoek wordt onderzocht wat dark patterns zijn, welke er bestaan, welke negatieve gevolgen deze kunnen hebben en hoe bewust mensen zijn van de patronen en hun gevolgen. Verder wordt nagegaan waar deze patronen het vaakst voorkomen (websites en apps) en of er verschillen zijn per platform. Daarnaast wordt ook de huidige wet- en regelgeving en de mogelijk link tussen de businessdoelstellingen van streamingdiensten en het gebruik van dark patterns onder de loep genomen. Aanvullend aan dit literatuuronderzoek, wordt in kaart gebracht welke streamingdiensten het populairst zijn in Vlaanderen en welke dark patterns zij toepassen. Tot slot worden bestaande tools geanalyseerd om hun sterktes en beperkingen te identificeren. Het literatuuronderzoek zal gedaan worden gebruikmakend van \emph{Google Scholar} en wetenschappelijke databanken zoals \emph{ACM digital library}, \emph{Springer Online Journals} en \emph{JSTOR}.
+
+\vspace{1em}
+
+Op basis van dit literatuuronderzoek wordt een \textbf{longlist} opgesteld van mogelijke digitale oplossingen die gebruikers kunnen helpen om dark patterns op streamingdiensten te herkennen. Ieder alternatief wordt gedocumenteerd met zijn voor- en nadelen. Het doel is om een zo compleet mogelijk overzicht te creëren van mogelijke oplossingen, dat later gebruikt zal worden voor het opstellen van de shortlist.
+
+\vspace{1em}
+
+Het doel van deze fase is het verder verwerven van kennis omtrent het probleemdomein, zodat in de volgende fase de requirements op een onderbouwde manier kunnen worden opgesteld. Dit resulteert zich in het uitwerken van een overzicht van gebruikersproblemen rond dark patterns op streamingdiensten, een lijst van populaire streamingdiensten, een opsomming van patronen die de populairste dienst bevat, en een analyse van bestaande tools met hun sterke en zwakke punten. Tot slot moet in deze fase een longlist opgesteld zijn van alle mogelijke digitale oplossingen die geschikt zouden kunnen zijn om in een verder stadium uit te werken.
+
+\vspace{1em}
+
+\section{Requirements verzamelen}
+\label{sec:requirements-verzamelen}
+
+\vspace{1em}
+
+In fase~2 ligt de focus op het verzamelen van alle vereisten waaraan de nieuwe tool moet voldoen. Op basis van de resultaten uit het literatuuronderzoek worden de requirements opgesteld. Er wordt onder andere rekening gehouden met welke dark patterns het belangrijkste zijn, waar de tool moet ingezet worden, welke aspecten overgenomen kunnen worden van andere tools en welke toevoegingen nodig zijn voor een betere digitale oplossing. Aanvullend worden de voorlopige requirements afgetoetst en aangevuld via interviews met een UI/UX-designer en een front-end developer. Deze fase zal worden afgerond door het opstellen van een volledige en geprioriteerde lijst van criteria die het \acrlong{mvp} (\acrshort{mvp}) definiëren. Het concrete resultaat bestaat uit een lijst van functionele en niet-functionele requirements, geordend volgens hun belang. Voor prioritering zal de \emph{MoSCoW}-methode gebruikt worden.
+
+\vspace{1em}
+
+\section{Shortlist}
+\label{sec:shortlist}
+
+\vspace{1em}
+
+Vooraleer een \acrlong{poc} uitgewerkt kan worden, wordt er gekeken welke oplossing uit de longlist het meest beloftevol en waardevol is voor het onderzoek. Daarvoor worden in een derde fase alle alternatieven systematisch met elkaar vergeleken op basis van de functionele en niet-functionele requirements uit fase~2 door middel van een overzichtelijke vergelijkingstabel. Hieruit wordt de beste optie gekozen. Indien één of meerdere alternatieven dicht bij elkaar scoren, worden bijkomende criteria zoals voor- en nadelen en de verwachte impact op de gebruiker ook in rekening gebracht. Op basis van deze analyse zal een shortlist worden opgesteld, waaruit uiteindelijk de meest beloftevolle oplossing geselecteerd zal worden. Tot slot wordt de keuze voor deze tool grondig onderbouwd door middel van een duidelijke motivatie. De tool die uit deze analyse als meest geschikt wordt bevonden, zal in de voorlaatste fase verder uitgewerkt worden.
+
+\vspace{1em}
+
+\section{\acrlong{poc}}
+\label{sec:poc}
+
+\vspace{1em}
+
+Fase~4, de fase die het meeste tijd in beslag zal nemen, omvat de uitwerking van een \acrlong{poc}. De geselecteerde oplossing uit fase~4 wordt in deze fase uitgewerkt tot een eerste \acrlong{mvp}. Aangezien er reeds bestaande open-source tools beschikbaar zijn, zal één van deze tools verder aangepast en uitgebreid worden voor de specifieke use case van dit onderzoek. 
+
+\vspace{1em}
+
+In eerste instantie zullen er wireframes en mockups uitgewerkt worden in \emph{AdobeXD} om de algemene flow van de tool te bepalen. Nadien zullen in overleg met de copromotoren de meest geschikte technologieën (zoals \emph{Java}, \emph{React}, \emph{Python}, \ldots) gekozen worden. Daarna start de implementatie van de tool. Tijdens de ontwikkeling wordt er iteratief en agile gewerkt, waarbij het resultaat van elke iteratie zal worden afgetoetst bij de copromotoren. Daarnaast zullen er testen geschreven worden die de goede werking van de tool waarborgen.
+
+\vspace{1em}
+
+Op het einde van de fase is er een werkend prototype die de belangrijkste functionaliteiten van de tool bevat, aangevuld met een korte documentatie over de werking en functionaliteiten. Eveneens zal gevalideerd worden of de uitgewerkte tool al dan niet een oplossing biedt voor het gestelde probleem. Dit zal gedaan worden aan de hand van een kleine digitale test bij enkele testgebruikers die tot de doelgroep behoren. Zij zullen een aantal taken uitvoeren op een streamingplatform dat gebruikmaakt van dark patterns, zowel zonder als met de tool. Uit deze test wordt een eerste indicatie afgeleid over hoe gebruiksvriendelijk de tool is door te polsen naar hun gebruikerservaring met de tool, in welke mate ze de patronen herkennen en in hoe snel zij deze waarnemen. De resultaten hiervan geven een eerste indicatie in de mogelijke meerwaarde van de \acrshort{poc}, zonder ervan uit te gaan dat dit geldt voor de hele doelgroep.
+
+\vspace{1em}
+
+\section{Conclusie}
+\label{sec:conclusie}
+
+\vspace{1em}
+
+De laatste fase omvat het trekken van een conclusie over de werking van de uitgewerkte tool en het identificeren van verbeterpunten en overblijvende hiaten. Dit gebeurt door de gerealiseerde functionaliteiten te vergelijken met de vereisten die in fase~2 werden opgesteld. Daarnaast worden observaties uit de gebruikerstesten meegenomen om hiaten te identificeren en mogelijke verbeterpunten te formuleren.
