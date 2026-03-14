@@ -1,24 +1,22 @@
 \chapter{\IfLanguageName{dutch}{Stand van zaken}{State of the art}}%
 \label{ch:stand-van-zaken}
 
-{\color{gray}\lipsum[1]}
-
-\vspace{1em}
-
 % Tip: Begin elk hoofdstuk met een paragraaf inleiding die beschrijft hoe
 % dit hoofdstuk past binnen het geheel van de bachelorproef. Geef in het
 % bijzonder aan wat de link is met het vorige en volgende hoofdstuk.
 
-% Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
+\vspace{1em}
 
-%Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
-%
-%Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
-%
-%\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
-%
-%Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
-%
+De eerste stap binnen dit onderzoek omvat het verkennen van het onderzoeksdomein om een goed theoretisch kader op te bouwen rond het onderwerp. Pas wanneer het domein voldoende is onderzocht, kunnen op basis van deze inzichten requirements opgesteld worden voor een nieuwe tool. Deze inzichten worden verzameld door het uitvoeren van een grondige literatuurstudie, gebruikmakend van wetenschappelijke artikels en verslaggeving, alsook van websites van officiële instanties zoals die van de Europese Commissie, UNIZO en Statistiek Vlaanderen. De bronnen voor de literatuurstudie zijn hoofdzakelijk gepubliceerd tussen 2021 en 2026.
+
+\vspace{1em}
+
+De stand van zaken is opgebouwd rond zes pijlers. Eerst wordt toegelicht wat dark patterns zijn, in welke vormen ze voorkomen en hun doelstellingen. Vervolgens wordt het landschap van streamingdiensten in Vlaanderen geschetst. Daarna wordt specifiek gekeken naar dark patterns gebruikt binnen streamingdiensten, met een bespreking van de meest voorkomende patronen en een vergelijking tussen websites en mobiele applicaties. In het vierde deel staat het gebruikersperspectief centraal, waarbij het bewustzijn van gebruikers en de impact van dark patterns worden onderzocht. Het vijfde deel behandelt het juridische en ethische kader rond deze praktijken. Tot slot focust het zesde deel op de signalering van dark patterns, waarbij bestaand onderzoek en mogelijke detectiemethoden en tools worden besproken. 
+
+\vspace{1em}
+
+Naast het verder verkennen van het onderzoeksdomein wordt in het zesde deel ook een overzicht opgesteld van reeds bestaande digitale oplossingen die gebruikers kunnen helpen om dark patterns op streamingdiensten te herkennen waar in een verdere fase van dit onderzoek op zal verder gewerkt worden.
+
 %\begin{figure}
 %    \centering
 %    \includegraphics[width=0.8\textwidth]{grail.jpg}
@@ -83,13 +81,9 @@ Hoewel deze definitie een bruikbaar uitgangspunt vormt, wijzen \textcite{Kollmer
     Dark patterns zijn “[...] ontwerpelementen van gebruikersinterfaces die de autonomie van gebruikers aantasten door geïnformeerde keuzes te verhinderen en die kunnen leiden tot nadelige gevolgen voor de gebruiker, zoals schending van de privacy, financieel verlies en technologieverslaving” \autocite{Kollmer2022}.
 \end{quote}
 
-Deze misleidende technieken hebben verder als voornaamste kenmerk dat ze inspelen op het door gedragseconoom Daniel Kahneman gedefinieerde “Systeem 1”-denken: besluitvorming die automatisch en intuïtief gebeurd met weinig cognitieve inspanning \autocite{OECD2022}.
+Deze misleidende technieken hebben verder als voornaamste kenmerk dat ze inspelen op het door gedragseconoom Daniel Kahneman gedefinieerde “Systeem 1”-denken: besluitvorming die automatisch en intuïtief gebeurd met weinig cognitieve inspanning \autocite{OECD2022}. De patronen komen voor in een breed scala aan vormen en ontwerpen, tevens maken ze gebruik van zowel ontwerpelementen (zoals pop-updialoogvensters, kleurgebruik, de mate waarin opties opvallen…) als van tekstuele elementen (bijvoorbeeld het gebruiken van emotionele of beschuldigende taal) \autocite{OECD2022}.
 
-\vspace{1em}
-
-De patronen komen voor in een breed scala aan vormen en ontwerpen, tevens maken ze gebruik van zowel ontwerpelementen (zoals pop-updialoogvensters, kleurgebruik, de mate waarin opties opvallen…) als van tekstuele elementen (bijvoorbeeld het gebruiken van emotionele of beschuldigende taal) \autocite{OECD2022}.
-
-\vspace{1em}
+\vspace{0.5em}
 
 \subsection{Vormen van dark patterns}
 \label{subsec:vormen}
@@ -105,12 +99,12 @@ Rekening houdend met deze bevindingen, wordt in het begin van dit onderzoek gebr
 \begin{itemize}
     \item \textbf{Nagging}: Het herhaaldelijk vragen aan de gebruiker om een bepaalde actie te ondernemen.
     \item \textbf{Obstruction}: Het opzettelijk bemoeilijken van het uitvoeren van acties.
-    \item \textbf{Sneaking}: Het verbergen van relevante informatie, zoals bijvoorbeeld verborgen kosten.
+    \item \textbf{Sneaking}: Het verbergen van relevante informatie, zoals verborgen kosten.
     \item \textbf{Interface Interference}: Het verwarrend, misleidend of slecht leesbaar maken van user interface-elementen.
     \item \textbf{Forced Action}: Het dwingen van de gebruiker om ongewenste keuzes te maken.
 \end{itemize}
 
-Deze categorieën werden eerder gekoppeld aan de typen in een eerdere taxonomie van \textcite{Chen2024}, die eveneens diende als basis voor de taxonomie van \textcite{Shi2025}. Tabel~\ref{tab:dpvormen} toont de onderverdeling van dark patterns die in het begin van dit onderzoek wordt gehanteerd.
+Deze categorieën werden eerder gekoppeld aan de typen in een eerdere taxonomie van \textcite{Chen2024}, die eveneens diende als basis voor de taxonomie van \textcite{Shi2025}. Tabel~\ref{tab:dpvormen} toont de onderverdeling van dark patterns die in dit onderzoek wordt gehanteerd.
 
 \vspace{1em}
 
@@ -259,7 +253,7 @@ Zoals uit de vorige sectie bleek, zijn er veel handelaars die gebruikmaken van m
 
 Wat duidelijk is volgens de \textcite{OECD2022} is dat de beweegredenen duidelijk verbonden zijn met het onderliggende businessmodel van het bedrijf. Wanneer de businessdoelstellingen gericht zijn op het vasthouden van aandacht en het verzamelen van data voor advertentiedoeleinden, zal een bedrijf sneller gebruikmaken van patronen die de consumenten ongewenst meer data laten delen en zullen consumenten gemanipuleerd worden om meer tijd op de website door te brengen \autocite{OECD2022}. Is het businessdoel eerder gericht op het snel vergroten van het gebruikersbestand zoals bij abonnementsdiensten, dan zal men in de verleiding komen om dark patterns toe te passen door een proefabonnement af te dwingen, een aankoop zonder toestemming automatisch te verlengen of door het opzeggen van een abonnement moeilijker te maken \autocite{OECD2022}.
 
-\vspace{1em}
+\newpage
 
 Maar wat maakt nu dat deze patronen zo goed werken en dat bedrijven deze blijven toepassen? Volgens \textcite{Kitkowska2023} maken dark patterns gebruik van psychologische principes zoals cognitieve biases en heuristieken. Ook de \textcite{OECD2022} bevestigt dat deze manipulatieve technieken hierop inspelen. Zij merken onder andere volgende biases en heuristieken op:
 \begin{itemize}
@@ -277,7 +271,7 @@ Wat verder blijkt uit het rapport van de \textcite{OECD2022} is dat dark pattern
 
 Verder volgt uit de bevindingen van de \textcite{OECD2022} dat niet alle dark patterns even effectief zijn. Zo blijkt volgens de auteurs dat verborgen informatie (\textit{Hidden Information}) effectiever is dan bijvoorbeeld confirmshaming (\textit{Toying with emotion}). Ten slotte wijst de \textcite{OECD2022} erop dat effectiviteit deels samenhangt met de detecteerbaarheid van deze manipulatieve patronen. Dark patterns die subtieler zijn en weinig weerstand opwekken bij consumenten (denk onder meer aan het vooraf selecteren van een optie, ook gekend als \textit{preselection}) kunnen namelijk even effectief zijn als meer opvallende, agressieve varianten zoals emotionele manipulatie \autocite{OECD2022}.
 
-\vspace{1em}
+\newpage
 
 \section{Het landschap van streamingdiensten in Vlaanderen}
 \label{sec:streaming-landschap}
@@ -301,25 +295,25 @@ Binnen de wereld van streaming kunnen er volgens \textcite{Mulla2022} verschille
 
 \acrshort{avod} is volgens \textcite{Mulla2022} een digitale videodienst die door middel van het weergeven van advertenties gratis toegankelijk is voor gebruikers. Adverteerders kunnen hierdoor doelgericht hun boodschappen verspreiden en tot de juiste doelgroep brengen \autocite{Mulla2022}. Deze diensten beschikken over informatie over gebruikersdemografie waardoor advertentietargeting mogelijk wordt \autocite{Mulla2022}. \textit{YouTube} en \textit{Spotify} zijn hier voorbeelden van. 
 
-\vspace{1em}
+\vspace{0.5em}
 
 \subsubsection{\acrlong{svod} (\acrshort{svod})}
 
 \acrshort{svod} is een digitale dienst die hun gebruikers toegang geeft tot een volledige bibliotheek door het aankopen van een abonnement. De gebruikers kunnen deze content bekijken op verschillende toestellen zolang het abonnement betaald wordt. Voorbeelden hiervan zijn \textit{Netflix} en \textit{Amazon Prime Video}. \autocite{Mulla2022}
 
-\vspace{1em}
+\vspace{0.5em}
 
 \subsubsection{\acrlong{tvod} (\acrshort{tvod})}
 
 \acrshort{tvod} is een dienst waarbij consumenten content afzonderlijk kopen of huren, ook wel gekend als \textit{pay-per-view} of \textit{pay-per-download}. \textit{Apple iTunes}, \textit{Google Play}, \textit{Disney+} en \textit{Amazon Prime} zijn hier voorbeelden van. \autocite{Mulla2022}
 
-\vspace{1em}
+\vspace{0.5em}
 
 \subsubsection{Hybride modellen}
 
 Tenslotte categoriseert \textcite{Mulla2022} OTT-platformen die de drie voorgaande modellen combineren onder hybride modellen. Volgens de auteur kunnen streamingdiensten die elementen van de voorgaande modellen combineren de gebruikerservaring verder optimaliseren en een betere prijs-kwaliteitsverhouding bieden. Een voorbeeld hiervan is \textit{Disney+} die het \acrshort{svod}-model combineert met het \acrshort{tvod}-model \autocite{Mulla2022}. 
 
-\vspace{1em}
+\vspace{0.5em}
 
 \subsubsection{Broadcast Video-on-Demand}
 
@@ -348,7 +342,7 @@ Er zijn veel spelers op de \acrshort{svod}-markt. Wat de Vlaming betreft, is \te
     \caption[Actief kijkgedrag in Vlaanderen opgesplitst naar live-kijken en streaming.]{\label{fig:kijkgedrag}Actief kijkgedrag in Vlaanderen opgesplitst naar live-kijken en streaming. De data toont dat 74\% van de Vlamingen maandelijks streamt, waarbij 33\% zowel \acrshort{bvod} als \acrshort{svod} gebruikt. Een gecombineerd gedrag van maandelijks live-kijken en streamen is met 47\% de meest voorkomende kijkgewoonte. (Bron: \textcite{Digimeter2024})}
 \end{figure}
 
-\begin{figure} [h]
+\begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{streaming-flanders.png}
     \caption[Populairste SVOD diensten in Vlaanderen.]{\label{fig:streamingdiensten}Evolutie van het marktaandeel van streamingdiensten in Vlaanderen van 2015 tot en met 2024. De grafiek toont de groei van Netflix en de opkomst van concurrenten zoals Disney+, Streamz en Amazon Prime. Ondanks een lichte daling in het laatste jaar behoudt Netflix een dominante marktpositie. (Bron: \textcite{Digimeter2024})}
@@ -387,7 +381,7 @@ Net zoals vele andere bedrijven hebben \acrshort{svod} streamingdiensten duideli
     
 \end{itemize}
 
-\vspace{1em}
+\newpage
 
 \section{Dark patterns binnen streamingdiensten}
 \label{sec:dark-patterns-streaming}
@@ -467,7 +461,7 @@ De voorbije jaren werd reeds onderzocht welke dark patterns er voorkomen op stre
     
 \end{longtable}
 
-Ook onderzoek van \textcite{Chaudhary2022} onderzocht welke manipulatieve patronen voorkomen op streamingdiensten. Zij analyseerden het gebruik van dark patterns op \textit{YouTube}, \textit{Netflix}, \textit{Disney+ Hotstar} en \textit{Prime Video}. Zij categoriseerde de gevonden dark patterns in vijf eigen streaming-specifieke patronen: \textit{Feature fog}, \textit{extreme countdown}, \textit{switchoff delay}, \textit{attention quicksand} en \textit{bias grind}.
+Ook onderzoek van \textcite{Chaudhary2022} onderzocht welke manipulatieve patronen voorkomen op streamingdiensten. Zij analyseerden het gebruik van dark patterns op \textit{YouTube}, \textit{Netflix}, \textit{Disney+ Hotstar} en \textit{Prime Video}, en categoriseerde de gevonden dark patterns in vijf eigen streaming-specifieke patronen: \textit{Feature fog}, \textit{extreme countdown}, \textit{switchoff delay}, \textit{attention quicksand} en \textit{bias grind}. Een overzicht hiervan is te zien in Figuur~\ref{fig:dp-streaming}
 
 \vspace{1em}
 
@@ -537,7 +531,7 @@ Wanneer de bevindingen uit deze secties naast elkaar worden geplaatst, is er een
 
 Op basis van deze observaties kan geconcludeerd worden dat dark patterns op streamingdiensten ingezet worden om de businessdoelstellingen te ondersteunen. De dark patterns kunnen met andere woorden bijdragen tot  het langer behouden van abonnees, het verkrijgen van nieuwe abonnees, het aanmoedigen van langere kijktijden en het verzamelen van gebruikersdata \autocite{OECD2022, Tang2023, Kitkowska2023}.
 
-\vspace{1em}
+\newpage
 
 \section{Gebruikersbewustzijn en -impact}
 \label{sec:gebruikersbewustzijn}
@@ -582,11 +576,7 @@ Eerder werd binnen dit onderzoek aangekaart dat consumenten niet de mate beseffe
 
 \vspace{1em}
 
-In eerste instantie heeft het gebruik van dark patterns op websites en apps volgens de \textcite{Commissie2022} een emotionele impact op gebruikers. Uit dit onderzoek blijkt dat frustratie en irritatie de voornaamste emoties zijn die optreden. Hieruit blijkt dat gebruikers minder lang willen vertoeven op websites of apps, ze minder snel persoonlijke gegevens willen delen en sneller apps verwijderen. Aanvullend merkt dit onderzoek op dat machteloosheid ook een gevoel is die regelmatig de kop op steekt. 
-
-\vspace{1em}
-
-Opvallend is dat gebruikers vaak toleranter en vergevingsgezinder omgaan met het gebruik van dark patterns wanneer dit plaatsvindt bij populaire diensten, zoals \textit{Facebook} of \textit{Netflix} \autocite{Commissie2022}. Volgens de \textcite{Commissie2022} komt dit vooral doordat consumenten de kwaliteit van deze diensten als hoog inschatten. Eveneens merken ze op dat verschillende vormen van deze patronen andere emoties en ervaringen opwekken: het ene patroon wekt meer reacties op dan het andere. Volgens de \textcite{Commissie2022} staat dit verder in verband met het consumentenbewustzijn en het al dan niet optreden van gewenning.
+In eerste instantie heeft het gebruik van dark patterns op websites en apps volgens de \textcite{Commissie2022} een emotionele impact op gebruikers. Uit dit onderzoek blijkt dat frustratie en irritatie de voornaamste emoties zijn die optreden. Hieruit blijkt dat gebruikers minder lang willen vertoeven op websites of apps, ze minder snel persoonlijke gegevens willen delen en sneller apps verwijderen. Aanvullend merkt dit onderzoek op dat machteloosheid ook een gevoel is die regelmatig de kop op steekt. Opvallend is dat gebruikers vaak toleranter en meer vergevingsgezind omgaan met het gebruik van dark patterns wanneer dit plaatsvindt bij populaire diensten, zoals \textit{Facebook} of \textit{Netflix} \autocite{Commissie2022}. Volgens de \textcite{Commissie2022} komt dit vooral doordat consumenten de kwaliteit van deze diensten als hoog inschatten. Eveneens merken ze op dat verschillende vormen van deze patronen andere emoties en ervaringen opwekken: het ene patroon wekt meer reacties op dan het andere. Volgens de \textcite{Commissie2022} staat dit verder in verband met het consumentenbewustzijn en het al dan niet optreden van gewenning.
 
 \vspace{1em}
 
@@ -611,6 +601,7 @@ Ten derde kunnen dark patterns onder andere de cognitieve belasting verhogen waa
 
 Naast impact op individuen, kan het gebruik van dark patterns ook collectieve gevolgen hebben \autocite{OECD2022}.  Uit onderzoeken van de \textcite{OECD2022, Commissie2022} blijken onder andere dat dark patterns de marktconcurrentie kunnen verstoren. Volgens hen komt dit onder andere doordat bedrijven het overstappen naar andere diensten bemoeilijken, prijsvergelijkingen lastig maken en consumenten ontmoedigen om naar alternatieven te zoeken. Bedrijven concurreren vandaag de dag met andere woorden eerder via manipulatief ontwerp dan via prijs of kwaliteit \autocite{OECD2022}. Bovendien kan het gebruik van deze manipulatieve patronen het vertrouwen van consumenten aantasten en leiden tot een negatieve perceptie van de bedrijven, waardoor zij hun websites of apps tijdelijk of permanent vermijden \autocite{OECD2022}.
 
+\newpage
 
 \section{Juridisch en ethisch kader}
 \label{sec:juridisch-ethisch}
@@ -632,18 +623,15 @@ Binnen de Europese Unie bestaat momenteel nog geen specifieke wetgeving die uits
     \item eCommerce-richtlijn
 \end{itemize}
 
-\vspace{1em}
-
 \subsubsection{Unfair Commercial Practices Directive}
-Volgens het onderzoek van de \textcite{Commissie2022} is de belangrijkste regelgeving binnen deze context de \textbf{Unfair Commercial Practices Directive} (\acrshort{ucpd}). Deze richtlijn stelt dat praktijken oneerlijk worden beschouwd wanneer ze het gedrag van de consument op economisch vlak verstoren (\textit{artikel 5}), ze misleidende handelingen vormen (\textit{artikel 6, 7}) of ze als agressief beschouwd worden (\textit{artikel 8, 9}) \autocite{OECD2022}. Aanvullend meldt het onderzoek van de \textcite{Commissie2022} dat praktijken als aggressief gezien worden wanneer er sprake is van intimidatie, dwang of het ongepast beïnvloeden van de consument. Eveneens vermelden zij dat een praktijk als oneerlijk beschouwd wordt wanneer deze ertoe leidt dat consumenten besluiten nemen die ze anders niet zouden nemen. Dit alles maakt dat het gebruik van dark patterns binnen het toepassingsgebied van deze richtlijn valt \autocite{Commissie2022}.
-Aansluitend bevat volgens de \textcite{OECD2022} de regelgeving van de \acrshort{ucpd} een lijst van specifieke praktijken die verboden zijn. Hieronder valt volgens dit onderzoek onder andere het doen van onjuiste beweringen over beperkte beschikbaarheid in de tijd (\textit{praktijk 7}) en het aanhoudend en ongewenst verzoeken via communicatiemiddelen op afstand (\textit{praktijk 26}). Deze praktijken zijn onder andere te linken aan countdown timers en nagging, twee vaak voorkomende dark patterns \autocite{OECD2022}.
+Volgens het onderzoek van de \textcite{Commissie2022} is de belangrijkste regelgeving binnen deze context de \textbf{Unfair Commercial Practices Directive} (\acrshort{ucpd}). Deze richtlijn stelt dat praktijken oneerlijk worden beschouwd wanneer ze het gedrag van de consument op economisch vlak verstoren (\textit{artikel 5}), ze misleidende handelingen vormen (\textit{artikel 6, 7}) of ze als agressief beschouwd worden (\textit{artikel 8, 9}) \autocite{OECD2022}. Aanvullend meldt het onderzoek van de \textcite{Commissie2022} dat praktijken als aggressief gezien worden wanneer er sprake is van intimidatie, dwang of het ongepast beïnvloeden van de consument. Eveneens vermelden zij dat een praktijk als oneerlijk beschouwd wordt wanneer deze ertoe leidt dat consumenten besluiten nemen die ze anders niet zouden nemen. Dit alles maakt dat het gebruik van dark patterns binnen het toepassingsgebied van deze richtlijn valt \autocite{Commissie2022}. Aansluitend bevat volgens de \textcite{OECD2022} de regelgeving van de \acrshort{ucpd} een lijst van specifieke praktijken die verboden zijn. Hieronder valt volgens dit onderzoek onder andere het doen van onjuiste beweringen over beperkte beschikbaarheid in de tijd (\textit{praktijk 7}) en het aanhoudend en ongewenst verzoeken via communicatiemiddelen op afstand (\textit{praktijk 26}). Deze praktijken zijn onder andere te linken aan countdown timers en nagging, twee vaak voorkomende dark patterns \autocite{OECD2022}.
 
-\vspace{1em}
+\vspace{0.5em}
 
 \subsubsection{Overige bestaande richtlijnen}
 Naast de \acrshort{ucpd} zijn er enkele andere wetgevingen waar het gebruik van dark patterns mee in strijd is \autocite{OECD2022}.  Zo is de \textbf{Consumer Rights Directive} van toepassing voor praktijken zoals verborgen kosten, verborgen abonnementen en het automatisch aanvinken van opties \autocite{OECD2022}, aangezien deze richtlijn regels declareert over informatie die consumenten moeten krijgen vooraleer ze een contract afsluiten en over het herroepingsrecht \autocite{Commissie2022}. Eveneens is de \textbf{General Data Protection Regulation} (\acrshort{gdpr}) relevant wanneer dark patterns gebruikt worden om persoonsgegevens te verzamelen of om gebruikers te manipuleren in het toestemming geven voor dataverwerking, aangezien deze in strijd zijn wat transparantie en eerlijkheid naar de consument toe betreft \autocite{Commissie2022}. Vervolgens beschermt ook de \textbf{Unfair Contract Terms Directive} de consumenten tegen oneerlijke contractvoorwaarden die niet werden onderhandeld, zoals bijvoorbeeld het automatisch verlengen van een abonnement met behulp van het gebruik van dark patterns \autocite{Commissie2022}. Ten slotte is er de \textbf{Audiovisual Media Services Directive} en de \textbf{eCommerce-richtlijn} die zich richten op het duidelijk herkenbaar maken van commerciële communicatie en het verbieden van misleidende of verborgen advertenties \autocite{Commissie2022}.
 
-\vspace{1em}
+\vspace{0.5em}
 
 \subsubsection{Recentste ontwikkelingen}
 Naast deze regelgevingen zijn er de voorbije jaren nog een hele hoop andere ontwikkelingen binnen dit juridisch kader \autocite{Commissie2022}. Sinds 17 februari 2024 is de \textbf{Digital Services Act} (\acrshort{dsa}) in werking in heel Europa \autocite{FODEconomie2024a}. Deze houdt volgens de \textcite{FODEconomie2024a} in dat aanbieders van tussenhandeldiensten (\textit{diensten die content van derden weergeven zoals sociale media en online marktplaatsen}) verplicht zijn een veilige omgeving te bieden om illegale online-inhoud beter te bestrijden.
@@ -678,7 +666,7 @@ Naast het bepalen van de grens tussen manipulatie en overtuigen, spelen context 
 
 Samengevat draait het rond de ethiek bij het gebruik van dark patterns om het verschil tussen beïnvloeding en manipulatie \autocite{SanchezChamorro2023}. Tegelijkertijd blijkt uit \textcite{SanchezChamorro2023, Kitkowska2023, DiGeronimo2020} dat de grens tussen overtuigen en manipuleren in de praktijk moeilijk te trekken is. Factoren zoals transparantie, de kracht van beïnvloeding, context en intentie maken dat het beoordelen of iets manipulatief (en dus onethisch) is steeds deels interpretatie blijft en niet strikt te definiëren valt \autocite{SanchezChamorro2023}.
 
-\vspace{1em}
+\newpage
 
 \section{Signalering van dark patterns}
 \label{sec:signalering}
