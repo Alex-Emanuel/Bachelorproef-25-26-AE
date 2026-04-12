@@ -1098,7 +1098,7 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
 \begin{itemize}
     \item Beschikbaarheid en licentie van de tool
     \item Kostprijs van de implementatie
-    \item Aantal en type dark patterns dat opgespoord kan worden
+    \item Aantal en type (static vs dynamic) dark patterns dat opgespoord kan worden
     \item Gebruikte detectietechnieken
     \item Platformcompatibiliteit (web, mobiel)
 \end{itemize}
@@ -1148,43 +1148,45 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
 \label{subsubsec:longlist}
 
 \begin{longtable}{
-        >{\raggedright\arraybackslash\scriptsize}p{1.5cm} % Tool
-        >{\raggedright\arraybackslash\scriptsize}p{3cm}   % Techniek(en)
+        >{\raggedright\arraybackslash\scriptsize}p{1cm}   % Tool
+        >{\raggedright\arraybackslash\scriptsize}p{2cm}   % Techniek(en)
         >{\raggedright\arraybackslash\scriptsize}p{2.5cm} % Dark patterns
         >{\raggedright\arraybackslash\scriptsize}p{1cm}   % Open source
-        >{\raggedright\arraybackslash\scriptsize}p{6cm}   % Voor- en nadelen
+        >{\raggedright\arraybackslash\scriptsize}p{5cm}   % Voor- en nadelen
+        >{\raggedright\arraybackslash\scriptsize}p{2cm} % Bron
     }
-    \caption[Overzicht tools dark pattern detectie]{\label{tab:tools_overview_sep}Overzicht van tools voor de detectie van dark patterns op streamingdiensten, inclusief gebruikte detectietechnieken, de soorten en aantallen dark patterns die iedere tool kan identificeren, de licentie en voor- en nadelen} \\
+    \caption[Overzicht tools dark pattern detectie]{\label{tab:tools_overview_sep}Overzicht van tools voor de detectie van dark patterns op streamingdiensten, inclusief gebruikte detectietechnieken, de soorten dark patterns die iedere tool kan identificeren, de licentie en voor- en nadelen. De dark patterns uit de respectievelijke studies werden vergeleken met de in dit onderzoek gehanteerde taxonomie en op basis daarvan overeenkomstig geclassificeerd.} \\
     \toprule
-    {\scriptsize \textbf{Tool}} & {\scriptsize \textbf{Techniek(en)}} & {\scriptsize \textbf{Dark patterns}} & {\scriptsize \textbf{Open source}} & {\scriptsize \textbf{Voor- en nadelen}} \\
+    {\scriptsize \textbf{Tool}} & {\scriptsize \textbf{Techniek(en)}} & {\scriptsize \textbf{Dark patterns}} & {\scriptsize \textbf{Open source}} & {\scriptsize \textbf{Voor- en nadelen}} & {\scriptsize \textbf{Bron}} \\
     \midrule
     \endfirsthead
     
-    \multicolumn{5}{c}{{\scriptsize\tablename\ \thetable\ -- \textit{Vervolg van vorige pagina}}} \\
+    \multicolumn{6}{c}{{\scriptsize\tablename\ \thetable\ -- \textit{Vervolg van vorige pagina}}} \\
     \toprule
-    {\scriptsize \textbf{Tool}} & {\scriptsize \textbf{Techniek(en)}} & {\scriptsize \textbf{Dark patterns}} & {\scriptsize \textbf{Open source}} & {\scriptsize \textbf{Voor- en nadelen}} \\
+    {\scriptsize \textbf{Tool}} & {\scriptsize \textbf{Techniek(en)}} & {\scriptsize \textbf{Dark patterns}} & {\scriptsize \textbf{Open source}} & {\scriptsize \textbf{Voor- en nadelen}} & {\scriptsize \textbf{Bron}} \\
     \midrule
     \endhead
     
-    \midrule \multicolumn{5}{r}{\scriptsize\textit{Vervolg op volgende pagina}} \\
+    \midrule \multicolumn{6}{r}{\scriptsize\textit{Vervolg op volgende pagina}} \\
     \endfoot
     
     \bottomrule
     \endlastfoot
     
-    \begin{tabular}[t]{@{}l@{}}
-        Tool 1 \\
-        (\textit{bron})
-    \end{tabular} & 
-    ML, DOM-analyse & 
-    nagging, obstruction & 
+    AidUI & 
+    \textit{Screenshot-analyse} door middel van deep learning, spatial analysis, text analysis en color analysis & 
+    Nagging, gamification, countdown timer, disguised ads, preselection & 
     \vink &
-    \begin{tabular}[t]{@{}l@{}}
-        + Gratis en aanpasbaar \\
-        + Transparant en open voor modificatie \\
-        - Vereist technische kennis \\
-        - Minder gebruiksvriendelijk voor beginners
-    \end{tabular} \\
+    \parbox[t]{5cm}{
+        + Open source \autocite{Mansur2023a} \\
+        + Gratis te gebruiken \\
+        + Zowel voor analyse van web als mobiel \\
+        - Geen \acrshort{ui} voor de gewone gebruiker \\
+        - Geen detectie van dynamic dark patterns \\
+        - Focus op dark patterns op shopping websites \\
+        - Draait enkel op Ubuntu \\
+    } &
+    \autocite{Mansur2023,Nie2024} \\
     
 \end{longtable}
 
