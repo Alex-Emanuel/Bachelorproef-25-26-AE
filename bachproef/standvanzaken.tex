@@ -1142,28 +1142,28 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
 %    
 %\end{longtable}
 
-\vspace{1em}
+\newpage
 
 \subsubsection{Longlist}
 \label{subsubsec:longlist}
 
 \begin{longtable}{
         >{\raggedright\arraybackslash\scriptsize}p{1cm}   % Tool
-        >{\raggedright\arraybackslash\scriptsize}p{2cm}   % Techniek(en)
+        >{\raggedright\arraybackslash\scriptsize}p{2.5cm}   % Techniek(en)
         >{\raggedright\arraybackslash\scriptsize}p{2.5cm} % Dark patterns
-        >{\raggedright\arraybackslash\scriptsize}p{1cm}   % Open source
+        >{\raggedright\arraybackslash\scriptsize}p{0.5cm}   % Open source
         >{\raggedright\arraybackslash\scriptsize}p{5cm}   % Voor- en nadelen
         >{\raggedright\arraybackslash\scriptsize}p{2cm} % Bron
     }
-    \caption[Overzicht tools dark pattern detectie]{\label{tab:tools_overview_sep}Overzicht van tools voor de detectie van dark patterns op streamingdiensten, inclusief gebruikte detectietechnieken, de soorten dark patterns die iedere tool kan identificeren, de licentie en voor- en nadelen. De dark patterns uit de respectievelijke studies werden vergeleken met de in dit onderzoek gehanteerde taxonomie en op basis daarvan overeenkomstig geclassificeerd.} \\
+    \caption[Overzicht tools dark pattern detectie]{\label{tab:tools_overview_sep}Overzicht van tools voor de detectie van dark patterns op streamingdiensten, inclusief gebruikte detectietechnieken, de soorten dark patterns die iedere tool kan identificeren, de licentie (open source software (\acrshort{oss}) of niet) en voor- en nadelen. De dark patterns uit de respectievelijke studies werden vergeleken met de in dit onderzoek gehanteerde taxonomie en op basis daarvan overeenkomstig geclassificeerd.} \\
     \toprule
-    {\scriptsize \textbf{Tool}} & {\scriptsize \textbf{Techniek(en)}} & {\scriptsize \textbf{Dark patterns}} & {\scriptsize \textbf{Open source}} & {\scriptsize \textbf{Voor- en nadelen}} & {\scriptsize \textbf{Bron}} \\
+    {\scriptsize \textbf{Tool}} & {\scriptsize \textbf{Techniek(en)}} & {\scriptsize \textbf{Dark patterns}} & {\scriptsize \textbf{\acrshort{oss}}} & {\scriptsize \textbf{Voor- en nadelen}} & {\scriptsize \textbf{Bron}} \\
     \midrule
     \endfirsthead
     
     \multicolumn{6}{c}{{\scriptsize\tablename\ \thetable\ -- \textit{Vervolg van vorige pagina}}} \\
     \toprule
-    {\scriptsize \textbf{Tool}} & {\scriptsize \textbf{Techniek(en)}} & {\scriptsize \textbf{Dark patterns}} & {\scriptsize \textbf{Open source}} & {\scriptsize \textbf{Voor- en nadelen}} & {\scriptsize \textbf{Bron}} \\
+    {\scriptsize \textbf{Tool}} & {\scriptsize \textbf{Techniek(en)}} & {\scriptsize \textbf{Dark patterns}} & {\scriptsize \textbf{\acrshort{oss}}} & {\scriptsize \textbf{Voor- en nadelen}} & {\scriptsize \textbf{Bron}} \\
     \midrule
     \endhead
     
@@ -1182,12 +1182,14 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
         + Gratis te gebruiken \\
         + Duidelijke opstartinstructies \\
         + Zowel voor analyse van web als mobiel \\ \\
-        - Geen \acrshort{ui} voor de gewone gebruiker \\
+        - Geen \acrlong{ui} voor de gewone gebruiker \\
         - Geen detectie van dynamic dark patterns \\
         - Focus op dark patterns op shopping websites \\
         - Draait enkel op Ubuntu \\
     } &
     \autocite{Mansur2023,Nie2024} \\
+    
+    \bottomrule[0.5]
     
     UIguard & 
     \textit{Screenshot-analyse} via UI-extractie (Faster-RCNN), text-, kleur- en iconanalyse, met kennisgestuurde dark pattern-detectie &
@@ -1199,7 +1201,7 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
         + Analyse voor mobiele schermen \\
         + Detectie van verschillende soorten dark patterns (ook dynamische) \\
         + Focus op dark patterns in mobiele apps \\ \\
-        - Geen \acrshort{ui} voor de gewone gebruiker \\
+        - Geen \acrlong{ui} voor de gewone gebruiker \\
         - Beperkte detectie van dynamic dark patterns \\
         - Enkel getest op Ubuntu (Linux) en MacOS \\
         - Onduidelijke opstartinstructies \\
@@ -1211,22 +1213,31 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
     Roach motel, price comparison prevention, hidden information, toying with emotion, disguised ad, tricked questions, privacy zuckering, countdown timer & &
     \parbox[t]{5cm}{
         - Closed source \\
-        - Geen \acrshort{ui} voor de gewone gebruiker \\
+        - Geen \acrlong{ui} voor de gewone gebruiker \\
         - Focus op dark patterns op websites \\ 
         - Detectie door middel van menselijke observatie, niet automatisch. \\
     } &
     \autocite{math10183219,Nie2024} \\
     
+    \bottomrule[0.5]
+    
     AGM & 
-    \textit{Analyse} door middel van ... &
-    Patterns & 
+    \textit{Analyse} door middel van geautomatiseerde web crawling, UI-tekstextractie en -segmentatie, clustering via HDBSCAN en manuele inspectie door experten voor de identificatie van dark patterns.&
+    Roach motel, hidden information, false hierarchy, tricked questions, toying with emotion, forced enrollment, countdown timer& 
     \vink &
     \parbox[t]{5cm}{
-        + Open source \autocite{...} \\
-        + pos \\
-        - neg \\
+        + Open source \autocite{Mathur2019} \\
+        + Gratis te gebruiken \\
+        - Onduidelijke opstartinstructies \\
+        - Focus op analyse van dark patterns op websites \\ 
+        - Geen \acrlong{ui} voor de gewone gebruiker \\
+        - Focus op dark patterns op shopping websites \\
+        - Geen detectie van dynamic dark patterns \\
+        - Onduidelijk op welke besturingssystemen de detectie getest werd \\
     } &
-    \autocite{Nie2024} \\
+    \autocite{Nie2024,Mathur2019a} \\
+    
+    \bottomrule[0.5]
     
     ADD & 
     \textit{Analyse} door middel van ... &
@@ -1238,6 +1249,8 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
     } &
     \autocite{Nie2024} \\
     
+    \bottomrule[0.5]
+    
     SSS & 
     \textit{Analyse} door middel van ... &
     Patterns & 
@@ -1247,6 +1260,8 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
         - neg \\
     } &
     \autocite{Nie2024} \\
+    
+    \bottomrule[0.5]
     
     AppRay & 
     \textit{Analyse} door middel van ... &
@@ -1259,6 +1274,8 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
     } &
     \autocite{Chen2024,Nie2024} \\
     
+    \bottomrule[0.5]
+    
     YJT & 
     \textit{Analyse} door middel van ... &
     Patterns & 
@@ -1268,6 +1285,8 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
         - neg \\
     } &
     \autocite{Li2024} \\
+    
+    \bottomrule[0.5]
     
     SMS & 
     \textit{Analyse} door middel van ... &
@@ -1279,6 +1298,8 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
     } &
     \autocite{Li2024} \\
     
+    \bottomrule[0.5]
+    
     YMK & 
     \textit{Analyse} door middel van ... &
     Patterns & 
@@ -1288,6 +1309,8 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
         - neg \\
     } &
     \autocite{Li2024} \\
+    
+    \bottomrule[0.5]
     
     DPGuard & 
     \textit{Analyse} door middel van ... &
