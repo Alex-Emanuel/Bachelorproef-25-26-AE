@@ -1176,48 +1176,62 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
     AidUI & 
     \textit{Screenshot-analyse} door middel van deep learning, spatial analysis, text analysis en color analysis & 
     Nagging, gamification, countdown timer, disguised ads, preselection & 
-    \vink &
-    \parbox[t]{5cm}{
-        + Open source \autocite{Mansur2023a} \\
-        + Gratis te gebruiken \\
-        + Duidelijke opstartinstructies \\
-        + Zowel voor analyse van web als mobiel \\ \\
-        - Geen \acrlong{ui} voor de gewone gebruiker \\
-        - Geen detectie van dynamic dark patterns \\
-        - Focus op dark patterns op shopping websites \\
-        - Draait enkel op Ubuntu \\
-    } &
+    \vink &    
+    \textit{Voordelen:}
+    \begin{itemize}[leftmargin=10pt, label=+, itemsep=0pt]
+        \item Open source \autocite{Mansur2023a}
+        \item Geautomatiseerde detectie
+        \item Gratis te gebruiken
+        \item Duidelijke opstartinstructies
+        \item Zowel voor analyse van web als mobiel
+    \end{itemize}
+    \textit{Nadelen:}
+    \begin{itemize}[leftmargin=10pt, label=-, itemsep=0pt]
+        \item Geen \acrlong{ui} voor de gewone gebruiker
+        \item Geen detectie van dynamic dark patterns
+        \item Focus op dark patterns op shopping websites
+        \item Draait enkel op Ubuntu
+    \end{itemize}
+    &
     \autocite{Mansur2023,Nie2024} \\
     
     \bottomrule[0.5]
+    
+    DY & 
+    \textit{Analyse} door middel van hierarchical en k-means clustering op handmatig geëxtraheerde dark pattern-kenmerken om patronen te identificeren &
+    Roach motel, price comparison prevention, hidden information, toying with emotion, disguised ad, tricked questions, privacy zuckering, countdown timer & &
+    \textit{Nadelen:}
+    \begin{itemize}[leftmargin=10pt, label=-, itemsep=0pt]
+        \item Closed source
+        \item Geen \acrlong{ui} voor de gewone gebruiker
+        \item Focus op dark patterns op websites
+        \item Detectie door middel van menselijke observatie, niet automatisch
+    \end{itemize} &
+    \autocite{math10183219,Nie2024} \\
     
     UIguard & 
     \textit{Screenshot-analyse} via UI-extractie (Faster-RCNN), text-, kleur- en iconanalyse, met kennisgestuurde dark pattern-detectie &
     Nagging, intermediate currency, forced continuity, preselection, toying with emotion (afteltimer), false hierarchy, disguised ad, small close button, social pyramid, privacy zuckering, gamification, countdown timer, watch ads to unlock features or rewards, pay to avoid ads& 
     \vink &
-    \parbox[t]{5cm}{
-        + Open source \autocite{Chen2024b} \\
-        + Gratis te gebruiken \\
-        + Analyse voor mobiele schermen \\
-        + Detectie van verschillende soorten dark patterns (ook dynamische) \\
-        + Focus op dark patterns in mobiele apps \\ \\
-        - Geen \acrlong{ui} voor de gewone gebruiker \\
-        - Beperkte detectie van dynamic dark patterns \\
-        - Enkel getest op Ubuntu (Linux) en MacOS \\
-        - Onduidelijke opstartinstructies \\
-    } &
+    \textit{Voordelen:}
+    \begin{itemize}[leftmargin=10pt, label=+, itemsep=0pt]
+        \item Open source \autocite{Chen2024b}
+        \item Geautomatiseerde detectie
+        \item Gratis te gebruiken
+        \item Analyse voor mobiele schermen
+        \item Detectie van verschillende soorten dark patterns (ook dynamische)
+        \item Focus op dark patterns in mobiele apps
+    \end{itemize}
+    \textit{Nadelen:}
+    \begin{itemize}[leftmargin=10pt, label=-, itemsep=0pt]
+        \item Geen \acrlong{ui} voor de gewone gebruiker
+        \item Beperkte detectie van dynamic dark patterns
+        \item Enkel getest op Ubuntu (Linux) en MacOS
+        \item Onduidelijke opstartinstructies
+        \item Mogelijks onbruikbare source code \autocite{Nie2024}
+    \end{itemize}
+    &
     \autocite{Chen2024a,Nie2024} \\
-    
-    DY & 
-    \textit{Analyse} door middel van hierarchical en k-means clustering op handmatig geëxtraheerde dark pattern-kenmerken om patronen te identificeren &
-    Roach motel, price comparison prevention, hidden information, toying with emotion, disguised ad, tricked questions, privacy zuckering, countdown timer & &
-    \parbox[t]{5cm}{
-        - Closed source \\
-        - Geen \acrlong{ui} voor de gewone gebruiker \\
-        - Focus op dark patterns op websites \\ 
-        - Detectie door middel van menselijke observatie, niet automatisch. \\
-    } &
-    \autocite{math10183219,Nie2024} \\
     
     \bottomrule[0.5]
     
@@ -1227,7 +1241,8 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
     \vink &
     \parbox[t]{5cm}{
         + Open source \autocite{Mathur2019} \\
-        + Gratis te gebruiken \\
+        + Geautomatiseerde detectie \\
+        + Gratis te gebruiken \\ \\
         - Onduidelijke opstartinstructies \\
         - Focus op analyse van dark patterns op websites \\ 
         - Geen \acrlong{ui} voor de gewone gebruiker \\
@@ -1235,47 +1250,80 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
         - Geen detectie van dynamic dark patterns \\
         - Onduidelijk op welke besturingssystemen de detectie getest werd \\
     } &
-    \autocite{Nie2024,Mathur2019a} \\
+    \autocite{Mathur2019a,Nie2024} \\
     
     \bottomrule[0.5]
     
     ADD & 
-    \textit{Analyse} door middel van ... &
-    Patterns & 
+    \textit{Analyse} door middel van \textit{web crawling} en \textit{web scraping} technieken, ontwikkeld in Python. &
+    Roach motel, disguised ad, tricked questions& 
     &
     \parbox[t]{5cm}{
-        + pos \\
-        - neg \\
+        + Focus op analyse van dark patterns op zowel websites, social media platformen als mobiele applicaties \\
+        + (Semi-)geautomatiseerde detectie \\
+        + Detectie van zowel dynamic als static dark patterns \\ \\
+        - Closed source \\
+        - Geen \acrlong{ui} voor de gewone gebruiker \\
+        - Detecteert weinig dark patterns \\
     } &
-    \autocite{Nie2024} \\
+    \autocite{Curley2021,Nie2024} \\
     
     \bottomrule[0.5]
     
     SSS & 
-    \textit{Analyse} door middel van ... &
-    Patterns & 
-    &
-    \parbox[t]{5cm}{
-        + pos \\
-        - neg \\
-    } &
-    \autocite{Nie2024} \\
+    \textit{Analyse} door middel van tekstextractie&
+    - && 
+    \textit{Voordelen:}
+    \begin{itemize}[leftmargin=10pt, label=+, itemsep=0pt]
+        \item Geautomatiseerde detectie
+    \end{itemize}  
+    \textit{Nadelen:}
+    \begin{itemize}[leftmargin=10pt, label=-, itemsep=0pt]
+        \item Closed source
+        \item Focus op analyse van dark patterns op websites
+        \item Geen uitgewerkte \acrlong{ui} voor de gewone gebruiker
+        \item Ongekend welke dark patterns de tool detecteert
+    \end{itemize}&
+    \autocite{Raju2021,Nie2024} \\
     
-    \bottomrule[0.5]
-    
-    AppRay & 
+    % TODO
+    DPGuard & 
     \textit{Analyse} door middel van ... &
     Patterns & 
     \vink &
     \parbox[t]{5cm}{
-        + Open source \autocite{Chen2024c} \\
-        + pos \\
+        + Open source \autocite{Shi2025a} \\
+        + Zowel voor analyse van web als mobiel \\
+        + \\
+        + pos \\ \\
         - neg \\
     } &
-    \autocite{Chen2024,Nie2024} \\
+    \autocite{Shi2025,Chen2024} \\
     
     \bottomrule[0.5]
     
+    AppRay & 
+    \textit{Hybride analyse} via LLM-gestuurde exploratie (\textit{GPT-4}), dynamische GUI-exploratie (installeert en runt apps automatisch en verzamelt UI screenshots, view hierarchies, interacties en events), deep learning en rule-based detectie &
+    Nagging, roach motel, forced continuity, intermediate currency, hidden information, preselection, toying with emotion, false hierarchy, disguised ad, tricked questions, social pyramid, privacy zuckering, gamification& 
+    \vink &
+    \parbox[t]{5cm}{
+        + Open source \autocite{Chen2024c} \\
+        + Geautomatiseerde detectie \\
+        + Gratis te gebruiken \\
+        + Analyse voor mobiele schermen \\
+        + Detectie van verschillende soorten dark patterns (ook dynamische) \\
+        + Mobile first focus \\ \\
+        - Verhoogde kostprijs door gebruik \textit{GPT-4} \\
+        - Vervolg op UIGuard, mogelijks onbruikbare source code \autocite{Nie2024} \\
+        - Geen \acrlong{ui} voor de gewone gebruiker \\
+        - Dynamische GUI-exploratie zorgt ervoor dat de tool enkel bruikbaar is binnen apps met een open, gratis, toegankelijke flow \\
+        - Onduidelijke opstartinstructies \\        
+    } &
+    \autocite{Chen2024} \\
+    
+    \bottomrule[0.5]
+    
+    % TODO
     YJT & 
     \textit{Analyse} door middel van ... &
     Patterns & 
@@ -1288,6 +1336,7 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
     
     \bottomrule[0.5]
     
+    % TODO
     SMS & 
     \textit{Analyse} door middel van ... &
     Patterns & 
@@ -1300,6 +1349,7 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
     
     \bottomrule[0.5]
     
+    % TODO
     YMK & 
     \textit{Analyse} door middel van ... &
     Patterns & 
@@ -1309,19 +1359,6 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
         - neg \\
     } &
     \autocite{Li2024} \\
-    
-    \bottomrule[0.5]
-    
-    DPGuard & 
-    \textit{Analyse} door middel van ... &
-    Patterns & 
-    \vink &
-    \parbox[t]{5cm}{
-        + Open source \autocite{Shi2025a} \\
-        + pos \\
-        - neg \\
-    } &
-    \autocite{Shi2025} \\
     
 %    deceptive.design hall of shame & 
 %    \textit{Analyse} door middel van ... &
