@@ -1233,39 +1233,45 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
     &
     \autocite{Chen2024a,Nie2024} \\
     
-    \bottomrule[0.5]
-    
     AGM & 
     \textit{Analyse} door middel van geautomatiseerde web crawling, UI-tekstextractie en -segmentatie, clustering via HDBSCAN en manuele inspectie door experten voor de identificatie van dark patterns.&
     Roach motel, hidden information, false hierarchy, tricked questions, toying with emotion, forced enrollment, countdown timer& 
     \vink &
-    \parbox[t]{5cm}{
-        + Open source \autocite{Mathur2019} \\
-        + Geautomatiseerde detectie \\
-        + Gratis te gebruiken \\ \\
-        - Onduidelijke opstartinstructies \\
-        - Focus op analyse van dark patterns op websites \\ 
-        - Geen \acrlong{ui} voor de gewone gebruiker \\
-        - Focus op dark patterns op shopping websites \\
-        - Geen detectie van dynamic dark patterns \\
-        - Onduidelijk op welke besturingssystemen de detectie getest werd \\
-    } &
-    \autocite{Mathur2019a,Nie2024} \\
+    \textit{Voordelen:}
+    \begin{itemize}[leftmargin=10pt, label=+, itemsep=0pt]
+        \item Open source \autocite{Mathur2019}
+        \item Geautomatiseerde detectie
+        \item Gratis te gebruiken
+    \end{itemize}
     
-    \bottomrule[0.5]
+    \textit{Nadelen:}
+    \begin{itemize}[leftmargin=10pt, label=-, itemsep=0pt]
+        \item Onduidelijke opstartinstructies
+        \item Focus op analyse van dark patterns op websites
+        \item Geen \acrlong{ui} voor de gewone gebruiker
+        \item Focus op dark patterns op shopping websites
+        \item Geen detectie van dynamic dark patterns
+        \item Onduidelijk op welke besturingssystemen de detectie getest werd
+    \end{itemize}&
+    \autocite{Mathur2019a,Nie2024} \\
     
     ADD & 
     \textit{Analyse} door middel van \textit{web crawling} en \textit{web scraping} technieken, ontwikkeld in Python. &
     Roach motel, disguised ad, tricked questions& 
     &
-    \parbox[t]{5cm}{
-        + Focus op analyse van dark patterns op zowel websites, social media platformen als mobiele applicaties \\
-        + (Semi-)geautomatiseerde detectie \\
-        + Detectie van zowel dynamic als static dark patterns \\ \\
-        - Closed source \\
-        - Geen \acrlong{ui} voor de gewone gebruiker \\
-        - Detecteert weinig dark patterns \\
-    } &
+    \textit{Voordelen:}
+    \begin{itemize}[leftmargin=10pt, label=+, itemsep=0pt]
+        \item Focus op analyse van dark patterns op zowel websites, social media platformen als mobiele applicaties
+        \item (Semi-)geautomatiseerde detectie
+        \item Detectie van zowel dynamic als static dark patterns
+    \end{itemize}
+    
+    \textit{Nadelen:}
+    \begin{itemize}[leftmargin=10pt, label=-, itemsep=0pt]
+        \item Closed source
+        \item Geen \acrlong{ui} voor de gewone gebruiker
+        \item Detecteert weinig dark patterns
+    \end{itemize} &
     \autocite{Curley2021,Nie2024} \\
     
     \bottomrule[0.5]
@@ -1286,39 +1292,46 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
     \end{itemize}&
     \autocite{Raju2021,Nie2024} \\
     
+    \bottomrule[0.5]
+    
     % TODO
     DPGuard & 
     \textit{Analyse} door middel van ... &
     Patterns & 
     \vink &
-    \parbox[t]{5cm}{
-        + Open source \autocite{Shi2025a} \\
-        + Zowel voor analyse van web als mobiel \\
-        + \\
-        + pos \\ \\
-        - neg \\
-    } &
+    \textit{Voordelen:}
+    \begin{itemize}[leftmargin=10pt, label=+, itemsep=0pt]
+        \item Open source \autocite{Shi2025a}
+        \item Zowel voor analyse van web als mobiele applicaties
+        \item pos
+    \end{itemize}
+    \textit{Nadelen:}
+    \begin{itemize}[leftmargin=10pt, label=-, itemsep=0pt]
+        \item neg
+    \end{itemize} &
     \autocite{Shi2025,Chen2024} \\
-    
-    \bottomrule[0.5]
     
     AppRay & 
     \textit{Hybride analyse} via LLM-gestuurde exploratie (\textit{GPT-4}), dynamische GUI-exploratie (installeert en runt apps automatisch en verzamelt UI screenshots, view hierarchies, interacties en events), deep learning en rule-based detectie &
     Nagging, roach motel, forced continuity, intermediate currency, hidden information, preselection, toying with emotion, false hierarchy, disguised ad, tricked questions, social pyramid, privacy zuckering, gamification& 
     \vink &
-    \parbox[t]{5cm}{
-        + Open source \autocite{Chen2024c} \\
-        + Geautomatiseerde detectie \\
-        + Gratis te gebruiken \\
-        + Analyse voor mobiele schermen \\
-        + Detectie van verschillende soorten dark patterns (ook dynamische) \\
-        + Mobile first focus \\ \\
-        - Verhoogde kostprijs door gebruik \textit{GPT-4} \\
-        - Vervolg op UIGuard, mogelijks onbruikbare source code \autocite{Nie2024} \\
-        - Geen \acrlong{ui} voor de gewone gebruiker \\
-        - Dynamische GUI-exploratie zorgt ervoor dat de tool enkel bruikbaar is binnen apps met een open, gratis, toegankelijke flow \\
-        - Onduidelijke opstartinstructies \\        
-    } &
+    \textit{Voordelen:}
+    \begin{itemize}[leftmargin=10pt, label=+, itemsep=0pt]
+        \item Open source \autocite{Chen2024c}
+        \item Geautomatiseerde detectie
+        \item Gratis te gebruiken
+        \item Analyse voor mobiele schermen
+        \item Detectie van verschillende soorten dark patterns (ook dynamische)
+        \item Mobile-first focus
+    \end{itemize}
+    \textit{Nadelen:}
+    \begin{itemize}[leftmargin=10pt, label=-, itemsep=0pt]
+        \item Verhoogde kostprijs door gebruik \textit{GPT-4}
+        \item Vervolg op UIGuard, mogelijks onbruikbare source code \autocite{Nie2024}
+        \item Geen \acrlong{ui} voor de gewone gebruiker
+        \item Dynamische GUI-exploratie maakt de tool enkel bruikbaar binnen apps met een open, gratis toegankelijke flow
+        \item Onduidelijke opstartinstructies
+    \end{itemize} &
     \autocite{Chen2024} \\
     
     \bottomrule[0.5]
@@ -1328,10 +1341,14 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
     \textit{Analyse} door middel van ... &
     Patterns & 
     &
-    \parbox[t]{5cm}{
-        + pos \\
-        - neg \\
-    } &
+    \textit{Voordelen:}
+    \begin{itemize}[leftmargin=10pt, label=+, itemsep=0pt]
+        \item pos
+    \end{itemize}
+    \textit{Nadelen:}
+    \begin{itemize}[leftmargin=10pt, label=-, itemsep=0pt]
+        \item neg
+    \end{itemize} &
     \autocite{Li2024} \\
     
     \bottomrule[0.5]
@@ -1341,10 +1358,14 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
     \textit{Analyse} door middel van ... &
     Patterns & 
     &
-    \parbox[t]{5cm}{
-        + pos \\
-        - neg \\
-    } &
+    \textit{Voordelen:}
+    \begin{itemize}[leftmargin=10pt, label=+, itemsep=0pt]
+        \item pos
+    \end{itemize}
+    \textit{Nadelen:}
+    \begin{itemize}[leftmargin=10pt, label=-, itemsep=0pt]
+        \item neg
+    \end{itemize} &
     \autocite{Li2024} \\
     
     \bottomrule[0.5]
@@ -1354,10 +1375,14 @@ Op basis van de hierboven beschreven factoren worden aspecten bepaald waarop ied
     \textit{Analyse} door middel van ... &
     Patterns & 
     &
-    \parbox[t]{5cm}{
-        + pos \\
-        - neg \\
-    } &
+    \textit{Voordelen:}
+    \begin{itemize}[leftmargin=10pt, label=+, itemsep=0pt]
+        \item pos
+    \end{itemize}
+    \textit{Nadelen:}
+    \begin{itemize}[leftmargin=10pt, label=-, itemsep=0pt]
+        \item neg
+    \end{itemize} &
     \autocite{Li2024} \\
     
 %    deceptive.design hall of shame & 
