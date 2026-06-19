@@ -5,4 +5,494 @@
 \chapter{Requirementsanalyse}%
 \label{ch:requirementsanalyse}
 
-\lipsum[76]
+Aansluitend op het literatuuronderzoek, waarin de huidige stand van zaken binnen het probleemdomein werd onderzocht en enkele uitdagingen, opportuniteiten en bestaande oplossingen in kaart werden gebracht, wordt in dit hoofdstuk de requirementsanalyse besproken. Het doel van deze fase is het bepalen van de vereisten waaraan de \acrlong{poc} binnen dit onderzoek moet voldoen. De inzichten uit de literatuurstudie vormden hierbij het uitgangspunt voor het opstellen van een geprioriteerde lijst van functionele~(\ref{sec:fr}) en niet-functionele~(\ref{sec:nfr}) requirements.
+
+\vspace{1em}
+
+Om deze requirements verder te valideren en aan te vullen, werden interviews afgenomen met zowel experten als vertegenwoordigers van de doelgroep. De volgende personen namen deel aan deze interviews:
+
+\begin{itemize}
+    \item Co-promotor \textbf{dhr. G. De Bruyn} (KBC Bank & Verzekeringen)
+    \item Co-promotor \textbf{dhr. S. Hostyn} (Intigriti)
+    \item \textbf{Dhr. M. Dhondt} (x-jarige student)
+    \item \textbf{Dhr. S. Landtsheer} (x-jarige student)
+    \item \textbf{Mevr. M. Adams} (21-jarige student)
+\end{itemize}
+
+De vragenlijst en de bijbehorende antwoorden van de geïnterviewden zijn opgenomen in bijlage~\ref{ch:interviewvragen}. In sectie~\ref{sec:interviews-inzichten} worden uitsluitend de belangrijkste bevindingen en daaruit voortvloeiende aanpassingen besproken. Op basis van deze resultaten wordt tot slot in sectie~\ref{sec:requirements} een definitieve, geprioriteerde lijst van functionele en niet-functionele requirements opgesteld.
+
+\newpage
+
+\section{Functionele requirements}
+\label{sec:fr}
+
+\vspace{1em}
+
+In eerste instantie worden de functionele requirements (\acrshort{fr}'s) gedefinieerd. Deze vereisten beschrijven welke functionaliteiten de \acrshort{poc} kan bevatten en hoe deze zich dient te gedragen vanuit het perspectief van de eindgebruiker. Ze bepalen met andere woorden \textit{wat} de applicatie moet doen en welke interacties door de gebruiker moeten kunnen worden uitgevoerd. Om deze requirements op te stellen, wordt binnen dit onderzoek gebruikgemaakt van \textit{User Stories}.
+
+\vspace{1em}
+
+\subsection{User Stories}
+
+\vspace{1em}
+
+Vooraleer een geprioriteerde lijst van requirements opgesteld wordt, werden diverse user stories uitgewerkt. Deze beschrijven \textit{wie} een bepaalde functionaliteit wenst, \textit{wat} deze functionaliteit inhoudt en \textit{waarom} ze van belang is. Op basis van deze user stories wordt nadien een geprioriteerde lijst van \acrshort{fr}'s opgesteld aan de hand van de MoSCoW-prioriteringsmethode \autocite{AgileBusinessMoSCoW}.
+
+\vspace{1em}
+
+\subsubsection{Rol: Gebruiker (heeft iedereen)}
+
+\vspace{1em}
+
+\textit{Detectie}
+\vspace{0.5em}
+\hrule
+\vspace{1.2em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{vaak voorkomende dark patterns op streamingdiensten} (\ref{subsec:meest-voorkomend}) \textbf{in apps van streamingdiensten kunnen detecteren en bekijken}, \\
+zodat \textit{ik weet wanneer ik tijdens het streamen mogelijks gemanipuleerd word}.
+
+\vspace{1em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{vaak voorkomende dark patterns op streamingdiensten} (\ref{subsec:meest-voorkomend}) \textbf{op websites van streamingdiensten kunnen detecteren en bekijken}, \\
+zodat \textit{ik onder andere ook op aankoopschermen op de hoogte gebracht word van dark patterns}.
+
+\vspace{1em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{een korte uitleg kunnen raadplegen over een gedetecteerd dark pattern}, \\
+zodat \textit{ik deze zelf beter kan herkennen}.
+
+\vspace{1em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{de mogelijke gevolgen van een gedetecteerd dark pattern kunnen bekijken}, \\
+zodat \textit{ik begrijp waarom het als problematisch beschouwd kan worden en de impact ervan beter kan inschatten}.
+
+\vspace{1em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{kunnen zien welke businessdoelstelling achter een gedetecteerd dark pattern kan schuilgaan}, \\
+zodat \textit{ik begrijp waarom deze techniek wordt gebruikt}.
+
+\vspace{1em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{geïnformeerd worden dat detecties indicatief zijn en niet 100\% accuraat}, \\
+zodat \textit{ik de resultaten als ondersteuning gebruik in plaats van als absolute waarheid}.
+
+\vspace{1em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{een betrouwbaarheidsniveau zien bij een detectie}, \\
+zodat \textit{ik kan inschatten hoe zeker de app is van de detectie}.
+
+\vspace{1em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{een ernstniveau (risico-indicator) bij detecties zien}, \\
+zodat \textit{ik kan zien welke patronen het meest effectief en potentieel schadelijk zijn}.
+
+
+
+\vspace{1.2em}
+
+\textit{Notificaties}
+\vspace{0.5em}
+\hrule
+\vspace{1.2em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{tijdens interactie met een streamingdienst notificaties ontvangen van gedetecteerde dark patterns}, \\
+zodat \textit{ik op het moment zelf geïnformeerd word over mogelijke manipulatieve ontwerpkeuzes}.
+
+\vspace{1em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{kunnen instellen wanneer ik notificaties ontvang}, \\
+zodat \textit{ik niet gestoord word door te veel waarschuwingen}.
+
+
+\vspace{1.2em}
+
+\textit{Overzicht}
+\vspace{0.5em}
+\hrule
+\vspace{1.2em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{een overzicht van eerdere detecties kunnen raadplegen}, \\
+zodat \textit{ik eerdere waarschuwingen later opnieuw kan bekijken}.
+
+\vspace{1em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{in de app kunnen zien hoeveel tijd ik besteed op streamingplatformen}, \\
+zodat \textit{ik een mogelijk verslavend effect van dark patterns kan opmerken}.
+
+
+\newpage
+
+\textit{Instellingen}
+\vspace{0.5em}
+\hrule
+\vspace{1.2em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{kunnen kiezen welke dark patterns gedetecteerd worden}, \\
+zodat \textit{ik het aantal waarschuwingen naar wens kan beperken}.
+
+\vspace{1em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{kunnen kiezen welke dark pattern categorieën gedetecteerd worden} (static, dynamic, in-between), \\
+zodat \textit{de detectie afgestemd kan worden op de gewenste scope en betrouwbaarheid}.
+
+\vspace{1em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{toestemming kunnen geven voor de vereiste machtigingen van de app}, \\
+zodat \textit{ik gebruik kan maken van functionaliteiten die de Accessibility Service API vereisen}.
+
+
+\vspace{1.2em}
+
+\textit{Overige}
+\vspace{0.5em}
+\hrule
+\vspace{1.2em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{zelf een mogelijk dark pattern kunnen melden}, \\
+zodat \textit{mogelijk onopgemerkte patronen door de beheerders van de app onderzocht kunnen worden}.
+
+\vspace{1em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{een specifieke rol kunnen aanvragen}, \\
+zodat \textit{ik kan helpen bij de correctheid en het succes van de app}.
+
+\vspace{1em}
+
+Als een \textbf{gebruiker}, \\
+wil ik \textbf{juridische informatie en het privacybeleid kunnen raadplegen}, \\
+zodat \textit{ik weet hoe mijn gegevens gebruikt worden}.
+
+
+
+\vspace{1.5em}
+
+\subsubsection{Rol: Handhaver}
+
+\vspace{1em}
+
+Als een \textbf{handhaver}, \\
+wil ik \textbf{mij kunnen aanmelden}, \\
+zodat \textit{ik gebruik kan maken van rolspecifieke functionaliteiten}.
+
+\vspace{1em}
+
+Als een \textbf{handhaver}, \\
+wil ik \textbf{gedetecteerde dark patterns kunnen bekijken}, \\
+zodat \textit{ik weet of een streamingdienst gebruikmaakt van dark patterns}.
+
+\newpage
+
+Als een \textbf{handhaver}, \\
+wil ik \textbf{de bijhorende wetgeving bij een dark pattern kunnen raadplegen}, \\
+zodat \textit{ik weet welke regelgeving van toepassing is}.
+
+\vspace{1em}
+
+Als een \textbf{handhaver}, \\
+wil ik \textbf{kunnen zien welke businessdoelstelling achter een gedetecteerd dark pattern kan schuilgaan}, \\
+zodat \textit{ik begrijp waarom deze techniek wordt gebruikt en de ernst van een overtreding kan inschatten}.
+
+\vspace{1em}
+
+Als een \textbf{handhaver}, \\
+wil ik \textbf{een wijzigingsvoorstel kunnen doen van de bijhorende wetgeving bij een dark pattern}, \\
+zodat \textit{verwijzingen naar wetgeving actueel blijven}.
+
+\vspace{1.5em}
+
+\subsubsection{Rol: Specialist}
+
+\vspace{1em}
+
+Als een \textbf{specialist}, \\
+wil ik \textbf{mij kunnen aanmelden}, \\
+zodat \textit{ik gebruik kan maken van rolspecifieke functionaliteiten}.
+
+\vspace{1em}
+
+Als een \textbf{specialist}, \\
+wil ik \textbf{kunnen aangeven dat een detectie foutief is en correcte informatie kunnen meegeven}, \\
+zodat \textit{de kwaliteit van de detecties verbeterd kan worden}.
+
+\vspace{1em}
+
+Als een \textbf{specialist}, \\
+wil ik \textbf{aanvullende informatie kunnen toevoegen aan een detectie als voorstel}, \\
+zodat \textit{gebruikers meer context krijgen}.
+
+\vspace{1.5em}
+
+\subsubsection{Rol: Beheerder}
+
+\vspace{1em}
+
+Als een \textbf{beheerder}, \\
+wil ik \textbf{mij kunnen aanmelden}, \\
+zodat \textit{ik gebruik kan maken van rolspecifieke functionaliteiten}.
+
+\vspace{1em}
+
+Als een \textbf{beheerder}, \\
+wil ik \textbf{een overzicht kunnen raadplegen van foutieve detecties gemeld door specialisten}, \\
+zodat \textit{ik de prestaties van het systeem kan evalueren en verbeteren}.
+
+\newpage
+
+Als een \textbf{beheerder}, \\
+wil ik \textbf{voorstellen van aanvullende informatie over dark patterns kunnen beoordelen}, \\
+zodat \textit{gebruikers meer context en een correcte uitleg ontvangen}.
+
+\vspace{1em}
+
+Als een \textbf{beheerder}, \\
+wil ik \textbf{wijzigingsvoorstellen van juridische informatie door handhavers kunnen beheren}, \\
+zodat \textit{verwijzingen naar wetgeving actueel en correct blijven}.
+
+\vspace{1em}
+
+Als een \textbf{beheerder}, \\
+wil ik \textbf{rollen van gebruikers kunnen beheren}, \\
+zodat \textit{ik specialisten en handhavers kan inschakelen om de app te verbeteren}.
+
+
+\newpage
+
+\subsection{Geprioriteerde Functionele Requirements}
+
+\vspace{1em}
+
+Legende: \enspace \textcolor{red}{\textbf{\bol}} Must have \enspace \textcolor{orange}{\textbf{\bol}} Should have \enspace \textcolor{ForestGreen}{\textbf{\bol}} Could have \enspace \textcolor{gray}{\textbf{\bol}} Won't have
+
+\vspace{1em}
+
+\textbf{Gebruiker+} \\ 
+= Gebruiker met extra functionaliteiten (specialist, handhaver, beheerder)
+
+\vspace{1em}
+
+\begin{longtable}{%
+        >{\raggedright\arraybackslash\small}p{2.5cm}
+        >{\raggedright\arraybackslash\small}p{10.5cm}
+        >{\centering\arraybackslash\small}p{1.5cm}
+    }
+    
+    \caption[Geprioriteerde functionele requirements]{\label{tab:frs}Geprioriteerde lijst van functionele requirements op basis van de MoSCoW-methode} \\
+   
+    \toprule
+    \textbf{Rol} & \textbf{Functionaliteit} & \textbf{Prioriteit} \\
+    \midrule
+    \endfirsthead
+    
+    \multicolumn{3}{c}%
+    {\small{\tablename\ \thetable\ -- \textit{Vervolg van vorige pagina}}} \\
+    \toprule
+    \textbf{Rol} & \textbf{Functionaliteit} & \textbf{Prioriteit} \\
+    \midrule
+    \endhead
+    
+    \midrule \multicolumn{3}{r}{\small\textit{Vervolg op volgende pagina}} \\
+    \endfoot
+    
+    \bottomrule
+    \endlastfoot
+    
+    % =========================
+    % OVERIGE
+    % =========================
+    
+    Gebruiker &
+    Aanvragen van een specialist- of handhaverrol &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Gebruiker+ &
+    Aanmelden &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Gebruiker &
+    Melden van mogelijk niet-gedetecteerde dark patterns &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Gebruiker &
+    Raadplegen van juridische informatie en privacybeleid &
+    \textcolor{orange}{\bol} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    % =========================
+    % DETECTIE
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Detectie}} \\
+    
+    Gebruiker &
+    Detecteren van dark patterns in streamingapps (zowel in de mobiele app als website) &
+    \textcolor{red}{\bol} \\
+    
+    Gebruiker &
+    Raadplegen van een beschrijving van een gedetecteerd dark pattern &
+    \textcolor{red}{\bol} \\
+    
+    Gebruiker &
+    Raadplegen van de mogelijke gevolgen van een gedetecteerd dark pattern &
+    \textcolor{orange}{\bol} \\
+    
+    Handhaver &
+    Raadplegen van toepasselijke wetgeving bij dark patterns &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Gebruiker &
+    Raadplegen van de vermoedelijke businessdoelstelling achter een dark pattern &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Gebruiker &
+    Raadplegen van een betrouwbaarheidsniveau bij detecties &
+    \textcolor{orange}{\bol} \\
+    
+    Gebruiker &
+    Raadplegen van een ernstniveau bij detecties &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Gebruiker &
+    Disclaimer raadplegen over accuraatheid van de app &
+    \textcolor{orange}{\bol} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    % =========================
+    % NOTIFICATIES
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Notificaties}} \\
+    
+    Gebruiker &
+    Ontvangen van notificaties wanneer een dark pattern wordt gedetecteerd &
+    \textcolor{red}{\bol} \\
+    
+    Gebruiker &
+    Configureren wanneer notificaties worden weergegeven &
+    \textcolor{orange}{\bol} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    % =========================
+    % OVERZICHT
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Overzicht}} \\
+    
+    Gebruiker &
+    Raadplegen van een historiek van eerdere detecties &
+    \textcolor{orange}{\bol} \\
+    
+    Gebruiker &
+    Raadplegen van de tijd besteed op streamingplatformen &
+    \textcolor{gray}{\bol} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    % =========================
+    % INSTELLINGEN
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Instellingen}} \\
+    
+    Gebruiker &
+    Instellen welke dark patterns gedetecteerd worden &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Gebruiker &
+    Instellen welke dark-patterncategorieën gedetecteerd worden &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Gebruiker &
+    Beheren van vereiste machtigingen voor detectiefunctionaliteit &
+    \textcolor{red}{\bol} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    
+    % =========================
+    % MELDEN
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Melden}} \\
+    
+    Handhaver &
+    Indienen van wijzigingsvoorstellen voor juridische informatie &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Specialist &
+    Melden van foutieve detecties met gecorrigeerde informatie &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Specialist &
+    Indienen van aanvullende informatie bij detecties &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Beheerder &
+    Raadplegen van foutieve detecties gerapporteerd door specialisten &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Beheerder &
+    Beoordelen van voorstellen voor aanvullende informatie &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Beheerder &
+    Beheren van juridische wijzigingsvoorstellen &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Beheerder &
+    Beheren van gebruikersrollen &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    %\bottomrule
+\end{longtable}
+
+\newpage
+
+\section{Niet-functionele requirements}
+\label{sec:nfr}
+
+\vspace{1em}
+
+\newpage
+
+\section{Kerninzichten uit de interviews}
+\label{sec:interviews-inzichten}
+
+\vspace{1em}
+
+\newpage
+
+\section{Definitieve requirements}
+\label{sec:requirements}
+
+\vspace{1em}
+
+\subsubsection{Functionele Requirements}
+
+\vspace{1em}
+
+\subsubsection{Niet-Functionele Requirements}
+
+\vspace{1em}
