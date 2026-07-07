@@ -646,7 +646,7 @@ Verder worden de \acrshort{nfr}'s geformuleerd volgens het SMART-principe.
 
 \vspace{1em}
 
-Naast het opstellen van de \acrshort{fr}'s en de \acrshort{nfr}'s, zijn er nog enkele aspecten die niet aan bod kwamen, maar wel rekening mee moet gehouden worden bij het uitwerken van de \acrshort{poc} binnen de scope van dit onderzoek.
+Naast het opstellen van de \acrshort{fr}'s en de \acrshort{nfr}'s, zijn er nog enkele aspecten die niet aan bod kwamen, maar waar wel rekening mee dient gehouden te worden bij het uitwerken van de \acrshort{poc} binnen de scope van dit onderzoek.
 
 \begin{itemize}
     \item De ontwikkelde oplossing moet gebruikmaken van gratis of low-cost technologieën.
@@ -654,7 +654,7 @@ Naast het opstellen van de \acrshort{fr}'s en de \acrshort{nfr}'s, zijn er nog e
     \item De detectiefunctionaliteit moet gebaseerd zijn op een bestaande open-source detectietool.
 \end{itemize}
 
-Ten slotte wordt de scope van dit onderzoek beperkt tot de populairste streamingplatformen in Vlaanderen. De \acrshort{poc} richt zich daarom op platformen zoals Netflix, Disney+, Streamz en Amazon Prime Video.
+Ten slotte wordt de scope van dit onderzoek beperkt tot de populairste streamingplatformen in Vlaanderen. De \acrshort{poc} richt zich daarom op platformen zoals Netflix, Disney+ en Streamz. Meer bepaald zal binnen dit onderzoek getest de \acrshort{poc} getest worden op het streamingplatform Netflix.
 
 \newpage
 
@@ -662,6 +662,49 @@ Ten slotte wordt de scope van dit onderzoek beperkt tot de populairste streaming
 \label{sec:interviews-inzichten}
 
 \vspace{1em}
+
+Om de requirements verder te verfijnen, werden interviews afgenomen met vertegenwoordigers van de doelgroep en twee experts. De doelgroep bestond uit vier studenten binnen de opleiding Toegepaste Informatica en een junior developer, terwijl de experten bestonden uit een systeemarchitect en een UI/UX-designer. De interviewvragen en antwoorden zijn terug te vinden in bijlage~\ref{ch:interviewvragen}. Op basis van deze gesprekken worden de belangrijkste inzichten hieronder kort samengevat.
+
+\vspace{1em}
+
+\subsubsection{Vertegenwoordigers van de doelgroep}
+
+\vspace{1em}
+
+\begin{itemize}
+    \item Streamingdiensten worden voornamelijk gebruikt om op een \textbf{snelle} en \textbf{eenvoudige} manier content te bekijken.
+    \item \textbf{Netflix} is het meest gebruikte streamingplatform.
+    \item Er wordt voornamelijk gestreamd via computers/laptops, maar ook via smartphones en smart-tv's.
+    \item Sommige respondenten waren niet vertrouwd met de term \textit{dark patterns}. De meeste konden wel een situatie schetsen waarin ze beïnvloed werden door een streamingplatform. De \textbf{autoplay}-functie werd hierbij het vaakst vermeld.
+    \item Een tool die dark patterns detecteert moet \textbf{uitleg} geven over het gedetecteerde patroon, \textbf{waar} het zich bevindt, \textbf{waarom} het problematisch is en hoe men ermee kan omgaan. Daarnaast moet \textbf{personalisatie van waarschuwingen} mogelijk zijn.
+    \item Waarschuwingen moeten vooral verschijnen bij situaties met grote gevolgen (bv. financiële impact), maar \textbf{subtiel blijven} zodat de gebruikerservaring op het streamingplatform niet wordt verstoord.
+    \item De bereidheid om de tool te gebruiken daalt wanneer er te veel meldingen zijn, deze te opvallend zijn of interactie vereisen.
+\end{itemize}
+
+\vspace{1em}
+
+\subsubsection{Experts}
+
+\begin{itemize}
+    \item ...
+\end{itemize}
+
+\vspace{1em}
+
+\subsubsection{Aanpassingen}
+
+\vspace{1em}
+
+Op basis van deze bevindingen worden de volgende aanpassingen doorgevoerd om de requirements verder te verfijnen en het ontwerp beter af te stemmen op de noden van de gebruikers:
+
+\begin{itemize}
+    \item De \acrshort{fr} ``Raadplegen van een visualisatie waarop het dark pattern zichtbaar is'' wordt toegevoegd met prioriteit ``Must have''.
+    \item De \acrshort{fr} ``Instellen van de frequentie van notificaties'' wordt toegevoegd met prioriteit ``Could have''.
+    \item De prioriteit van de \acrshort{fr} ``Raadplegen van een betrouwbaarheidsniveau bij detecties'' wordt gewijzigd naar ``Must have''. Daarnaast wordt deze \acrshort{fr} aangevuld met de opmerking ``op basis van probability-percentage''.
+    \item De \acrshort{nfr} ``Een melding moet binnen 1 seconde weergegeven worden nadat een dark pattern werd gedetecteerd.'' wordt weggehaald.
+    \item De \acrshort{nfr} ``Minstens 95\% van de opgeslagen detectiegeschiedenis moet behouden blijven na een onverwachte applicatiecrash.'' wordt weggehaald.
+    \item De \acrshort{nfr} ``Meldingen over gedetecteerde dark patterns mogen de gebruiker niet onderbreken tijdens het bekijken van content, enkel in het begin, op het einde of buiten de content.'' wordt toegevoegd onder de categorie ``Bruikbaarheid'' met als subcategorie ``Voorkomen gebruikersfouten''.
+\end{itemize}
 
 \newpage
 
