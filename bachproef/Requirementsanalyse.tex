@@ -663,7 +663,7 @@ Ten slotte wordt de scope van dit onderzoek beperkt tot de populairste streaming
 
 \vspace{1em}
 
-Om de requirements verder te verfijnen, werden interviews afgenomen met vertegenwoordigers van de doelgroep en twee experts. De doelgroep bestond uit vier studenten binnen de opleiding Toegepaste Informatica en een junior developer, terwijl de experten bestonden uit een systeemarchitect en een product designer. De interviewvragen en antwoorden zijn terug te vinden in bijlage~\ref{ch:interviewvragen}. Op basis van deze gesprekken worden de belangrijkste inzichten hieronder kort samengevat.
+Om de requirements verder te verfijnen, werden interviews afgenomen met vertegenwoordigers van de doelgroep en twee experten. De doelgroep bestond uit vier studenten binnen de opleiding Toegepaste Informatica en een junior developer, terwijl de experten bestonden uit een systeemarchitect en een product designer. De interviewvragen en antwoorden zijn terug te vinden in bijlage~\ref{ch:interviewvragen}. Op basis van deze gesprekken worden de belangrijkste inzichten hieronder kort samengevat.
 
 \vspace{1em}
 
@@ -683,10 +683,18 @@ Om de requirements verder te verfijnen, werden interviews afgenomen met vertegen
 
 \vspace{1em}
 
-\subsubsection{Experts}
+\subsubsection{Experten}
 
 \begin{itemize}
-    \item ...
+    \item Beide experten beschouwen dark patterns binnen streamingdiensten als een relevant probleem, waarbij vooral \textbf{ongewenste abonnementen, automatische verlengingen, gewoonwording en verslavend kijkgedrag} als mogelijke gevolgen worden aangehaald. 
+    \item \textbf{Preselection}, \textbf{Hidden information} en \textbf{Obstruction} worden genoemd als meest impactvolle patronen.
+    \item De detectie van dark patterns moet volgens de experten voornamelijk focussen op patronen die een grote impact hebben en technisch haalbaar zijn binnen de scope van een proof of concept. Hierbij worden onder andere \textbf{Preselection}, \textbf{Hidden information} en \textbf{False hierarchy} genoemd.
+    \item Een belangrijke uitdaging bij automatische detectie is het correct interpreteren van de \textbf{context en intentie} achter een interface-element. Niet elk opvallend element vormt automatisch een dark pattern.
+    \item Waarschuwingen moeten \textbf{informatief en transparant} zijn. De tool moet uitleg geven over het gedetecteerde patroon en een betrouwbaarheidsniveau weergeven.
+    \item Beide experten benadrukken het belang van \textbf{gebruikerscontrole}. Gebruikers moeten zelf kunnen bepalen welke meldingen zij ontvangen, hoe frequent deze verschijnen en hoe deze worden weergegeven.
+    \item Een overdaad aan waarschuwingen kan leiden tot \textbf{waarschuwingsmoeheid}, waardoor gebruikers meldingen gaan negeren of de tool verwijderen. Daarom moeten meldingen beperkt, relevant en kwalitatief zijn.
+    \item De scope van een eerste proof of concept moet beperkt blijven tot de \textbf{kernfunctionaliteiten}. Een te uitgebreide implementatie met verschillende rollen of complexe detecties kan de haalbaarheid van de \acrshort{poc} in gevaar brengen.
+    \item De experten gaven nog enkele opmerkingen met betrekking tot de huidige requirements. Deze kunnen geraadpleegd worden bij de laatste vraag in sectie~\ref{sec:interviews-experten}.
 \end{itemize}
 
 \vspace{1em}
@@ -704,6 +712,8 @@ Op basis van deze bevindingen worden de volgende aanpassingen doorgevoerd om de 
     \item De \acrshort{nfr} ``Een melding moet binnen 1 seconde weergegeven worden nadat een dark pattern werd gedetecteerd.'' wordt weggehaald.
     \item De \acrshort{nfr} ``Minstens 95\% van de opgeslagen detectiegeschiedenis moet behouden blijven na een onverwachte applicatiecrash.'' wordt weggehaald.
     \item De \acrshort{nfr} ``Meldingen over gedetecteerde dark patterns mogen de gebruiker niet onderbreken tijdens het bekijken van content, enkel in het begin, op het einde of buiten de content.'' wordt toegevoegd onder de categorie ``Bruikbaarheid'' met als subcategorie ``Voorkomen gebruikersfouten''.
+    \item De \acrshort{fr} ``Doorlopen van een onboarding bij het eerste gebruik'' wordt toegevoegd met prioriteit ``Should have'' om gebruikers vertrouwd te maken met de werking en meerwaarde van de tool.
+    \item De \acrshort{fr} ``Uitvoeren van een educatieve meting over de kennis van dark patterns'' wordt toegevoegd met als prioriteit ``Could have''.
 \end{itemize}
 
 \newpage
@@ -711,12 +721,239 @@ Op basis van deze bevindingen worden de volgende aanpassingen doorgevoerd om de 
 \section{Definitieve requirements}
 \label{sec:requirements}
 
+Op basis van de uitgevoerde interviews en de hieruit verkregen inzichten wordt een vernieuwde lijst van \acrshort{fr}'s en \acrshort{nfr}'s opgesteld voor de detectie- en signaleringstool binnen deze casus. Deze requirements vormen de basis voor het verdere ontwerp en de implementatie van een eerste proof of concept.
+
+\vspace{1em}
+
+Tijdens het interview benadrukte S. Hostyn het belang van het bewaken van de scope van de \acrshort{poc}. Daarom worden requirements waarmee tijdens de ontwikkeling van de eerste \acrshort{poc} geen rekening wordt gehouden visueel minder prominent weergegeven door deze in een lichtgrijze kleur aan te duiden. De focus ligt voornamelijk op de \textbf{Must have}-requirements en enkele geselecteerde \textbf{Should have}-requirements die een duidelijke meerwaarde bieden voor het aantonen van de kernfunctionaliteiten. Voor de \acrshort{nfr}'s worden voornamelijk de vereisten geselecteerd die relevant en haalbaar zijn binnen de beperkte scope van een proof of concept.
+
 \vspace{1em}
 
 \subsubsection{Functionele Requirements}
 
 \vspace{1em}
 
+% \caption[Definitieve functionele requirements]{\label{tab:newfrs}Definitieve geprioriteerde lijst van functionele requirements op basis van de MoSCoW-methode} \\
+
+Legende: \enspace \textcolor{red}{\textbf{\bol}} Must have 
+\enspace \textcolor{orange}{\textbf{\bol}} Should have 
+\enspace \textcolor{ForestGreen}{\textbf{\bol}} Could have 
+\enspace \textcolor{gray}{\textbf{\bol}} Won't have
+
+\vspace{1em}
+
+\textbf{Gebruiker+} \\ 
+= Gebruiker met extra functionaliteiten (specialist, handhaver, beheerder)
+
+\vspace{1em}
+
+\begin{longtable}{%
+        >{\raggedright\arraybackslash\small}p{2.5cm}
+        >{\raggedright\arraybackslash\small}p{10.5cm}
+        >{\centering\arraybackslash\small}p{1.5cm}
+    }
+    
+    \caption[Definitieve functionele requirements]{\label{tab:newfrs}Definitieve geprioriteerde lijst van functionele requirements op basis van de MoSCoW-methode} \\
+    
+    \toprule
+    \textbf{Rol} & \textbf{Functionaliteit} & \textbf{Prioriteit} \\
+    \midrule
+    \endfirsthead
+    
+    \multicolumn{3}{c}{\small{\tablename\ \thetable\ -- \textit{Vervolg van vorige pagina}}} \\
+    \toprule
+    \textbf{Rol} & \textbf{Functionaliteit} & \textbf{Prioriteit} \\
+    \midrule
+    \endhead
+    
+    \midrule \multicolumn{3}{r}{\small\textit{Vervolg op volgende pagina}} \\
+    \endfoot
+    
+    \bottomrule
+    \endlastfoot
+    
+    
+    % =========================
+    % OVERIGE
+    % =========================
+    
+    Gebruiker &
+    Doorlopen van een onboarding bij het eerste gebruik &
+    \textcolor{orange}{\bol} \\
+    
+    \textcolor{customlightgray}{Gebruiker} &
+    \textcolor{customlightgray}{Aanvragen van een specialist- of handhaverrol} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    \textcolor{customlightgray}{Gebruiker+} &
+    \textcolor{customlightgray}{Aanmelden} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    \textcolor{customlightgray}{Gebruiker} &
+    \textcolor{customlightgray}{Melden van mogelijk niet-gedetecteerde dark patterns} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    \textcolor{customlightgray}{Gebruiker} &
+    \textcolor{customlightgray}{Raadplegen van juridische informatie en privacybeleid} &
+    \textcolor{orange}{\bol} \\
+    
+    
+    \multicolumn{3}{l}{} \\
+    
+    
+    % =========================
+    % DETECTIE
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Detectie}} \\
+    
+    Gebruiker &
+    Detecteren van dark patterns in streamingapps (zowel in de mobiele app als website) &
+    \textcolor{red}{\bol} \\
+    
+    Gebruiker &
+    Raadplegen van een beschrijving van een gedetecteerd dark pattern &
+    \textcolor{red}{\bol} \\
+    
+    Gebruiker &
+    Raadplegen van een visualisatie waarop het dark pattern zichtbaar is &
+    \textcolor{red}{\bol} \\
+    
+    Gebruiker &
+    Raadplegen van de mogelijke gevolgen van een gedetecteerd dark pattern &
+    \textcolor{orange}{\bol} \\
+    
+    \textcolor{customlightgray}{Handhaver} &
+    \textcolor{customlightgray}{Raadplegen van de toepasselijke wetgeving bij dark patterns} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    \textcolor{customlightgray}{Gebruiker} &
+    \textcolor{customlightgray}{Raadplegen van de vermoedelijke businessdoelstelling achter een dark pattern} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Gebruiker &
+    Raadplegen van een betrouwbaarheidsniveau bij detecties (op basis van probability-percentage) &
+    \textcolor{red}{\bol} \\
+    
+    Gebruiker &
+    Raadplegen van een ernstniveau bij detecties (impact) &
+    \textcolor{orange}{\bol} \\
+    
+    Gebruiker &
+    Disclaimer raadplegen over accuraatheid van de app &
+    \textcolor{orange}{\bol} \\
+    
+    \textcolor{customlightgray}{Gebruiker} &
+    \textcolor{customlightgray}{Uitvoeren van een educatieve meting over de kennis van dark patterns} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    
+    \multicolumn{3}{l}{} \\
+    
+    
+    % =========================
+    % NOTIFICATIES
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Notificaties}} \\
+    
+    Gebruiker &
+    Ontvangen van notificaties wanneer een dark pattern wordt gedetecteerd &
+    \textcolor{red}{\bol} \\
+    
+    Gebruiker &
+    Configureren wanneer notificaties worden weergegeven &
+    \textcolor{orange}{\bol} \\
+    
+    \textcolor{customlightgray}{Gebruiker} &
+    \textcolor{customlightgray}{Instellen van de frequentie van notificaties} &
+    \textcolor{orange}{\bol} \\
+    
+    
+    \multicolumn{3}{l}{} \\
+    
+    
+    % =========================
+    % OVERZICHT
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Overzicht}} \\
+    
+    Gebruiker &
+    Raadplegen van een historiek van eerdere detecties &
+    \textcolor{orange}{\bol} \\
+    
+    \textcolor{customlightgray}{Gebruiker} &
+    \textcolor{customlightgray}{Raadplegen van de tijd besteed op streamingplatformen} &
+    \textcolor{customlightgray}{\bol} \\
+    
+    
+    \multicolumn{3}{l}{} \\
+    
+    
+    % =========================
+    % INSTELLINGEN
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Instellingen}} \\
+    
+    \textcolor{customlightgray}{Gebruiker} &
+    \textcolor{customlightgray}{Instellen welke dark patterns gedetecteerd worden} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    \textcolor{customlightgray}{Gebruiker} &
+    \textcolor{customlightgray}{Instellen welke dark-patterncategorieën gedetecteerd worden} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    Gebruiker &
+    Beheren van vereiste machtigingen voor detectiefunctionaliteit &
+    \textcolor{red}{\bol} \\
+    
+    
+    \multicolumn{3}{l}{} \\
+    \multicolumn{3}{l}{} \\
+    
+    
+    % =========================
+    % MELDEN
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Melden}} \\
+    
+    \textcolor{customlightgray}{Handhaver} &
+    \textcolor{customlightgray}{Indienen van wijzigingsvoorstellen voor juridische informatie} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    \textcolor{customlightgray}{Specialist} &
+    \textcolor{customlightgray}{Melden van foutieve detecties met gecorrigeerde informatie} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    \textcolor{customlightgray}{Specialist} &
+    \textcolor{customlightgray}{Indienen van aanvullende informatie bij detecties} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    \textcolor{customlightgray}{Beheerder} &
+    \textcolor{customlightgray}{Raadplegen van foutieve detecties gerapporteerd door specialisten} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    \textcolor{customlightgray}{Beheerder} &
+    \textcolor{customlightgray}{Beoordelen van voorstellen voor aanvullende informatie} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    \textcolor{customlightgray}{Beheerder} &
+    \textcolor{customlightgray}{Beheren van juridische wijzigingsvoorstellen} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+    \textcolor{customlightgray}{Beheerder} &
+    \textcolor{customlightgray}{Beheren van gebruikersrollen} &
+    \textcolor{ForestGreen}{\bol} \\
+    
+\end{longtable}
+
+\vspace{1em}
+
+
 \subsubsection{Niet-Functionele Requirements}
 
 \vspace{1em}
+
