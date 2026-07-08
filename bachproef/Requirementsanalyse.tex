@@ -640,22 +640,6 @@ Verder worden de \acrshort{nfr}'s geformuleerd volgens het SMART-principe.
     \item De gebruiker moet de initiële configuratie van de applicatie binnen 5 minuten kunnen voltooien.
 \end{itemize}
 
-\vspace{1em}
-
-\section{Randvoorwaarden}
-
-\vspace{1em}
-
-Naast het opstellen van de \acrshort{fr}'s en de \acrshort{nfr}'s, zijn er nog enkele aspecten die niet aan bod kwamen, maar waar wel rekening mee dient gehouden te worden bij het uitwerken van de \acrshort{poc} binnen de scope van dit onderzoek.
-
-\begin{itemize}
-    \item De ontwikkelde oplossing moet gebruikmaken van gratis of low-cost technologieën.
-    
-    \item De detectiefunctionaliteit moet gebaseerd zijn op een bestaande open-source detectietool.
-\end{itemize}
-
-Ten slotte wordt de scope van dit onderzoek beperkt tot de populairste streamingplatformen in Vlaanderen. De \acrshort{poc} richt zich daarom op platformen zoals Netflix, Disney+ en Streamz. Meer bepaald zal binnen dit onderzoek getest de \acrshort{poc} getest worden op het streamingplatform Netflix.
-
 \newpage
 
 \section{Kerninzichten uit de interviews}
@@ -684,6 +668,8 @@ Om de requirements verder te verfijnen, werden interviews afgenomen met vertegen
 \vspace{1em}
 
 \subsubsection{Experten}
+
+\vspace{1em}
 
 \begin{itemize}
     \item Beide experten beschouwen dark patterns binnen streamingdiensten als een relevant probleem, waarbij vooral \textbf{ongewenste abonnementen, automatische verlengingen, gewoonwording en verslavend kijkgedrag} als mogelijke gevolgen worden aangehaald. 
@@ -729,7 +715,7 @@ Tijdens het interview benadrukte S. Hostyn het belang van het bewaken van de sco
 
 \vspace{1em}
 
-\subsubsection{Functionele Requirements}
+\subsection{Functionele Requirements}
 
 \vspace{1em}
 
@@ -953,7 +939,167 @@ Legende: \enspace \textcolor{red}{\textbf{\bol}} Must have
 \vspace{1em}
 
 
-\subsubsection{Niet-Functionele Requirements}
+\subsection{Niet-Functionele Requirements}
 
 \vspace{1em}
 
+\subsubsection{Functionele geschiktheid}
+\vspace{1em}
+
+\hspace*{1.5em}\textbf{Functionele compleetheid}
+
+\begin{itemize}
+    \item Minimaal 4 van de 8 vaak voorkomende dark patterns op streamingdiensten (\ref{subsec:meest-voorkomend}) moeten gedetecteerd kunnen worden.
+    \item De applicatie moet dark patterns kunnen detecteren op zowel streamingwebsites als streamingapps.
+    \item Alle functionele requirements met prioriteit Must Have moeten geïmplementeerd zijn in de \acrshort{poc}.
+\end{itemize}
+
+\vspace{0.5em}
+
+\hspace*{1.5em}\textbf{Functionele correctheid}
+
+\begin{itemize}
+    \item Minimaal 80\% van de detecteerbare dark patterns moet correct geclassificeerd worden volgens de gebruikte taxonomie.
+    \item De applicatie mag niet meer dan 15\% vals-positieve detecties genereren.
+    \item De applicatie mag niet meer dan 20\% vals-negatieve detecties genereren.
+\end{itemize}
+
+\newpage
+
+\subsubsection{Prestatie-efficiëntie}
+\vspace{1em}
+
+\hspace*{1.5em}\textbf{Snelheid}
+
+\begin{itemize}
+    \item Een detectieresultaat moet binnen 5 seconden beschikbaar zijn nadat een nieuw scherm verschijnt.
+\end{itemize}
+
+\vspace{0.5em}
+
+\textcolor{customlightgray}{\hspace*{1.5em}\textbf{Capaciteit}}
+
+\begin{itemize}
+    \item \textcolor{customlightgray}{Minimaal 5 verschillende detecties moeten gelijktijdig uitgevoerd kunnen worden \textit{(bij snel wijzigen van een scherm)}.}
+    \item \textcolor{customlightgray}{Minimaal 20 voorgaande detecties moeten opgeslagen kunnen worden in de detectiegeschiedenis.}
+\end{itemize}
+
+\vspace{1em}
+
+\subsubsection{Uitwisselbaarheid}
+\vspace{1em}
+
+\hspace*{1.5em}\textbf{Beïnvloedbaar}
+
+\begin{itemize}
+    \item De applicatie mag de normale werking van streamingapps niet verstoren.
+\end{itemize}
+
+\vspace{1em}
+
+\subsubsection{Bruikbaarheid}
+\vspace{1em}
+
+\hspace*{1.5em}\textbf{Leerbaarheid}
+
+\begin{itemize}
+    \item Minimaal 75\% van de testgebruikers moet zonder hulp een detectie kunnen raadplegen.
+    \item Minimaal 75\% van de testgebruikers moet zonder hulp meldingsinstellingen kunnen aanpassen, ook als ze voor het eerst met de applicatie werken.
+\end{itemize}
+
+\vspace{0.5em}
+
+\hspace*{1.5em}\textbf{Voorkomen gebruikersfouten}
+
+\begin{itemize}
+    \item De applicatie moet gebruikers waarschuwen wanneer de juiste machtigingen voor Accessibility Services niet gegeven zijn.
+    \item Meldingen over gedetecteerde dark patterns mogen de gebruiker niet onderbreken tijdens het bekijken van content, enkel in het begin, op het einde of buiten de content.
+\end{itemize}
+
+\vspace{0.5em}
+
+\hspace*{1.5em}\textbf{Volmaaktheid gebruikersinteractie}
+
+\begin{itemize}
+    \item Waarschuwingen mogen maximaal 25 woorden bevatten zodat de cognitieve belasting voor de gebruiker beperkt blijft.
+\end{itemize}
+
+\vspace{1em}
+
+\subsubsection{\textcolor{customlightgray}{Beveiligbaarheid}}
+\vspace{1em}
+
+\textcolor{customlightgray}{\hspace*{1.5em}\textbf{Authenticiteit}}
+
+\begin{itemize}
+    \item \textcolor{customlightgray}{Beheerders moeten zich authenticeren voordat beheerfunctionaliteiten beschikbaar zijn.}
+    \item \textcolor{customlightgray}{Specialisten moeten zich authenticeren voordat validatiefuncties beschikbaar zijn.}
+    \item \textcolor{customlightgray}{Handhavers moeten zich authenticeren voordat wijzigingsvoorstellen voor juridische informatie ingediend kunnen worden.}
+\end{itemize}
+
+\vspace{1em}
+
+\subsubsection{Onderhoudbaarheid}
+\vspace{1em}
+
+\hspace*{1.5em}\textbf{Modulariteit}
+
+\begin{itemize}
+    \item Detectielogica, gebruikersinterface en gegevensopslag moeten in afzonderlijke modules geïmplementeerd worden.
+\end{itemize}
+
+\vspace{0.5em}
+
+\textcolor{customlightgray}{\hspace*{1.5em}\textbf{Wijzigbaarheid}}
+
+\begin{itemize}
+    \item \textcolor{customlightgray}{Nieuwe wetgeving en uitleg over een patroon moet toegevoegd kunnen worden zonder wijzigingen door te voeren aan de detectielogica.}
+\end{itemize}
+
+\vspace{1em}
+
+\subsubsection{Betrouwbaarheid}
+\vspace{1em}
+
+\hspace*{1.5em}\textbf{Volwassenheid}
+
+\begin{itemize}
+    \item Tijdens de gebruikersevaluatie mag de applicatie geen kritieke crash vertonen.
+    \item Minstens 9 op de 10 detecties moet succesvol verwerkt worden.
+\end{itemize}
+
+\vspace{0.5em}
+
+\textcolor{customlightgray}{\hspace*{1.5em}\textbf{Foutbestendigheid}}}
+
+\begin{itemize}
+    \item \textcolor{customlightgray}{Wanneer een detectie mislukt door een netwerk- of interne fout, moet de applicatie binnen 5 seconden terugkeren naar een operationele toestand zonder herstart.}
+\end{itemize}
+
+\vspace{1em}
+
+\subsubsection{Overdraagbaarheid}
+\vspace{1em}
+
+\hspace*{1.5em}\textbf{Installeerbaarheid}
+
+\begin{itemize}
+    \item De applicatie moet compatibel zijn met Android-toestellen.
+    \item De gebruiker moet de initiële configuratie van de applicatie binnen 5 minuten kunnen voltooien.
+\end{itemize}
+
+\vspace{1em}
+
+\section{Randvoorwaarden}
+
+\vspace{1em}
+
+Naast het opstellen van de \acrshort{fr}'s en de \acrshort{nfr}'s, zijn er nog enkele aspecten die niet aan bod kwamen, maar waar wel rekening mee dient gehouden te worden bij het uitwerken van de \acrshort{poc} binnen de scope van dit onderzoek.
+
+\begin{itemize}
+    \item De ontwikkelde oplossing moet gebruikmaken van gratis of low-cost technologieën.
+    
+    \item De detectiefunctionaliteit moet gebaseerd zijn op een bestaande open-source detectietool.
+\end{itemize}
+
+Ten slotte wordt de scope van dit onderzoek beperkt tot de populairste streamingplatformen in Vlaanderen. De \acrshort{poc} richt zich daarom op platformen zoals Netflix, Disney+ en Streamz. Meer bepaald zal binnen dit onderzoek getest de \acrshort{poc} getest worden op het streamingplatform Netflix.
