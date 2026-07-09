@@ -5,4 +5,204 @@
 \chapter{Shortlist}%
 \label{ch:shortlist}
 
-\lipsum[76]
+De laatste fase voorafgaand aan de ontwikkeling van een \acrshort{poc} bestaat uit het opstellen van een onderbouwde shortlist van geschikte tools. Waar de longlist uit hoofdstuk~\ref{ch:stand-van-zaken} een breed overzicht biedt van beschikbare oplossingen, heeft dit hoofdstuk als doel om deze selectie systematisch te verfijnen tot de meest relevante kandidaten voor de vooropgestelde casus.
+
+\vspace{1em}
+
+Hiervoor worden eerst selectiecriteria opgesteld op basis van de inzichten uit hoofdstuk~\ref{ch:stand-van-zaken} en hoofdstuk~\ref{ch:requirementsanalyse}. Deze criteria vormen de basis voor twee opeenvolgende selectierondes. In de eerste selectieronde worden de veertien tools uit de longlist geëvalueerd aan de hand van algemene vereisten, zoals ondersteuning voor mobiele gebruikersinterfaces, mogelijkheden voor screenshotanalyse en beschikbaarheid. Op basis hiervan wordt een eerste selectie gemaakt van zes tools die het meest geschikt lijken voor verdere analyse.
+
+\vspace{1em}
+
+Tijdens de tweede selectieronde worden deze zes overgebleven tools verder vergeleken op basis van enkele functionele en niet-functionele vereisten die betrekking hebben tot het detectie-aspect van de tool. Dit omvat het achterhalen welke tools het grootste potentieel bieden om de frequentst voorkomende dark patterns op streamingdiensten te identificeren. Deze analyse resulteert in een definitieve shortlist van drie tools.
+
+\vspace{1em}
+
+Tot slot worden de drie geselecteerde tools onderworpen aan een praktische test om hun toepasbaarheid binnen deze casus te beoordelen. Op basis van deze vergelijking wordt de meest geschikte tool gekozen als uitgangspunt voor de verdere ontwikkeling van de \acrshort{poc} in het volgende hoofdstuk.
+
+\newpage
+
+\section{Selectiecriteria}
+\label{sec:selectiecriteria}
+
+\vspace{1em}
+
+Om de longlist van veertien tools op een systematische en objectieve manier te reduceren tot een shortlist, worden selectiecriteria opgesteld. Deze criteria zijn afgeleid van de theoretische inzichten uit de literatuurstudie (hoofdstuk~\ref{ch:stand-van-zaken}) en de verzamelde functionele en niet-functionele vereisten die betrekking hebben tot het detectie-aspect uit de requirementsanalyse (hoofdstuk~\ref{ch:requirementsanalyse}). Het selectieproces is opgedeeld in twee opeenvolgende rondes om eerst te filteren op meer algemene en infrastructurele criteria, en vervolgens op voorwaarden met betrekking tot de gevraagde functionaliteiten.
+
+\vspace{1em}
+
+\subsection{Criteria voor de eerste selectieronde}
+
+\vspace{1em}
+
+De eerste selectieronde is gericht op de algemene toepasbaarheid en technische haalbaarheid van de beschikbare tools. Een tool moet aan de volgende criteria voldoen om in aanmerking te komen voor de opgestelde casus:
+
+\begin{itemize}
+    \item \textbf{Open source:} De onderliggende code van de tool moet vrij toegankelijk en aanpasbaar zijn. Dit is een essentiële randvoorwaarde om de \acrshort{poc} te kunnen uitwerken, waarbij een bestaande tool aangepast en uitgebreid zal worden voor de specifieke casus, zoals beschreven in sectie~\ref{sec:poc} uit hoofdstuk~\ref{ch:methodologie}.
+    
+    \item \textbf{Geautomatiseerde detectie:} Om de hoofdonderzoeksvraag van deze bachelorproef te kunnen beantwoorden is het van belang dat de tool zelfstandig dark patterns kan identificeren zonder dat constante manuele tussenkomst door een expert nodig is. Tools die gebruikmaken van manuele methodes vallen buiten de scope van dit onderzoek.
+    
+    \item \textbf{Gratis / low-cost technologie:} Technologische keuzes worden eveneens beïnvloedt door budgettaire restricties binnen dit onderzoek. Wegens een gebrek aan onderzoeksbudget is de selectie beperkt tot gratis of low-cost tools. Dit heeft echter als bijkomstig voordeel dat de ontwikkelde \acrlong{poc} in toekomstig voortbouwend onderzoek door derden zonder financiële drempels verder uitgebouwd kan worden.
+    
+    \item \textbf{Geen gebruik van bots, spiders of scrapers:} Tools die steunen op technieken zoals webcrawling of webscraping vallen af. Uit sectie~\ref{subsec:regelgeving} van hoofdstuk~\ref{ch:stand-van-zaken} blijkt namelijk dat het gebruikmaken van deze technieken in strijd is met de gebruikersvoorwaarden van onderzochte streamingplatformen wat de bruikbaarheid van de \acrshort{poc} in gevaar brengt.   
+    
+%    \item \textbf{Screenshotanalyse:} Na enkele gesprekken en brainstormsessies met de promotor en co-promotors van dit onderzoek werd geconstateerd dat screenshotanalyse de veiligste optie is.   
+    
+    \item \textbf{Focus op dark patterns in mobiele User Interfaces (UI):} Het landschapsonderzoek van streamingdiensten uit de stand van zaken toont aan dat streamen op de smartphone het populairst is bij de doelgroep (\ref{subsec:apparaten-platformen}). Bovendien hebben dark patterns door het kleinere schermoppervlak en de grotere interface-elementen (waardoor ingespeeld wordt op het snelle "Systeem 1"-denken) een grotere en meer impactvolle invloed op mobiele apparaten dan op desktop (\ref{subsec:platformvergelijking}). De tool moet dus specifiek mobiele interfaces kunnen analyseren.
+    
+    \item \textbf{Opstartinstructies:} Gezien de beperkte doorlooptijd van deze bachelorproef, moet de tool voorzien zijn van duidelijke opstartinstructies om relatief snel gebruikt te kunnen worden voor verdere implementatie in de \acrshort{poc}-fase. Tools met ontbrekende instructies of gebrekkige documentatie vallen hierdoor af.
+    
+    %TO DO!!!!!!!
+    \item \textbf{Detectie binnen zowel mobiele applicaties als webbrowsers:} De tool moet de flexibiliteit bezitten om dark patterns te herkennen in zowel de apps als mobiele webbrowsers van streamingplatformen. Dit is essentieel omdat de aankoop en afhandeling van een abonnement (een proces waarin frequent dark patterns optreden) vaak in een externe browseromgeving plaatsvindt en niet binnen de applicatie zelf (\ref{1}).
+    %TO DO!!!!!!!
+\end{itemize}
+
+\vspace{1em}
+
+\subsection{Criteria voor de tweede selectieronde}
+\label{subsec:criteria_ronde2}
+
+\vspace{1em}
+
+In de tweede selectieronde worden de overgebleven zes tools onderworpen aan voorwaarden die betrekking hebben tot de functionele eisen van de beoogde applicatie. Hierbij ligt de focus op het detectie- en signalisatiepotentieel binnen de casus van streamingdiensten. De criteria in deze ronde zijn gekoppeld aan relevante functionele requirements (\ref{sec:requirements}):
+
+\begin{itemize}
+    \item \textbf{Detectie van streaming-specifieke dark patterns:} De tool moet in het beste scenario in staat zijn om de acht frequentst voorkomende dark patterns op streamingplatformen (\ref{subsec:meest-voorkomend}) te herkennen. De tools die volgens hun documentatie de meeste dark patterns uit de lijst kunnen detecteren, worden opgenomen in de definitieve shortlist. De te detecteren dark patterns omvatten:
+    \begin{itemize}
+        \item Nagging
+        \item Roach Motel \textit{(Obstruction)}
+        \item Preselection \textit{(Interface Interference)}
+        \item Hidden Information \textit{(Interface Interference)}
+        \item False Hierarchy \textit{(Aesthetic Manipulation (Interface Interference))}
+        \item Tricked Questions \textit{(Aesthetic Manipulation (Interface Interference))}
+        \item Forced Enrollment \textit{(Forced Action)}
+        \item Countdown Timer \textit{(Forced Action)}
+    \end{itemize}
+    
+    \item \textbf{Visueel aanduiden van een dark pattern:} Afgeleid uit de bevinding dat het identificeren van dark patterns voor gebruikers een uitdaging vormt (\ref{subsec:bewustzijn-gebruikers}) en dat het ``raadplegen van een visualisatie waarop het dark pattern zichtbaar is'' opgenomen werd als functionele requirement (\ref{sec:requirements}), moet de tool in staat zijn om het gedetecteerde dark pattern visueel aan te duiden. 
+\end{itemize}
+
+\vspace{1em}
+
+\section{Eerste selectieronde}
+\label{sec:eersteselectie}
+
+\vspace{1em}
+
+Van bijvoorbeeld 14 tools naar 6.
+
+\begin{table}[H]
+    \centering
+    \caption{Evaluatiematrix van de eerste vijf tools}
+    \label{tab:matrix1}
+    
+    \begin{tabular}{
+            >{\raggedright\arraybackslash\small}p{5.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+        }
+        \toprule
+        \textbf{Selectiecriterium} &
+        \textbf{AidUI} &
+        \textbf{DY} &
+        \textbf{UIguard} &
+        \textbf{AGM} &
+        \textbf{ADD} \\
+        \midrule
+        
+        Open source & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Geautomatiseerde detectie & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Gratis / low-cost technologie & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Geen gebruik van bots, spiders of scrapers & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Analyse van mobiele UI's & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Opstartinstructies & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Detectie binnen zowel mobiele applicaties als webbrowsers & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        \midrule
+        
+        \textbf{Score} & 
+        \textbf{0}/7 & 
+        \textbf{0}/7 & 
+        \textbf{0}/7 & 
+        \textbf{0}/7 & 
+        \textbf{0}/7 \\
+        
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\vspace{1em}
+
+\section{Tweede selectieronde}
+\label{sec:tweedeselectie}
+
+\vspace{1em}
+
+Vergelijking van de overblijvende tools aan de hand van de belangrijkste
+functionele requirements.
+
+=> van 6 naar 3.
+
+\vspace{1em}
+
+\section{Definitieve shortlist}
+\label{sec:defshortlist}
+
+\vspace{1em}
+
+Beschrijving van de drie geselecteerde tools.
+Per tool een kort overzicht (methode, aantal dark patterns):
+- waarom opgenomen in de shortlist
+
+\vspace{1em}
+
+\section{Selectie van de meest beloftevolle tool}
+\label{sec:selectiebeloftevolletool}
+
+\vspace{1em}
+
+Vergelijking van de drie tools op basis van een kleine praktische test. + motivatie waarom uiteindelijk één tool
+gekozen werd als basis voor de verdere ontwikkeling.
