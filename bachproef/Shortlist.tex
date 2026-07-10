@@ -13,7 +13,7 @@ Hiervoor worden eerst selectiecriteria opgesteld op basis van de inzichten uit h
 
 \vspace{1em}
 
-Tijdens de tweede selectieronde worden deze zes overgebleven tools verder vergeleken op basis van enkele functionele en niet-functionele vereisten die betrekking hebben tot het detectie-aspect van de tool. Dit omvat het achterhalen welke tools het grootste potentieel bieden om de frequentst voorkomende dark patterns op streamingdiensten te identificeren. Deze analyse resulteert in een definitieve shortlist van drie tools.
+Tijdens de tweede selectieronde worden deze vijf overgebleven tools verder vergeleken op basis van enkele functionele en niet-functionele vereisten die betrekking hebben tot het detectie-aspect van de tool. Dit omvat het achterhalen welke tools het grootste potentieel bieden om de frequentst voorkomende dark patterns op streamingdiensten te identificeren. Deze analyse resulteert in een definitieve shortlist van drie tools.
 
 \vspace{1em}
 
@@ -51,9 +51,7 @@ De eerste selectieronde is gericht op de algemene toepasbaarheid en technische h
     
     \item \textbf{Opstartinstructies:} Gezien de beperkte doorlooptijd van deze bachelorproef, moet de tool voorzien zijn van duidelijke opstartinstructies om relatief snel gebruikt te kunnen worden voor verdere implementatie in de \acrshort{poc}-fase. Tools met ontbrekende instructies of gebrekkige documentatie vallen hierdoor af.
     
-    %TO DO!!!!!!!
-    \item \textbf{Detectie binnen zowel mobiele applicaties als webbrowsers:} De tool moet de flexibiliteit bezitten om dark patterns te herkennen in zowel de apps als mobiele webbrowsers van streamingplatformen. Dit is essentieel omdat de aankoop en afhandeling van een abonnement (een proces waarin frequent dark patterns optreden) vaak in een externe browseromgeving plaatsvindt en niet binnen de applicatie zelf (\ref{1}).
-    %TO DO!!!!!!!
+    \item \textbf{Detectie binnen zowel mobiele applicaties als webbrowsers:} De tool moet de flexibiliteit bezitten om dark patterns te herkennen in zowel de apps als mobiele webbrowsers van streamingplatformen. Dit is essentieel omdat uit de literatuurstudie blijkt dat dark patterns in beide omgevingen voorkomen en dat het type en de aanwezigheid van dark patterns kunnen verschillen tussen mobiele apps en webbrowsers (\ref{subsec:platformvergelijking}).
 \end{itemize}
 
 \vspace{1em}
@@ -63,7 +61,7 @@ De eerste selectieronde is gericht op de algemene toepasbaarheid en technische h
 
 \vspace{1em}
 
-In de tweede selectieronde worden de overgebleven zes tools onderworpen aan voorwaarden die betrekking hebben tot de functionele eisen van de beoogde applicatie. Hierbij ligt de focus op het detectie- en signalisatiepotentieel binnen de casus van streamingdiensten. De criteria in deze ronde zijn gekoppeld aan relevante functionele requirements (\ref{sec:requirements}):
+In de tweede selectieronde worden de overgebleven vijf tools onderworpen aan voorwaarden die betrekking hebben tot de functionele eisen van de beoogde applicatie. Hierbij ligt de focus op het detectie- en signalisatiepotentieel binnen de casus van streamingdiensten. De criteria in deze ronde zijn gekoppeld aan relevante functionele requirements (\ref{sec:requirements}):
 
 \begin{itemize}
     \item \textbf{Detectie van streaming-specifieke dark patterns:} De tool moet in het beste scenario in staat zijn om de acht frequentst voorkomende dark patterns op streamingplatformen (\ref{subsec:meest-voorkomend}) te herkennen. De tools die volgens hun documentatie de meeste dark patterns uit de lijst kunnen detecteren, worden opgenomen in de definitieve shortlist. De te detecteren dark patterns omvatten:
@@ -86,13 +84,10 @@ In de tweede selectieronde worden de overgebleven zes tools onderworpen aan voor
 \section{Eerste selectieronde}
 \label{sec:eersteselectie}
 
-\vspace{1em}
-
-Van bijvoorbeeld 14 tools naar 6.
-
 \begin{table}[H]
     \centering
-    \caption{Evaluatiematrix van de eerste vijf tools}
+    \caption{Evaluatiematrix van bestaande dark-pattern-detectietools tijdens de eerste selectieronde (deel 1 van 3). De tools worden beoordeeld op hun geschiktheid voor gebruik binnen dit onderzoek aan de hand van zeven selectiecriteria gericht op de algemene toepasbaarheid en technische haalbaarheid. Een score wordt toegekend op basis van het aantal criteria waaraan een tool voldoet.}
+    
     \label{tab:matrix1}
     
     \begin{tabular}{
@@ -110,6 +105,91 @@ Van bijvoorbeeld 14 tools naar 6.
         \textbf{UIguard} &
         \textbf{AGM} &
         \textbf{ADD} \\
+        \midrule
+        
+        Open source & 
+        \vink \kruisje & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Geautomatiseerde detectie & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Gratis / low-cost technologie & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Geen gebruik van bots, spiders of scrapers & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Analyse van mobiele UI's & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Opstartinstructies & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Detectie binnen zowel mobiele applicaties als webbrowsers & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        \midrule
+        
+        \textbf{Score} & 
+        \textbf{0}/7 & 
+        \textbf{0}/7 & 
+        \textbf{0}/7 & 
+        \textbf{0}/7 & 
+        \textbf{0}/7 \\
+        
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Evaluatiematrix van bestaande dark-pattern-detectietools tijdens de eerste selectieronde (deel 2 van 3). De tools worden beoordeeld op hun geschiktheid voor gebruik binnen dit onderzoek aan de hand van zeven selectiecriteria gericht op de algemene toepasbaarheid en technische haalbaarheid. Een score wordt toegekend op basis van het aantal criteria waaraan een tool voldoet.}
+    
+    \label{tab:matrix2}
+    
+    \begin{tabular}{
+            >{\raggedright\arraybackslash\small}p{5.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+        }
+        \toprule
+        \textbf{Selectiecriterium} &
+        \textbf{YJT} &
+        \textbf{SSS} &
+        \textbf{DPGuard} &
+        \textbf{SMS} &
+        \textbf{Dapde} \\
         \midrule
         
         Open source & 
@@ -174,17 +254,185 @@ Van bijvoorbeeld 14 tools naar 6.
     \end{tabular}
 \end{table}
 
+\begin{table}[H]
+    \centering
+    \caption{Evaluatiematrix van bestaande dark-pattern-detectietools tijdens de eerste selectieronde (deel 3 van 3). De tools worden beoordeeld op hun geschiktheid voor gebruik binnen dit onderzoek aan de hand van zeven selectiecriteria gericht op de algemene toepasbaarheid en technische haalbaarheid. Een score wordt toegekend op basis van het aantal criteria waaraan een tool voldoet.}
+    
+    \label{tab:matrix3}
+    
+    \begin{tabular}{
+            >{\raggedright\arraybackslash\small}p{5.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+        }
+        \toprule
+        \textbf{Selectiecriterium} & &
+        \textbf{YMK} &
+        \textbf{AppRay} &
+        \textbf{Grease Droid} &
+        \textbf{AutoBot}\\
+        \midrule
+        
+        Open source & & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Geautomatiseerde detectie & &
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Gratis / low-cost technologie & &
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Geen gebruik van bots, spiders of scrapers & &
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Analyse van mobiele UI's & &
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Opstartinstructies & &
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Detectie binnen zowel mobiele applicaties als webbrowsers & &
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        \midrule
+        
+        \textbf{Score} & & 
+        \textbf{0}/7 & 
+        \textbf{0}/7 & 
+        \textbf{0}/7 & 
+        \textbf{0}/7 \\
+        
+        \bottomrule
+    \end{tabular}
+\end{table}
+
 \vspace{1em}
 
 \section{Tweede selectieronde}
 \label{sec:tweedeselectie}
 
-\vspace{1em}
-
-Vergelijking van de overblijvende tools aan de hand van de belangrijkste
-functionele requirements.
-
-=> van 6 naar 3.
+\begin{table}[H]
+    \centering
+    \caption{Evaluatiematrix van bestaande dark-pattern-detectietools tijdens de tweede selectieronde. De tools worden beoordeeld op hun geschiktheid voor gebruik binnen dit onderzoek aan de hand van selectiecriteria die zijn gebaseerd op de functionele requirements. Hierbij wordt gefocust op het detectie- en signalisatiepotentieel van de tools binnen de context van streamingdiensten. Een score wordt toegekend op basis van het aantal criteria waaraan een tool voldoet.}
+    
+    \label{tab:matrix4}
+    
+    \begin{tabular}{
+            >{\raggedright\arraybackslash\small}p{5.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+            >{\centering\arraybackslash\small}p{1.5cm}
+        }
+        \toprule
+        \textbf{Selectiecriterium} &
+        \textbf{Tool 1} &
+        \textbf{Tool 2} &
+        \textbf{Tool 3} &
+        \textbf{Tool 4} &
+        \textbf{Tool 5} \\
+        \midrule
+        
+        Detecteren van \textit{Nagging} &
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Detecteren van \textit{Roach Motel} &
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Detecteren van \textit{Preselection} &
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Detecteren van \textit{Hidden Information} &
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Detecteren van \textit{False Hierarchy} & 
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Detecteren van \textit{Tricked Questions} &
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Detecteren van \textit{Forced Enrollment} &
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Detecteren van \textit{Countdown Timer} &
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        Visueel aanduiden van dark patterns &
+        - & 
+        - & 
+        - & 
+        - & 
+        - \\
+        
+        \midrule
+        
+        \textbf{Score} & 
+        \textbf{0}/9 & 
+        \textbf{0}/9 & 
+        \textbf{0}/9 & 
+        \textbf{0}/9 & 
+        \textbf{0}/9 \\
+        
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 \vspace{1em}
 
