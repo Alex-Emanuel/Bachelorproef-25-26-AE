@@ -46,6 +46,8 @@ De eerste selectieronde is gericht op de algemene toepasbaarheid en technische h
     \item \textbf{Geen gebruik van bots, spiders of scrapers:} Tools die steunen op technieken zoals webcrawling of webscraping vallen af. Uit sectie~\ref{subsec:regelgeving} van hoofdstuk~\ref{ch:stand-van-zaken} blijkt namelijk dat het gebruikmaken van deze technieken in strijd is met de gebruikersvoorwaarden van onderzochte streamingplatformen wat de bruikbaarheid van de \acrshort{poc} in gevaar brengt.   
     
 %    \item \textbf{Screenshotanalyse:} Na enkele gesprekken en brainstormsessies met de promotor en co-promotors van dit onderzoek werd geconstateerd dat screenshotanalyse de veiligste optie is.   
+
+    \newpage
     
     \item \textbf{Focus op dark patterns in mobiele User Interfaces (UI):} Het landschapsonderzoek van streamingdiensten uit de stand van zaken toont aan dat streamen op de smartphone het populairst is bij de doelgroep (\ref{subsec:apparaten-platformen}). Bovendien hebben dark patterns door het kleinere schermoppervlak en de grotere interface-elementen (waardoor ingespeeld wordt op het snelle "Systeem 1"-denken) een grotere en meer impactvolle invloed op mobiele apparaten dan op desktop (\ref{subsec:platformvergelijking}). De tool moet dus specifiek mobiele interfaces kunnen analyseren.
     
@@ -53,8 +55,6 @@ De eerste selectieronde is gericht op de algemene toepasbaarheid en technische h
     
     \item \textbf{Detectie binnen zowel mobiele applicaties als webbrowsers:} De tool moet de flexibiliteit bezitten om dark patterns te herkennen in zowel de apps als mobiele webbrowsers van streamingplatformen. Dit is essentieel omdat uit de literatuurstudie blijkt dat dark patterns in beide omgevingen voorkomen en dat het type en de aanwezigheid van dark patterns kunnen verschillen tussen mobiele apps en webbrowsers (\ref{subsec:platformvergelijking}).
 \end{itemize}
-
-\vspace{1em}
 
 \subsection{Criteria voor de tweede selectieronde}
 \label{subsec:criteria_ronde2}
@@ -108,66 +108,68 @@ In de tweede selectieronde worden de overgebleven vijf tools onderworpen aan voo
         \midrule
         
         Open source & 
-        \vink \kruisje & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink & 
+        \kruisje & 
+        \vink & 
+        \vink & 
+        \kruisje \\
         
         Geautomatiseerde detectie & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink & 
+        \kruisje & 
+        \vink & 
+        \vink & 
+        \vink \\
         
         Gratis / low-cost technologie & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink & 
+        ? & 
+        \vink & 
+        \vink & 
+        ? \\
         
         Geen gebruik van bots, spiders of scrapers & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink & 
+        \vink & 
+        \vink & 
+        \kruisje & 
+        \kruisje \\
         
         Analyse van mobiele UI's & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink\tablefootnote{Zowel voor web als mobiele interfaces, echter met een focus op dark patterns gevonden op shopping websites.} &
+        ? & 
+        \vink & 
+        \kruisje & 
+        \vink \\
         
         Opstartinstructies & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink\tablefootnote{Enkel getest op Ubuntu.} & 
+        \kruisje & 
+        \kruisje\tablefootnote{Enkel getest op Ubuntu en MacOS. Mogelijks onbruikbare broncode.} & 
+        \kruisje & 
+        \kruisje \\
         
-        Detectie binnen zowel mobiele applicaties als webbrowsers & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        Detectie binnen zowel mobiele applicaties als mobiele webbrowsers & 
+        \vink & 
+        ? & 
+        ? & 
+        \kruisje & 
+        \vink \\
         
         \midrule
         
         \textbf{Score} & 
-        \textbf{0}/7 & 
-        \textbf{0}/7 & 
-        \textbf{0}/7 & 
-        \textbf{0}/7 & 
-        \textbf{0}/7 \\
+        \textbf{7}/7 & 
+        \textbf{1}/7 & 
+        \textbf{5}/7 & 
+        \textbf{3}/7 & 
+        \textbf{3}/7 \\
         
         \bottomrule
     \end{tabular}
 \end{table}
+
+\newpage
 
 \begin{table}[H]
     \centering
@@ -193,66 +195,68 @@ In de tweede selectieronde worden de overgebleven vijf tools onderworpen aan voo
         \midrule
         
         Open source & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink & 
+        \kruisje & 
+        \vink & 
+        \kruisje & 
+        \vink \\
         
         Geautomatiseerde detectie & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink & 
+        \vink & 
+        \vink & 
+        \vink & 
+        \vink \\
         
         Gratis / low-cost technologie & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink & 
+        ? & 
+        \vink\tablefootnote{Kleine kostprijs van \$0.02 per gebruik.} & 
+        ? & 
+        \vink \\
         
         Geen gebruik van bots, spiders of scrapers & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink & 
+        ? & 
+        \kruisje & 
+        \vink & 
+        \vink \\
         
         Analyse van mobiele UI's & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \kruisje & 
+        \kruisje & 
+        \vink & 
+        ? & 
+        \kruisje \\
         
         Opstartinstructies & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \kruisje & 
+        \kruisje & 
+        \vink\tablefootnote{Enkel getest op Ubuntu en MacOS.} & 
+        ? & 
+        \vink \\
         
-        Detectie binnen zowel mobiele applicaties als webbrowsers & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        Detectie binnen zowel mobiele applicaties als mobiele webbrowsers & 
+        \kruisje & 
+        \kruisje & 
+        \vink & 
+        ? & 
+        \kruisje \\
         
         \midrule
         
         \textbf{Score} & 
-        \textbf{0}/7 & 
-        \textbf{0}/7 & 
-        \textbf{0}/7 & 
-        \textbf{0}/7 & 
-        \textbf{0}/7 \\
+        \textbf{4}/7 & 
+        \textbf{1}/7 & 
+        \textbf{6}/7 & 
+        \textbf{2}/7 & 
+        \textbf{5}/7 \\
         
         \bottomrule
     \end{tabular}
 \end{table}
+
+\newpage
 
 \begin{table}[H]
     \centering
@@ -277,60 +281,169 @@ In de tweede selectieronde worden de overgebleven vijf tools onderworpen aan voo
         \midrule
         
         Open source & & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \kruisje & 
+        \vink & 
+        \vink & 
+        \vink \\
         
         Geautomatiseerde detectie & &
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink & 
+        \vink & 
+        \vink\tablefootnote{Detecteert en modificeert in plaats van signalisatie.} & 
+        \vink \\
         
         Gratis / low-cost technologie & &
-        - & 
-        - & 
-        - & 
-        - \\
+        ? & 
+        \vink\tablefootnote{Kleine kostprijs per gebruik.} & 
+        ? & 
+        \vink\tablefootnote{Kleine kostprijs per gebruik.} \\
         
         Geen gebruik van bots, spiders of scrapers & &
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink & 
+        \kruisje & 
+        \vink & 
+        \vink \\
         
         Analyse van mobiele UI's & &
-        - & 
-        - & 
-        - & 
-        - \\
+        ? & 
+        \vink & 
+        \vink & 
+        \kruisje \\
         
         Opstartinstructies & &
-        - & 
-        - & 
-        - & 
-        - \\
+        ? & 
+        \kruisje\tablefootnote{Mogelijks onbruikbare broncode.} & 
+        \vink & 
+        \vink\tablefootnote{Vereist hogere rekenkracht.} \\
         
-        Detectie binnen zowel mobiele applicaties als webbrowsers & &
-        - & 
-        - & 
-        - & 
-        - \\
+        Detectie binnen zowel mobiele applicaties als mobiele webbrowsers & &
+        ? & 
+        ? & 
+        ? & 
+        \kruisje \\
         
         \midrule
         
         \textbf{Score} & & 
-        \textbf{0}/7 & 
-        \textbf{0}/7 & 
-        \textbf{0}/7 & 
-        \textbf{0}/7 \\
+        \textbf{2}/7 & 
+        \textbf{4}/7 & 
+        \textbf{5}/7 & 
+        \textbf{5}/7 \\
         
         \bottomrule
     \end{tabular}
 \end{table}
 
+\newpage
+
+\begin{table}[H]
+    \centering
+    \caption{Samenvatting van de scores van bestaande dark-pattern-detectietools tijdens de eerste selectieronde.}
+    \label{tab:samenvatting_scores}
+    
+    \begin{tabular}{
+            >{\raggedright\arraybackslash\small}p{2cm}
+            >{\centering\arraybackslash\small}p{2cm}
+            >{\raggedright\arraybackslash\small}p{7cm}
+            >{\raggedright\arraybackslash\small}p{3cm}
+        }
+        \toprule
+        \textbf{Tool} &
+        \textbf{Score} &
+        \textbf{Opmerking} &
+        \textbf{Platform}\\
+        \midrule
+        
+        AidUI & 
+        \textbf{7}/7 & 
+        Screenshotanalyse, focus op dark patterns gevonden op shopping websites, getest op Ubuntu. &
+        Beide \\
+        
+        DPGuard & 
+        \textbf{6}/7 & 
+        Gebruikt een bot voor analyse, kleine kostprijs, getest op Ubuntu en MacOS. &
+        Beide \\
+         
+        Grease Droid & 
+        \textbf{5}/7 & 
+        Geen signalisatie maar modificatie. &
+        Mobiel \\
+        
+        UIguard & 
+        \textbf{5}/7 & 
+        Screenshotanalyse, mogelijks onbruikbare broncode. &
+        Mobiel \\
+       
+        Dapde & 
+        \textbf{5}/7 & 
+        Niet geschikt voor detectie op mobiele toestellen (DOM-cloning). &
+        Desktop \\
+        
+        AutoBot & 
+        \textbf{5}/7 & 
+        Screenshotanalyse, kleine kostprijs, hogere rekenkracht nodig. &
+        Desktop \\
+        
+        AppRay & 
+        \textbf{4}/7 & 
+        Hybride analyse met LLM, dynamische GUI-exploratie en deep learning, mogelijks onbruikbare broncode. &
+        Mobiel \\
+        
+        YJT & 
+        \textbf{4}/7 & 
+        NLP-analyse met machine learning en BERT op basis van tekstuele input. &
+        Desktop \\
+        
+        AGM & 
+        \textbf{3}/7 & 
+        Web crawling, tekstextractie en clustering. &
+        Desktop \\
+        
+        ADD & 
+        \textbf{3}/7 & 
+        Closed source &
+        Beide \\
+        
+        SMS & 
+        \textbf{2}/7 & 
+        Closed source &
+        Onbekend \\
+        
+        YMK & 
+        \textbf{2}/7 & 
+        Closed source &
+        Onbekend \\
+        
+        DY & 
+        \textbf{1}/7 & 
+        Closed source &
+        Onbekend \\
+        
+        SSS & 
+        \textbf{1}/7 & 
+        Closed source &
+        Onbekend \\
+        
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Op basis van deze eerste selectieronde worden \textbf{AidUI}, \textbf{DPGuard}, \textbf{UIguard}, \textbf{AutoBot} en \textbf{AppRay} geselecteerd voor verdere analyse. AidUI en DPGuard werden weerhouden vanwege hun hoge scores en uitgebreide detectiemogelijkheden. Voor DPGuard moet echter bijkomend onderzocht worden of de detectie ook mogelijk is zonder gebruik te maken van de ingebouwde bot voor automatische UI-exploratie, aangezien het gebruik van dergelijke technieken mogelijk in strijd kan zijn met de gebruiksvoorwaarden van streamingdiensten.
+
 \vspace{1em}
+
+UIguard werd geselecteerd vanwege de vergelijkbare aanpak met AidUI, waarbij gebruik wordt gemaakt van screenshotanalyse zonder afhankelijkheid van automatische UI-exploratie. AutoBot werd eveneens opgenomen vanwege de toegepaste screenshotanalyse, ondanks dat de tool oorspronkelijk ontwikkeld werd voor desktopinterfaces. Er wordt onderzocht of deze aanpak ook toepasbaar is binnen een mobiele context.
+
+\vspace{1em}
+
+Grease Droid en Dapde werden niet verder meegenomen. Grease Droid richt zich voornamelijk op het aanpassen of verwijderen van dark patterns in plaats van enkel de detectie ervan, terwijl Dapde gebruikmaakt van DOM-cloning, een techniek die niet toepasbaar is binnen mobiele applicaties.
+
+\vspace{1em}
+
+Ten slotte werd AppRay geselecteerd ondanks de lagere score van 4/7. Deze score wordt deels beïnvloed door een criterium waarvoor onvoldoende informatie beschikbaar was, namelijk de ondersteuning van zowel mobiele applicaties als mobiele webbrowsers. Indien dit criterium positief beoordeeld zou worden, zou AppRay een score van 5/7 behalen. Daarnaast dient bij AppRay, net zoals DPGuard, onderzocht te worden of detectie ook haalbaar is zonder gebruik te maken van dynamische GUI-exploratie.
+
+
+\newpage
 
 \section{Tweede selectieronde}
 \label{sec:tweedeselectie}
@@ -351,68 +464,68 @@ In de tweede selectieronde worden de overgebleven vijf tools onderworpen aan voo
         }
         \toprule
         \textbf{Selectiecriterium} &
-        \textbf{Tool 1} &
-        \textbf{Tool 2} &
-        \textbf{Tool 3} &
-        \textbf{Tool 4} &
-        \textbf{Tool 5} \\
+        \textbf{AidUI} &
+        \textbf{DPGuard} &
+        \textbf{UIguard} &
+        \textbf{AutoBot} &
+        \textbf{AppRay} \\
         \midrule
         
         Detecteren van \textit{Nagging} &
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink & 
+        \vink & 
+        \vink & 
+        \kruisje & 
+        \vink \\
         
         Detecteren van \textit{Roach Motel} &
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \kruisje & 
+        \vink & 
+        \kruisje & 
+        \kruisje & 
+        \vink \\
         
         Detecteren van \textit{Preselection} &
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink & 
+        \vink & 
+        \vink & 
+        \vink & 
+        \vink \\
         
         Detecteren van \textit{Hidden Information} &
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \kruisje & 
+        \vink & 
+        \kruisje & 
+        \kruisje & 
+        \vink \\
         
         Detecteren van \textit{False Hierarchy} & 
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \kruisje & 
+        \vink & 
+        \vink & 
+        \vink & 
+        \vink \\
         
         Detecteren van \textit{Tricked Questions} &
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \kruisje & 
+        \kruisje & 
+        \kruisje & 
+        \vink & 
+        \vink \\
         
         Detecteren van \textit{Forced Enrollment} &
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \kruisje & 
+        \vink & 
+        \kruisje & 
+        \kruisje & 
+        \kruisje \\
         
         Detecteren van \textit{Countdown Timer} &
-        - & 
-        - & 
-        - & 
-        - & 
-        - \\
+        \vink & 
+        \vink & 
+        \vink & 
+        \kruisje & 
+        \kruisje \\
         
         Visueel aanduiden van dark patterns &
         - & 
@@ -424,11 +537,11 @@ In de tweede selectieronde worden de overgebleven vijf tools onderworpen aan voo
         \midrule
         
         \textbf{Score} & 
-        \textbf{0}/9 & 
-        \textbf{0}/9 & 
-        \textbf{0}/9 & 
-        \textbf{0}/9 & 
-        \textbf{0}/9 \\
+        \textbf{3}/9 & 
+        \textbf{7}/9 & 
+        \textbf{4}/9 & 
+        \textbf{3}/9 & 
+        \textbf{6}/9 \\
         
         \bottomrule
     \end{tabular}
