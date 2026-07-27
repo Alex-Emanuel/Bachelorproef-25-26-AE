@@ -547,80 +547,172 @@ Ten slotte werd AppRay geselecteerd ondanks de lagere score van 4/7. Deze score 
 
 \vspace{1em}
 
+Uit de resultaten van de tweede selectieronde blijkt dat \textbf{AidUI}, de tool die tijdens de eerste selectieronde het best scoorde op algemene toepasbaarheid en technische haalbaarheid, minder goed scoort op detectiepotentieel.
 
-DPGuard !
-13/16
+\vspace{1em}
 
-AidUI !
-11/16
+\textbf{DPGuard} en \textbf{AppRay} behalen in deze ronde de hoogste scores. AppRay behaalde echter tijdens de eerste selectieronde een relatief lagere score. Daarnaast maken beide tools gebruik van automatische exploratie aan de hand van een bot, wat mogelijk problemen kan veroorzaken in verband met de gebruiksvoorwaarden van streamingdiensten.
 
-AppRay ?/
-11/16
+\newpage
 
-UIguard ?!
-10/16
+Om tot een finale shortlist te komen, worden de scores uit beide selectierondes opgeteld. De tools met de hoogste totaalscore worden geselecteerd:
 
-AutoBot /
-9/16
+\begin{itemize}
+    \item DPGuard: 13/16
+    \item AidUI: 11/16
+    \item AppRay: 11/16
+    \item UIguard: 10/16
+    \item AutoBot: 9/16
+\end{itemize}
 
+Uit de totaalscores blijkt dat \textbf{DPGuard}, \textbf{AidUI} en \textbf{AppRay} het best scoren. Daarom worden deze tools geselecteerd voor verdere analyse.
 
-Amazon Prime Video
-- Kan geen screenshots nemen tijdens "je abonnementen beheren" en verder (opent browser in app, staat geen screenshots toe) -> screenshots wel mogelijk in browser
-- 
-
-
-Door niet altijd gebruik te kunnen maken van screenshots, is soms een tekstueel gebaseerde analyse niet beter die specifiek is voor mobiele interfaces? Moet verder onderzoek naar gedaan worden 
--> ipv gewone screenshot kan ook "MediaProjection API"
-
-
-(YJT is desktop)
--> detecteert:
-Roach Motel
-Hidden Costs
-Sneak into basket
-Hidden information
-Toying with emotion
-False hierarchy
-Tricked Questions
-Countdown Timer
-Forced Enrollment
-
-
-Voor test herkennen van 4 dark patterns moet slagen: 
-- nagging
-- preselection
-- false hierarchy
-- countdown timer
-- hidden information
-- roach motel
-- tricked questions
-
-
-
-Focus op: preselection, hidden information, false hierarchy
-+ roach motel (moeilijk) + tricked questions en countdown timer
-
-
-DOEL: 4 van 8 dark patterns herkennen
-
-
-%    \item \textbf{Screenshotanalyse:} Na enkele gesprekken en brainstormsessies met de promotor en co-promotors van dit onderzoek werd geconstateerd dat screenshotanalyse de veiligste optie is.   
+\newpage
 
 \section{Definitieve shortlist}
 \label{sec:defshortlist}
 
 \vspace{1em}
 
-Beschrijving van de drie geselecteerde tools.
-Per tool een kort overzicht (methode, aantal dark patterns):
-- waarom opgenomen in de shortlist
+Op basis van de resultaten van beide selectierondes wordt een definitieve shortlist van drie tools samengesteld. Hoewel deze tools de hoogste totaalscores behaalden, maken de resultaten duidelijk dat iedere tool beperkingen heeft. Zo bieden DPGuard en AppRay een hoog detectiepotentieel, maar maken beide gebruik van automatische UI-exploratie via een bot. AidUI daarentegen scoort het beste op algemene toepasbaarheid en technische haalbaarheid, maar ondersteunt minder verschillende dark patterns. Tabel~\ref{tab:definitieve_shortlist} geeft een overzicht van de shortlist met de voornaamste sterktes en aandachtspunten van de geselecteerde tools.
 
 \vspace{1em}
+
+\begin{table}[H]
+    \centering
+    \caption[Definitieve shortlist]{Overzicht van de definitieve shortlist met de geselecteerde dark-pattern-detectietools, hun sterktes en geïdentificeerde beperkingen binnen de scope van de bachelorproef}
+    \label{tab:definitieve_shortlist}
+    
+    \begin{tabular}{
+            >{\raggedright\arraybackslash\small}p{2.5cm}
+            >{\raggedright\arraybackslash\small}p{6cm}
+            >{\raggedright\arraybackslash\small}p{6cm}
+        }
+        \toprule
+        \textbf{Tool} & \textbf{Sterktes} & \textbf{Aandachtspunten} \\
+        \midrule
+        
+        \raisebox{-0.25cm}{DPGuard} &
+        \begin{itemize}[leftmargin=12pt,label=+,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt]
+            \item Hoogste detectiepotentieel
+            \item Brede ondersteuning van verschillende dark patterns
+            \item Hoogste totaalscore
+        \end{itemize}
+        &
+        \begin{itemize}[leftmargin=12pt,label=-,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt]
+            \item Gebruikt een bot voor automatische UI-exploratie
+            \item Toepasbaarheid binnen streamingdiensten is onzeker
+        \end{itemize} \\
+        
+        \raisebox{-0.25cm}{AidUI} &
+        \begin{itemize}[leftmargin=12pt,label=+,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt]
+            \item Screenshotanalyse zonder bots
+            \item Hoogste score tijdens de eerste selectieronde
+            \item Sterke technische haalbaarheid
+        \end{itemize}
+        &
+        \begin{itemize}[leftmargin=12pt,label=-,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt]
+            \item Lager detectiepotentieel
+            \item Ondersteunt minder complexe dark patterns
+        \end{itemize}        \\
+        
+        \raisebox{-0.25cm}{AppRay} &
+        \begin{itemize}[leftmargin=12pt,label=+,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt]
+            \item Hoog detectiepotentieel
+            \item Brede ondersteuning van verschillende dark patterns
+            \item Hybride detectieaanpak
+        \end{itemize} 
+        &
+        \begin{itemize}[leftmargin=12pt,label=-,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt]
+            \item Gebruikt een bot voor automatische UI-exploratie
+            \item Toepasbaarheid binnen streamingdiensten is onzeker
+            \item Lagere score tijdens de eerste selectieronde
+        \end{itemize} \\
+        
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\newpage
 
 \section{Selectie van de meest beloftevolle tool}
 \label{sec:selectiebeloftevolletool}
 
 \vspace{1em}
 
-Vergelijking van de drie tools op basis van een kleine praktische test. + motivatie waarom uiteindelijk één tool
-gekozen werd als basis voor de verdere ontwikkeling.
+Om te bepalen met welke tool gewerkt zal worden bij het uitwerken van een \acrlong{poc}, worden de geselecteerde tools onderworpen aan een praktische evaluatie. Hierbij worden verschillende schermopnames van eerder geïdentificeerde dark patterns op streamingdiensten door de tools  geanalyseerd. Deze schermopnames werden vooraf verzameld uit de apps van \textit{Netflix}, \textit{Amazon Prime Video}, \textit{Disney+} en \textit{YouTube}, waarbij zowel Engelstalige als Nederlandstalige interfaces werden gebruikt. De schermopnames werden opgenomen in bijlage~\ref{ch:testdata}.
+
+\vspace{1em}
+
+\subsubsection{Beperkingen tijdens het verzamelen van testdata}
+
+\vspace{1em}
+
+Tijdens het verzamelen van de testdata werd een cruciale beperking vastgesteld. Zo verhindert \textit{Amazon Prime Video} het nemen van screenshots binnen bepaalde delen van de applicatie, zoals het beheren van abonnementen. Dit maakt dat het analyseren op basis van screenshots niet overal toepasbaar is. Hier zal rekening mee gehouden dienen te worden bij de uitwerking van een \acrshort{poc}. Er zal mogelijks gekeken moeten worden naar detectiemogelijkheden die losstaan van screenshotanalyse. Dit kan eveneens een mogelijks aandachtspunt zijn voor verder onderzoek.
+
+\vspace{1em}
+
+Tenslotte werd vastgesteld dat ook \textit{Netflix} het maken van screenshots beperkt binnen bepaalde delen van de applicatie. Door gebruik te maken van een externe schermopnameapplicatie konden deze schermen echter alsnog worden vastgelegd. Dit toont aan dat dergelijke beperkingen op schermafbeeldingen omzeild kunnen worden via alternatieve methoden. Dit zal verder onderzocht worden in hoofdstuk~\ref{ch:poc}.
+
+\vspace{1em}
+
+\subsection{Praktische evaluatie}
+\label{subsec:praktijkevaluatie}
+
+\vspace{1em}
+
+Zoals eerder vermeld heeft de praktische evaluatie als doel na te gaan in welke mate de drie geselecteerde tools in staat zijn om de eerder geïdentificeerde dark patterns automatisch te detecteren. Er wordt in eerste instantie nagegaan of de tool correct kan worden opgestart en gebruikt, aangezien een niet-functionerende tool niet verder geëvalueerd kan worden. Aanvullend wordt per dark pattern beoordeeld of de tool het patroon succesvol detecteert. Tabel~\ref{tab:test-evaluatiematrix} geeft een overzicht van de resultaten van deze praktische test.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption[Evaluatiematrix praktische evaluatie]{Resultaten van de praktische evaluatie van de drie geselecteerde tools op basis van hun opstartbaarheid en het detecteren van de geselecteerde dark patterns.}
+    \label{tab:test-evaluatiematrix}
+  
+    \begin{tabular}{lccc}
+        \toprule
+        \textbf{Evaluatiecriterium} & \textbf{DPGuard} & \textbf{AidUI} & \textbf{AppRay} \\
+        \midrule
+        Tool start correct op & \vink & \vink & \kruisje \\
+        
+        \midrule
+        
+        Nagging & \vink & \vink & - \\
+        
+        Countdown timer & \vink & \vink & - \\
+        
+        Hidden information & \vink & \vink & - \\
+        
+        Preselection & \vink & \vink & - \\
+        
+        False hierarchy & \vink & \vink & - \\
+        
+        Trick question & \vink & \vink & - \\
+        
+        Roach motel & \vink & \vink & - \\
+        
+        Forced continuity & \vink & \vink & - \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Uit de praktische evaluatie blijkt dat \textbf{Tool} de beste resultaten behaalt op het vlak van de detectie van dark patterns. De tool is in staat om de patronen nagging, countdown timer, hidden information, preselection, false hierarchy, trick question, roach motel en forced continuity correct te identificeren. Daarnaast bleek uit de interviews met experten (zie sectie~\ref{sec:interviews-inzichten}) dat preselection, hidden information en false hierarchy de belangrijkste dark patterns zijn om te herkennen.
+
+\vspace{1em}
+
+Rekening houdend met zowel de resultaten van de praktische evaluatie als de inzichten uit de interviews, wordt \textbf{Tool} geselecteerd als meest geschikte tool voor deze use case. Deze tool vormt de basis voor de verdere uitwerking van de \acrshort{poc}.
+
+
+%Voor test herkennen van 4 dark patterns moet slagen: 
+%- nagging
+%- preselection
+%- false hierarchy
+%- countdown timer
+%- hidden information
+%- roach motel
+%- tricked questions
+%
+%Focus op: preselection, hidden information, false hierarchy
+%+ roach motel (moeilijk) + tricked questions en countdown timer
+%
+%DOEL: 4 van 8 dark patterns herkennen
