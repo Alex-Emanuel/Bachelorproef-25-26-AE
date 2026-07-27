@@ -600,7 +600,6 @@ Op basis van de resultaten van beide selectierondes wordt een definitieve shortl
         \end{itemize}
         &
         \begin{itemize}[leftmargin=12pt,label=-,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt]
-            \item Gebruikt een bot voor automatische UI-exploratie
             \item Toepasbaarheid binnen streamingdiensten is onzeker
         \end{itemize} \\
         
@@ -661,40 +660,43 @@ Tenslotte werd vastgesteld dat ook \textit{Netflix} het maken van screenshots be
 
 \vspace{1em}
 
-Zoals eerder vermeld heeft de praktische evaluatie als doel na te gaan in welke mate de drie geselecteerde tools in staat zijn om de eerder geïdentificeerde dark patterns automatisch te detecteren. Er wordt in eerste instantie nagegaan of de tool correct kan worden opgestart en gebruikt, aangezien een niet-functionerende tool niet verder geëvalueerd kan worden. Aanvullend wordt per dark pattern beoordeeld of de tool het patroon succesvol detecteert. Tabel~\ref{tab:test-evaluatiematrix} geeft een overzicht van de resultaten van deze praktische test.
+Zoals eerder vermeld heeft de praktische evaluatie als doel na te gaan in welke mate de drie geselecteerde tools in staat zijn om de eerder geïdentificeerde dark patterns automatisch te detecteren. Er wordt in eerste instantie nagegaan of de tool correct kan worden opgestart en gebruikt, aangezien een niet-functionerende tool niet verder geëvalueerd kan worden. Aanvullend wordt per dark pattern beoordeeld of de tool het patroon succesvol detecteert. Voor de meeste dark patterns zijn meerdere voorbeelden opgenomen in de testdataset. In deze gevallen wordt een detectie als succesvol beschouwd wanneer de tool minstens de helft van de bijbehorende schermopnames correct identificeert. Tabel~\ref{tab:test-evaluatiematrix} geeft een overzicht van de resultaten van deze praktische test.
 
 \begin{table}[H]
     \centering
     \small
-    \caption[Evaluatiematrix praktische evaluatie]{Resultaten van de praktische evaluatie van de drie geselecteerde tools op basis van hun opstartbaarheid en het detecteren van de geselecteerde dark patterns.}
+    \caption[Evaluatiematrix praktische evaluatie]{Resultaten van de praktische evaluatie van de drie geselecteerde tools op basis van hun opstartbaarheid, output en het detecteren van de geselecteerde dark patterns. Een ``-'' duidt aan dat er geen testdata was om te testen.}
     \label{tab:test-evaluatiematrix}
   
-    \begin{tabular}{lccc}
-        \toprule
-        \textbf{Evaluatiecriterium} & \textbf{DPGuard} & \textbf{AidUI} & \textbf{AppRay} \\
-        \midrule
-        Tool start correct op & \vink & \vink & \kruisje \\
-        
-        \midrule
-        
-        Nagging & \vink & \vink & - \\
-        
-        Countdown timer & \vink & \vink & - \\
-        
-        Hidden information & \vink & \vink & - \\
-        
-        Preselection & \vink & \vink & - \\
-        
-        False hierarchy & \vink & \vink & - \\
-        
-        Trick question & \vink & \vink & - \\
-        
-        Roach motel & \vink & \vink & - \\
-        
-        Forced continuity & \vink & \vink & - \\
-        \bottomrule
+    \begin{tabular}{l|cc|cc|cc}
+      \toprule
+      \textbf{Evaluatiecriterium} & \multicolumn{2}{c|}{\textbf{DPGuard}} & \multicolumn{2}{c|}{\textbf{AidUI}} & \multicolumn{2}{c}{\textbf{AppRay}} \\
+      \midrule
+      Tool start correct op & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c}{\kruisje} \\
+      
+      Visuele indicatie & \multicolumn{2}{c|}{\kruisje} & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c}{\vink} \\
+      
+      Gelijkaardige terminologie & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c}{\vink} \\
+      
+      Consistente output & \multicolumn{2}{c|}{\kruisje} & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c}{\vink} \\
+      
+      & & & & & &  \\
+      & NL & EN & NL & EN & NL & EN \\
+      \midrule
+      
+      Nagging & \vink & - & - & - & - & - \\
+      Countdown timer & \vink & \vink & - & - & - & - \\
+      Hidden information & \kruisje & \kruisje & - & - & - & - \\
+      Preselection & \vink & \kruisje & - & - & - & - \\
+      False hierarchy & \kruisje & \kruisje & - & - & - & - \\
+      Roach motel & \vink & \kruisje & - & - & - & - \\
+      Forced enrollment & - & \kruisje & - & - & - & - \\
+      
+      \bottomrule
     \end{tabular}
 \end{table}
+
+
 
 Uit de praktische evaluatie blijkt dat \textbf{Tool} de beste resultaten behaalt op het vlak van de detectie van dark patterns. De tool is in staat om de patronen nagging, countdown timer, hidden information, preselection, false hierarchy, trick question, roach motel en forced continuity correct te identificeren. Daarnaast bleek uit de interviews met experten (zie sectie~\ref{sec:interviews-inzichten}) dat preselection, hidden information en false hierarchy de belangrijkste dark patterns zijn om te herkennen.
 
