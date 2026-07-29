@@ -43,7 +43,7 @@ De eerste selectieronde is gericht op de algemene toepasbaarheid en technische h
     
     \item \textbf{Gratis / low-cost technologie:} Technologische keuzes worden eveneens beïnvloedt door budgettaire restricties binnen dit onderzoek. Wegens een gebrek aan onderzoeksbudget is de selectie beperkt tot gratis of low-cost tools. Dit heeft echter als bijkomstig voordeel dat de ontwikkelde \acrlong{poc} in toekomstig voortbouwend onderzoek door derden zonder financiële drempels verder uitgebouwd kan worden.
     
-    \item \textbf{Geen gebruik van bots, spiders of scrapers:} Tools die steunen op technieken zoals webcrawling of webscraping vallen af. Uit sectie~\ref{subsec:regelgeving} van hoofdstuk~\ref{ch:stand-van-zaken} blijkt namelijk dat het gebruikmaken van deze technieken in strijd is met de gebruikersvoorwaarden van onderzochte streamingplatformen wat de bruikbaarheid van de \acrshort{poc} in gevaar brengt.   
+    \item \textbf{Geen gebruik van bots, spiders of scrapers:} Tools die steunen op technieken zoals webcrawling, webscraping of automatische app exploratie vallen af. Uit sectie~\ref{subsec:regelgeving} van hoofdstuk~\ref{ch:stand-van-zaken} blijkt namelijk dat het gebruikmaken van deze technieken in strijd is met de gebruikersvoorwaarden van onderzochte streamingplatformen wat de bruikbaarheid van de \acrshort{poc} in gevaar brengt.   
 
     \newpage
     
@@ -216,7 +216,7 @@ In de tweede selectieronde worden de overgebleven vijf tools onderworpen aan voo
         Geen gebruik van bots, spiders of scrapers & 
         \vink & 
         ? & 
-        \kruisje & 
+        \vink & 
         \vink & 
         \vink \\
         
@@ -246,7 +246,7 @@ In de tweede selectieronde worden de overgebleven vijf tools onderworpen aan voo
         \textbf{Score} & 
         \textbf{4}/7 & 
         \textbf{1}/7 & 
-        \textbf{6}/7 & 
+        \textbf{7}/7 & 
         \textbf{2}/7 & 
         \textbf{5}/7 \\
         
@@ -358,7 +358,7 @@ In de tweede selectieronde worden de overgebleven vijf tools onderworpen aan voo
         Beide \\
         
         DPGuard & 
-        \textbf{6}/7 & 
+        \textbf{7}/7 & 
         Gebruikt een bot voor analyse, kleine kostprijs, getest op Ubuntu en MacOS. &
         Beide \\
          
@@ -426,7 +426,7 @@ In de tweede selectieronde worden de overgebleven vijf tools onderworpen aan voo
     \end{tabular}
 \end{table}
 
-Op basis van deze eerste selectieronde worden \textbf{AidUI}, \textbf{DPGuard}, \textbf{UIguard}, \textbf{AutoBot} en \textbf{AppRay} geselecteerd voor verdere analyse. AidUI en DPGuard werden weerhouden vanwege hun hoge scores en uitgebreide detectiemogelijkheden. Voor DPGuard moet echter bijkomend onderzocht worden of de detectie ook mogelijk is zonder gebruik te maken van de ingebouwde bot voor automatische UI-exploratie, aangezien het gebruik van dergelijke technieken mogelijk in strijd kan zijn met de gebruiksvoorwaarden van streamingdiensten.
+Op basis van deze eerste selectieronde worden \textbf{AidUI}, \textbf{DPGuard}, \textbf{UIguard}, \textbf{AutoBot} en \textbf{AppRay} geselecteerd voor verdere analyse. AidUI en DPGuard werden weerhouden vanwege hun hoge scores en uitgebreide detectiemogelijkheden.
 
 \vspace{1em}
 
@@ -438,8 +438,7 @@ Grease Droid en Dapde werden niet verder meegenomen. Grease Droid richt zich voo
 
 \vspace{1em}
 
-Ten slotte werd AppRay geselecteerd ondanks de lagere score van 4/7. Deze score wordt deels beïnvloed door een criterium waarvoor onvoldoende informatie beschikbaar was, namelijk de ondersteuning van zowel mobiele applicaties als mobiele webbrowsers. Indien dit criterium positief beoordeeld zou worden, zou AppRay een score van 5/7 behalen. Daarnaast dient bij AppRay, net zoals DPGuard, onderzocht te worden of detectie ook haalbaar is zonder gebruik te maken van dynamische GUI-exploratie.
-
+Ten slotte werd AppRay geselecteerd ondanks de lagere score van 4/7. Deze score wordt deels beïnvloed door een criterium waarvoor onvoldoende informatie beschikbaar was, namelijk de ondersteuning van zowel mobiele applicaties als mobiele webbrowsers. Indien dit criterium positief beoordeeld zou worden, zou AppRay een score van 5/7 behalen. Daarnaast dient bij AppRay onderzocht te worden of detectie ook haalbaar is zonder gebruik te maken van automatische GUI-exploratie.
 
 \newpage
 
@@ -551,14 +550,14 @@ Uit de resultaten van de tweede selectieronde blijkt dat \textbf{AidUI}, de tool
 
 \vspace{1em}
 
-\textbf{DPGuard} en \textbf{AppRay} behalen in deze ronde de hoogste scores. AppRay behaalde echter tijdens de eerste selectieronde een relatief lagere score. Daarnaast maken beide tools gebruik van automatische exploratie aan de hand van een bot, wat mogelijk problemen kan veroorzaken in verband met de gebruiksvoorwaarden van streamingdiensten.
+\textbf{DPGuard} en \textbf{AppRay} behalen in deze ronde de hoogste scores. AppRay behaalde echter tijdens de eerste selectieronde een relatief lagere score. Daarnaast maakt AppRay gebruik van automatische exploratie aan de hand van een bot, wat mogelijk problemen kan veroorzaken in verband met de gebruiksvoorwaarden van streamingdiensten.
 
 \newpage
 
 Om tot een finale shortlist te komen, worden de scores uit beide selectierondes opgeteld. De tools met de hoogste totaalscore worden geselecteerd:
 
 \begin{itemize}
-    \item DPGuard: 13/16
+    \item DPGuard: 14/16
     \item AidUI: 11/16
     \item AppRay: 11/16
     \item UIguard: 10/16
@@ -599,9 +598,7 @@ Op basis van de resultaten van beide selectierondes wordt een definitieve shortl
             \item Hoogste totaalscore
         \end{itemize}
         &
-        \begin{itemize}[leftmargin=12pt,label=-,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt]
-            \item Toepasbaarheid binnen streamingdiensten is onzeker
-        \end{itemize} \\
+        \raisebox{-0.25cm}{\textit{Geen}} \\
         
         \raisebox{-0.25cm}{AidUI} &
         \begin{itemize}[leftmargin=12pt,label=+,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt]
@@ -665,7 +662,7 @@ Zoals eerder vermeld heeft de praktische evaluatie als doel na te gaan in welke 
 \begin{table}[H]
     \centering
     \small
-    \caption[Evaluatiematrix praktische evaluatie]{Resultaten van de praktische evaluatie van de drie geselecteerde tools op basis van hun opstartbaarheid, output en het detecteren van de geselecteerde dark patterns. Een ``-'' duidt aan dat er geen testdata was om te testen.}
+    \caption[Evaluatiematrix praktische evaluatie]{Resultaten van de praktische evaluatie van de drie geselecteerde tools op basis van hun opstartbaarheid, output en het detecteren van de geselecteerde dark patterns. Een ``-'' duidt aan dat testen niet mogelijk was of dat er geen testdata voorzien was.}
     \label{tab:test-evaluatiematrix}
   
     \begin{tabular}{l|cc|cc|cc}
@@ -676,45 +673,45 @@ Zoals eerder vermeld heeft de praktische evaluatie als doel na te gaan in welke 
       
       Visuele indicatie & \multicolumn{2}{c|}{\kruisje} & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c}{\vink} \\
       
-      Gelijkaardige terminologie & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c}{\vink} \\
+      Gelijkaardige terminologie & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c|}{\kruisje} & \multicolumn{2}{c}{\vink} \\
       
-      Consistente output & \multicolumn{2}{c|}{\kruisje} & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c}{\vink} \\
+      Consistente output & \multicolumn{2}{c|}{\kruisje} & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c}{-} \\
+      
+      Uitleg over dark pattern & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c|}{\kruisje} & \multicolumn{2}{c}{\kruisje}\\
+      
+      Snelle detectietijd (< 10 seconden) & \multicolumn{2}{c|}{\vink} & \multicolumn{2}{c|}{\kruisje} & \multicolumn{2}{c}{-}\\
       
       & & & & & &  \\
       & NL & EN & NL & EN & NL & EN \\
       \midrule
       
-      Nagging & \vink & - & - & - & - & - \\
-      Countdown timer & \vink & \vink & - & - & - & - \\
-      Hidden information & \kruisje & \kruisje & - & - & - & - \\
-      Preselection & \vink & \kruisje & - & - & - & - \\
-      False hierarchy & \kruisje & \kruisje & - & - & - & - \\
-      Roach motel & \vink & \kruisje & - & - & - & - \\
-      Forced enrollment & - & \kruisje & - & - & - & - \\
+      Nagging & \vink & - & \kruisje & - & - & - \\
+      Countdown timer & \vink & \vink & \kruisje & \kruisje & - & - \\
+      Hidden information & \kruisje & \kruisje & \kruisje & \kruisje & - & - \\
+      Preselection & \vink & \kruisje & \kruisje & \kruisje & - & - \\
+      False hierarchy & \kruisje & \kruisje & \kruisje & \kruisje & - & - \\
+      Roach motel & \vink & \kruisje & \kruisje & \kruisje & - & - \\
+      Forced enrollment & - & \kruisje & - & \kruisje & - & - \\
+      
+      \midrule
+      
+      \textbf{Score} & \multicolumn{2}{c|}{\textbf{9}/18}  & \multicolumn{2}{c|}{\textbf{3}/18} & \multicolumn{2}{c}{\textbf{2}/18} \\
       
       \bottomrule
     \end{tabular}
 \end{table}
 
 
-
-Uit de praktische evaluatie blijkt dat \textbf{Tool} de beste resultaten behaalt op het vlak van de detectie van dark patterns. De tool is in staat om de patronen nagging, countdown timer, hidden information, preselection, false hierarchy, trick question, roach motel en forced continuity correct te identificeren. Daarnaast bleek uit de interviews met experten (zie sectie~\ref{sec:interviews-inzichten}) dat preselection, hidden information en false hierarchy de belangrijkste dark patterns zijn om te herkennen.
+Uit de praktische evaluatie blijkt dat \textbf{DPGuard} de beste resultaten behaalt op het vlak van de detectie van dark patterns. Ondanks dat de tool slechts een score van 9 op 18 behaalde, scoorde deze hiermee hoger dan de andere geëvalueerde tools. De tool is in staat om diverse patronen zoals nagging, countdown timer, roach motel en preselection te identificeren. Daarnaast detecteerde de tool ook andere correcte patronen die voorkomen in de taxonomie van dit onderzoek, maar die niet in de test werden opgenomen. Bovendien biedt DPGuard enkele interessante voordelen: de tool geeft extra uitleg bij de gedetecteerde patronen (waarom het een dark pattern is) en de tekstuele prompt voor het LLM-model kan eenvoudig verder aangepast worden aan de taxonomie die binnen dit onderzoek gehanteerd wordt. De tool gaf echter bij iedere analyse van dezelfde screenshots andere, soms incorrecte, resultaten waardoor DPGuard punten verloor. Daarnaast ontbreekt een visuele indicatie van het gedetecteerde dark pattern.
 
 \vspace{1em}
 
-Rekening houdend met zowel de resultaten van de praktische evaluatie als de inzichten uit de interviews, wordt \textbf{Tool} geselecteerd als meest geschikte tool voor deze use case. Deze tool vormt de basis voor de verdere uitwerking van de \acrshort{poc}.
+Naast DPGuard werd ook \textbf{AppRay} verder onderzocht. Hoewel deze tool een lagere score behaalde tijdens de praktische evaluatie, werd AppRay opgenomen in de shortlist omdat deze een hoog detectiepotentieel heeft. De tool detecteert dark patterns door middel van een bot die applicaties automatisch verkent. Hierdoor kan rekening worden gehouden met interacties binnen een applicatie, wat vooral belangrijk is voor het detecteren van dynamische dark patterns. Het gebruik van een dergelijke bot is echter niet wenselijk binnen deze bachelorproef, aangezien dit mogelijk in strijd is met de gebruiksvoorwaarden van streamingdiensten. Om na te gaan of AppRay ook zonder de exploratiebot bruikbaar is, werd onderzocht of de detectiecomponent los van de bot kon worden gebruikt. Hierbij bleek dat de exploratiebot en de bijhorende output diep verweven zijn in de tool. Een grondige herwerking om AppRay zonder bot te laten functioneren valt daarom buiten de scope van deze bachelorproef. Om die reden wordt deze tool niet verder meegenomen.
 
+\vspace{1em}
 
-%Voor test herkennen van 4 dark patterns moet slagen: 
-%- nagging
-%- preselection
-%- false hierarchy
-%- countdown timer
-%- hidden information
-%- roach motel
-%- tricked questions
-%
-%Focus op: preselection, hidden information, false hierarchy
-%+ roach motel (moeilijk) + tricked questions en countdown timer
-%
-%DOEL: 4 van 8 dark patterns herkennen
+Ten slotte werd \textbf{AidUI} uitgetest. Door middel van een kleine wijziging in de code was het ook bij deze tool mogelijk om eigen screenshots te analyseren. AidUI genereerde zowel outputafbeeldingen als .json-bestanden. Een belangrijk voordeel van de tool is dat de gedetecteerde elementen visueel worden aangeduid. De tool slaagde er echter niet in om een van de geselecteerde dark patterns correct te detecteren. Met een score van 3 op 18 blijkt ook deze tool niet geschikt voor dit onderzoek.
+
+\vspace{1em}
+
+Rekening houdend met de resultaten van de eerste en tweede selectieronde, als ook de praktische evaluatie, wordt \textbf{DPGuard} geselecteerd als de meest geschikte tool voor deze use case. Deze tool vormt de basis voor de verdere uitwerking van de \acrshort{poc}.
