@@ -5,7 +5,15 @@
 \chapter{Proof of Concept}%
 \label{ch:poc}
 
-\lipsum[76]
+Na in het vorige hoofdstuk \textit{DPGuard} te selecteren als meest geschikte detectietool binnen deze casus, wordt in dit hoofdstuk op basis van deze tool een \acrshort{poc} uitgewerkt. Het doel van dit hoofdstuk is om de bestaande tool aan te passen en uit te breiden door de detectie verder te verfijnen en het voorzien van een gebruiksvriendelijke \acrlong{ui}. De wijzigingen moeten ervoor zorgen dat de tool beter aansluit bij de use case van dit onderzoek en de vooropgestelde functionele en niet-functionele vereisten uit hoofdstuk~\ref{ch:requirementsanalyse}. Bovendien heeft de \acrshort{poc} als doel de tool toegankelijk te maken voor eindgebruikers, zodat zij zonder technische voorkennis dark patterns op streamingdiensten kunnen detecteren en de resultaten op een begrijpelijke manier kunnen raadplegen.
+
+\vspace{1em}
+
+In het eerste deel van dit hoofdstuk worden de mockups van de applicatie besproken. Deze geven de algemene werking en gebruikersflow van de \acrshort{poc} weer. Nadien wordt de keuze van de gebruikte technologieën toegelicht. Vervolgens wordt de implementatie van de \acrshort{poc} beschreven, waarbij verder ingegaan wordt op de belangrijkste toevoegingen en aanpassingen aan de geselecteerde tool.
+
+\vspace{1em}
+
+Tot slot wordt de ontwikkelde \acrshort{poc} geëvalueerd aan de hand van een gebruikerstest. Hierbij wordt onderzocht in welke mate de tool gebruikers ondersteunt bij het herkennen van dark patterns op streamingdiensten. Dit resulteert in een eerste indicatie van de bruikbaarheid en meerwaarde van de voorgestelde oplossing.
 
 \newpage
 
@@ -14,7 +22,32 @@
 
 \vspace{1em}
 
-...
+2.5.1. Bestaand onderzoek naar dark patterns en detectie
+De resultaten uit deze onderzoeken zijn hoofdzakelijk research-prototypes die niet
+meteen bruikbaar zijn voor de gewone gebruiker.
+
+-> \ref{subsec:bestaand-onderzoek}
+
+
+Longlist -> geen user interface
+-> \ref{sec:bestaande-tools}
+
+
+textcite
+autocite
+
+VPCT2026
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.24\textwidth]{screens/NL/roachmotel-b1.jpg}
+    \includegraphics[width=0.24\textwidth]{screens/NL/roachmotel-b2.jpg}
+    \includegraphics[width=0.24\textwidth]{screens/NL/roachmotel-b3.jpg}
+    \includegraphics[width=0.24\textwidth]{screens/NL/roachmotel-b4.jpg}
+    \caption[Een tweede voorbeeld van een Roach Motel dark pattern in een Nederlandstalige interface]{Een tweede voorbeeld van een Roach Motel dark pattern in de Nederlandstalige interface van de Netflix-app. De afbeeldingen tonen vier stappen in het proces om de goed verborgen autoplay-functie uit te schakelen: het openen van de ``Mijn Netflix''-tab, het drukken op de accountnaam, het drukken op de bewerkknop van de actieve avatar en het scrollen naar beneden.}
+    \label{fig:scrn-recorder}
+\end{figure}
+
 
 \vspace{1em}
 
