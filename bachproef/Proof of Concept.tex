@@ -49,16 +49,106 @@ VPCT2026
 \end{figure}
 
 
-\vspace{1em}
+\newpage
 
 \section{Technologieselectie}
 \label{sec:technologieselectie}
 
 \vspace{1em}
 
-...
+Na het uitwerken van de algemene flow van de app, werd gekeken naar welke technologieën gebruikt konden worden voor deze \acrshort{poc}. Hiervoor werd rekening gehouden met de vereisten die naar voren kwamen binnen dit onderzoek:
+
+\begin{itemize}
+    \item De applicatie moet compatibel zijn met Android-toestellen (Hoofdstuk~\ref{ch:requirementsanalyse}, sectie~\ref{sec:requirements}).
+    
+    \item De applicatie moet automatisch screenshots kunnen nemen en deze kunnen doorsturen naar \textit{DPGuard} (Hoofdstuk~\ref{ch:shortlist}).
+    
+    \item De applicatie moet meldingen kunnen versturen wanneer een dark pattern wordt gedetecteerd (Hoofdstuk~\ref{ch:requirementsanalyse}, sectie~\ref{sec:requirements}).
+    
+    \item De applicatie moet informatie uit de \acrshort{ui} van andere apps kunnen verkrijgen en schermwisselingen waarnemen (Hoofdstuk~\ref{ch:requirementsanalyse}, sectie~\ref{sec:requirements}). Hiervoor moet de technologie ondersteuning bieden voor een \textit{Accessibility Service} (Hoofdstuk~\ref{ch:stand-van-zaken}, sectie~\ref{subsec:detectie-mogelijkheden}).
+    
+    \item De applicatie moet eerdere detecties lokaal kunnen bewaren en raadplegen (Hoofdstuk~\ref{ch:requirementsanalyse}, sectie~\ref{sec:requirements}).
+    
+    \item De applicatie moet boven andere apps kunnen worden weergegeven in de vorm van een widget (Hoofdstuk~\ref{ch:poc}, sectie~\ref{sec:mockups}).
+\end{itemize}
+
+Wat de technologieselectie betreft, kan de applicatie worden onderverdeeld in vier lagen: de detectielogica, de gebruikersinterface, de communicatie tussen de detectielogica en de Android-app met de \textit{API} en de gegevensopslag. Voor elk van deze lagen wordt nagegaan welke technologie het beste aansluit bij de vooropgestelde vereisten.
 
 \vspace{1em}
+
+\subsection{Detectielogica}
+\label{subsec:detectielogica}
+
+\vspace{1em}
+
+De tool die in hoofdstuk~\ref{ch:shortlist} naar voren kwam als meest geschikte oplossing voor dit onderzoek was \textit{DPGuard}. Deze tool werd ontwikkeld in Python. Aangezien de bestaande detectielogica van \textit{DPGuard} reeds in Python werd geïmplementeerd, werd ervoor gekozen om ook de verdere verwerking en eventuele aanpassingen aan de detectielogica in Python uit te voeren.
+
+\vspace{1em}
+
+Deze keuze vermijdt eveneens dat de bestaande detectielogica naar een andere programmeertaal vertaald dient te worden. Dit is relevant binnen de beperkte scope van de \acrshort{poc}, aangezien de focus ligt op het integreren en nadien evalueren van de bestaande detectietechnologie met een mobiele applicatie.
+
+\vspace{1em}
+
+
+\subsection{Gebruikersinterface}
+\label{subsec:gebruikersinterface}
+
+\vspace{1em}
+
+Voor de ontwikkeling van de gebruikersinterface werd eerst bepaald welke ontwikkelstrategie het meest geschikt is voor de \acrshort{poc}. Hierbij werd een onderscheid gemaakt tussen native, hybrid en cross-platform development.
+
+\vspace{1em}
+
+In het onderzoek van \textcite{Zarichuk2023} werden deze strategieën met elkaar vergeleken aan de hand van diverse parameters. Een belangrijke parameter voor de \acrshort{poc} binnen dit onderzoek is de toegang tot platformfunctionaliteiten. Denk maar aan het gebruik van een eigen \textit{Accessibility Service}, het nemen van screenshots buiten de app en het weergeven van een widget boven andere apps. Dit zijn uitgebreide functionaliteiten die Android-specifiek zijn. Volgens \textcite{Zarichuk2023} biedt native development volledige toegang tot de mogelijkheden van het toestel en de native API's. Hybrid en cross-platform development daarentegen vereisen ofwel plug-ins of bieden beperkte toegang \autocite{Zarichuk2023}. Daarom is binnen dit onderzoek native development het meest geschikt, aangezien de applicatie gebruik moet maken van Android-specifieke functionaliteiten. Rechtstreekse toegang tot de Android-API's is hierdoor een belangrijke vereiste. 
+
+\vspace{1em}
+
+Ook op het vlak van platformondersteuning sluit native development beter aan bij de scope van dit onderzoek. Native applicaties worden volgens \textcite{Zarichuk2023} ontwikkeld voor een specifiek platform, terwijl hybrid en cross-platform oplossingen zich richten op meerdere platformen vanuit éénzelfde codebase \autocite{Zarichuk2023}. Aangezien deze \acrshort{poc} gericht is op Android, biedt de ondersteuning van meerdere platformen geen noodzakelijke meerwaarde. Op basis hiervan werd gekozen voor een native Android-applicatie.
+
+\vspace{1em}
+
+Binnen native Android development kan er eveneens gekozen worden tussen de programmeertalen Java en Kotlin. Binnen dit onderzoek wordt gekozen voor Kotlin. Volgens \textcite{Bekmuratov2025} biedt Kotlin in vergelijking met Java onder andere een beknoptere syntax en ondersteuning voor \textit{null safety} en coroutines. Dit kan bijdragen aan een meer onderhoudbare en overzichtelijke implementatie. Eveneens is het door coroutines mogelijk om asynchrone taken op een overzichtelijke manier uit te voeren \autocite{Bekmuratov2025}. Dit is vooral interessant voor de \acrshort{poc}, aangezien de applicatie onder andere via een API moet communiceren met de detectielogica.
+
+\vspace{1em}
+
+Bovendien is Kotlin vandaag de aanbevolen programmeertaal voor nieuwe Android-projecten. Volgens de officiële Android-documentatie gebruikt meer dan 60\% van de professionele Android-ontwikkelaars Kotlin \autocite{AndroidDevelopersKotlin}. Daarnaast wordt de officiële Android-documentatie afgestemd op Kotlin \autocite{AndroidDevelopersKotlin}.
+
+\vspace{1em}
+
+Voor de ontwikkeling van de gebruikersinterface wordt gebruikgemaakt van \textit{Jetpack Compose}. Dit is een \acrshort{ui}-toolkit voor Android die de ontwikkeling van gebruikersinterfaces vereenvoudigt en versnelt \autocite{AndroidDevelopersCompose}. Volgens \textcite{Bekmuratov2025} maakt Jetpack Compose gebruik van een declaratieve syntax (zoals bij React en Flutter) en sluit het nauw aan bij Kotlin. Hierdoor kan de gebruikersinterface op een eenvoudigere en snellere manier worden opgebouwd dan met de traditionele XML-gebaseerde aanpak \autocite{Bekmuratov2025}. Op basis hiervan wordt Jetpack Compose gebruikt voor de ontwikkeling van de gebruikersinterface.
+
+\vspace{1em}
+
+\subsection{API}
+\label{subsec:api}
+
+\vspace{1em}
+
+Voor de communicatie tussen de Android-applicatie en de detectielogica is een API vereist. Aangezien de detectielogica van \textit{DPGuard} in Python is ontwikkeld, werd ervoor gekozen om ook de API in Python te ontwikkelen. Hierdoor kan de bestaande detectielogica rechtstreeks vanuit de API worden aangeroepen zonder deze naar een andere programmeertaal te moeten vertalen.
+
+\vspace{1em}
+
+Voor de implementatie van de API werd gekozen voor het Python-framework \textit{FastAPI}. Uit een vergelijkende studie van \textcite{Bednarz2025} bleek dat \textit{FastAPI} in de meeste geteste scenario's beter presteerde dan \textit{Flask} en \textit{Django}. Daarom beschouwen de onderzoekers \textit{FastAPI} als de meest geschikte keuze voor toepassingen waarbij prestaties en lage responstijden belangrijk zijn \autocite{Bednarz2025}.
+
+\vspace{1em}
+
+Deze eigenschappen zijn belangrijk voor de \acrshort{poc}, aangezien screenshots vanuit de Android-applicatie naar de detectielogica worden doorgestuurd en het resultaat vervolgens moet worden teruggestuurd. Hoe sneller het resultaat teruggestuurd kan worden, hoe meer realtime de tool kan werken. De combinatie van Python en de performante, asynchrone werking van \textit{FastAPI} maakt het framework daarom geschikt voor de communicatie tussen de detectietool en de Android-applicatie.
+
+\vspace{1em}
+
+\subsection{Gegevensopslag}
+\label{subsec:gegevensopslag}
+
+\vspace{1em}
+
+Tenslotte moet de applicatie eerdere detecties lokaal kunnen bewaren en raadplegen. Hiervoor werd gekozen voor \textit{Room}, een persistentiebibliotheek van Android die een abstractielaag bovenop SQLite biedt \autocite{AndroidDevelopersRoom}. Hierdoor kunnen lokale gegevens worden opgeslagen en beheerd binnen de Android-applicatie.
+
+\vspace{1em}
+
+Aangezien gegevensopslag geen primaire focus vormt van deze \acrshort{poc}, werd gekozen voor deze bestaande Android-oplossing. Hierdoor blijft de implementatie van de gegevensopslag beperkt en kan de beschikbare ontwikkeltijd voornamelijk worden besteed aan de kernfunctionaliteiten van de \acrshort{poc}.
+
+\newpage
+
 
 \section{Ontwikkeling}
 \label{sec:ontwikkeling}
