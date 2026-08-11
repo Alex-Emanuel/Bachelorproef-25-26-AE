@@ -1,6 +1,6 @@
 package com.example.dpdetectorapplication.ui.home
 
-import androidx.compose.foundation.background
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,9 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme.colorScheme
-import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
@@ -47,7 +45,7 @@ fun HomeScreen(
     Column(
         modifier = Modifier.fillMaxSize().statusBarsPadding()
     ) {
-        var isActive by rememberSaveable { mutableStateOf(true) }
+        var isActive by rememberSaveable { mutableStateOf(false) }
 
         Row(
             modifier = Modifier
@@ -76,7 +74,15 @@ fun HomeScreen(
 
             Switch(
                 checked = isActive,
-                onCheckedChange = { isActive = it },
+                onCheckedChange = { actief ->
+                    isActive = actief
+
+                    if (actief) {
+                        Log.d("DPDetector", "Detector is geactiveerd")
+                    } else {
+                        Log.d("DPDetector", "Detector is gedeactiveerd")
+                    }
+                },
                 colors = SwitchDefaults.colors(
                     checkedThumbColor = Color.White,
                     checkedTrackColor = colorScheme.tertiary,

@@ -12,6 +12,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.dpdetectorapplication.ui.detail.DetailScreen
 import com.example.dpdetectorapplication.ui.home.HomeScreen
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 
 @Composable
 fun DPDetectorApp() {
@@ -24,7 +26,11 @@ fun DPDetectorApp() {
     ) {
         NavHost(
             navController = navController,
-            startDestination = Screen.Home.route
+            startDestination = Screen.Home.route,
+            enterTransition = { EnterTransition.None },
+            exitTransition = { ExitTransition.None },
+            popEnterTransition = { EnterTransition.None },
+            popExitTransition = { ExitTransition.None }
         ) {
 
             composable(Screen.Home.route) {
