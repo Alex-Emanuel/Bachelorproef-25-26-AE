@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">DPDetectorApplication</string>
+
+    <string name="app_name">DP Detector</string>
+
+    <string name="accessibility_service_label">DP Detector</string>
+
+    <string name="accessibility_service_description">
+        DP Detector gebruikt toegankelijkheidsinformatie om schermwijzigingen van ondersteunde streamingdiensten te detecteren.
+    </string>
+
 </resources>
