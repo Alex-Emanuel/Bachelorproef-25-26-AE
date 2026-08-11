@@ -18,6 +18,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.dpdetectorapplication.data.repository.DetectieRepository
+import java.text.SimpleDateFormat
+import java.util.Locale
+import androidx.compose.runtime.LaunchedEffect
+
+private val datumFormatter =
+    SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -29,6 +35,12 @@ fun DetailScreen(
         DetectieRepository.getDetection(it)
     }
 
+    LaunchedEffect(id) {
+        if (id != null) {
+            DetectieRepository.markAsRead(id)
+        }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -38,7 +50,7 @@ fun DetailScreen(
                 ),
                 title = {
                     Text(
-                        text = detection?.title ?: "Onbekende detectie",
+                        text = detection?.titel ?: "Onbekende detectie",
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -65,12 +77,12 @@ fun DetailScreen(
             if (detection != null) {
 
                 Text(
-                    text = detection.title,
+                    text = detection.titel,
                     style = MaterialTheme.typography.headlineMedium
                 )
 
                 Text(
-                    text = detection.certainty,
+                    text = detection.zekerheid,
                     style = MaterialTheme.typography.bodyLarge
                 )
 
@@ -80,7 +92,7 @@ fun DetailScreen(
                 )
 
                 Text(
-                    text = detection.dateTime,
+                    text = datumFormatter.format(detection.datumTijd),
                     style = MaterialTheme.typography.bodyMedium
                 )
 

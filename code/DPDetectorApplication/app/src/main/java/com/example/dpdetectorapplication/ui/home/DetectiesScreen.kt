@@ -1,5 +1,6 @@
 package com.example.dpdetectorapplication.ui.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -31,9 +32,19 @@ import com.example.dpdetectorapplication.data.model.Detectie
 import com.example.dpdetectorapplication.data.repository.DetectieRepository
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.sp
+import com.example.dpdetectorapplication.ui.theme.Purple10
+import java.text.SimpleDateFormat
+import java.util.Locale
+
+private val datumFormatter =
+    SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
 
 @Composable
 fun DetectiesScreen(
@@ -130,14 +141,40 @@ fun DetectiesScreen(
                 )
             }
         } else {
-            LazyColumn {
-                items(detections) { detection ->
-                    DetectieRow(
-                        detection = detection,
-                        onClick = {
-                            onItemClick(detection.id)
-                        }
-                    )
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+                    .padding(
+                        start = 24.dp,
+                        end = 24.dp
+                    ),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                val groepen = detections.groupBy {
+                    DetectieRepository.getDatumGroep(it.datumTijd)
+                }
+
+                groepen.forEach { (groep, groepDetecties) ->
+
+                    item {
+                        Text(
+                            text = groep,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = colorScheme.onBackground.copy(alpha = 0.6f),
+                            modifier = Modifier.padding(top = 16.dp)
+                        )
+                    }
+
+                    items(groepDetecties) { detection ->
+                        DetectieRow(
+                            detection = detection,
+                            onClick = {
+                                onItemClick(detection.id)
+                            }
+                        )
+                    }
                 }
             }
         }
@@ -149,30 +186,85 @@ fun DetectieRow(
     detection: Detectie,
     onClick: () -> Unit
 ) {
-    Column(
+    Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp, horizontal = 8.dp)
-            .clickable(onClick = onClick)
+            .clickable(onClick = onClick),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(
-            text = detection.title,
-            style = MaterialTheme.typography.titleMedium
+
+        Image(
+            painter = painterResource(id = detection.afbeeldingResId),
+            contentDescription = detection.titel,
+            modifier = Modifier
+                .size(80.dp)
+                .clip(RoundedCornerShape(12.dp)),
+            contentScale = ContentScale.Crop
         )
 
-        Text(
-            text = detection.certainty,
-            style = MaterialTheme.typography.bodyMedium
-        )
+        Spacer(modifier = Modifier.width(12.dp))
 
-        Text(
-            text = detection.impact,
-            style = MaterialTheme.typography.bodyMedium
-        )
+        Column(
+            modifier = Modifier.weight(1f),
+            verticalArrangement = Arrangement.spacedBy(0.dp)
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = detection.titel,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold
+                )
 
-        Text(
-            text = detection.dateTime,
-            style = MaterialTheme.typography.bodySmall
-        )
+                if (!detection.gelezen) {
+                    Spacer(modifier = Modifier.width(6.dp))
+
+                    Text(
+                        text = "Nieuw",
+                        fontSize = 10.sp,
+                        lineHeight = 11.sp,
+                        fontWeight = FontWeight.Black,
+                        color = colorScheme.primary,
+                        modifier = Modifier
+                            .background(
+                                color = Purple10,
+                                shape = RoundedCornerShape(4.dp)
+                            )
+                            .padding(
+                                horizontal = 7.dp,
+                                vertical = 4.dp
+                            )
+                    )
+                }
+            }
+
+            Text(
+                text = detection.zekerheid,
+                fontSize = 12.sp,
+                lineHeight = 12.sp,
+                modifier = Modifier.padding(bottom = 3.dp)
+            )
+
+            Text(
+                text = detection.impact,
+                fontSize = 12.sp,
+                lineHeight = 12.sp,
+                color = if (detection.impact.contains("Hoog")) {
+                    colorScheme.error
+                } else {
+                    colorScheme.onBackground
+                },
+                modifier = Modifier.padding(bottom = 3.dp)
+            )
+
+            Text(
+                text = datumFormatter.format(detection.datumTijd),
+                fontSize = 12.sp,
+                lineHeight = 12.sp,
+                color = colorScheme.onBackground.copy(alpha = 0.5f),
+                modifier = Modifier.padding(bottom = 3.dp)
+            )
+        }
     }
 }
