@@ -47,6 +47,8 @@ enum class HomeTab {
 fun HomeScreen(
     onItemClick: (String) -> Unit
 ) {
+    var isActive by rememberSaveable { mutableStateOf(false) }
+
     //service
     val context = androidx.compose.ui.platform.LocalContext.current
     val mediaProjectionManager = context.getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
@@ -55,6 +57,7 @@ fun HomeScreen(
         if (result.resultCode == Activity.RESULT_OK) {
             val resultData = result.data
             if (resultData != null) {
+                isActive = true
                 Log.d("DPDetector","MediaProjection toestemming gegeven")
 
                 val serviceIntent = Intent(context,ScreenCaptureService::class.java).apply {
@@ -76,6 +79,7 @@ fun HomeScreen(
                 }
             }
         } else {
+            isActive = false
             Log.d("DPDetector","MediaProjection toestemming geweigerd")
         }
     }
@@ -88,8 +92,6 @@ fun HomeScreen(
     Column(
         modifier = Modifier.fillMaxSize().statusBarsPadding()
     ) {
-        var isActive by rememberSaveable { mutableStateOf(false) }
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -118,11 +120,19 @@ fun HomeScreen(
             Switch(
                 checked = isActive,
                 onCheckedChange = { actief ->
-                    isActive = actief
 
                     if (actief) {
+                        val captureIntent = mediaProjectionManager.createScreenCaptureIntent()
+                        screenCaptureLauncher.launch(captureIntent)
                         Log.d("DPDetector", "Detector is geactiveerd")
                     } else {
+                        val stopIntent = Intent(context,ScreenCaptureService::class.java).apply {
+                            action = ScreenCaptureService.ACTION_STOP
+                        }
+                        context.startService(stopIntent)
+
+                        isActive = false
+
                         Log.d("DPDetector", "Detector is gedeactiveerd")
                     }
                 },
@@ -185,23 +195,6 @@ fun HomeScreen(
                     onClick = {
                         Log.d(
                             "DPDetector",
-                            "Capture activeren"
-                        )
-
-                        val captureIntent = mediaProjectionManager.createScreenCaptureIntent()
-
-                        screenCaptureLauncher.launch(captureIntent)
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp)
-                ) {
-                    Text("Capture activeren")
-                }
-                Button(
-                    onClick = {
-                        Log.d(
-                            "DPDetector",
                             "Screenshot-knop ingedrukt"
                         )
 
@@ -216,19 +209,6 @@ fun HomeScreen(
                         .padding(horizontal = 20.dp)
                 ) {
                     Text("Maak screenshot")
-                }
-                Button(
-                    onClick = {
-                        val stopIntent = Intent(context,ScreenCaptureService::class.java).apply {
-                            action = ScreenCaptureService.ACTION_STOP
-                        }
-                        context.startService(stopIntent)
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp)
-                ) {
-                    Text("Capture stoppen")
                 }
                 DetectiesScreen(
                     onItemClick = onItemClick,
