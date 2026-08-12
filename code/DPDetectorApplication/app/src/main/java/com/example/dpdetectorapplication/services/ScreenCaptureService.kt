@@ -21,6 +21,10 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import androidx.core.app.NotificationCompat
 import android.content.pm.ServiceInfo
+import com.example.dpdetectorapplication.analysis.AnalysisManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class ScreenCaptureService : Service() {
 
@@ -30,6 +34,7 @@ class ScreenCaptureService : Service() {
     private val mediaProjectionManager by lazy {
         getSystemService<MediaProjectionManager>()
     }
+    private val analysisManager = AnalysisManager()
 
     private val mediaProjectionCallback = object : MediaProjection.Callback() {
         override fun onStop() {
@@ -178,6 +183,41 @@ class ScreenCaptureService : Service() {
         )
     }
 
+    /*private fun takeScreenshot() {
+        val image = imageReader?.acquireLatestImage()
+
+        if (image == null) {
+            Log.d("ScreenCapture", "Nog geen image beschikbaar")
+            return
+        }
+
+        val bitmap = imageToBitmap(image)
+        image.close()
+
+        val file = saveScreenshot(bitmap)
+
+        Log.d(
+            "ScreenCapture",
+            "Screenshot genomen: ${bitmap.width}x${bitmap.height}"
+        )
+
+        val detected = analysisManager.analyse(file)
+
+        if (!detected) {
+            file.delete()
+
+            Log.d(
+                "ScreenCapture",
+                "Geen dark pattern: screenshot verwijderd"
+            )
+        } else {
+            Log.d(
+                "ScreenCapture",
+                "Dark pattern gedetecteerd: screenshot behouden"
+            )
+        }
+    }*/
+
     private fun takeScreenshot() {
         val image = imageReader?.acquireLatestImage()
 
@@ -189,13 +229,49 @@ class ScreenCaptureService : Service() {
         val bitmap = imageToBitmap(image)
         image.close()
 
-        saveScreenshot(bitmap)
+        Log.d(
+            "ScreenCapture",
+            "Screenshot genomen: ${bitmap.width}x${bitmap.height}"
+        )
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val file = saveScreenshot(bitmap)
+
+                // Analyse via FastAPI
+                val response = analysisManager.analyse(file)
+                Log.d("ScreenCapture","Analyse resultaat: ${response.result}")
+
+                // Voorlopig verwijderen na analyse -> erna als positief resultaat opslaan in detections map
+                file.delete()
+
+            } catch (e: Exception) {
+                Log.e("ScreenCapture","Analyse mislukt",e)
+            }
+        }
+    }
+    /*private fun takeScreenshot() {
+        val image = imageReader?.acquireLatestImage()
+
+        if (image == null) {
+            Log.d("ScreenCapture", "Nog geen image beschikbaar")
+            return
+        }
+
+        val bitmap = imageToBitmap(image)
+        image.close()
 
         Log.d(
             "ScreenCapture",
             "Screenshot genomen: ${bitmap.width}x${bitmap.height}"
         )
-    }
+
+        val detected = analysisManager.analyse(bitmap)
+
+        if (detected) {
+            saveDetectionImage(bitmap)
+        }
+    }*/
 
     private fun imageToBitmap(image: Image): Bitmap {
         val plane = image.planes[0]
@@ -212,7 +288,7 @@ class ScreenCaptureService : Service() {
         return Bitmap.createBitmap(bitmap,0,0,image.width,image.height)
     }
 
-    private fun saveScreenshot(bitmap: Bitmap) {
+    private fun saveScreenshot(bitmap: Bitmap): File {
         val file = File(
             cacheDir,
             "screenshot_${System.currentTimeMillis()}.png"
@@ -230,7 +306,41 @@ class ScreenCaptureService : Service() {
             "ScreenCapture",
             "Screenshot opgeslagen: ${file.absolutePath}"
         )
+
+        return file
     }
+
+    /*private fun saveDetectionImage(bitmap: Bitmap): File {
+
+        val detectionsDirectory = File(
+            filesDir,
+            "detections"
+        )
+
+        if (!detectionsDirectory.exists()) {
+            detectionsDirectory.mkdirs()
+        }
+
+        val file = File(
+            detectionsDirectory,
+            "detection_${System.currentTimeMillis()}.png"
+        )
+
+        file.outputStream().use { outputStream ->
+            bitmap.compress(
+                Bitmap.CompressFormat.PNG,
+                100,
+                outputStream
+            )
+        }
+
+        Log.d(
+            "ScreenCapture",
+            "Detectie-afbeelding opgeslagen: ${file.absolutePath}"
+        )
+
+        return file
+    }*/
 
     private fun stopCapture() {
         Log.d("ScreenCapture", "MediaProjection stoppen")
