@@ -178,19 +178,49 @@ object DetectieRepository {
         return detections.find { it.id == id }
     }
 
+    fun getDetectionGroups(): List<Pair<String, List<Detectie>>> {
+        val groepen = detections
+            .groupBy { detectie ->
+                getDatumGroep(detectie.datumTijd)
+            }
+
+        return sorteerDatumGroepen(groepen)
+    }
+
     fun markAsRead(id: String) {
-        detections.find { it.id == id }?.gelezen = true
+        detections.find { detectie ->
+            detectie.id == id
+        }?.gelezen = true
+    }
+
+    fun sorteerDatumGroepen(
+        groepen: Map<String, List<Detectie>>
+    ): List<Pair<String, List<Detectie>>> {
+        val volgorde = mapOf(
+            "Vandaag" to 0,
+            "Gisteren" to 1,
+            "Deze week" to 2,
+            "Deze maand" to 3,
+            "Vorige maand" to 4,
+            "Ouder dan vorige maand" to 5
+        )
+
+        return groepen
+            .toList()
+            .sortedBy { (groep, _) ->
+                volgorde[groep] ?: Int.MAX_VALUE
+            }
     }
 
     fun getDatumGroep(datumTijd: Date): String {
         val vandaag = Calendar.getInstance()
 
-        val datumCalendar = Calendar.getInstance().apply {
+        val datum = Calendar.getInstance().apply {
             time = datumTijd
         }
 
         // Vandaag
-        if (isZelfdeDag(datumCalendar, vandaag)) {
+        if (isZelfdeDag(datum, vandaag)) {
             return "Vandaag"
         }
 
@@ -199,17 +229,29 @@ object DetectieRepository {
             add(Calendar.DAY_OF_YEAR, -1)
         }
 
-        if (isZelfdeDag(datumCalendar, gisteren)) {
+        if (isZelfdeDag(datum, gisteren)) {
             return "Gisteren"
         }
 
-        // Vorige week
-        val zevenDagenGeleden = Calendar.getInstance().apply {
-            add(Calendar.DAY_OF_YEAR, -7)
+        // Deze week
+        val beginVanDezeWeek = Calendar.getInstance().apply {
+            set(Calendar.DAY_OF_WEEK, firstDayOfWeek)
+            set(Calendar.HOUR_OF_DAY, 0)
+            set(Calendar.MINUTE, 0)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
         }
 
-        if (datumCalendar.after(zevenDagenGeleden)) {
-            return "Vorige week"
+        if (datum >= beginVanDezeWeek) {
+            return "Deze week"
+        }
+
+        // Deze maand
+        if (
+            datum.get(Calendar.YEAR) == vandaag.get(Calendar.YEAR) &&
+            datum.get(Calendar.MONTH) == vandaag.get(Calendar.MONTH)
+        ) {
+            return "Deze maand"
         }
 
         // Vorige maand
@@ -218,8 +260,8 @@ object DetectieRepository {
         }
 
         if (
-            datumCalendar.get(Calendar.MONTH) == vorigeMaand.get(Calendar.MONTH) &&
-            datumCalendar.get(Calendar.YEAR) == vorigeMaand.get(Calendar.YEAR)
+            datum.get(Calendar.YEAR) == vorigeMaand.get(Calendar.YEAR) &&
+            datum.get(Calendar.MONTH) == vorigeMaand.get(Calendar.MONTH)
         ) {
             return "Vorige maand"
         }
@@ -227,10 +269,7 @@ object DetectieRepository {
         return "Ouder dan vorige maand"
     }
 
-    private fun isZelfdeDag(
-        datum1: Calendar,
-        datum2: Calendar
-    ): Boolean {
+    private fun isZelfdeDag(datum1: Calendar, datum2: Calendar): Boolean {
         return datum1.get(Calendar.YEAR) == datum2.get(Calendar.YEAR) &&
                 datum1.get(Calendar.DAY_OF_YEAR) == datum2.get(Calendar.DAY_OF_YEAR)
     }

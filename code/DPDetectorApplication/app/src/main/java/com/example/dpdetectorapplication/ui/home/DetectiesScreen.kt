@@ -40,7 +40,6 @@ import com.example.dpdetectorapplication.data.model.Detectie
 import com.example.dpdetectorapplication.data.model.Impact
 import com.example.dpdetectorapplication.data.model.darkPatterns
 import com.example.dpdetectorapplication.data.repository.DetectieRepository
-import com.example.dpdetectorapplication.ui.theme.Purple10
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -143,7 +142,7 @@ fun DetectiesScreen(
                 Text(
                     text = "Zodra een dark pattern wordt gedetecteerd, verschijnt het hier.\n" +
                             "Je kan zelf handmatig een nieuwe analyse starten via de zwevende actieknop. " +
-                            "Klik hiervoor op de \"Open Widget\"-knop",
+                            "Klik hiervoor op de \"Open widget\"-knop",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onBackground,
                     textAlign = TextAlign.Center,
@@ -161,9 +160,7 @@ fun DetectiesScreen(
                     ),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                val groepen = detections.groupBy {
-                    DetectieRepository.getDatumGroep(it.datumTijd)
-                }
+                val groepen = DetectieRepository.getDetectionGroups()
 
                 groepen.forEach { (groep, groepDetecties) ->
 

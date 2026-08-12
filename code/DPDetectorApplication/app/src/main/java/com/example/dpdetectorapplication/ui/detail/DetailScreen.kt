@@ -332,19 +332,18 @@ fun DetailScreen(
                 modifier = Modifier.height(2.dp)
             )
 
-            pattern?.let {
+            if (pattern != null) {
 
                 // Uitleg
                 ExpandableCard(
-                    title = "Wat is een ${it.naam}?",
+                    title = "Wat is een ${pattern.naam}?",
                     expanded = uitlegOpen,
-
                     onClick = {
                         uitlegOpen = !uitlegOpen
                     }
                 ) {
                     Text(
-                        text = it.uitleg,
+                        text = pattern.uitleg,
                         style = typography.bodyMedium,
                         lineHeight = 20.sp
                     )
@@ -361,23 +360,20 @@ fun DetailScreen(
                     Column(
                         verticalArrangement = Arrangement.spacedBy(5.dp)
                     ) {
-                        it.gevolgen.forEach { gevolg ->
+                        pattern.gevolgen.forEach { gevolg ->
                             Row(
                                 verticalAlignment = Alignment.Top
                             ) {
                                 Text(
                                     text = "•",
-                                    modifier = Modifier.padding(
-                                        end = 8.dp
-                                    ),
+                                    modifier = Modifier.padding(end = 8.dp),
                                     fontWeight = FontWeight.Bold
                                 )
 
                                 Text(
                                     text = gevolg,
                                     style = typography.bodyMedium,
-                                    lineHeight = 20.sp,
-                                    modifier = Modifier.weight(1f)
+                                    lineHeight = 20.sp
                                 )
                             }
                         }
@@ -402,7 +398,7 @@ fun DetailScreen(
                     .fillMaxSize()
                     .background(
                         colorScheme.scrim.copy(
-                            alpha = 0.90f
+                            alpha = 0.80f
                         )
                     ),
                 contentAlignment = Alignment.Center
