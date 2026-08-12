@@ -1,0 +1,5 @@
+package com.example.dpdetectorapplication
+
+object ApiConfig {
+    const val BASE_URL = "http://YOUR-PC-IP:8000/"
+}

@@ -137,3 +137,74 @@ Volgende personen hebben bijgedragen aan deze sjablonen:
 - Niels Corneille
 - Patrick Van Brussel
 - Simon Rondelez
+
+
+
+---
+
+## Project
+
+Deze repository bevat naast de bachelorproef ook de broncode en andere artefacten die ontwikkeld werden binnen het kader van de bachelorproef.
+
+### Projectstructuur
+
+De belangrijkste onderdelen van de repository zijn:
+
+```text
+code/
+├── DPDetectorApplication/    # Android-applicatie
+└── DPGuard/                  # Python/FastAPI API en detectielogica
+
+bachproef/                    # Bachelorproef
+voorstel/                     # Onderzoeksvoorstel
+poster/                       # Poster
+```
+
+### DPGuard
+
+Voor de detectie van dark patterns wordt gebruikgemaakt van het open-source model **DPGuard**.
+
+De volledige broncode, installatie-instructies, vereiste dependencies, modelbestanden en configuratie voor DPGuard zijn beschikbaar in de officiële repository: https://github.com/GalaxyHBXY/DPGuard
+
+**Raadpleeg de README van DPGuard voor de installatie en configuratie van de benodigde dependencies en omgeving voordat de detectieservice wordt uitgevoerd.** De repository beschrijft onder andere het aanmaken van de Conda-omgeving, de installatie van PyTorch en andere vereiste packages en de configuratie van de API-sleutels. (https://github.com/GalaxyHBXY/DPGuard)
+
+
+### Lokale API-configuratie
+
+De Android-applicatie communiceert met een lokale FastAPI-server. 
+Na het clonen van de repository moet lokaal het bestand
+
+```text
+code/DPDetectorApplication/app/src/main/java/com/example/dpdetectorapplication/ApiConfig.kt
+```
+
+aangemaakt worden met:
+
+```kotlin
+package com.example.dpdetectorapplication
+
+object ApiConfig {
+    const val BASE_URL = "http://<IP-ADRES-PC>:8000/"
+}
+```
+
+Vervang `<IP-ADRES-PC>` door het lokale IPv4-adres van de computer waarop de FastAPI-server draait. Dit adres kan gevonden worden door in de command prompt `ipconfig` in te geven.
+
+
+### FastAPI-server starten
+
+Activeer eerst de Python-omgeving waarin DPGuard geïnstalleerd is. Start daarna vanuit de `DPGuard`-directory:
+
+```console
+fastapi dev api.py --host 0.0.0.0
+```
+
+De API is vervolgens beschikbaar op poort `8000`.
+
+Voor lokale ontwikkeling kan de documentatie geopend worden via:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+De Android-applicatie moet verbonden zijn met hetzelfde lokale netwerk als de computer waarop de API draait.
