@@ -21,6 +21,6 @@ fun InstellingenScreen() {
             style = MaterialTheme.typography.titleLarge
         )
 
-        // Hier komt later je instellingen UI
+        // Hier komt later de instellingen UI
     }
 }

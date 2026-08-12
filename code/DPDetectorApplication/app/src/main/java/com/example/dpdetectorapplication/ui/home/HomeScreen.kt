@@ -28,6 +28,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.material3.Button
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import android.media.projection.MediaProjectionManager
+import android.os.Build
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import com.example.dpdetectorapplication.services.ScreenCaptureService
 
 enum class HomeTab {
     Detecties,
@@ -38,6 +47,40 @@ enum class HomeTab {
 fun HomeScreen(
     onItemClick: (String) -> Unit
 ) {
+    //service
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val mediaProjectionManager = context.getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
+    val screenCaptureLauncher = rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
+        result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val resultData = result.data
+            if (resultData != null) {
+                Log.d("DPDetector","MediaProjection toestemming gegeven")
+
+                val serviceIntent = Intent(context,ScreenCaptureService::class.java).apply {
+                    action = ScreenCaptureService.ACTION_START
+                    putExtra(
+                        ScreenCaptureService.EXTRA_RESULT_CODE,
+                        result.resultCode
+                    )
+                    putExtra(
+                        ScreenCaptureService.EXTRA_RESULT_DATA,
+                        resultData
+                    )
+                }
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    context.startForegroundService(serviceIntent)
+                } else {
+                    context.startService(serviceIntent)
+                }
+            }
+        } else {
+            Log.d("DPDetector","MediaProjection toestemming geweigerd")
+        }
+    }
+
+    //ui
     var selectedTab by rememberSaveable {
         mutableStateOf(HomeTab.Detecties)
     }
@@ -138,6 +181,55 @@ fun HomeScreen(
 
         when (selectedTab) {
             HomeTab.Detecties -> {
+                Button(
+                    onClick = {
+                        Log.d(
+                            "DPDetector",
+                            "Capture activeren"
+                        )
+
+                        val captureIntent = mediaProjectionManager.createScreenCaptureIntent()
+
+                        screenCaptureLauncher.launch(captureIntent)
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp)
+                ) {
+                    Text("Capture activeren")
+                }
+                Button(
+                    onClick = {
+                        Log.d(
+                            "DPDetector",
+                            "Screenshot-knop ingedrukt"
+                        )
+
+                        val screenshotIntent = Intent(context,ScreenCaptureService::class.java).apply {
+                            action = ScreenCaptureService.ACTION_SCREENSHOT
+                        }
+
+                        context.startService(screenshotIntent)
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp)
+                ) {
+                    Text("Maak screenshot")
+                }
+                Button(
+                    onClick = {
+                        val stopIntent = Intent(context,ScreenCaptureService::class.java).apply {
+                            action = ScreenCaptureService.ACTION_STOP
+                        }
+                        context.startService(stopIntent)
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp)
+                ) {
+                    Text("Capture stoppen")
+                }
                 DetectiesScreen(
                     onItemClick = onItemClick,
                     onDisclaimerClick = {
@@ -147,6 +239,7 @@ fun HomeScreen(
                         // TODO: widget openen
                     }
                 )
+
             }
 
             HomeTab.Instellingen -> {
