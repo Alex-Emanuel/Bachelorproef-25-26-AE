@@ -9,13 +9,14 @@ enum class Impact(val displayName: String) {
 }
 
 data class Detectie(
-    val id: String,
-    val patroonId: String,
+    val id: Int,
+    val patroonId: Int,
     val zekerheid: Int,
     val impact: Impact,
     val datumTijd: Date,
-    val afbeeldingResId: Int,
+    val afbeelding: String,
     var gelezen: Boolean,
     val beschrijvingDetectie: String,
     val streamingdienst: String,
 )
+

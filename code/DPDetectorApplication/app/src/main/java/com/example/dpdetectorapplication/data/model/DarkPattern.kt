@@ -1,87 +1,102 @@
 package com.example.dpdetectorapplication.data.model
 
 data class DarkPattern(
-    val id: String,
+    val id: Int,
     val naam: String,
     val uitleg: String,
     val gevolgen: List<String>
 )
 
+/*
+Bij een verdere uitwerking van de POC zouden de dark patterns opgeslagen kunnen worden in een databank.
+Voor de POC werd echter gekozen om deze gegevens statisch in de applicatie te definiëren.
+*/
 val darkPatterns = listOf(
     DarkPattern(
-        id = "countdown_timer",
-        naam = "Countdown Timer",
-        uitleg = "Een afteltimer creëert een gevoel van urgentie door te suggereren dat een aanbieding of actie slechts tijdelijk beschikbaar is.",
+        id = 1,
+        naam = "Nagging",
+        uitleg = "Er verschijnt steeds een onverwacht pop-upvenster, waardoor de activiteiten van de gebruiker worden verstoord.",
         gevolgen = listOf(
-            "De gebruiker kan sneller beslissingen nemen zonder voldoende tijd om alternatieven te overwegen.",
-            "De gebruiker kan het gevoel krijgen een aanbieding mis te lopen.",
-            "De gebruiker kan een aankoop doen die hij zonder de tijdsdruk niet zou hebben gedaan."
+            "De gebruiker kan frustratie en irritatie ervaren door herhaalde onderbrekingen.",
+            "De gebruiker kan uiteindelijk de voorgestelde actie uitvoeren om verdere onderbrekingen te vermijden.",
+            "De cognitieve belasting van de gebruiker kan toenemen door de herhaalde afleiding."
         )
     ),
 
     DarkPattern(
-        id = "false_hierarchy",
-        naam = "False Hierarchy",
-        uitleg = "Belangrijke keuzes worden visueel minder opvallend gemaakt dan keuzes die de aanbieder liever heeft dat de gebruiker selecteert.",
+        id = 2,
+        naam = "Roach Motel",
+        uitleg = "Gemakkelijk om je aan te melden, maar onmogelijk of moeilijk om je af te melden.",
         gevolgen = listOf(
-            "De gebruiker kan onbewust naar een bepaalde keuze worden gestuurd.",
-            "Alternatieve keuzes kunnen minder snel worden opgemerkt.",
-            "De gebruiker kan een keuze maken die niet overeenkomt met zijn oorspronkelijke voorkeur."
+            "De gebruiker kan langer aan een dienst verbonden blijven dan gewenst.",
+            "De gebruiker kan een gevoel van machteloosheid ervaren doordat het moeilijk is om een eerdere keuze ongedaan te maken.",
+            "De gebruiker kan financieel nadeel ondervinden wanneer een abonnement of betalende dienst moeilijk kan worden stopgezet."
         )
     ),
 
     DarkPattern(
-        id = "preselection",
+        id = 3,
         naam = "Preselection",
-        uitleg = "Een bepaalde optie is vooraf geselecteerd, waardoor de gebruiker deze keuze kan behouden zonder hier bewust voor te kiezen.",
+        uitleg = "Sommige keuzes zijn standaard vooraf geselecteerd.",
         gevolgen = listOf(
-            "De gebruiker kan akkoord gaan met opties die hij niet bewust heeft geselecteerd.",
-            "De gebruiker kan onbedoeld extra producten of diensten selecteren.",
-            "De gebruiker kan instellingen behouden zonder zich bewust te zijn van de gevolgen."
+            "De gebruiker kan akkoord gaan met een optie zonder deze bewust te hebben geselecteerd.",
+            "De gebruiker kan meer persoonlijke gegevens delen dan oorspronkelijk gewenst.",
+            "De gebruiker kan onbedoeld een aankoop of andere actie uitvoeren die hij zonder de vooraf geselecteerde optie niet zou hebben uitgevoerd."
         )
     ),
 
     DarkPattern(
-        id = "hidden_information",
+        id = 4,
         naam = "Hidden Information",
-        uitleg = "Belangrijke informatie wordt verborgen, minder opvallend weergegeven of pas op een later moment zichtbaar gemaakt.",
+        uitleg = "Opties of acties zijn voor de gebruiker moeilijk te lezen of te begrijpen.",
         gevolgen = listOf(
             "De gebruiker kan een beslissing nemen zonder over alle relevante informatie te beschikken.",
-            "Belangrijke voorwaarden kunnen over het hoofd worden gezien.",
-            "De gebruiker kan achteraf geconfronteerd worden met onverwachte voorwaarden of kosten."
+            "De gebruiker kan belangrijke voorwaarden, kosten of gevolgen over het hoofd zien.",
+            "De gebruiker kan meer tijd en aandacht moeten besteden aan het begrijpen van de beschikbare opties."
         )
     ),
 
     DarkPattern(
-        id = "roach_motel",
-        naam = "Roach Motel",
-        uitleg = "Een actie is gemakkelijk uit te voeren, maar moeilijk om terug te draaien of ongedaan te maken.",
+        id = 5,
+        naam = "False Hierarchy",
+        uitleg = "Eén optie wordt prominenter weergegeven dan andere, eveneens beschikbare opties.",
         gevolgen = listOf(
-            "De gebruiker kan gemakkelijk een abonnement starten, maar moeite hebben om dit weer op te zeggen.",
-            "De gebruiker kan langer aan een dienst verbonden blijven dan gewenst.",
-            "De gebruiker kan opgeven voordat hij erin slaagt een actie ongedaan te maken."
+            "De gebruiker kan onbewust naar de meest prominente optie worden gestuurd.",
+            "De gebruiker kan een keuze maken die niet overeenkomt met zijn oorspronkelijke voorkeur.",
+            "De gebruiker kan minder bewust alternatieven overwegen voordat hij een beslissing neemt."
         )
     ),
 
     DarkPattern(
-        id = "forced_enrollment",
+        id = 6,
+        naam = "Tricked Questions",
+        uitleg = "Er wordt verwarrende of te complexe bewoordingen gebruikt om iets uit te leggen of vragen te stellen.",
+        gevolgen = listOf(
+            "De gebruiker kan een keuze maken zonder de gevolgen ervan volledig te begrijpen.",
+            "De gebruiker kan meer cognitieve belasting ervaren tijdens het beslissingsproces.",
+            "De gebruiker kan onbedoeld toestemming geven of een keuze maken die hij bij duidelijke formuleringen niet zou hebben gemaakt."
+        )
+    ),
+
+    DarkPattern(
+        id = 7,
         naam = "Forced Enrollment",
-        uitleg = "De gebruiker wordt verplicht om zich te registreren of een account aan te maken voordat hij toegang krijgt tot bepaalde functionaliteit.",
+        uitleg = "Gebruikers moeten zich registreren of aanmelden voordat ze toegang krijgen tot de dienst.",
         gevolgen = listOf(
             "De gebruiker kan persoonlijke gegevens moeten verstrekken terwijl dit niet noodzakelijk is.",
-            "De gebruiker kan een account aanmaken terwijl hij dit eigenlijk niet wil.",
-            "De gebruiker kan minder controle hebben over welke persoonlijke gegevens worden verzameld."
+            "De gebruiker kan zich gedwongen voelen om een account aan te maken om toegang te krijgen tot de dienst.",
+            "De gebruiker kan minder controle ervaren over welke persoonlijke gegevens worden verzameld."
         )
     ),
 
     DarkPattern(
-        id = "nagging",
-        naam = "Nagging",
-        uitleg = "De gebruiker wordt herhaaldelijk onderbroken of aangespoord om een bepaalde actie uit te voeren.",
+        id = 8,
+        naam = "Countdown Timer",
+        uitleg = "De kans eindigt binnenkort met een duidelijke visuele aanwijzing.",
         gevolgen = listOf(
-            "De gebruiker kan geïrriteerd raken door herhaalde meldingen of verzoeken.",
-            "De gebruiker kan uiteindelijk een actie uitvoeren om de onderbrekingen te stoppen.",
-            "De normale gebruikerservaring kan worden verstoord."
+            "De gebruiker kan een gevoel van urgentie en druk ervaren.",
+            "De gebruiker kan sneller een beslissing nemen zonder voldoende tijd om alternatieven te overwegen.",
+            "De gebruiker kan een aankoop of andere actie uitvoeren die hij zonder de tijdsdruk niet zou hebben uitgevoerd."
         )
-    )
+    ),
 )

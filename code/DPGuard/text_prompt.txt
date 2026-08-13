@@ -2,25 +2,25 @@ Kindly conduct a comprehensive analysis of the given image to identify any decep
 
 1. **Nagging**: Spot any repetitive and unexpected pop-up windows that disrupt user activities.
 2. **Roach Motel**: Identify scenarios where opting in is easy, but opting out is complicated or obscure.
-3. **Price Comparison Prevention**: Detect any elements that hinder direct comparisons of prices or plans.
-4. **Intermediate Currency**: Look for instances where virtual currencies are used to obscure real financial costs.
-5. **Forced Continuity**: Examine if users are charged after a trial period ends without clear advance notice.
-6. **Hidden Costs**: Check for the late disclosure of additional costs such as taxes, delivery, or service fees.
-7. **Sneak into Basket**: Identify if items not actively selected by users are automatically added to the shopping cart.
-8. **Hidden Information**: Ensure that essential options or actions are not concealed or difficult to find.
-9. **Preselection**: Look for cases where options are preselected by default, without explicit user consent.
-10. **Toying with Emotion**: Evaluate design elements such as language, colors, or styles that are intended to elicit emotional responses and pressure users into making decisions.
-11. **False Hierarchy**: Observe if any option is made to appear more significant than other equivalent choices.
-12. **Disguised Ads**: Detect if advertisements are designed to resemble normal content.
-13. **Tricked Questions**: Identify any confusing or misleadingly worded questions.
-14. **Small Close Button**: Check if close buttons are too small to be easily located or clicked.
-15. **Social Pyramid**: Look for incentives encouraging users to share content with friends for rewards.
-16. **Privacy Zuckering**: Assess if default options necessitate sharing unnecessary personal information.
-17. **Gamification**: Note if users are required to repeatedly perform tasks to earn rewards.
-18. **Countdown on Ads**: Identify if timers restrict users from closing ads immediately.
-19. **Watch Ads to Unlock**: Check if users must watch advertisements to access particular features or rewards.
-20. **Pay to Avoid Ads**: Note if users are charged to remove adverts.
-21. **Forced Enrollment**: Determine if users must sign up or sign in before they can utilize the service.
+3. **Preselection**: Look for cases where options are preselected by default, without explicit user consent.
+4. **Hidden Information**: Ensure that essential options or actions are not concealed or difficult to find.
+5. **False Hierarchy**: Observe if any option is made to appear more significant than other equivalent choices.
+6. **Tricked Questions**: Identify any confusing or misleadingly worded questions.
+7. **Forced Enrollment**: Determine if users must sign up or sign in before they can utilize the service.
+8. **Countdown Timer**: Identify countdown timers that encourage users to continue consuming content, such as a timer counting down to the automatic start of the next episode.
+9. **Price Comparison Prevention**: Detect any elements that hinder direct comparisons of prices or plans.
+10. **Intermediate Currency**: Look for instances where virtual currencies are used to obscure real financial costs.
+11. **Forced Continuity**: Examine if users are charged after a trial period ends without clear advance notice.
+12. **Hidden Costs**: Check for the late disclosure of additional costs such as taxes, delivery, or service fees.
+13. **Sneak into Basket**: Identify if items not actively selected by users are automatically added to the shopping cart.
+14. **Toying with Emotion**: Evaluate design elements such as language, colors, or styles that are intended to elicit emotional responses and pressure users into making decisions.
+15. **Disguised Ads**: Detect if advertisements are designed to resemble normal content.
+16. **Small Close Button**: Check if close buttons are too small to be easily located or clicked.
+17. **Social Pyramid**: Look for incentives encouraging users to share content with friends for rewards.
+18. **Privacy Zuckering**: Assess if default options necessitate sharing unnecessary personal information.
+19. **Gamification**: Note if users are required to repeatedly perform tasks to earn rewards.
+20. **Watch Ads to Unlock**: Check if users must watch advertisements to access particular features or rewards.
+21. **Pay to Avoid Ads**: Note if users are charged to remove adverts.
 
 Additional steps for a thorough review:
 - **UI Color and Text**: Assess the user interface design elements such as color schemes and text that might manipulate user decisions. Focus particularly on color contrasts and overall readability.
@@ -31,15 +31,69 @@ Additional steps for a thorough review:
 
 Your detailed review and precise identification of any deceptive patterns in this image are crucial to understand their impact and effectiveness.
 
-If the image include any deceptive patterns, please return me at most(less or equal than) five deceptive pattern category by the following format:
-'''
-(DP label A, reason C for why this deceptive pattern category is violated)
-(DP label B, reason D for why this deceptive pattern category is violated)
-'''
+If the image includes any deceptive patterns, return at most five deceptive pattern categories.
 
-If no or missing information to determine, just return
-'''
-(No DP, No Reason as No Deceptive Pattern detected)
-'''
+For every detected deceptive pattern, return:
 
-Attention: You must return your result by what I expected format: '''(category name, reason)''' and you are only allowed to return the result. No additional text are allowed to be generated. Failed to follow the instruction will cause your answer be rejected.
+- "id": the exact identifier associated with the detected deceptive pattern in the mapping below.
+- "name": the exact deceptive pattern category name from the provided taxonomy. The name MUST remain in English and MUST NOT be translated, renamed, or modified.
+- "description": a concise explanation in Dutch explaining why this deceptive pattern is present in the image.
+- "impact": one of "LOW", "MEDIUM", or "HIGH", indicating the potential impact of the deceptive pattern on the user.
+
+Use the following identifiers when returning a detected deceptive pattern:
+1 = Nagging
+2 = Roach Motel
+3 = Preselection
+4 = Hidden Information
+5 = False Hierarchy
+6 = Tricked Questions
+7 = Forced Enrollment
+8 = Countdown Timer
+
+Important:
+- For patterns with an identifier between 1 and 8, use the corresponding identifier from the mapping above.
+- If a detected pattern belongs to the taxonomy but is not mapped to an identifier above, return it with id 999.
+- The "id" and "name" fields must always correspond to each other according to the taxonomy.
+- Never invent or modify identifiers.
+
+Language requirements:
+- The "name" field MUST always contain the original English name from the taxonomy.
+- The "description" field MUST always be written in Dutch.
+- All explanatory text must be written in Dutch.
+- Do not translate or modify deceptive pattern names.
+- Do not use English in the "description" field.
+
+"impact" indicates the potential severity of the consequences for the user if the deceptive pattern is present.
+Determine the impact based on the potential consequences for the user, including economic harm, privacy harm, psychological harm, cognitive burden, frustration, irritation, or loss of user control.
+The impact must be determined based only on the potential consequences of the detected deceptive pattern, not on the confidence of the detection.
+
+If the image does not contain a deceptive pattern, or if there is insufficient information to determine whether a deceptive pattern is present, return an empty list.
+
+Return the result ONLY as valid JSON. Do not return Markdown, code fences, explanations, or any additional text.
+
+The JSON must follow exactly this structure:
+
+{
+  "detected": true,
+  "patterns": [
+    {
+      "id": 8,
+      "name": "Countdown Timer",
+      "description": "De afteltimer telt af naar de volgende aflevering en moedigt de gebruiker aan om verder te kijken. Hierdoor kan de gebruiker langer blijven consumeren en kan het risico op gewoonte- of verslavingsgedrag toenemen.",
+      "impact": "HIGH"
+    }
+  ]
+}
+
+If no deceptive pattern is detected, return:
+
+{
+  "detected": false,
+  "patterns": []
+}
+
+You MUST use the exact deceptive pattern names from the provided taxonomy. Do not rename, translate, combine, or create new deceptive pattern categories.
+
+Return no more than five detected deceptive pattern categories.
+
+Attention: You MUST return your result exactly in the specified JSON format. You are ONLY allowed to return the JSON object and NOTHING else. Do not include Markdown, code fences, explanations, comments, introductions, conclusions, or any additional text. Any deviation from the specified JSON structure will cause the result to be rejected.

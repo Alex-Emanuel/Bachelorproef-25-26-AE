@@ -1,6 +1,5 @@
 package com.example.dpdetectorapplication.ui.home
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -30,16 +29,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.example.dpdetectorapplication.data.model.Detectie
 import com.example.dpdetectorapplication.data.model.Impact
 import com.example.dpdetectorapplication.data.model.darkPatterns
 import com.example.dpdetectorapplication.data.repository.DetectieRepository
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -48,11 +49,12 @@ private val datumFormatter =
 
 @Composable
 fun DetectiesScreen(
-    onItemClick: (String) -> Unit,
+    onItemClick: (Int) -> Unit,
     onDisclaimerClick: () -> Unit,
     onOpenWidgetClick: () -> Unit
 ) {
     val detections = DetectieRepository.getDetections()
+
 
     Scaffold(
         bottomBar = {
@@ -199,6 +201,7 @@ fun DetectieRow(
     val pattern = darkPatterns.find {
         it.id == detection.patroonId
     }
+    val context = LocalContext.current
 
     Row(
         modifier = Modifier
@@ -207,8 +210,11 @@ fun DetectieRow(
         verticalAlignment = Alignment.CenterVertically
     ) {
 
-        Image(
-            painter = painterResource(id = detection.afbeeldingResId),
+        AsyncImage(
+            model = File(
+                context.filesDir,
+                "detections/${detection.afbeelding}"
+            ),
             contentDescription = pattern?.naam,
             modifier = Modifier
                 .size(80.dp)
@@ -228,7 +234,7 @@ fun DetectieRow(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = pattern?.naam ?: detection.patroonId,
+                    text = pattern?.naam ?: "Onbekend",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold
                 )

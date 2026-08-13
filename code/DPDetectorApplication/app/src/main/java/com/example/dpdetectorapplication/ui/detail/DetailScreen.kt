@@ -1,6 +1,8 @@
 package com.example.dpdetectorapplication.ui.detail
 
-import androidx.compose.foundation.Image
+import android.annotation.SuppressLint
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -38,7 +40,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -50,23 +52,55 @@ import com.example.dpdetectorapplication.data.repository.DetectieRepository
 import com.example.dpdetectorapplication.ui.components.ExpandableCard
 import java.text.SimpleDateFormat
 import java.util.Locale
+import coil.compose.AsyncImage
+import java.io.File
+import com.example.dpdetectorapplication.R
 
 private val datumFormatter =
     SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(
-    id: String?,
+    id: Int?,
     onBack: () -> Unit
 ) {
     val detectie = id?.let {
         DetectieRepository.getDetection(it)
     }
 
-    LaunchedEffect(id) {
+    val context = LocalContext.current
+
+    LaunchedEffect(Unit) {
         if (id != null) {
             DetectieRepository.markAsRead(id)
+        }
+
+        val detectionDir = File(context.filesDir, "detections")
+
+        if (!detectionDir.exists()) {
+            detectionDir.mkdirs()
+        }
+
+        val imageFile = File(
+            detectionDir,
+            "countdown-1.jpg"
+        )
+
+        if (!imageFile.exists()) {
+            val bitmap = BitmapFactory.decodeResource(
+                context.resources,
+                R.drawable.test
+            )
+
+            imageFile.outputStream().use { output ->
+                bitmap.compress(
+                    Bitmap.CompressFormat.JPEG,
+                    100,
+                    output
+                )
+            }
         }
     }
 
@@ -134,7 +168,7 @@ fun DetailScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = pattern?.naam ?: detectie.patroonId,
+                            text = pattern?.naam ?: "Onbekend",
                             fontWeight = FontWeight.Bold
                         )
 
@@ -216,9 +250,10 @@ fun DetailScreen(
                         RoundedCornerShape(12.dp)
                     )
             ) {
-                Image(
-                    painter = painterResource(
-                        id = detectie.afbeeldingResId
+                AsyncImage(
+                    model = File(
+                        context.filesDir,
+                        "detections/${detectie.afbeelding}"
                     ),
                     contentDescription = "Screenshot van de gedetecteerde interface",
                     modifier = Modifier
@@ -413,9 +448,10 @@ fun DetailScreen(
                             RoundedCornerShape(16.dp)
                         )
                 ) {
-                    Image(
-                        painter = painterResource(
-                            id = detectie.afbeeldingResId
+                    AsyncImage(
+                        model = File(
+                            context.filesDir,
+                            "detections/${detectie.afbeelding}"
                         ),
                         contentDescription = "Vergrote screenshot",
                         modifier = Modifier.fillMaxWidth(),

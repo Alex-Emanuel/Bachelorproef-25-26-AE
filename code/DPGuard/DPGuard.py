@@ -10,6 +10,7 @@ import torch
 from torchvision import transforms
 from google import genai
 from google.genai import types
+import json
 
 def load_parallel_model(model_path,devices="cpu"):
     # Load the entire model
@@ -121,20 +122,42 @@ class DPGuard():
         self.devices = devices
         self.text_prompt = open("text_prompt.txt", "r").read()
 
+    def parse_json_response(self,response):
+        response = response.strip()
+
+        if response.startswith("```"):
+            response = response.removeprefix("```json").removeprefix("```")
+            response = response.removesuffix("```").strip()
+
+        return json.loads(response)
 
     def detect(self,image_path):
-        if self.binary_model(self.transformer(Image.open(image_path)).unsqueeze(0).to(self.devices))>0.5:
+        prediction = self.binary_model(self.transformer(Image.open(image_path)).unsqueeze(0).to(self.devices)).item()
+        confidence = round(prediction * 100)
+
+        if prediction>0.5:
             if "gpt" in self.mllm_model:
-                response = inquiry_GPT([image_path],self.text_prompt,self.mllm_model).lower()
+                response = inquiry_GPT([image_path],self.text_prompt,self.mllm_model)#.lower()
             elif "gemini" in self.mllm_model:
                 response = inquiry_gemini([image_path],self.text_prompt,self.mllm_model).lower()
+            else:
+                raise ValueError(f"Unsupported model: {self.mllm_model}")
             '''
             Todo: Feel free to add more model in here
             '''
 
-            if "no dp" in response:
-                return """```\n(no dp, no reason as no deceptive pattern detected)\n```"""
-            else:
-                return f"""```\n{response}\n```"""
+            #json result
+            try:
+                result = self.parse_json_response(response)
+            except json.JSONDecodeError as e:
+                raise ValueError(f"Invalid JSON: {response}") from e
+
+            result["confidence"] = confidence
+
+            return result
         else:
-            return """```\n(no dp, no reason as no deceptive pattern detected)\n```"""
+            return {
+                "detected": False,
+                "confidence": confidence,
+                "patterns": []
+            }

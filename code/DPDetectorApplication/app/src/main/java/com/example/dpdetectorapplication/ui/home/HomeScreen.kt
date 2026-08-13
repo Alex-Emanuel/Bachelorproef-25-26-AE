@@ -32,11 +32,18 @@ import androidx.compose.material3.Button
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.media.projection.MediaProjectionManager
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalContext
+import com.example.dpdetectorapplication.R
+import com.example.dpdetectorapplication.data.repository.DetectieRepository
 import com.example.dpdetectorapplication.services.ScreenCaptureService
+import java.io.File
 
 enum class HomeTab {
     Detecties,
@@ -45,12 +52,43 @@ enum class HomeTab {
 
 @Composable
 fun HomeScreen(
-    onItemClick: (String) -> Unit
+    onItemClick: (Int) -> Unit
 ) {
     var isActive by rememberSaveable { mutableStateOf(false) }
 
+    val context = LocalContext.current
+    LaunchedEffect(Unit) {
+
+        val detectionDir = File(context.filesDir, "detections")
+
+        if (!detectionDir.exists()) {
+            detectionDir.mkdirs()
+        }
+
+        val imageFile = File(
+            detectionDir,
+            "countdown-1.jpg"
+        )
+
+        if (!imageFile.exists()) {
+            val bitmap = BitmapFactory.decodeResource(
+                context.resources,
+                R.drawable.test
+            )
+
+            imageFile.outputStream().use { output ->
+                bitmap.compress(
+                    Bitmap.CompressFormat.JPEG,
+                    100,
+                    output
+                )
+            }
+        }
+    }
+
+
     //service
-    val context = androidx.compose.ui.platform.LocalContext.current
+    // val context = androidx.compose.ui.platform.LocalContext.current
     val mediaProjectionManager = context.getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
     val screenCaptureLauncher = rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
         result ->

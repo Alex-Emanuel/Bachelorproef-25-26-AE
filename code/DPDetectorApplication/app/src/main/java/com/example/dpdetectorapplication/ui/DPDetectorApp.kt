@@ -47,12 +47,12 @@ fun DPDetectorApp() {
                 route = Screen.Detail.route,
                 arguments = listOf(
                     navArgument("id") {
-                        type = NavType.StringType
+                        type = NavType.IntType
                     }
                 )
             ) { backStackEntry ->
 
-                val id = backStackEntry.arguments?.getString("id")
+                val id = backStackEntry.arguments?.getInt("id")
 
                 DetailScreen(
                     id = id,
