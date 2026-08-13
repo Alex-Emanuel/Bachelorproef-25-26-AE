@@ -16,7 +16,7 @@ import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 
 @Composable
-fun DPDetectorApp() {
+fun DPDetectorNavigation() {
 
     val navController = rememberNavController()
 

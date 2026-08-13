@@ -38,10 +38,11 @@ import android.media.projection.MediaProjectionManager
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.dpdetectorapplication.R
-import com.example.dpdetectorapplication.data.repository.DetectieRepository
 import com.example.dpdetectorapplication.services.ScreenCaptureService
 import java.io.File
 
@@ -52,43 +53,13 @@ enum class HomeTab {
 
 @Composable
 fun HomeScreen(
-    onItemClick: (Int) -> Unit
+    onItemClick: (Int) -> Unit,
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
     var isActive by rememberSaveable { mutableStateOf(false) }
-
     val context = LocalContext.current
-    LaunchedEffect(Unit) {
-
-        val detectionDir = File(context.filesDir, "detections")
-
-        if (!detectionDir.exists()) {
-            detectionDir.mkdirs()
-        }
-
-        val imageFile = File(
-            detectionDir,
-            "countdown-1.jpg"
-        )
-
-        if (!imageFile.exists()) {
-            val bitmap = BitmapFactory.decodeResource(
-                context.resources,
-                R.drawable.test
-            )
-
-            imageFile.outputStream().use { output ->
-                bitmap.compress(
-                    Bitmap.CompressFormat.JPEG,
-                    100,
-                    output
-                )
-            }
-        }
-    }
-
 
     //service
-    // val context = androidx.compose.ui.platform.LocalContext.current
     val mediaProjectionManager = context.getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
     val screenCaptureLauncher = rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
         result ->
@@ -248,6 +219,62 @@ fun HomeScreen(
                 ) {
                     Text("Maak screenshot")
                 }
+
+            // TO DO: REMOVE
+            // VOORBEELD DARK PATTERN VOOR SCREEN TE TESTEN
+/*
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(20.dp)
+                ) {
+                    Text(
+                        text = "🎉 Gefeliciteerd!",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Text(
+                        text = "Je hebt vandaag een exclusieve aanbieding gekregen!",
+                        fontSize = 16.sp
+                    )
+
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    Text(
+                        text = "Deze aanbieding verloopt over 00:09",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Button(
+                        onClick = { },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("JA, IK WIL DEZE AANBIEDING!")
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Text(
+                        text = "Nee, ik betaal liever de volledige prijs",
+                        fontSize = 12.sp
+                    )
+                }*/
+
+
+
+
+
+
+
+
+
+
                 DetectiesScreen(
                     onItemClick = onItemClick,
                     onDisclaimerClick = {

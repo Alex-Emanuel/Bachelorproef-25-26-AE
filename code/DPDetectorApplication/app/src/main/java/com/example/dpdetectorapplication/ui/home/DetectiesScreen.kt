@@ -24,6 +24,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,11 +36,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.example.dpdetectorapplication.data.model.Detectie
 import com.example.dpdetectorapplication.data.model.Impact
 import com.example.dpdetectorapplication.data.model.darkPatterns
-import com.example.dpdetectorapplication.data.repository.DetectieRepository
+import java.util.Calendar
+import java.util.Date
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -51,10 +55,10 @@ private val datumFormatter =
 fun DetectiesScreen(
     onItemClick: (Int) -> Unit,
     onDisclaimerClick: () -> Unit,
-    onOpenWidgetClick: () -> Unit
+    onOpenWidgetClick: () -> Unit,
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
-    val detections = DetectieRepository.getDetections()
-
+    val detections by viewModel.detecties.collectAsStateWithLifecycle()
 
     Scaffold(
         bottomBar = {
@@ -162,7 +166,7 @@ fun DetectiesScreen(
                     ),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                val groepen = DetectieRepository.getDetectionGroups()
+                val groepen = getDetectionGroups(detections)
 
                 groepen.forEach { (groep, groepDetecties) ->
 
@@ -215,7 +219,7 @@ fun DetectieRow(
                 context.filesDir,
                 "detections/${detection.afbeelding}"
             ),
-            contentDescription = pattern?.naam,
+            contentDescription = detection.patroonNaam,
             modifier = Modifier
                 .size(80.dp)
                 .clip(RoundedCornerShape(12.dp)),
@@ -234,7 +238,7 @@ fun DetectieRow(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = pattern?.naam ?: "Onbekend",
+                    text = detection.patroonNaam,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -296,4 +300,88 @@ fun DetectieRow(
             )
         }
     }
+}
+
+private fun getDetectionGroups( detections: List<Detectie> ): List<Pair<String, List<Detectie>>> {
+
+    val groepen = detections.groupBy { detectie ->
+        getDatumGroep(detectie.datumTijd)
+    }
+
+    val volgorde = mapOf(
+        "Vandaag" to 0,
+        "Gisteren" to 1,
+        "Deze week" to 2,
+        "Deze maand" to 3,
+        "Vorige maand" to 4,
+        "Ouder dan vorige maand" to 5
+    )
+
+    return groepen
+        .toList()
+        .sortedBy { (groep, _) ->
+            volgorde[groep] ?: Int.MAX_VALUE
+        }
+}
+
+fun getDatumGroep(datumTijd: Date): String {
+    val vandaag = Calendar.getInstance()
+
+    val datum = Calendar.getInstance().apply {
+        time = datumTijd
+    }
+
+    // Vandaag
+    if (isZelfdeDag(datum, vandaag)) {
+        return "Vandaag"
+    }
+
+    // Gisteren
+    val gisteren = Calendar.getInstance().apply {
+        add(Calendar.DAY_OF_YEAR, -1)
+    }
+
+    if (isZelfdeDag(datum, gisteren)) {
+        return "Gisteren"
+    }
+
+    // Deze week
+    val beginVanDezeWeek = Calendar.getInstance().apply {
+        set(Calendar.DAY_OF_WEEK, firstDayOfWeek)
+        set(Calendar.HOUR_OF_DAY, 0)
+        set(Calendar.MINUTE, 0)
+        set(Calendar.SECOND, 0)
+        set(Calendar.MILLISECOND, 0)
+    }
+
+    if (datum >= beginVanDezeWeek) {
+        return "Deze week"
+    }
+
+    // Deze maand
+    if (
+        datum.get(Calendar.YEAR) == vandaag.get(Calendar.YEAR) &&
+        datum.get(Calendar.MONTH) == vandaag.get(Calendar.MONTH)
+    ) {
+        return "Deze maand"
+    }
+
+    // Vorige maand
+    val vorigeMaand = Calendar.getInstance().apply {
+        add(Calendar.MONTH, -1)
+    }
+
+    if (
+        datum.get(Calendar.YEAR) == vorigeMaand.get(Calendar.YEAR) &&
+        datum.get(Calendar.MONTH) == vorigeMaand.get(Calendar.MONTH)
+    ) {
+        return "Vorige maand"
+    }
+
+    return "Ouder dan vorige maand"
+}
+
+private fun isZelfdeDag(datum1: Calendar, datum2: Calendar): Boolean {
+    return datum1.get(Calendar.YEAR) == datum2.get(Calendar.YEAR) &&
+            datum1.get(Calendar.DAY_OF_YEAR) == datum2.get(Calendar.DAY_OF_YEAR)
 }

@@ -1,5 +1,20 @@
 package com.example.dpdetectorapplication.data.repository
 
+import com.example.dpdetectorapplication.data.model.Detectie
+import kotlinx.coroutines.flow.Flow
+
+interface DetectieRepository {
+
+    fun getDetecties(): Flow<List<Detectie>>
+
+    suspend fun getDetectieById(id: Int): Detectie?
+
+    suspend fun addDetectie(detectie: Detectie)
+
+    suspend fun markAsRead(id: Int)
+}
+
+/*
 import android.annotation.SuppressLint
 import com.example.dpdetectorapplication.R
 import com.example.dpdetectorapplication.data.model.Detectie
@@ -133,4 +148,4 @@ object DetectieRepository {
         return datum1.get(Calendar.YEAR) == datum2.get(Calendar.YEAR) &&
                 datum1.get(Calendar.DAY_OF_YEAR) == datum2.get(Calendar.DAY_OF_YEAR)
     }
-}
+}*/

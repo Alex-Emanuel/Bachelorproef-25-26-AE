@@ -1,8 +1,5 @@
 package com.example.dpdetectorapplication.ui.detail
 
-import android.annotation.SuppressLint
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -32,6 +29,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -46,15 +44,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.dpdetectorapplication.data.model.Impact
-import com.example.dpdetectorapplication.data.model.darkPatterns
-import com.example.dpdetectorapplication.data.repository.DetectieRepository
 import com.example.dpdetectorapplication.ui.components.ExpandableCard
 import java.text.SimpleDateFormat
 import java.util.Locale
 import coil.compose.AsyncImage
 import java.io.File
-import com.example.dpdetectorapplication.R
 
 private val datumFormatter =
     SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
@@ -64,47 +60,20 @@ private val datumFormatter =
 @Composable
 fun DetailScreen(
     id: Int?,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    viewModel: DetailViewModel = hiltViewModel()
 ) {
-    val detectie = id?.let {
-        DetectieRepository.getDetection(it)
-    }
-
+    val detectieState by viewModel.detectie.collectAsState()
     val context = LocalContext.current
+    val pattern = viewModel.pattern
 
     LaunchedEffect(Unit) {
         if (id != null) {
-            DetectieRepository.markAsRead(id)
-        }
-
-        val detectionDir = File(context.filesDir, "detections")
-
-        if (!detectionDir.exists()) {
-            detectionDir.mkdirs()
-        }
-
-        val imageFile = File(
-            detectionDir,
-            "countdown-1.jpg"
-        )
-
-        if (!imageFile.exists()) {
-            val bitmap = BitmapFactory.decodeResource(
-                context.resources,
-                R.drawable.test
-            )
-
-            imageFile.outputStream().use { output ->
-                bitmap.compress(
-                    Bitmap.CompressFormat.JPEG,
-                    100,
-                    output
-                )
-            }
+            viewModel.loadDetectie(id)
         }
     }
 
-    if (detectie == null) {
+    if (detectieState == null) {
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -144,9 +113,7 @@ fun DetailScreen(
         return
     }
 
-    val pattern = darkPatterns.find {
-        it.id == detectie.patroonId
-    }
+    val detectie = detectieState ?: return
 
     var uitlegOpen by remember {
         mutableStateOf(false)
@@ -168,7 +135,7 @@ fun DetailScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = pattern?.naam ?: "Onbekend",
+                            text = detectie.patroonNaam,
                             fontWeight = FontWeight.Bold
                         )
 

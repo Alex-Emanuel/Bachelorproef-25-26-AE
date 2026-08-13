@@ -12,6 +12,8 @@ navigationCompose = "2.9.8"
 runtime = "1.11.4"
 uiGraphics = "1.11.4"
 material3 = "1.4.0"
+hiltNavigationCompose = "1.2.0"
+protoliteWellKnownTypes = "18.0.1"
 
 [libraries]
 compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
@@ -33,6 +35,8 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics", version.ref = "uiGraphics" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+protolite-well-known-types = { group = "com.google.firebase", name = "protolite-well-known-types", version.ref = "protoliteWellKnownTypes" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

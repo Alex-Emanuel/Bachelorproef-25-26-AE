@@ -11,6 +11,7 @@ enum class Impact(val displayName: String) {
 data class Detectie(
     val id: Int,
     val patroonId: Int,
+    val patroonNaam: String,
     val zekerheid: Int,
     val impact: Impact,
     val datumTijd: Date,
