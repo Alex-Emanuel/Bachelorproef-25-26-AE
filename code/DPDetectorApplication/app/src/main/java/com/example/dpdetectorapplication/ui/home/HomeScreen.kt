@@ -29,20 +29,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.material3.Button
 import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.media.projection.MediaProjectionManager
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -50,10 +46,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.dpdetectorapplication.R
-import com.example.dpdetectorapplication.services.NotificationHelper
 import com.example.dpdetectorapplication.services.ScreenCaptureService
-import java.io.File
+import android.accessibilityservice.AccessibilityServiceInfo
+import android.provider.Settings
+import android.view.accessibility.AccessibilityManager
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.example.dpdetectorapplication.accessibility.MyAccessibilityService
 
 enum class HomeTab {
     Detecties,
@@ -68,7 +68,12 @@ fun HomeScreen(
     var isActive by rememberSaveable {
         mutableStateOf(ScreenCaptureService.isCaptureActive)
     }
+    var waitingForAccessibility by rememberSaveable {
+        mutableStateOf(false)
+    }
     val context = LocalContext.current
+
+    // Screencapture actief?
     LaunchedEffect(Unit) {
         isActive = ScreenCaptureService.isCaptureActive
     }
@@ -104,13 +109,44 @@ fun HomeScreen(
             Log.d("DPDetector","MediaProjection toestemming geweigerd")
         }
     }
-
     val notificationPermissionLauncher = rememberLauncherForActivityResult(contract = ActivityResultContracts.RequestPermission()) {
         granted -> Log.d("DPDetector", "Notification permission: $granted")
 
         // Ongeacht ja of nee, erna MediaProjection vragen
         val captureIntent = mediaProjectionManager.createScreenCaptureIntent()
         screenCaptureLauncher.launch(captureIntent)
+    }
+
+    // Accessibility service ingeschakeld?
+    val lifecycleOwner = LocalLifecycleOwner.current
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME && waitingForAccessibility) {
+                if (isAccessibilityServiceEnabled(context)) {
+                    Log.d(
+                        "DPDetector",
+                        "Accessibility Service is ingeschakeld"
+                    )
+                    waitingForAccessibility = false
+
+                    // Nu pas notificatie/MediaProjection verderzetten
+                    if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !isNotificationAllowed(context)) {
+                        // Notificatie-permissie
+                        notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                    } else {
+                        // Notificatie-permissie is al gegeven
+                        val captureIntent = mediaProjectionManager.createScreenCaptureIntent()
+                        screenCaptureLauncher.launch(captureIntent)
+                    }
+                }
+            }
+        }
+
+        lifecycleOwner.lifecycle.addObserver(observer)
+
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
+        }
     }
 
     // Opmerken of mediaProjection draait
@@ -171,18 +207,26 @@ fun HomeScreen(
             Switch(
                 checked = isActive,
                 onCheckedChange = { actief ->
-
                     if (actief) {
-                        if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !isNotificationAllowed(context)) {
-                            // Notificatie-permissie
-                            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                        if (!isAccessibilityServiceEnabled(context)) {
+                            // Accessibility nog niet ingeschakeld
+                            waitingForAccessibility = true
+                            val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
+                            context.startActivity(intent)
                         } else {
-                            // Notificatie-permissie is al gegeven
-                            val captureIntent = mediaProjectionManager.createScreenCaptureIntent()
-                            screenCaptureLauncher.launch(captureIntent)
+                            // Accessibility ingeschakeld
+                            if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !isNotificationAllowed(context)) {
+                                // Notificatie-permissie
+                                notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                            } else {
+                                // Notificatie-permissie is al gegeven
+                                val captureIntent = mediaProjectionManager.createScreenCaptureIntent()
+                                screenCaptureLauncher.launch(captureIntent)
+                            }
+                            Log.d("DPDetector", "Detector is geactiveerd")
                         }
-                        Log.d("DPDetector", "Detector is geactiveerd")
-                    } else {
+                    }
+                    else {
                         val stopIntent = Intent(context,ScreenCaptureService::class.java).apply {
                             action = ScreenCaptureService.ACTION_STOP
                         }
@@ -248,7 +292,7 @@ fun HomeScreen(
 
         when (selectedTab) {
             HomeTab.Detecties -> {
-                Button(
+                /*Button(
                     onClick = {
                         Log.d(
                             "DPDetector",
@@ -266,61 +310,7 @@ fun HomeScreen(
                         .padding(horizontal = 20.dp)
                 ) {
                     Text("Maak screenshot")
-                }
-
-            // TO DO: REMOVE
-            // VOORBEELD DARK PATTERN VOOR SCREEN TE TESTEN
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp)
-                ) {
-                    Text(
-                        text = "🎉 Gefeliciteerd!",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(
-                        text = "Je hebt vandaag een exclusieve aanbieding gekregen!",
-                        fontSize = 16.sp
-                    )
-
-                    Spacer(modifier = Modifier.height(12.dp))
-
-                    Text(
-                        text = "Deze aanbieding verloopt over 00:09",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    Button(
-                        onClick = { },
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text("JA, IK WIL DEZE AANBIEDING!")
-                    }
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
-                    Text(
-                        text = "Nee, ik betaal liever de volledige prijs",
-                        fontSize = 12.sp
-                    )
-                }
-
-
-
-
-
-
-
-
-
+                }*/
 
                 DetectiesScreen(
                     onItemClick = onItemClick,
@@ -351,5 +341,17 @@ fun isNotificationAllowed(context: Context): Boolean {
         NotificationManagerCompat
             .from(context)
             .areNotificationsEnabled()
+    }
+}
+
+fun isAccessibilityServiceEnabled(context: Context): Boolean {
+    val accessibilityManager = context.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
+    val enabledServices = accessibilityManager.getEnabledAccessibilityServiceList(
+            AccessibilityServiceInfo.FEEDBACK_ALL_MASK
+    )
+
+    return enabledServices.any { service ->
+        service.resolveInfo.serviceInfo.packageName == context.packageName &&
+                service.resolveInfo.serviceInfo.name == MyAccessibilityService::class.java.name
     }
 }

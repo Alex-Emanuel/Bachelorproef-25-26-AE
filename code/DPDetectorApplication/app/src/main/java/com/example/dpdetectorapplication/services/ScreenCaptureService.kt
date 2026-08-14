@@ -23,6 +23,7 @@ import android.app.PendingIntent
 import androidx.core.app.NotificationCompat
 import android.content.pm.ServiceInfo
 import com.example.dpdetectorapplication.R
+import com.example.dpdetectorapplication.accessibility.StreamingAppState
 import com.example.dpdetectorapplication.analysis.AnalysisManager
 import com.example.dpdetectorapplication.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -242,6 +243,7 @@ class ScreenCaptureService : Service() {
     }
 
     private fun takeScreenshot() {
+        val streamingService = StreamingAppState.currentStreamingService
         val image = imageReader?.acquireLatestImage()
 
         if (image == null) {
@@ -262,8 +264,11 @@ class ScreenCaptureService : Service() {
                 val file = saveScreenshot(bitmap)
 
                 // Analyse via FastAPI + indien dp opgeslagen in db en detections map
-                // TODO: "Netflix" veranderen naar wat accessibility service opmerkt van app
-                val response = analysisManager.analyse(file, "Netflix")
+                var dienst = "Eigen screenshot"
+                if(streamingService != null)
+                    dienst = streamingService
+
+                val response = analysisManager.analyse(file, dienst)
                 Log.d("ScreenCapture","Analyse resultaat: ${response.result}")
 
                 // Verwijderen na analyse uit cache

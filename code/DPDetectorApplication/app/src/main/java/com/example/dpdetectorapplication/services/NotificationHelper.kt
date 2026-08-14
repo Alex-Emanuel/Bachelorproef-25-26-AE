@@ -69,7 +69,7 @@ object NotificationHelper {
             .setContentIntent(pendingIntent)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setAutoCancel(true)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .build()
 
         val notificationId = System.currentTimeMillis().toInt()
