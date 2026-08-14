@@ -19,9 +19,12 @@ import androidx.core.graphics.createBitmap
 import java.io.File
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import androidx.core.app.NotificationCompat
 import android.content.pm.ServiceInfo
+import com.example.dpdetectorapplication.R
 import com.example.dpdetectorapplication.analysis.AnalysisManager
+import com.example.dpdetectorapplication.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -44,6 +47,8 @@ class ScreenCaptureService : Service() {
         override fun onStop() {
             super.onStop()
 
+            isCaptureActive = false
+
             virtualDisplay?.release()
             virtualDisplay = null
 
@@ -51,6 +56,8 @@ class ScreenCaptureService : Service() {
             imageReader = null
 
             mediaProjection = null
+
+            sendBroadcast(Intent(ACTION_CAPTURE_STOPPED).apply{ setPackage(packageName) })
 
             Log.d("ScreenCapture", "MediaProjection gestopt")
         }
@@ -107,10 +114,21 @@ class ScreenCaptureService : Service() {
 
         Log.d("ScreenCapture","Foreground service gestart")
 
-        mediaProjection = mediaProjectionManager?.getMediaProjection(resultCode, resultData)
+        // mediaProjection = mediaProjectionManager?.getMediaProjection(resultCode, resultData)
+
+        mediaProjection = try {
+            mediaProjectionManager?.getMediaProjection(resultCode, resultData)
+        } catch (e: Exception) {
+            Log.e("ScreenCapture", "MediaProjection kon niet worden aangemaakt",e)
+            sendBroadcast(Intent(ACTION_CAPTURE_STOPPED).apply{ setPackage(packageName) })
+            stopSelf()
+            return
+        }
 
         if (mediaProjection == null) {
             Log.e("ScreenCapture", "MediaProjection kon niet worden aangemaakt")
+            sendBroadcast(Intent(ACTION_CAPTURE_STOPPED).apply{ setPackage(packageName) })
+            stopSelf()
             return
         }
 
@@ -120,13 +138,34 @@ class ScreenCaptureService : Service() {
     }
 
     private fun startCaptureService() {
+        try {
+            val (width, height) = getScreenSize()
+            createImageReader(width, height)
+            createVirtualDisplay(width, height)
+
+            if (virtualDisplay == null) {
+                throw IllegalStateException("VirtualDisplay kon niet worden aangemaakt")
+            }
+
+            isCaptureActive = true
+
+            Log.d("ScreenCapture", "MediaProjection sessie actief")
+            sendBroadcast(Intent(ACTION_CAPTURE_STARTED).apply{ setPackage(packageName) })
+
+        } catch (e: Exception) {
+            Log.e("ScreenCapture", "Capture starten mislukt", e)
+            stopCapture()
+        }
+    }
+
+    /*private fun startCaptureService() {
         val (width, height) = getScreenSize()
 
         createImageReader(width, height)
         createVirtualDisplay(width, height)
 
         Log.d("ScreenCapture", "MediaProjection sessie actief")
-    }
+    }*/
 
     private fun startForegroundService() {
         val channelId = "screen_capture"
@@ -142,10 +181,25 @@ class ScreenCaptureService : Service() {
             notificationManager.createNotificationChannel(channel)
         }
 
-        val notification = NotificationCompat.Builder(this,channelId)
+        val intent = Intent(this, MainActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(
+            this,
+            0,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val notification = NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle("DPDetector")
             .setContentText("Screen capture actief")
-            .setSmallIcon(android.R.drawable.ic_menu_camera)
+            .setStyle(
+                NotificationCompat.BigTextStyle()
+                    .bigText(
+                        "DPDetector is momenteel actief en maakt screenshots voor analyse."
+                    )
+            )
+            .setContentIntent(pendingIntent)
             .setOngoing(true)
             .build()
 
@@ -267,6 +321,8 @@ class ScreenCaptureService : Service() {
     }
 
     override fun onDestroy() {
+        isCaptureActive = false
+
         virtualDisplay?.release()
         virtualDisplay = null
 
@@ -284,11 +340,17 @@ class ScreenCaptureService : Service() {
     }
 
     companion object {
+        @Volatile
+        var isCaptureActive = false
+
         const val EXTRA_RESULT_CODE = "extra_result_code"
         const val EXTRA_RESULT_DATA = "extra_result_data"
 
         const val ACTION_START = "ACTION_START"
         const val ACTION_SCREENSHOT = "ACTION_SCREENSHOT"
         const val ACTION_STOP = "ACTION_STOP"
+
+        const val ACTION_CAPTURE_STARTED = "com.example.dpdetectorapplication.CAPTURE_STARTED"
+        const val ACTION_CAPTURE_STOPPED = "com.example.dpdetectorapplication.CAPTURE_STOPPED"
     }
 }

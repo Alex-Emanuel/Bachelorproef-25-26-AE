@@ -1,5 +1,6 @@
 package com.example.dpdetectorapplication.ui.home
 
+import android.Manifest
 import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,8 +31,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material3.Button
 import android.app.Activity
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.media.projection.MediaProjectionManager
@@ -39,10 +43,15 @@ import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.height
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.dpdetectorapplication.R
+import com.example.dpdetectorapplication.services.NotificationHelper
 import com.example.dpdetectorapplication.services.ScreenCaptureService
 import java.io.File
 
@@ -56,17 +65,20 @@ fun HomeScreen(
     onItemClick: (Int) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-    var isActive by rememberSaveable { mutableStateOf(false) }
+    var isActive by rememberSaveable {
+        mutableStateOf(ScreenCaptureService.isCaptureActive)
+    }
     val context = LocalContext.current
+    LaunchedEffect(Unit) {
+        isActive = ScreenCaptureService.isCaptureActive
+    }
 
-    //service
     val mediaProjectionManager = context.getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
     val screenCaptureLauncher = rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
         result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val resultData = result.data
             if (resultData != null) {
-                isActive = true
                 Log.d("DPDetector","MediaProjection toestemming gegeven")
 
                 val serviceIntent = Intent(context,ScreenCaptureService::class.java).apply {
@@ -93,7 +105,37 @@ fun HomeScreen(
         }
     }
 
-    //ui
+    val notificationPermissionLauncher = rememberLauncherForActivityResult(contract = ActivityResultContracts.RequestPermission()) {
+        granted -> Log.d("DPDetector", "Notification permission: $granted")
+
+        // Ongeacht ja of nee, erna MediaProjection vragen
+        val captureIntent = mediaProjectionManager.createScreenCaptureIntent()
+        screenCaptureLauncher.launch(captureIntent)
+    }
+
+    // Opmerken of mediaProjection draait
+    val captureReceiver = remember { object : BroadcastReceiver() {
+        override fun onReceive(context: Context?,intent: Intent?) {
+            when (intent?.action) {
+                ScreenCaptureService.ACTION_CAPTURE_STARTED -> {
+                    isActive = true
+                }
+                ScreenCaptureService.ACTION_CAPTURE_STOPPED -> {
+                    isActive = false
+                }
+            }
+        }
+    }}
+    DisposableEffect(context) {
+        val filter = IntentFilter().apply {
+            addAction(ScreenCaptureService.ACTION_CAPTURE_STARTED)
+            addAction(ScreenCaptureService.ACTION_CAPTURE_STOPPED)
+        }
+        ContextCompat.registerReceiver(context,captureReceiver,filter,ContextCompat.RECEIVER_NOT_EXPORTED)
+        onDispose { context.unregisterReceiver(captureReceiver) }
+    }
+
+    // Interface
     var selectedTab by rememberSaveable {
         mutableStateOf(HomeTab.Detecties)
     }
@@ -131,8 +173,14 @@ fun HomeScreen(
                 onCheckedChange = { actief ->
 
                     if (actief) {
-                        val captureIntent = mediaProjectionManager.createScreenCaptureIntent()
-                        screenCaptureLauncher.launch(captureIntent)
+                        if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !isNotificationAllowed(context)) {
+                            // Notificatie-permissie
+                            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                        } else {
+                            // Notificatie-permissie is al gegeven
+                            val captureIntent = mediaProjectionManager.createScreenCaptureIntent()
+                            screenCaptureLauncher.launch(captureIntent)
+                        }
                         Log.d("DPDetector", "Detector is geactiveerd")
                     } else {
                         val stopIntent = Intent(context,ScreenCaptureService::class.java).apply {
@@ -222,7 +270,6 @@ fun HomeScreen(
 
             // TO DO: REMOVE
             // VOORBEELD DARK PATTERN VOOR SCREEN TE TESTEN
-/*
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -264,7 +311,7 @@ fun HomeScreen(
                         text = "Nee, ik betaal liever de volledige prijs",
                         fontSize = 12.sp
                     )
-                }*/
+                }
 
 
 
@@ -291,5 +338,18 @@ fun HomeScreen(
                 InstellingenScreen()
             }
         }
+    }
+}
+
+fun isNotificationAllowed(context: Context): Boolean {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        ContextCompat.checkSelfPermission(
+            context,
+            Manifest.permission.POST_NOTIFICATIONS
+        ) == PackageManager.PERMISSION_GRANTED
+    } else {
+        NotificationManagerCompat
+            .from(context)
+            .areNotificationsEnabled()
     }
 }

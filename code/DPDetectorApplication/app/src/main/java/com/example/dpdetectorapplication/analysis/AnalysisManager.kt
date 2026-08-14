@@ -7,6 +7,7 @@ import com.example.dpdetectorapplication.data.model.Detectie
 import com.example.dpdetectorapplication.data.model.Impact
 import com.example.dpdetectorapplication.data.repository.DetectieRepository
 import com.example.dpdetectorapplication.network.AnalysisApi
+import com.example.dpdetectorapplication.services.NotificationHelper
 import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
@@ -68,6 +69,8 @@ class AnalysisManager @Inject constructor (
 
                 repository.addDetectie(detectie)
             }
+
+            NotificationHelper.showDarkPatternNotification(context,response)
         }
 
         return response
