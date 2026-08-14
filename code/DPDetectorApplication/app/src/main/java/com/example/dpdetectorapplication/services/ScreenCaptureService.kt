@@ -43,6 +43,8 @@ class ScreenCaptureService : Service() {
     }
     @Inject
     lateinit var analysisManager: AnalysisManager
+    @Volatile
+    private var screenshotInProgress = false
 
     private val mediaProjectionCallback = object : MediaProjection.Callback() {
         override fun onStop() {
@@ -115,8 +117,6 @@ class ScreenCaptureService : Service() {
 
         Log.d("ScreenCapture","Foreground service gestart")
 
-        // mediaProjection = mediaProjectionManager?.getMediaProjection(resultCode, resultData)
-
         mediaProjection = try {
             mediaProjectionManager?.getMediaProjection(resultCode, resultData)
         } catch (e: Exception) {
@@ -158,15 +158,6 @@ class ScreenCaptureService : Service() {
             stopCapture()
         }
     }
-
-    /*private fun startCaptureService() {
-        val (width, height) = getScreenSize()
-
-        createImageReader(width, height)
-        createVirtualDisplay(width, height)
-
-        Log.d("ScreenCapture", "MediaProjection sessie actief")
-    }*/
 
     private fun startForegroundService() {
         val channelId = "screen_capture"
@@ -243,40 +234,64 @@ class ScreenCaptureService : Service() {
     }
 
     private fun takeScreenshot() {
-        val streamingService = StreamingAppState.currentStreamingService
-        val image = imageReader?.acquireLatestImage()
-
-        if (image == null) {
-            Log.d("ScreenCapture", "Nog geen image beschikbaar")
+        if (screenshotInProgress) {
+            Log.d("ScreenCapture", "Screenshot overgeslagen: al bezig")
             return
         }
 
-        val bitmap = imageToBitmap(image)
-        image.close()
+        screenshotInProgress = true
 
-        Log.d(
-            "ScreenCapture",
-            "Screenshot genomen: ${bitmap.width}x${bitmap.height}"
-        )
+        val reader = imageReader
 
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val file = saveScreenshot(bitmap)
+        if (reader == null) {
+            return
+        }
+        val image = reader.acquireLatestImage()
 
-                // Analyse via FastAPI + indien dp opgeslagen in db en detections map
-                var dienst = "Eigen screenshot"
-                if(streamingService != null)
-                    dienst = streamingService
+        if (image == null) {
+            return
+        }
 
-                val response = analysisManager.analyse(file, dienst)
-                Log.d("ScreenCapture","Analyse resultaat: ${response.result}")
+        try {
+            val bitmap = imageToBitmap(image)
 
-                // Verwijderen na analyse uit cache
-                file.delete()
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    val file = saveScreenshot(bitmap)
 
-            } catch (e: Exception) {
-                Log.e("ScreenCapture","Analyse mislukt",e)
+                    var dienst = "Eigen screenshot"
+
+                    StreamingAppState.currentStreamingService?.let {
+                        dienst = it
+                    }
+
+                    val response = analysisManager.analyse(file, dienst)
+
+                    Log.d(
+                        "ScreenCapture",
+                        "Analyse resultaat: ${response.result}"
+                    )
+
+                    file.delete()
+
+                } catch (e: Exception) {
+                    Log.e(
+                        "ScreenCapture",
+                        "Analyse mislukt",
+                        e
+                    )
+                }
             }
+
+        } catch (e: Exception) {
+            Log.e(
+                "ScreenCapture",
+                "imageToBitmap() mislukt",
+                e
+            )
+        } finally {
+            image.close()
+            screenshotInProgress = false
         }
     }
 

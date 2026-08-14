@@ -147,8 +147,9 @@ fun DetectiesScreen(
 
                 Text(
                     text = "Zodra een dark pattern wordt gedetecteerd, verschijnt het hier.\n" +
-                            "Je kan zelf handmatig een nieuwe analyse starten via de zwevende actieknop. " +
-                            "Klik hiervoor op de \"Open widget\"-knop",
+                            "Zet de detector aan om automatisch detecties op streamingdiensten te starten." +
+                            "Je kan zelf handmatig een nieuwe analyse starten via de zwevende actieknop." +
+                            "Klik hiervoor op de \"Open widget\"-knop (nog niet geïmplementeerd)",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onBackground,
                     textAlign = TextAlign.Center,

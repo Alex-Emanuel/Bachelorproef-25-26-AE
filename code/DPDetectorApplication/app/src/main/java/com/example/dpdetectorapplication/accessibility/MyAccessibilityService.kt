@@ -12,7 +12,7 @@ class MyAccessibilityService : AccessibilityService() {
 
     private val handler = Handler(Looper.getMainLooper())
     private var lastScreenshotTime = 0L
-    private val screenshotCooldown = 2000L
+    private val screenshotCooldown = 3000L
 
     private val contentChangedRunnable = Runnable {
         Log.d(
@@ -20,7 +20,6 @@ class MyAccessibilityService : AccessibilityService() {
             "UI is 500ms stabiel - ${StreamingAppState.currentStreamingService}"
         )
 
-        // Hier komt straks de trigger voor een screenshot
         requestScreenshot()
     }
 
