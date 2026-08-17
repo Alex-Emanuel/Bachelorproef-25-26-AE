@@ -22,32 +22,252 @@ Tot slot wordt de ontwikkelde \acrshort{poc} geëvalueerd aan de hand van een ge
 
 \vspace{1em}
 
-2.5.1. Bestaand onderzoek naar dark patterns en detectie
-De resultaten uit deze onderzoeken zijn hoofdzakelijk research-prototypes die niet
-meteen bruikbaar zijn voor de gewone gebruiker.
+Een belangrijk onderdeel van de uitwerking van de \acrshort{poc} is het bepalen hoe de \acrlong{ui} wordt vormgegeven. Uit de literatuurstudie bleek namelijk dat veel bestaande research-prototypes niet rechtstreeks bruikbaar zijn voor eindgebruikers door onder andere het ontbreken van een \acrshort{ui} (zie sectie \ref{subsec:bestaand-onderzoek}). Ook bij het opstellen van de longlist viel op dat het merendeel van de bestaande tools over een beperkte of ontbrekende \acrshort{ui} beschikt (zie sectie \ref{sec:bestaande-tools}).
 
--> \ref{subsec:bestaand-onderzoek}
+\vspace{1em}
 
+Voor de uitwerking van de \acrlong{poc} werd daarom inspiratie gehaald uit bestaande schermopname-apps aangezien de beoogde schermen van de \acrshort{poc} gelijkaardig zijn. Deze schermopname-apps dienen namelijk ook subtiel op de achtergrond een functionaliteit uit te voeren, de gebruiker controle te bieden en een overzicht weer te geven van de gemaakte opnames. Een van de geraadpleegde voorbeelden was de app ``Scherm opnemen Video opnemen'', beschikbaar via de Google Play Store van \textcite{VPCT2026}.
 
-Longlist -> geen user interface
--> \ref{sec:bestaande-tools}
+\vspace{1em}
 
+De mockups werden uitgewerkt met behulp van Figma. In dit onderdeel worden de verschillende onderdelen van de \acrshort{ui} en de bijbehorende mockups verder toegelicht. Bij het opstellen van de mockups werd de \acrshort{ui} opgedeeld in vier hoofdonderdelen: de algemene interface, onboarding, instellingen en een widget.
 
-textcite
-autocite
+\vspace{1em}
 
-VPCT2026
+\subsubsection{Algemene interface}
+
+\vspace{1em}
+
+Het hoofddoel van de \acrshort{poc} is het detecteren van dark patterns en deze op een begrijpelijke manier aan de gebruiker weergeven. Om de detecties duidelijk te maken aan de gebruiker werd een overzichts- en een detailpagina voorzien. Via deze pagina's krijgt de gebruiker inzicht in waar een patroon werd gedetecteerd, waarom het als een dark pattern wordt beschouwd, wat het patroon inhoudt en welke mogelijke gevolgen eraan verbonden zijn.
+
+\vspace{1em}
+
+Het overzicht toont de gedetecteerde dark patterns met hun naam, zekerheid, impact en datum en tijd. Nieuwe detecties worden aangeduid met een indicator en de resultaten worden gegroepeerd per periode, zoals ``Vandaag'' en ``Gisteren''. Er wordt zowel een \textit{empty state} als een \textit{filled state} voorzien. Daarnaast kan de gebruiker de detectiefunctie aan- of uitzetten.
+
+\vspace{1em}
+
+De detailpagina bevat vervolgens de aanvullende informatie over een specifieke detectie, waaronder de streamingdienst waarop het gedetecteerd werd, de reden van de detectie, het zekerheidspercentage, de impact, een algemene uitleg over het dark pattern en de mogelijke gevolgen.
+
+\newpage
+
+Tot slot werd op de overzichtspagina een disclaimer voorzien die duidelijk maakt dat de app als hulpmiddel dient en geen garantie biedt op een correcte detectie. Daarnaast bevat de pagina een knop om een widget te activeren. Deze wordt verder besproken in het onderdeel ``Widget'' van sectie \ref{subsubsec:widget}. De beelden van de mockups van de algemene interface zijn weergegeven in figuur~\ref{fig:mockups-algemeen}.
+
+\vspace{1em}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.24\textwidth]{screens/NL/roachmotel-b1.jpg}
-    \includegraphics[width=0.24\textwidth]{screens/NL/roachmotel-b2.jpg}
-    \includegraphics[width=0.24\textwidth]{screens/NL/roachmotel-b3.jpg}
-    \includegraphics[width=0.24\textwidth]{screens/NL/roachmotel-b4.jpg}
-    \caption[Een tweede voorbeeld van een Roach Motel dark pattern in een Nederlandstalige interface]{Een tweede voorbeeld van een Roach Motel dark pattern in de Nederlandstalige interface van de Netflix-app. De afbeeldingen tonen vier stappen in het proces om de goed verborgen autoplay-functie uit te schakelen: het openen van de ``Mijn Netflix''-tab, het drukken op de accountnaam, het drukken op de bewerkknop van de actieve avatar en het scrollen naar beneden.}
-    \label{fig:scrn-recorder}
+    \begin{minipage}[t]{0.24\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/app-1.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.24\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/app-2.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.24\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/app-3.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.24\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/app-4.png}
+    \end{minipage}
+    
+    \caption[Mockups algemene interface]{Overzicht van de mockups van de algemene interface van de \acrshort{poc}. Van links naar rechts worden de empty state, de disclaimerpagina, het overzicht met gedetecteerde dark patterns en de detailpagina van een detectie weergegeven.}
+    \label{fig:mockups-algemeen}
 \end{figure}
 
+\vspace{1em}
+
+\subsubsection{Onboarding}
+
+\vspace{1em}
+
+Vervolgens werd een flow uitgewerkt voor een onboarding. De onboarding heeft als doel de gebruiker bij de eerste ingebruikname van de app vertrouwd te maken met de werking en mogelijkheden ervan. Hierbij wordt eerst algemene informatie gegeven over de werking van de applicatie. Daarnaast wordt duidelijk gemaakt dat de applicatie slechts als hulpmiddel dient door middel van het weergeven van een disclaimer.
+
+\vspace{1em}
+
+Vervolgens wordt de gebruiker gevraagd om de noodzakelijke permissies te verlenen. Nadien kan de gebruiker ook tijdens de onboarding de belangrijkste instellingen configureren. Dit werd toegevoegd aan de onboarding om te voorkomen dat de app zelf een dark pattern zoals ``preselection'' zou toepassen. Door tijdens de onboarding samen met de gebruiker de instellingen te configureren, is de gebruiker op de hoogte van welke aanpassingen mogelijk zijn. De gebruiker kan onder andere aangeven voor welke streamingdiensten de detectie moet worden uitgevoerd, welke dark patterns moeten worden gedetecteerd en voor welke patronen meldingen gewenst zijn. Deze instellingen kunnen later nog gewijzigd worden bij de instellingen. Dit wordt verder besproken in het onderdeel ``Instellingen'' van sectie \ref{subsubsec:widget}.
+
+\vspace{1em}
+
+\begin{figure}[H]
+    \centering
+    
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/Onboarding-1.png}
+    \end{minipage}
+    \hspace{0.01\textwidth}
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/Onboarding-2.png}
+    \end{minipage}
+    \hspace{0.01\textwidth}
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/Onboarding-3.png}
+    \end{minipage}
+    \hspace{0.01\textwidth}
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/Onboarding-4.png}
+    \end{minipage}
+    \hspace{0.01\textwidth}
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/Onboarding-5.png}
+    \end{minipage}
+    
+    \vspace{1em}
+    
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/Onboarding-6.png}
+    \end{minipage}
+    \hspace{0.01\textwidth}
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/Onboarding-7.png}
+    \end{minipage}
+    \hspace{0.01\textwidth}
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/Onboarding-8.png}
+    \end{minipage}
+    \hspace{0.01\textwidth}
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/Onboarding-9.png}
+    \end{minipage}
+    \hspace{0.01\textwidth}
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/Onboarding-10.png}
+    \end{minipage}
+    
+    \caption[Mockups onboarding]{Overzicht van de mockups van de onboarding van de \acrshort{poc}. Van links naar rechts en van boven naar beneden worden het welkomstscherm, een korte toelichting over de werking, de disclaimer, de aanvraag voor de toegankelijkheidsservice, een melding bij het weigeren van een essentiële permissie, de toestemming voor weergave boven andere apps, de toestemming voor schermopname, de selectie van streamingdiensten, de selectie van te detecteren dark patterns en de selectie van te melden dark patterns weergegeven.}
+    \label{fig:mockups-onboarding}
+\end{figure}
+
+\vspace{1em}
+
+\subsubsection{Instellingen}
+
+\vspace{1em}
+
+Als voorlaatste onderdeel van de mockups werd een flow voor de instellingen uitgewerkt. Deze kwamen al kort aan bod in het onderdeel rond onboarding. De instellingen zijn ontworpen om de gebruiker voldoende controle te geven over de werking van de app. Dit sluit aan bij de requirementsanalyse uit hoofdstuk~\ref{ch:requirementsanalyse}, waaruit naar voren kwam dat gebruikerscontrole een belangrijk aandachtspunt vormt. De instellingen zijn daarom opgedeeld in detectie-instellingen, meldingsinstellingen en permissies.
+
+\vspace{1em}
+
+De detectie-instellingen laten toe om te bepalen voor welke streamingdiensten de detectie actief is, of de gebruiker een analysewidget wenst en welke dark patterns moeten worden gedetecteerd. Door de gebruiker te laten bepalen welke dark patterns hij of zij wilt laten opsporen, wordt vermeden dat de app een overdaad aan onnodige analyses doet. Daarnaast bevat de instellingenpagina snelkoppelingen naar de relevante Android-instellingen, zodat de gebruiker de benodigde permissies eenvoudig kan raadplegen en aanpassen.
+
+\vspace{1em}
+
+Ten slotte kan de gebruiker instellen voor welke patronen meldingen worden weergegeven. Deze functionaliteit werd toegevoegd om te voorkomen dat gebruikers meldingen negeren of de tool verwijderen als gevolg van een overdaad aan meldingen. Dit sluit aan bij het concept ``waarschuwingsmoeheid'', dat in hoofdstuk~\ref{ch:requirementsanalyse} werd geïdentificeerd als een aandachtspunt. Door de gebruiker zelf te laten bepalen voor welke patronen meldingen worden weergegeven, kan het aantal meldingen worden beperkt tot relevante detecties.
+
+\vspace{1em}
+
+In de huidige versie kunnen meldingen enkel worden ingesteld op het niveau van de gedetecteerde dark patterns. Een mogelijke uitbreiding is om meldingen ook afhankelijk te maken van de \textit{impact} van een gevonden patroon. Zo zou een gebruiker bijvoorbeeld enkel een melding kunnen ontvangen wanneer de geschatte impact hoog is. Deze mogelijkheid werd echter niet opgenomen in de huidige mockups, omdat het bepalen van de impact van een patroon verder onderzoek vereist. Hiervoor is een referentiekader nodig, maar dit valt buiten de scope van dit onderzoek.
+
+\begin{figure}[H]
+    \centering
+    
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/app-5.png}
+    \end{minipage}
+    \hspace{0.01\textwidth}
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/app-6.png}
+    \end{minipage}
+    \hspace{0.01\textwidth}
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/app-7.png}
+    \end{minipage}
+    \hspace{0.01\textwidth}
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/app-8.png}
+    \end{minipage}
+    \hspace{0.01\textwidth}
+    \begin{minipage}[t]{0.18\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/app-9.png}
+    \end{minipage}
+    
+    \caption[Mockups instellingen]{Overzicht van de mockups van de instellingen van de \acrshort{poc}. Van links naar rechts worden het algemene instellingenscherm, de selectie van te detecteren dark patterns, de toelichting bij een geselecteerd dark pattern, de selectie van te melden dark patterns en de selectie van te analyseren streamingdiensten weergegeven.}
+    \label{fig:mockups-instellingen}
+\end{figure}
+
+\vspace{1em}
+
+\subsubsection{Widget}
+\label{subsubsec:widget}
+
+\vspace{1em}
+
+Ten slotte werden mockups voor een widget voorzien waarmee de gebruiker op eigen initiatief een analyse kan starten. De widget is bedoeld als aanvullende functionaliteit voor situaties waarin de gebruiker zelf een bepaald scherm wil laten analyseren. Hierdoor is de gebruiker niet enkel afhankelijk van de automatische detectie.
+
+\vspace{1em}
+
+Voor het ontwerp van de widget werd inspiratie gehaald uit de schermopname-app van \textcite{VPCT2026}. Net als bij deze app werd gekozen voor een subtiele weergave die zo weinig mogelijk afleid van het gebruik van een onderliggende applicatie. Wanneer de widget niet actief wordt gebruikt, verkleint deze en wordt hij gedeeltelijk transparant weergegeven aan de zijkant van het scherm. De gebruiker kan de widget bovendien verwijderen wanneer deze niet gewenst is door hem naar een kruisje te slepen of door via de app hem uit te schakelen. Wanneer de gebruiker de widget opent worden twee acties aangeboden: een analyse starten van het huidige scherm of naar het detectieoverzicht gaan. 
+
+\vspace{1em}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.24\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/widget-1.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.24\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/widget-2.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.24\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/widget-3.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.24\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{mockups/widget-4.png}
+    \end{minipage}
+    
+    \caption[Mockups widget]{Overzicht van de mockups van de widget van de \acrshort{poc}. Van links naar rechts wordt weergegeven hoe de widget als zwevende knop bovenop de Netflix-interface wordt weergegeven, hoe na het drukken op de widget de opties ``Analyseer'' en ``Resultaten'' worden weergegeven, hoe de widget er in inactieve toestand uitziet en hoe de widget kan worden verwijderd door deze naar de onderzijde van het scherm te slepen.}
+    \label{fig:mockups-widget}
+\end{figure}
 
 \newpage
 
@@ -145,7 +365,7 @@ Tenslotte moet de applicatie eerdere detecties lokaal kunnen bewaren en raadpleg
 
 \vspace{1em}
 
-Aangezien gegevensopslag geen primaire focus vormt van deze \acrshort{poc}, werd gekozen voor deze bestaande Android-oplossing. Hierdoor blijft de implementatie van de gegevensopslag beperkt en kan de beschikbare ontwikkeltijd voornamelijk worden besteed aan de kernfunctionaliteiten van de \acrshort{poc}.
+Aangezien gegevensopslag geen primaire focus vormt van deze \acrshort{poc}, werd gekozen voor deze bestaande Android-oplossing. Hierdoor blijft de implementatie van de gegevensopslag beperkt en kan de beschikbare ontwikkeltijd voornamelijk worden besteed aan de kernfunctionaliteit van de \acrshort{poc}.
 
 \newpage
 
