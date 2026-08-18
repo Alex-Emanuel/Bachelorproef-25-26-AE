@@ -327,7 +327,7 @@ Ook op het vlak van platformondersteuning sluit native development beter aan bij
 
 \vspace{1em}
 
-Binnen native Android development kan er eveneens gekozen worden tussen de programmeertalen Java en Kotlin. Binnen dit onderzoek wordt gekozen voor Kotlin. Volgens \textcite{Bekmuratov2025} biedt Kotlin in vergelijking met Java onder andere een beknoptere syntax en ondersteuning voor \textit{null safety} en coroutines. Dit kan bijdragen aan een meer onderhoudbare en overzichtelijke implementatie. Eveneens is het door coroutines mogelijk om asynchrone taken op een overzichtelijke manier uit te voeren \autocite{Bekmuratov2025}. Dit is vooral interessant voor de \acrshort{poc}, aangezien de applicatie onder andere via een API moet communiceren met de detectielogica.
+Binnen native Android development kan er eveneens gekozen worden tussen de programmeertalen Java en Kotlin. Binnen dit onderzoek werd gekozen voor Kotlin. Volgens \textcite{Bekmuratov2025} biedt Kotlin in vergelijking met Java onder andere een beknoptere syntax en ondersteuning voor \textit{null safety} en coroutines. Dit kan bijdragen aan een meer onderhoudbare en overzichtelijke implementatie.
 
 \vspace{1em}
 
@@ -335,7 +335,7 @@ Bovendien is Kotlin vandaag de aanbevolen programmeertaal voor nieuwe Android-pr
 
 \vspace{1em}
 
-Voor de ontwikkeling van de gebruikersinterface wordt gebruikgemaakt van \textit{Jetpack Compose}. Dit is een \acrshort{ui}-toolkit voor Android die de ontwikkeling van gebruikersinterfaces vereenvoudigt en versnelt \autocite{AndroidDevelopersCompose}. Volgens \textcite{Bekmuratov2025} maakt Jetpack Compose gebruik van een declaratieve syntax (zoals bij React en Flutter) en sluit het nauw aan bij Kotlin. Hierdoor kan de gebruikersinterface op een eenvoudigere en snellere manier worden opgebouwd dan met de traditionele XML-gebaseerde aanpak \autocite{Bekmuratov2025}. Op basis hiervan wordt Jetpack Compose gebruikt voor de ontwikkeling van de gebruikersinterface.
+Voor de ontwikkeling van de gebruikersinterface werd gebruikgemaakt van \textit{Jetpack Compose}. Dit is een \acrshort{ui}-toolkit voor Android die de ontwikkeling van gebruikersinterfaces vereenvoudigt en versnelt \autocite{AndroidDevelopersCompose}. Volgens \textcite{Bekmuratov2025} maakt Jetpack Compose gebruik van een declaratieve syntax (zoals bij React en Flutter) en sluit het nauw aan bij Kotlin. Hierdoor kan de gebruikersinterface op een eenvoudigere en snellere manier worden opgebouwd dan met de traditionele XML-gebaseerde aanpak \autocite{Bekmuratov2025}. Op basis hiervan werd Jetpack Compose gebruikt voor de ontwikkeling van de gebruikersinterface.
 
 \vspace{1em}
 
@@ -352,7 +352,7 @@ Voor de implementatie van de API werd gekozen voor het Python-framework \textit{
 
 \vspace{1em}
 
-Deze eigenschappen zijn belangrijk voor de \acrshort{poc}, aangezien screenshots vanuit de Android-applicatie naar de detectielogica worden doorgestuurd en het resultaat vervolgens moet worden teruggestuurd. Hoe sneller het resultaat teruggestuurd kan worden, hoe meer realtime de tool kan werken. De combinatie van Python en de performante, asynchrone werking van \textit{FastAPI} maakt het framework daarom geschikt voor de communicatie tussen de detectietool en de Android-applicatie.
+Deze eigenschappen zijn belangrijk voor de \acrshort{poc}, aangezien screenshots vanuit de Android-applicatie naar de detectielogica moeten worden doorgestuurd en het resultaat vervolgens moet worden teruggestuurd. Hoe sneller het resultaat teruggestuurd kan worden, hoe meer realtime de tool kan werken. De combinatie van Python en de performante, asynchrone werking van \textit{FastAPI} maakt het framework daarom geschikt voor de communicatie tussen de detectietool en de Android-app.
 
 \vspace{1em}
 
@@ -375,12 +375,271 @@ Aangezien gegevensopslag geen primaire focus vormt van deze \acrshort{poc}, werd
 
 \vspace{1em}
 
+Na het bepalen van de algemene flow en de technologieën die gebruikt zouden worden voor de \acrshort{poc}, werd gestart met de ontwikkeling van de applicatie. De implementatie werd stapsgewijs opgebouwd rond de belangrijkste functionaliteiten. Eerst werd de bestaande detectietool \textit{DPGuard} beschikbaar gemaakt via een \textit{FastAPI}-API. Vervolgens werd een eerste versie van de \acrshort{ui} ontwikkeld op basis van mockdata. Daarna werd de Android-applicatie uitgebreid met een \textit{AccessibilityService} voor het detecteren van interfacewijzigingen en een \textit{ScreenCaptureService} voor het maken van screenshots. Vervolgens werd DPGuard aangepast zodat de analyse-resultaten in een JSON-formaat konden worden teruggegeven en vanuit de Android-applicatie konden worden verwerkt. Tot slot werden de lokale opslag van detecties, notificaties en het automatisch starten van analyses op basis van interfacewijzigingen geïmplementeerd.
+
+\vspace{1em}
+
+De uiteindelijke applicatie bestaat uit verschillende componenten die samen instaan voor het detecteren, analyseren en weergeven van mogelijke dark patterns. Het proces start bij de \texttt{AccessibilityService}, die veranderingen in de interface van ondersteunde streamingdiensten detecteert. Wanneer een relevante schermwijziging wordt vastgesteld, wordt via de \texttt{ScreenCaptureService} een screenshot van het scherm gemaakt met behulp van de \textit{MediaProjection API}.
+
+\vspace{1em}
+
+De screenshot wordt vervolgens door de \texttt{AnalysisManager} doorgestuurd naar de \textit{FastAPI}-API. Deze API maakt gebruik van \textit{DPGuard} om het beeld te analyseren en een analyse-resultaat terug te sturen naar de Android-applicatie. Wanneer een dark pattern wordt gedetecteerd, worden de resultaten lokaal opgeslagen met behulp van \textit{Room}. De detecties kunnen vervolgens via de \acrlong{ui} worden geraadpleegd. Aanvullend ontvangt de gebruiker een notificatie wanneer een nieuwe detectie wordt geregistreerd.
+
+\vspace{1em}
+
+De Android-applicatie is opgebouwd volgens een gelaagde structuur. De dataopslag wordt beheerd door \textit{Room} en aangestuurd via een repository, terwijl \textit{ViewModels} de gegevens beschikbaar maken voor de \textit{Jetpack Compose}-\acrshort{ui}. \textit{Hilt} wordt gebruikt voor \textit{dependency injection} tussen de verschillende componenten. Op deze manier worden de detectielogica, gegevensverwerking en gebruikersinterface zoveel mogelijk van elkaar gescheiden.
+
+\newpage
+
+\subsubsection{Aanpassingen aan DPGuard}
+
+\vspace{1em}
+
+Voor de detectie van dark patterns werd gebruikgemaakt van \textit{DPGuard}. Deze tool was oorspronkelijk niet voorzien om rechtstreeks vanuit een Android-applicatie te worden aangeroepen. Om de tool binnen de \acrshort{poc} te kunnen integreren, waren daarom enkele aanpassingen nodig.
+
+\vspace{1em}
+
+Eerst werd een \textit{FastAPI}-API ontwikkeld die dient als tussenlaag tussen de Android-applicatie en \textit{DPGuard}. Via het endpoint \texttt{/analyze} kan de Android-applicatie een screenshot versturen en wordt deze doorgegeven aan \textit{DPGuard} voor analyse. Het analyse-resultaat wordt vervolgens als JSON-object teruggestuurd naar de Android-applicatie.
+
+\vspace{1em}
+
+Ook de output van \textit{DPGuard} moest worden aangepast. Oorspronkelijk gaf het Large Language Model de resultaten terug als een lijst van strings in het formaat \texttt{(category name, reason)}. Hierdoor was het resultaat niet rechtstreeks geschikt om in de Android-applicatie te verwerken. Daarnaast werd de reden voor een gedetecteerd dark pattern oorspronkelijk in het Engels teruggegeven. Daarom werd het bestand \texttt{text\_prompt.txt} aangepast zodat \textit{gpt-4o} een vast JSON-formaat teruggeeft, waarbij de naam van het dark pattern in het Engels behouden blijft en de beschrijving in het Nederlands wordt gegeven.
+
+\vspace{1em}
+
+Daarnaast werd aan ieder dark pattern een vaste ID gekoppeld. Voor de acht dark patterns die binnen de scope van de \acrshort{poc} vallen werd een ID gekoppeld. Hierdoor kan de Android-applicatie het gedetecteerde patroon koppelen aan de overeenkomstige informatie in de Android-applicatie. 
+
+\vspace{1em}
+
+De belangrijkste wijzigingen aan de prompt zijn weergegeven in Code~\ref{lst:dpguard-prompt}. Hierbij werd voornamelijk de gewenste outputstructuur vastgelegd, werden de identificatienummers aan de dark-patterncategorieën gekoppeld en werd de gewenste taal gedefinieerd.
+
+\vspace{1em}
+
+Ten slotte werd het JSON-resultaat uitgebreid met een \texttt{confidence}-waarde. Deze waarde is afkomstig van het binaire model van \textit{DPGuard} die eerst een voorspelling maakt. De waarde geeft de zekerheid weer waarmee het model bepaalt of een afbeelding al dan niet een dark pattern bevat. Als dit binaire model meer dan 50\% zeker is, wordt het pas naar het Large Language Model gestuurd voor verdere analyse. Een vereenvoudigd voorbeeld van de finale response-structuur dat door de API wordt teruggestuurd, is weergegeven in Code~\ref{lst:dpguard-response}.
+
+\vspace{1em}
+
+\begin{listing}
+    \begin{minted}[fontsize=\footnotesize]{text}
+        # Outputformaat
+        For every detected deceptive pattern, return:
+        
+        - "id": the exact identifier ...
+        - "name": the exact deceptive pattern category name from the provided taxonomy ...
+        - "description": a concise explanation in Dutch explaining why ...
+        - "impact": one of "LOW", "MEDIUM", or "HIGH", indicating ...
+        
+        # Koppeling van ID
+        Use the following identifiers when returning a detected deceptive pattern:
+        1 = Nagging
+        2 = Roach Motel
+        3 = Preselection
+        4 = Hidden Information
+        5 = False Hierarchy
+        6 = Tricked Questions
+        7 = Forced Enrollment
+        8 = Countdown Timer
+        
+        Important:
+        - For patterns with an identifier between 1 and 8, use the corresponding identifier from the mapping above.
+        - ...
+        
+        # Taalvereisten
+        Language requirements:
+        - The "name" field MUST always contain the original English name from the taxonomy.
+        - The "description" field MUST always be written in Dutch.
+        - All explanatory text must be written in Dutch.
+        - ...
+        
+        # Outputformaat in JSON
+        Return the result ONLY as valid JSON. Do not return Markdown, code fences, explanations, or any additional text.
+        
+        The JSON must follow exactly this structure:
+        
+        {
+            "detected": true,
+            "patterns": [
+            {
+                "id": 8,
+                "name": "Countdown Timer",
+                "description": "De afteltimer telt af naar de volgende aflevering en moedigt de gebruiker aan om verder te kijken. Hierdoor kan de gebruiker langer blijven consumeren en kan het risico op gewoonte- of verslavingsgedrag toenemen.",
+                "impact": "HIGH"
+            }
+            ]
+        }
+    \end{minted}
+    \caption[Belangrijkste aanpassingen aan de DPGuard-prompt]{Belangrijkste wijzigingen aan de tekstuele prompt voor \textit{gpt-4o} voor de verwerking van de modeloutput.}
+    \label{lst:dpguard-prompt}
+\end{listing}
+
+\vspace{1em}
+
+\begin{listing}
+    \begin{minted}[fontsize=\footnotesize]{json}
+        {
+            "filename": "countdown-1.jpg",
+            "result": {
+                "detected": true,
+                "patterns": [
+                {
+                    "id": 8,
+                    "name": "Countdown Timer",
+                    "description": "...",
+                    "impact": "HIGH"
+                }
+                ],
+                "confidence": 80
+            }
+        }
+    \end{minted}
+    \caption[Voorbeeld van het JSON-resultaat van DPGuard]{Voorbeeld van het JSON-resultaat dat door DPGuard via de FastAPI-backend wordt teruggestuurd.}
+    \label{lst:dpguard-response}
+\end{listing}
+
+\vspace{1em}
+
+\subsubsection{Screenshotcaptatie}
+
+\vspace{1em}
+
+Een tweede uitdaging tijdens de ontwikkeling was het verkrijgen van screenshots van streamingdiensten. Bij het rechtstreeks maken van screenshots bleek dat streamingdiensten zoals \textit{Netflix} en \textit{Prime Video} de scherminhoud konden blokkeren. Hierdoor was deze methode niet bruikbaar voor de detectie binnen de \acrshort{poc}.
+
+\vspace{1em}
+
+Om na te gaan welke mogelijkheden er wel waren, werd ``Scherm opnemen Video opnemen'', een bestaande schermopname-app van \textcite{VPCT2026}, getest. Deze maakte gebruik van de \textit{MediaProjection API} van Android. Op deze manier bleek het wel mogelijk om zowel bij \textit{Netflix} als \textit{Prime Video} de scherminhoud vast te leggen. Daarom werd de \textit{MediaProjection API} ook binnen de \acrshort{poc} gebruikt. De \texttt{ScreenCaptureService} van de applicatie maakt hierbij gebruik van een \texttt{VirtualDisplay} en een \texttt{ImageReader} om de scherminhoud vast te leggen en als afbeelding beschikbaar te stellen voor analyse.
+
+\vspace{1em}
+
+Een gevolg hiervan is dat de gebruiker toestemming moet geven voor schermopname. In de oorspronkelijke mockups werd deze toestemming voorzien tijdens de onboarding van de applicatie. Tijdens de ontwikkeling bleek echter dat de toestemming voor \textit{MediaProjection} per sessie opnieuw moet worden gevraagd. Deze toestemming wordt daarom in de uiteindelijke flow gevraagd wanneer de gebruiker de detector activeert, in plaats van tijdens de onboarding.
+
+\vspace{1em}
+
+\subsubsection{Bepalen van het analysemoment}
+
+\vspace{1em}
+
+Een volgende uitdaging was het bepalen van het moment waarop automatisch een nieuwe analyse moet worden gestart. De \textit{AccessibilityService} ontvangt namelijk meerdere events wanneer de interface van een streamingdienst verandert. Indien bij iedere wijziging een screenshot zou worden gemaakt en een analyse gestart, zou dit leiden tot een zeer groot aantal API-aanvragen op korte tijd. Dit zou niet alleen onnodige analyses veroorzaken, maar ook de belasting van de API en het Large Language Model verhogen.
+
+\vspace{1em}
+
+Daarom werd ervoor gekozen om een analyse pas te starten wanneer een streamingdienst openstaat en wanneer de interface gedurende 500~ms niet meer gewijzigd is. Bij iedere nieuwe interfacewijziging wordt de timer opnieuw gestart. Hierdoor wordt gewacht tot de interface zich stabiliseert voordat een screenshot wordt gemaakt. Daarnaast werd eveneens een cooldown van drie seconden ingevoerd, waardoor er na een analyse minimaal drie seconden moet worden gewacht voordat een nieuwe analyse kan worden gestart. Een codefragment uit de \texttt{AccessibilityService} dat het bepalen van het analysemoment illustreert is weergegeven in Code~\ref{lst:analysis-timing}.
+
+\vspace{1em}
+
+Ondanks de timer en cooldownperiode bleek tijdens het testen dat het aantal API-aanvragen nog steeds aanzienlijk kon oplopen. Hierdoor konden meerdere aanvragen kort na elkaar worden verwerkt, waardoor het Large Language Model soms geen antwoord meer gaf door overbelasting. Dit toont een belangrijke beperking van de gekozen aanpak. Hoewel het aantal analyses kan worden beperkt, blijft het gebruik van een Large Language Model voor continue schermanalyse gevoelig voor een hoge frequentie aan aanvragen. Het verhogen van de cooldownperiode zou het aantal aanvragen verder kunnen beperken, maar verhoogt tegelijkertijd de kans dat meer schermwijzigingen niet worden geanalyseerd en bijgevolg dark patterns worden gemist. Het efficiënter verwerken van opeenvolgende aanvragen vormt daarom een mogelijk verbeterpunt voor een verdere ontwikkeling van de applicatie.
+
+\vspace{1em}
+
+\begin{listing}
+    \begin{minted}[fontsize=\footnotesize]{kotlin}
+        private val screenshotCooldown = 3000L
+        
+        private val contentChangedRunnable = Runnable {
+            requestScreenshot()
+        }
+        
+        private fun requestScreenshot() {
+            val now = System.currentTimeMillis()
+            
+            if (now - lastScreenshotTime < screenshotCooldown) {
+                return
+            }
+            
+            lastScreenshotTime = now
+            
+            val intent = Intent(this, ScreenCaptureService::class.java).apply {
+                action = ScreenCaptureService.ACTION_SCREENSHOT
+            }
+            startService(intent)
+        }
+        
+        override fun onAccessibilityEvent(event: AccessibilityEvent?) {
+            ...
+            
+            val streamingService = when (packageName) { 
+                "com.netflix.mediaclient" -> "Netflix" 
+                else -> null 
+            } 
+            
+            if (streamingService == null) { 
+                // Niet meer in ondersteunde streamingapp 
+                ... 
+                return 
+            } 
+            
+            ...
+            
+            when (event.eventType) {
+                AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED,
+                AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED -> {
+                    handler.removeCallbacks(contentChangedRunnable)
+                    handler.postDelayed(contentChangedRunnable, 500)
+                }
+            }
+        }
+    \end{minted}
+    \caption[Stabiliteitsperiode en cooldown voor analyses]{Vereenvoudigde weergave van de stabiliteitsperiode en cooldown die bepalen wanneer een screenshotanalyse wordt gestart.}
+    \label{lst:analysis-timing}
+\end{listing}
+
+\newpage
+
+\subsubsection{Bepalen van het impactniveau}
+
+\vspace{1em}
+
+Tijdens de ontwikkeling van de \acrshort{poc} ontstond eveneens de vraag hoe het impactniveau van een gedetecteerd dark pattern bepaald kan worden. Zoals beschreven in hoofdstuk~\ref{ch:stand-van-zaken}, kan de impact van een dark pattern op een gebruiker afhankelijk zijn van verschillende factoren, zoals financiële, privacygerelateerde en psychologische gevolgen. Het uitwerken van een referentiekader om deze verschillende factoren op een onderbouwde manier te beoordelen, zou de scope van dit onderzoek aanzienlijk vergroten.
+
+\vspace{1em}
+
+Daarom werd binnen deze \acrshort{poc} ervoor gekozen om het impactniveau door \textit{gpt-4o} te laten bepalen op basis van de mogelijke gevolgen van het gedetecteerde dark pattern. Het impactniveau geeft hierbij aan hoe ernstig de mogelijke gevolgen van het patroon voor de gebruiker zijn. De mogelijke gevolgen per dark pattern werden eveneens met behulp van \textit{gpt-4o} bepaald en vervolgens hardcoded in de Android-applicatie opgenomen. Het op een onderbouwde manier bepalen en valideren van deze gevolgen viel eveneens buiten de scope van dit onderzoek.
+
+\vspace{1em}
+
+Deze aanpak biedt een werkbare oplossing binnen de scope van de \acrshort{poc}, maar vormt een beperking. Een meer onderbouwde en reproduceerbare methode om zowel de impact als de mogelijke gevolgen van verschillende dark patterns te bepalen, kan daarom als onderwerp voor verder onderzoek worden beschouwd.
+
+\vspace{1em}
+
+\subsubsection{Notificaties}
+
+\vspace{1em}
+
+Wanneer een dark pattern wordt gedetecteerd, ontvangt de gebruiker momenteel een notificatie. Tijdens de ontwikkeling werd ervoor gekozen om voor iedere detectie een melding te tonen, aangezien het uitwerken van instellingen meer tijd zou vergen dan binnen de beschikbare onderzoekstijd mogelijk was. Vanwege de beperkte looptijd van het onderzoek werden deze instellingen daarom niet verder uitgewerkt. De inhoud van de notificatie werd bewust beknopt en relevant gehouden, in overeenstemming met de bevindingen uit het literatuuronderzoek van hoofdstuk~\ref{ch:stand-van-zaken} om doeltreffend te zijn. De melding vermeldt het aantal gedetecteerde dark patterns en de naam of namen van de bijbehorende patronen. Wanneer de gebruiker op de notificatie drukt, wordt de applicatie geopend en wordt de gebruiker naar het overzicht van de detecties geleid.
+
+\vspace{1em}
+
+Tijdens het testen werd daarnaast een onverwachte positieve vaststelling gedaan. Hoewel de \textit{AccessibilityService} ook wijzigingen tijdens het afspelen van videocontent kan waarnemen, bleek dat de videobeelden zelf niet als gewijzigde interface worden gedetecteerd. Hierdoor wordt tijdens het afspelen van een aflevering of film geen nieuwe analyse gestart en ontvangt de gebruiker bijgevolg ook geen notificaties tijdens het bekijken van de inhoud. Analyses vinden voornamelijk plaats wanneer de interface van de streamingdienst opnieuw zichtbaar wordt, bijvoorbeeld bij het starten of beëindigen van het afspelen. Hierdoor wordt voorkomen dat de gebruiker tijdens het bekijken van een aflevering of film voortdurend door notificaties wordt onderbroken.
+
+\newpage
+
+\section{Evaluatie}
+\label{sec:evaluatie}
+
+\vspace{1em}
+
 ...
 
 \vspace{1em}
 
-\section{Evaluatie}
-\label{sec:evaluatie}
+\subsection{Gebruikerstesten}
+\label{subsec:gebruikerstesten-evaluatie}
+
+\vspace{1em}
+
+...
+
+\vspace{1em}
+
+\subsection{Toetsen aan requirements}
+\label{subsec:toetsen-requirements-evaluatie}
+
+\vspace{1em}
+
+...
+
+\vspace{1em}
+
+\subsection{Algemeen besluit}
 
 \vspace{1em}
 

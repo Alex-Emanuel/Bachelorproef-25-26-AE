@@ -1,0 +1,48 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYGZsh{} Outputformaat
+For every detected deceptive pattern, return:
+
+\PYGZhy{} \PYGZdq{}id\PYGZdq{}: the exact identifier ...
+\PYGZhy{} \PYGZdq{}name\PYGZdq{}: the exact deceptive pattern category name from the provided taxonomy ...
+\PYGZhy{} \PYGZdq{}description\PYGZdq{}: a concise explanation in Dutch explaining why ...
+\PYGZhy{} \PYGZdq{}impact\PYGZdq{}: one of \PYGZdq{}LOW\PYGZdq{}, \PYGZdq{}MEDIUM\PYGZdq{}, or \PYGZdq{}HIGH\PYGZdq{}, indicating ...
+
+\PYGZsh{} Koppeling van ID
+Use the following identifiers when returning a detected deceptive pattern:
+1 = Nagging
+2 = Roach Motel
+3 = Preselection
+4 = Hidden Information
+5 = False Hierarchy
+6 = Tricked Questions
+7 = Forced Enrollment
+8 = Countdown Timer
+
+Important:
+\PYGZhy{} For patterns with an identifier between 1 and 8, use the corresponding identifier from the mapping above.
+\PYGZhy{} ...
+
+\PYGZsh{} Taalvereisten
+Language requirements:
+\PYGZhy{} The \PYGZdq{}name\PYGZdq{} field MUST always contain the original English name from the taxonomy.
+\PYGZhy{} The \PYGZdq{}description\PYGZdq{} field MUST always be written in Dutch.
+\PYGZhy{} All explanatory text must be written in Dutch.
+\PYGZhy{} ...
+
+\PYGZsh{} Outputformaat in JSON
+Return the result ONLY as valid JSON. Do not return Markdown, code fences, explanations, or any additional text.
+
+The JSON must follow exactly this structure:
+
+\PYGZob{}
+    \PYGZdq{}detected\PYGZdq{}: true,
+    \PYGZdq{}patterns\PYGZdq{}: [
+    \PYGZob{}
+        \PYGZdq{}id\PYGZdq{}: 8,
+        \PYGZdq{}name\PYGZdq{}: \PYGZdq{}Countdown Timer\PYGZdq{},
+        \PYGZdq{}description\PYGZdq{}: \PYGZdq{}De afteltimer telt af naar de volgende aflevering en moedigt de gebruiker aan om verder te kijken. Hierdoor kan de gebruiker langer blijven consumeren en kan het risico op gewoonte\PYGZhy{} of verslavingsgedrag toenemen.\PYGZdq{},
+        \PYGZdq{}impact\PYGZdq{}: \PYGZdq{}HIGH\PYGZdq{}
+    \PYGZcb{}
+    ]
+\PYGZcb{}
+\end{MintedVerbatim}

@@ -1,0 +1,47 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{private}\PYG{+w}{ }\PYG{k+kd}{val}\PYG{+w}{ }\PYG{n+nv}{screenshotCooldown}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{3000L}
+
+\PYG{k+kd}{private}\PYG{+w}{ }\PYG{k+kd}{val}\PYG{+w}{ }\PYG{n+nv}{contentChangedRunnable}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Runnable}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{requestScreenshot}\PYG{p}{()}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kd}{private}\PYG{+w}{ }\PYG{k+kd}{fun}\PYG{+w}{ }\PYG{n+nf}{requestScreenshot}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kd}{val}\PYG{+w}{ }\PYG{n+nv}{now}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{currentTimeMillis}\PYG{p}{()}
+
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{now}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{lastScreenshotTime}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{screenshotCooldown}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{return}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{n}{lastScreenshotTime}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{now}
+
+\PYG{+w}{    }\PYG{k+kd}{val}\PYG{+w}{ }\PYG{n+nv}{intent}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Intent}\PYG{p}{(}\PYG{k}{this}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ScreenCaptureService}\PYG{o}{::}\PYG{n}{class}\PYG{p}{.}\PYG{n+na}{java}\PYG{p}{).}\PYG{n+na}{apply}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{action}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{ScreenCaptureService}\PYG{p}{.}\PYG{n+na}{ACTION\PYGZus{}SCREENSHOT}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{n}{startService}\PYG{p}{(}\PYG{n}{intent}\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kd}{override}\PYG{+w}{ }\PYG{k+kd}{fun}\PYG{+w}{ }\PYG{n+nf}{onAccessibilityEvent}\PYG{p}{(}\PYG{n}{event}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{AccessibilityEvent?)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{p}{...}
+
+\PYG{+w}{    }\PYG{k+kd}{val}\PYG{+w}{ }\PYG{n+nv}{streamingService}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{when}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{packageName}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{l+s}{\PYGZdq{}com.netflix.mediaclient\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Netflix\PYGZdq{}}
+\PYG{+w}{        }\PYG{k}{else}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{k+kc}{null}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{streamingService}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{k+kc}{null}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{c+c1}{// Niet meer in ondersteunde streamingapp}
+\PYG{+w}{        }\PYG{p}{...}
+\PYG{+w}{        }\PYG{k}{return}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{p}{...}
+
+\PYG{+w}{    }\PYG{k}{when}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{event}\PYG{p}{.}\PYG{n+na}{eventType}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{AccessibilityEvent}\PYG{p}{.}\PYG{n+na}{TYPE\PYGZus{}WINDOW\PYGZus{}STATE\PYGZus{}CHANGED}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{AccessibilityEvent}\PYG{p}{.}\PYG{n+na}{TYPE\PYGZus{}WINDOW\PYGZus{}CONTENT\PYGZus{}CHANGED}\PYG{+w}{ }\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{handler}\PYG{p}{.}\PYG{n+na}{removeCallbacks}\PYG{p}{(}\PYG{n}{contentChangedRunnable}\PYG{p}{)}
+\PYG{+w}{            }\PYG{n}{handler}\PYG{p}{.}\PYG{n+na}{postDelayed}\PYG{p}{(}\PYG{n}{contentChangedRunnable}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{500}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}
