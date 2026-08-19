@@ -13,7 +13,7 @@ In het eerste deel van dit hoofdstuk worden de mockups van de applicatie besprok
 
 \vspace{1em}
 
-Tot slot wordt de ontwikkelde \acrshort{poc} geëvalueerd aan de hand van een gebruikerstest. Hierbij wordt onderzocht in welke mate de tool gebruikers ondersteunt bij het herkennen van dark patterns op streamingdiensten. Dit resulteert in een eerste indicatie van de bruikbaarheid en meerwaarde van de voorgestelde oplossing.
+Tot slot wordt de ontwikkelde \acrshort{poc} geëvalueerd aan de hand van een gebruikerstest en een toetsing aan de vooropgestelde requirements. De gebruikerstest onderzoekt in welke mate de tool gebruikers ondersteunt ondersteunt bij het herkennen van dark patterns op streamingdiensten. Dit resulteert in een eerste indicatie van de bruikbaarheid en meerwaarde van de voorgestelde oplossing. Vervolgens wordt nagegaan in welke mate de gerealiseerde \acrshort{poc} voldoet aan de requirements die in hoofdstuk~\ref{ch:requirementsanalyse} werden opgesteld. Op basis van beide evaluaties worden de werking, beperkingen en mogelijke verbeterpunten van de \acrshort{poc} in kaart gebracht.
 
 \newpage
 
@@ -388,7 +388,7 @@ Na het bepalen van de algemene flow en de technologieën die gebruikt zouden wor
     \hspace{0.04\textwidth}
     \includegraphics[width=0.26\textwidth]{poc/poc-detail.jpg}
     
-    \caption[Notificatie, overzichts- en detailscherm van de Proof of Concept]{Notificatie, overzichts- en detailscherm van de technisch uitgewerkte Proof of Concept.}
+    \caption[Notificatie, overzichts- en detailscherm van de \acrlong{poc}]{Notificatie, overzichts- en detailscherm van de technisch uitgewerkte \acrlong{poc}.}
     \label{fig:app-interface}
 \end{figure}
 
@@ -648,14 +648,22 @@ Tijdens het testen werd daarnaast een onverwachte positieve vaststelling gedaan.
     
 \end{figure}
 
-\vspace{1em}
+\newpage
 
 \section{Evaluatie}
 \label{sec:evaluatie}
 
 \vspace{1em}
 
-...
+Als laatste onderdeel van dit hoofdstuk wordt de \acrshort{poc} geëvalueerd om na te gaan in welke mate de uitgewerkte oplossing een antwoord kan bieden op het vooropgestelde probleem. Bij deze evaluatie worden twee onderdelen besproken: de resultaten van gebruikerstesten en een toetsing aan de vooropgestelde requirements. 
+
+\vspace{1em}
+
+In eerste instantie werd een gebruikerstest uitgevoerd bij personen uit de beoogde doelgroep. Hierbij werd nagegaan in welke mate gebruikers dark patterns herkennen en welke meerwaarde de \acrshort{poc} biedt bij het herkennen en begrijpen van deze patronen. Anderzijds werd de gerealiseerde oplossing getoetst aan de requirements die in hoofdstuk~\ref{ch:requirementsanalyse} werden opgesteld. Per requirement werd nagegaan of deze volledig, gedeeltelijk of niet werd gerealiseerd.
+
+\vspace{1em}
+
+De resultaten van beide onderdelen worden gebruikt om de werking van de \acrshort{poc} te beoordelen en om beperkingen en mogelijke verbeterpunten te identificeren.
 
 \vspace{1em}
 
@@ -664,7 +672,109 @@ Tijdens het testen werd daarnaast een onverwachte positieve vaststelling gedaan.
 
 \vspace{1em}
 
-...
+Om een eerste indicatie te krijgen van de bruikbaarheid en meerwaarde van de ontwikkelde \acrshort{poc}, werd een kleinschalige gebruikerstest uitgevoerd bij drie personen uit de doelgroep. Deze evaluatie heeft niet als doel om uitspraken te doen over de volledige doelgroep. Door het beperkte aantal testpersonen kunnen de resultaten enkel worden gebruikt als een eerste indicatie van mogelijke problemen, gebruiksvriendelijkheid en meerwaarde van de \acrshort{poc}. De deelnemers waren tussen 21 en 26 jaar oud en verschilden in hun voorkennis over dark patterns. Één deelnemer had nog geen enkele voorkennis over het onderwerp, terwijl de andere deelnemers al eerder met dark patterns in aanraking kwamen. 
+
+\vspace{1em}
+
+Voorafgaand aan de gebruikerstest werden de mockups van de \acrshort{poc} kort aan de deelnemers getoond. Hierbij werd de algemene flow van de applicatie weergegeven zodat de deelnemers voldoende context hadden over het doel en de verschillende onderdelen van de applicatie. Er werd bewust geen uitgebreide uitleg gegeven over de afzonderlijke functionaliteiten, zodat de deelnemers tijdens de test zoveel mogelijk zelfstandig met de applicatie konden werken.
+
+\vspace{1em}
+
+De uiteindelijke gebruikerstest bestond uit twee gelijkaardige delen. In het eerste deel werd Netflix gebruikt zonder dat de \acrshort{poc} actief was. In het tweede deel werd dezelfde test opnieuw uitgevoerd met de \acrshort{poc} die draaide op de achtergrond. Op die manier kon worden nagegaan welke dark patterns gebruikers spontaan opmerkten en welke patronen pas opgemerkt werden met behulp van de \acrshort{poc}. Tijdens beide delen voerden de deelnemers een aantal vooraf bepaalde handelingen uit binnen Netflix en werd hen gevraagd om te vertellen welke elementen hen opvielen en waarom zij dachten dat Netflix hen hiermee probeerde te beïnvloeden. Bovendien werd de deelnemers gevraagd tijdens het uitvoeren van de handelingen hun gedachten en opmerkingen luidop te verwoorden.
+
+\vspace{1em}
+
+De test richtte zich op twee aspecten. Eerst werd nagegaan in welke mate gebruikers verschillende dark patterns konden herkennen, benoemen en begrijpen. Daarnaast werd geëvalueerd in welke mate de gebruiker de detectiemeldingen en de bijhorende informatie binnen de \acrshort{poc} kon begrijpen en gebruiken. De resultaten van de test worden weergegeven in Tabel~\ref{tab:resultaten-patroonherkenning} en in Tabel~\ref{tab:resultaten-gebruik-poc}.
+
+\vspace{1em}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lcccccc}
+        \toprule
+        & \multicolumn{2}{c}{Herkennen}
+        & \multicolumn{2}{c}{Correct benoemen}
+        & \multicolumn{2}{c}{Begrijpen} \\
+        \cmidrule(lr){2-3}
+        \cmidrule(lr){4-5}
+        \cmidrule(lr){6-7}
+        Dark pattern
+        & Zonder & Met
+        & Zonder & Met
+        & Zonder & Met \\
+        \midrule
+        Countdown Timer
+        & 3/3 & 3/3
+        & 1/3 & 2/3
+        & 3/3 & 3/3 \\
+        Preselection
+        & 2/3 & 3/3
+        & 0/3 & 3/3
+        & 3/3 & 3/3 \\
+        Roach Motel
+        & 3/3 & 3/3
+        & 0/3 & 3/3
+        & 2/3 & 3/3 \\
+        Toying with Emotions
+        & 1/3 & 3/3
+        & 0/3 & 3/3
+        & 1/3 & 3/3 \\
+        \bottomrule
+    \end{tabular}
+    \caption[Resultaten van de gebruikerstest betreffende patroonherkenning]{Resultaten van de gebruikerstest betreffende patroonherkenning met en zonder de \acrshort{poc}, onderverdeeld in de categorieën ``herkennen'', ``correct benoemen'' en ``begrijpen''. De cijfers geven het aantal deelnemers weer dat aan het betreffende criterium voldeed.}
+    \label{tab:resultaten-patroonherkenning}
+\end{table}
+
+\vspace{1em}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lc}
+        \toprule
+        Evaluatiecriterium & Resultaat \\
+        \midrule
+        Detectiemelding wordt opgemerkt & 3/3 \\
+        Betekenis van de melding wordt begrepen & 3/3 \\
+        Melding kan worden geopend & 3/3 \\
+        Nieuwe detectie wordt herkend in het overzicht & 3/3 \\
+        Detailpagina kan worden geopend & 3/3 \\
+        Gedetecteerd dark pattern wordt begrepen & 3/3 \\
+        Reden van detectie wordt begrepen & 3/3 \\
+        Zekerheidsscore wordt begrepen & 1/3 \\
+        Impact wordt begrepen & 3/3 \\
+        Algemene uitleg kan worden teruggevonden & 3/3 \\
+        Mogelijke gevolgen kunnen worden teruggevonden & 3/3 \\
+        Informatie wordt als nuttig ervaren & 2/3 \\
+        \bottomrule
+    \end{tabular}
+    \caption[Resultaten van de gebruikerstest betreffende het gebruik van de \acrshort{poc}]
+    {Resultaten van de gebruikerstest betreffende het gebruik van de \acrshort{poc}. De cijfers geven het aantal deelnemers weer dat aan het betreffende criterium voldeed.}
+    \label{tab:resultaten-gebruik-poc}
+\end{table}
+
+\vspace{0.5em}
+
+Uit de resultaten blijkt dat de deelnemers tijdens de test over het algemeen goed in staat waren om dark patterns te herkennen. Hierbij moet echter rekening worden gehouden met de context waarin de test werd uitgevoerd. Omdat de deelnemers vooraf wisten dat de test gericht was op dark patterns, waren zij tijdens het uitvoeren van de opdrachten actief op zoek naar mogelijke manieren waarop de interface hen probeerde te beïnvloeden. Hierdoor merkten zij ook zonder de \acrshort{poc} verschillende patronen sneller op dan waarschijnlijk het geval zou zijn bij normaal gebruik van de applicatie. Tijdens de test gaven de deelnemers bovendien aan dat zij, buiten de countdown timer, waarschijnlijk weinig aandacht zouden besteden aan deze patronen wanneer zij niet bewust op zoek zouden zijn naar beïnvloedende elementen.
+
+\vspace{1em}
+
+Ondanks deze hogere alertheid werden niet alle dark patterns zonder de tool opgemerkt. Toying with Emotions werd onder andere sneller over het hoofd gezien. Eveneens waren de deelnemers verbaasd over het preselection dark pattern. De test heeft de deelnemers naar een pagina geleid waar het patroon zich voordoet, maar ze gaven aan dat zij zelf waarschijnlijk niet naar die pagina zouden zijn gegaan en dus het patroon als nog niet zouden hebben opgemerkt. De \acrshort{poc} gaf ook zelf pas het dark pattern aan wanneer de gebruiker zich op de pagina bevond. Dit geeft een belangrijke beperking van de huidige \acrlong{poc} weer. Een dark pattern dat zich op een pagina bevindt die de gebruiker niet bezoekt, kan nog niet door de \acrshort{poc} worden gedetecteerd.
+
+\vspace{1em}
+
+Vervolgens ervoeren de deelnemers de gedetecteerde patronen en de bijhorende contextuele uitleg wel als nuttig. Vooral de uitleg die specifiek verwees naar de situatie die op dat moment op het scherm zichtbaar was, werd als waardevol beschouwd. Hierdoor kregen de deelnemers niet enkel te zien welk dark pattern werd gedetecteerd, maar ook waarom de huidige interface als problematisch werd beschouwd. Een algemene, vooraf vastgelegde uitleg over het gedetecteerde dark pattern werd door sommige deelnemers echter als minder noodzakelijk ervaren wanneer de contextuele uitleg reeds voldoende duidelijk was. Dit kan een aandachtspunt zijn voor de verdere ontwikkeling van de \acrshort{poc}.
+
+\vspace{1em}
+
+Aanvullend kwamen enkele verbeterpunten met betrekking tot de gebruikerservaring naar voren. De deelnemers gaven aan dat de manier waarop de vereiste toegankelijkheidspermissie moest worden ingeschakeld niet voldoende duidelijk was. De applicatie opende wel het scherm met de toegankelijkheidsinstellingen, maar liet de gebruiker vervolgens zelf de volgende stappen ondernemen zonder begeleiding. Een verder uitgewerkte versie van de \acrshort{poc} zou hierin de gebruiker meer kunnen begeleiden. Dit kan bijvoorbeeld door expliciet aan te geven welke instelling geselecteerd moet worden en welke actie de gebruiker vervolgens moet uitvoeren. Ook viel tijdens het overlopen van de onboarding in de mockups op dat de overige permissies niet voor alle deelnemers meteen duidelijk waren, en was niet meteen duidelijk dat niet iedere permissie verplicht is. Tot slot was de betekenis van de ``zekerheidsscore'' niet voor iedere deelnemer even duidelijk. In een verdere uitwerking zou deze score daarom verder uitgelegd dienen te worden in de interface.
+
+\vspace{1em}
+
+Naast de gebruiksvriendelijkheid kwamen tijdens de test ook technische beperkingen van de huidige \acrshort{poc} naar voren. Zo werd de countdown timer bij één van de drie deelnemers niet gedetecteerd, terwijl deze bij de andere deelnemers wel werd gedetecteerd. Dit wijst op een zekere inconsistentie in de detectieresultaten. Daarnaast traden opnieuw de problemen op die tijdens het onderdeel ``ontwikkeling'' van dit hoofdstuk werden vastgesteld met betrekking tot de cooldown en de belasting van het \acrshort{gpt}-4o-model. De applicatie moest hierdoor tijdens de test meermaals opnieuw worden opgestart voordat de detecties opnieuw correct werden uitgevoerd. Deze problemen zorgen voor een lagere betrouwbaarheid en bruikbaarheid van de huidige \acrshort{poc} en moeten worden aangepakt voordat de app in een realistische situatie kan worden ingezet.
+
+\vspace{1em}
+
+Samengevat tonen de gebruikerstesten aan dat de \acrshort{poc} een meerwaarde kan bieden bij het herkennen en begrijpen van dark patterns. Tegelijkertijd blijkt dat gebruikers verschillende patronen zelfstandig kunnen herkennen wanneer zij bewust op zoek gaan naar mogelijke beïnvloeding. De meerwaarde van de \acrshort{poc} lijkt zich daarom vooral te liggen in het onder de aandacht brengen van patronen wanneer gebruikers er niet actief naar op zoek gaan. De beperkte testomvang en de technische problemen van de huidige implementatie maken het echter niet mogelijk om hieruit algemene conclusies over de volledige doelgroep te trekken.
 
 \vspace{1em}
 
@@ -673,12 +783,386 @@ Tijdens het testen werd daarnaast een onverwachte positieve vaststelling gedaan.
 
 \vspace{1em}
 
-...
+Naast de gebruikerstesten, werd de gerealiseerde \acrshort{poc} getoetst aan de requirements die in hoofdstuk~\ref{ch:requirementsanalyse} werden opgesteld. Per requirement werd nagegaan in welke mate deze binnen de gerealiseerde \acrshort{poc} teruggevonden werd. Hierbij wordt gekeken of ze volledig, gedeeltelijk of niet werden gerealiseerd.
 
 \vspace{1em}
 
-\subsection{Algemeen besluit}
+Voor de beoordeling wordt gebruikgemaakt van de volgende legende:
+
+\begin{itemize}
+    \item (\vink) = volledig gerealiseerd
+    \item (?) = gedeeltelijk gerealiseerd
+    \item (\kruisje) = niet gerealiseerd
+\end{itemize}
 
 \vspace{1em}
 
-...
+Legende prioriteit: \enspace \textcolor{red}{\textbf{\bol}} Must have 
+\enspace \textcolor{orange}{\textbf{\bol}} Should have 
+\enspace \textcolor{ForestGreen}{\textbf{\bol}} Could have 
+\enspace \textcolor{gray}{\textbf{\bol}} Won't have
+
+\vspace{1em}
+
+De beoordeling van de functionele requirements wordt weergegeven in tabel~\ref{tab:evaluatie-fr}.
+
+\vspace{1em}
+
+\begin{longtable}{%
+        >{\raggedright\arraybackslash\small}p{6cm}
+        >{\centering\arraybackslash\small}p{1.5cm}
+        >{\centering\arraybackslash\small}p{1.8cm}
+        >{\raggedright\arraybackslash\small}p{5cm}
+    }
+    
+    \caption[Evaluatie van de functionele requirements]{Evaluatie van de functionele requirements van de \acrshort{poc}}
+    \label{tab:evaluatie-fr} \\
+    
+    \toprule
+    \textbf{Requirement} & \textbf{Prioriteit} & \textbf{Resultaat} & \textbf{Opmerking} \\
+    \midrule
+    \endfirsthead
+    
+    \multicolumn{4}{c}{\small{\tablename\ \thetable\ -- \textit{Vervolg van vorige pagina}}} \\
+    \toprule
+    \textbf{Requirement} & \textbf{Prioriteit} & \textbf{Resultaat} & \textbf{Opmerking} \\
+    \midrule
+    \endhead
+    
+    \midrule \multicolumn{4}{r}{\small\textit{Vervolg op volgende pagina}} \\
+    \endfoot
+    
+    \bottomrule
+    \endlastfoot
+    
+    
+    % =========================
+    % OVERIGE
+    % =========================
+    
+    Doorlopen van een onboarding bij het eerste gebruik &
+    \textcolor{orange}{\bol} &
+    ? &
+    De onboarding werd uitgewerkt in de vorm van mockups. \\    
+    
+    % =========================
+    % DETECTIE
+    % =========================
+    
+    Detecteren van dark patterns in streamingapps (zowel in de mobiele app als website) &
+    \textcolor{red}{\bol} &
+    ? &
+    De detectie werd gerealiseerd voor gebruik binnen de Netflix-app, maar nog niet voor detectie op de website van Netflix. Hoewel dit technisch haalbaar is, werd deze functionaliteit binnen de beschikbare ontwikkeltijd niet uitgewerkt. \\
+    
+    Raadplegen van een beschrijving van een gedetecteerd dark pattern &
+    \textcolor{red}{\bol} &
+    \vink &
+    De beschrijving van een gedetecteerd dark pattern wordt weergegeven voor de ondersteunde patronen (de meest voorkomende patronen op streamingdiensten).\\
+    
+    Raadplegen van een visualisatie waarop het dark pattern zichtbaar is &
+    \textcolor{red}{\bol} &
+    ? &
+    De bijbehorende screenshot wordt bij een detectie weergegeven, maar het gedetecteerde dark pattern wordt niet visueel aangeduid op de afbeelding. De beschrijvende uitleg identificeert wel het relevante element op de afbeelding en licht toe waarom dit als een dark pattern wordt beschouwd. \\
+    
+    Raadplegen van de mogelijke gevolgen van een gedetecteerd dark pattern &
+    \textcolor{orange}{\bol} &
+    \vink &
+    \\
+    
+    Raadplegen van een betrouwbaarheidsniveau bij detecties (op basis van probability-percentage) &
+    \textcolor{red}{\bol} &
+    \vink &
+    \\
+    
+    Raadplegen van een ernstniveau bij detecties (impact) &
+    \textcolor{orange}{\bol} &
+    \vink &
+    \\
+    
+    Disclaimer raadplegen over accuraatheid van de app &
+    \textcolor{orange}{\bol} &
+    ? &
+    De disclaimer werd uitgewerkt in de mockups, maar werd niet geïmplementeerd in de technische implementatie. \\
+    
+    
+    % =========================
+    % NOTIFICATIES
+    % =========================
+    
+    Ontvangen van notificaties wanneer een dark pattern wordt gedetecteerd &
+    \textcolor{red}{\bol} &
+    \vink &
+    \\
+    
+    Configureren wanneer notificaties worden weergegeven &
+    \textcolor{orange}{\bol} &
+    ? &
+    De configuratie werd uitgewerkt in de mockups, maar werd niet geïmplementeerd in de technische implementatie. \\
+    
+    
+    % =========================
+    % OVERZICHT
+    % =========================
+    
+    Raadplegen van een historiek van eerdere detecties &
+    \textcolor{orange}{\bol} &
+    \vink &
+    \\
+    
+    
+    % =========================
+    % INSTELLINGEN
+    % =========================
+    
+    Beheren van vereiste machtigingen voor detectiefunctionaliteit &
+    \textcolor{red}{\bol} &
+    \vink &
+    De applicatie vraagt de gebruiker om de vereiste Android-machtigingen. \\
+    
+\end{longtable}
+
+\vspace{1em}
+
+Uit deze evaluatie blijkt dat een groot deel van de functionele requirements van de \acrshort{poc} volledig of gedeeltelijk werd gerealiseerd. De belangrijkste detectiefunctionaliteiten zijn geïmplementeerd. Van de twaalf \acrshort{fr}'s werden zeven volledig en vijf gedeeltelijk gerealiseerd.
+
+\vspace{1em}
+
+Van de zes \textit{Must have}-requirements werden er vier volledig en twee gedeeltelijk gerealiseerd. De requirement voor het detecteren van dark patterns in streamingapps werd gedeeltelijk gerealiseerd, aangezien de detectie werd uitgewerkt voor de Netflix-app, maar nog niet voor de website van Netflix. Hoewel detectie op de website technisch haalbaar is, werd deze functionaliteit binnen de beschikbare ontwikkeltijd niet uitgewerkt. Ook de requirement voor het raadplegen van een visualisatie waarop het dark pattern zichtbaar is, werd gedeeltelijk gerealiseerd. De gebruiker krijgt wel de bijbehorende screenshot te zien, maar het dark pattern wordt niet rechtstreeks op de afbeelding gevisualiseerd aangezien dit met \textit{DPGuard} niet mogelijk was. De beschrijvende uitleg identificeert wel het relevante element op de afbeelding en geeft hierbij de nodige context.
+
+\vspace{1em} 
+
+Van de zes \textit{Should have}-requirements werden er drie volledig en drie gedeeltelijk gerealiseerd. De gedeeltelijke realisatie van deze requirements is voornamelijk het gevolg van functionaliteiten die wel in de mockups werden voorzien, maar niet in de technische implementatie werden uitgewerkt.
+
+\vspace{1em}
+
+Vervolgens werd de \acrshort{poc} getoetst aan de niet-functionele requirements. De beoordeling hiervan wordt weergegeven in tabel~\ref{tab:evaluatie-nfr}.
+
+\vspace{1em}
+
+\begin{longtable}{%
+        >{\raggedright\arraybackslash\small}p{8.2cm}
+        >{\centering\arraybackslash\small}p{1.8cm}
+        >{\raggedright\arraybackslash\small}p{4.0cm}
+    }
+    
+    \caption[Evaluatie van de niet-functionele requirements]{Evaluatie van de niet-functionele requirements van de \acrshort{poc}}
+    \label{tab:evaluatie-nfr} \\
+    
+    \toprule
+    \textbf{Requirement} & \textbf{Resultaat} & \textbf{Opmerking} \\
+    \midrule
+    \endfirsthead
+    
+    \multicolumn{3}{c}{\small{\tablename\ \thetable\ -- \textit{Vervolg van vorige pagina}}} \\
+    \toprule
+    \textbf{Requirement} & \textbf{Resultaat} & \textbf{Opmerking} \\
+    \midrule
+    \endhead
+    
+    \midrule \multicolumn{3}{r}{\small\textit{Vervolg op volgende pagina}} \\
+    \endfoot
+    
+    \bottomrule
+    \endlastfoot
+    
+    
+    % =========================
+    % FUNCTIONELE GESCHIKTHEID
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Functionele geschiktheid - Functionele compleetheid}} \\
+    
+    Minimaal 4 van de 8 vaak voorkomende dark patterns op streamingdiensten moeten gedetecteerd kunnen worden. &
+    \vink &
+    \textit{DPGuard} kon nagging, countdown timer, preselection en roach motel redelijk consistent herkennen. \\
+    
+    De applicatie moet dark patterns kunnen detecteren op zowel streamingwebsites als streamingapps. &
+    ? &
+    De detectie werd gerealiseerd voor de Netflix-app, maar nog niet voor de website van Netflix. Detectie op websites is technisch haalbaar, maar werd binnen de beschikbare ontwikkeltijd niet uitgewerkt. \\
+    
+    Alle functionele requirements met prioriteit Must Have moeten geïmplementeerd zijn in de \acrshort{poc} &
+    \kruisje &
+    Vier van de zes Must Have-requirements werden volledig gerealiseerd en twee gedeeltelijk. \\
+    
+    
+    \multicolumn{3}{l}{} \\
+    
+    
+    \multicolumn{3}{l}{\small\textbf{Functionele geschiktheid - Functionele correctheid}} \\
+    
+    Minimaal 80\% van de detecteerbare dark patterns moet correct geclassificeerd worden volgens de gebruikte taxonomie. &
+    ? &
+    De classificatie van patronen door \textit{DPGuard} kwam sterk overeen met de gebruikte taxonomie in dit onderzoek. Echter werd dit niet systematisch geëvalueerd om hier een uitspraak over te doen. \\
+    
+    De applicatie mag niet meer dan 15\% vals-positieve detecties genereren. &
+    ? &
+    Er werd geen volledige kwantitatieve evaluatie uitgevoerd waarmee het percentage vals-positieve detecties kon worden bepaald. \\
+    
+    De applicatie mag niet meer dan 20\% vals-negatieve detecties genereren. &
+    ? &
+    Er werd geen volledige kwantitatieve evaluatie uitgevoerd waarmee het percentage vals-negatieve detecties kon worden bepaald. \\
+    
+    
+    \multicolumn{3}{l}{} \\
+    
+    
+    % =========================
+    % PRESTATIE-EFFICIËNTIE
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Prestatie-efficiëntie - Snelheid}} \\
+    
+    Een detectieresultaat moet binnen 5 seconden beschikbaar zijn nadat een nieuw scherm verschijnt. &
+    \vink &
+    Tijdens het uittesten van de app door de ontwikkelaar en door de proefpersonen sloeg de tool erin om steeds resultaten te geven binnen 5 seconden. \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    
+    % =========================
+    % UITWISSELBAARHEID
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Uitwisselbaarheid - Beïnvloedbaarheid}} \\
+    
+    De applicatie mag de normale werking van streamingapps niet verstoren. &
+    \vink &
+    \\
+    
+    
+    \multicolumn{3}{l}{} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    % =========================
+    % BRUIKBAARHEID
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Bruikbaarheid - Leerbaarheid}} \\
+    
+    Minimaal 75\% van de testgebruikers moet zonder hulp een detectie kunnen raadplegen. &
+    \vink &
+    Tijdens een kleinschalige gebruikerstest sloeg iedere deelnemer erin een detectie te raadplegen. \\
+    
+    Minimaal 75\% van de testgebruikers moet zonder hulp meldingsinstellingen kunnen aanpassen. &
+    \kruisje &
+    De functionaliteit voor het aanpassen van meldingsinstellingen werd niet technisch geïmplementeerd. \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    
+    \multicolumn{3}{l}{\small\textbf{Bruikbaarheid - Voorkomen gebruikersfouten}} \\
+    
+    De applicatie moet gebruikers waarschuwen wanneer de juiste machtigingen voor Accessibility Services niet gegeven zijn. &
+    \vink &
+    \\
+    
+    Meldingen over gedetecteerde dark patterns mogen de gebruiker niet onderbreken tijdens het bekijken van content. &
+    \vink &
+    \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    \multicolumn{3}{l}{\small\textbf{Bruikbaarheid - Volmaaktheid gebruikersinteractie}} \\
+    
+    Waarschuwingen mogen maximaal 25 woorden bevatten. &
+    \vink &
+    \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    
+    % =========================
+    % ONDERHOUD
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Onderhoudbaarheid - Modulariteit}} \\
+    
+    Detectielogica, gebruikersinterface en gegevensopslag moeten in afzonderlijke modules geïmplementeerd worden. &
+    \vink &
+    \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    
+    % =========================
+    % BETROUWBAARHEID
+    % =========================
+    
+    \multicolumn{3}{l}{} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    \multicolumn{3}{l}{\small\textbf{Betrouwbaarheid - Volwassenheid}} \\
+    
+    Tijdens de gebruikersevaluatie mag de applicatie geen kritieke crash vertonen. &
+    ? &
+    Tijdens een kleinschalige gebruikersevaluatie bleef de applicatie functioneren, maar leverde de detectiemodule tijdelijk geen resultaten meer door overbelasting. Dit kon worden opgelost door de detectiefunctie opnieuw in en uit te schakelen. \\
+    
+    Minstens 9 op de 10 detecties moet succesvol verwerkt worden. &
+    ? &
+    Het percentage succesvol verwerkte detecties werd niet systematisch bepaald. \\
+    
+    \multicolumn{3}{l}{} \\
+    
+    
+    % =========================
+    % OVERDRAAGBAARHEID
+    % =========================
+    
+    \multicolumn{3}{l}{\small\textbf{Overdraagbaarheid - Installeerbaarheid}} \\
+    
+    De applicatie moet compatibel zijn met Android-toestellen. &
+    \vink &
+    \\
+    
+    De gebruiker moet de initiële configuratie van de applicatie binnen 5 minuten kunnen voltooien. &
+    ? &
+    Tijdens een kleinschalige gebruikerstest sloeg iedere deelnemer erin een detectie te raadplegen binnen 5 minuten. \\
+    
+\end{longtable}
+
+\vspace{1em}
+
+Uit de evaluatie van de niet-functionele requirements blijkt dat eveneens een groot deel van de vooropgestelde vereisten werd gerealiseerd. Van de achttien \acrshort{nfr}'s werden negen volledig, zeven gedeeltelijk en twee niet gerealiseerd.
+
+\vspace{1em}
+
+Een aantal requirements kon slechts gedeeltelijk worden beoordeeld aangezien bepaalde aspecten zoals de classificatienauwkeurigheid, het aantal vals-positieve en vals-negatieve detecties en de betrouwbaarheid niet systematisch werden getest. Hierdoor kan voor deze requirements niet worden vastgesteld of de gewenste waarden werden behaald. De enige niet-gerealiseerde requirements betreft het voldoen aan alle Must have functionele requirements en het zonder hulp kunnen aanpassen van de meldingsinstellingen aangezien niet alle functionaliteiten technisch geïmplementeerd konden worden.
+
+\vspace{1em}
+
+\subsection{Verbeterpunten op basis van de evaluatie}
+\label{subsec:verbeterpunten-evaluatie}
+
+\vspace{1em}
+
+Het toetsen van de \acrshort{poc} aan de vooropgestelde requirements en het uitvoeren van de gebruikerstesten bracht verschillende verbeterpunten aan het licht. Een eerste belangrijk aspect is het uitbreiden van de detectie naar streamingwebsites. Daardoor zou de app ook op websites van streamingdiensten gebruikt kunnen worden. Daarnaast zou een systematische evaluatie uitgevoerd moeten worden om alle \acrshort{nfr}'s correct te kunnen evalueren.
+
+\vspace{1em}
+
+Ook de betrouwbaarheid van de detectie vormt een belangrijk verbeterpunt. Tijdens de ontwikkeling en gebruikerstesten bleek dat veel analyses op een korte tijd \textit{DPGuard} kan overbelasten. Een efficiëntere aanpak van opeenvolgende schermafbeeldingen en analyses is daarom noodzakelijk om de betrouwbaarheid van de applicatie te verhogen. Hierbij kan onder andere worden onderzocht of opeenvolgende aanvragen kunnen worden samengevoegd of er een tweede sessie met \textit{gpt-4o} gestart kan worden.
+
+\vspace{1em}
+
+Op het vlak van gebruikerservaring kunnen eveneens verschillende verbeteringen worden aangebracht. Zo kan de gebruiker beter worden begeleid bij het verlenen van de vereiste machtigingen en kan de betekenis van de zekerheidsscore duidelijker worden toegelicht. Daarnaast kunnen de instellingen uit de mockups, waaronder het instellen van meldingen, toch nog worden geïmplementeerd. Hierdoor krijgt de gebruiker meer controle over de werking van de applicatie en kan het aantal meldingen worden beperkt.
+
+\vspace{1em}
+
+Eveneens kan het weergeven van een detectie verder worden uitgebreid. Er zou onderzocht kunnen worden of het mogelijk is om met \textit{DPGuard} ook een visuele aanduiding op een schermafbeelding te bekomen. Ook kan verder onderzoek gedaan worden naar een onderbouwde en reproduceerbare manier om de impact en mogelijke gevolgen van dark patterns te bepalen.
+
+\vspace{1em}
+
+Ten slotte zou onderzocht kunnen worden of het mogelijk is om ook dark patterns te detecteren of te melden die zich bevinden op schermen die de gebruiker niet meteen bezoekt. De huidige \acrshort{poc} analyseert enkel de schermen die op dat moment zichtbaar zijn, waardoor een dark pattern op een andere pagina onopgemerkt kan blijven terwijl deze wel op de achtergrond invloed kan hebben op de gebruiker. Een mogelijk verder onderzoek zou daarom kunnen achterhalen of bepaalde relevante schermen vooraf of op een andere manier kunnen worden geanalyseerd, zonder dat de gebruiker deze eerst zelf moet openen. Het gevaar is echter dat voor de streamingdiensten er niet meteen gebruikgemaakt mag worden van bots aangezien dit tegen de gebruikersvoorwaarden is. Dit werd onderzocht in hoofdstuk~\ref{ch:stand-van-zaken}.
