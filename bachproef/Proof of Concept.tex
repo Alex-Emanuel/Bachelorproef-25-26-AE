@@ -281,7 +281,7 @@ Na het uitwerken van de algemene flow van de app, werd gekeken naar welke techno
 \begin{itemize}
     \item De applicatie moet compatibel zijn met Android-toestellen (Hoofdstuk~\ref{ch:requirementsanalyse}, sectie~\ref{sec:requirements}).
     
-    \item De applicatie moet automatisch screenshots kunnen nemen en deze kunnen doorsturen naar \textit{DPGuard} (Hoofdstuk~\ref{ch:shortlist}).
+    \item De applicatie moet automatisch schermafbeeldingen kunnen nemen en deze kunnen doorsturen naar \textit{DPGuard} (Hoofdstuk~\ref{ch:shortlist}).
     
     \item De applicatie moet meldingen kunnen versturen wanneer een dark pattern wordt gedetecteerd (Hoofdstuk~\ref{ch:requirementsanalyse}, sectie~\ref{sec:requirements}).
     
@@ -319,7 +319,7 @@ Voor de ontwikkeling van de gebruikersinterface werd eerst bepaald welke ontwikk
 
 \vspace{1em}
 
-In het onderzoek van \textcite{Zarichuk2023} werden deze strategieën met elkaar vergeleken aan de hand van diverse parameters. Een belangrijke parameter voor de \acrshort{poc} binnen dit onderzoek is de toegang tot platformfunctionaliteiten. Denk maar aan het gebruik van een eigen \textit{Accessibility Service}, het nemen van screenshots buiten de app en het weergeven van een widget boven andere apps. Dit zijn uitgebreide functionaliteiten die Android-specifiek zijn. Volgens \textcite{Zarichuk2023} biedt native development volledige toegang tot de mogelijkheden van het toestel en de native API's. Hybrid en cross-platform development daarentegen vereisen ofwel plug-ins of bieden beperkte toegang \autocite{Zarichuk2023}. Daarom is binnen dit onderzoek native development het meest geschikt, aangezien de applicatie gebruik moet maken van Android-specifieke functionaliteiten. Rechtstreekse toegang tot de Android-API's is hierdoor een belangrijke vereiste. 
+In het onderzoek van \textcite{Zarichuk2023} werden deze strategieën met elkaar vergeleken aan de hand van diverse parameters. Een belangrijke parameter voor de \acrshort{poc} binnen dit onderzoek is de toegang tot platformfunctionaliteiten. Denk maar aan het gebruik van een eigen \textit{Accessibility Service}, het nemen van schermafbeeldingen buiten de app en het weergeven van een widget boven andere apps. Dit zijn uitgebreide functionaliteiten die Android-specifiek zijn. Volgens \textcite{Zarichuk2023} biedt native development volledige toegang tot de mogelijkheden van het toestel en de native API's. Hybrid en cross-platform development daarentegen vereisen ofwel plug-ins of bieden beperkte toegang \autocite{Zarichuk2023}. Daarom is binnen dit onderzoek native development het meest geschikt, aangezien de applicatie gebruik moet maken van Android-specifieke functionaliteiten. Rechtstreekse toegang tot de Android-API's is hierdoor een belangrijke vereiste. 
 
 \vspace{1em}
 
@@ -352,7 +352,7 @@ Voor de implementatie van de API werd gekozen voor het Python-framework \textit{
 
 \vspace{1em}
 
-Deze eigenschappen zijn belangrijk voor de \acrshort{poc}, aangezien screenshots vanuit de Android-applicatie naar de detectielogica moeten worden doorgestuurd en het resultaat vervolgens moet worden teruggestuurd. Hoe sneller het resultaat teruggestuurd kan worden, hoe meer realtime de tool kan werken. De combinatie van Python en de performante, asynchrone werking van \textit{FastAPI} maakt het framework daarom geschikt voor de communicatie tussen de detectietool en de Android-app.
+Deze eigenschappen zijn belangrijk voor de \acrshort{poc}, aangezien schermafbeeldingen vanuit de Android-applicatie naar de detectielogica moeten worden doorgestuurd en het resultaat vervolgens moet worden teruggestuurd. Hoe sneller het resultaat teruggestuurd kan worden, hoe meer realtime de tool kan werken. De combinatie van Python en de performante, asynchrone werking van \textit{FastAPI} maakt het framework daarom geschikt voor de communicatie tussen de detectietool en de Android-app.
 
 \vspace{1em}
 
@@ -375,21 +375,40 @@ Aangezien gegevensopslag geen primaire focus vormt van deze \acrshort{poc}, werd
 
 \vspace{1em}
 
-Na het bepalen van de algemene flow en de technologieën die gebruikt zouden worden voor de \acrshort{poc}, werd gestart met de ontwikkeling van de applicatie. De implementatie werd stapsgewijs opgebouwd rond de belangrijkste functionaliteiten. Eerst werd de bestaande detectietool \textit{DPGuard} beschikbaar gemaakt via een \textit{FastAPI}-API. Vervolgens werd een eerste versie van de \acrshort{ui} ontwikkeld op basis van mockdata. Daarna werd de Android-applicatie uitgebreid met een \textit{AccessibilityService} voor het detecteren van interfacewijzigingen en een \textit{ScreenCaptureService} voor het maken van screenshots. Vervolgens werd DPGuard aangepast zodat de analyse-resultaten in een JSON-formaat konden worden teruggegeven en vanuit de Android-applicatie konden worden verwerkt. Tot slot werden de lokale opslag van detecties, notificaties en het automatisch starten van analyses op basis van interfacewijzigingen geïmplementeerd.
+Na het bepalen van de algemene flow en de technologieën die gebruikt zouden worden voor de \acrshort{poc}, werd gestart met de ontwikkeling van de applicatie. Voor de technische uitwerking werd gefocust op de \textit{algemene interface} uit de mockups, aangezien deze de kernfunctionaliteiten van de applicatie bevat en hiermee de technische haalbaarheid van de \acrshort{poc} bekeken kon worden. Een melding en het overzichts- en detailscherm van de technisch uitgewerkte \acrshort{poc} worden weergegeven in Figuur~\ref{fig:app-interface}. De implementatie werd stapsgewijs opgebouwd rond de belangrijkste functionaliteiten. Eerst werd de bestaande detectietool \textit{DPGuard} beschikbaar gemaakt via een \textit{FastAPI}-API. Vervolgens werd een eerste versie van de \acrshort{ui} ontwikkeld op basis van mockdata. Daarna werd de Android-applicatie uitgebreid met een \textit{AccessibilityService} voor het detecteren van interfacewijzigingen en een \textit{ScreenCaptureService} voor het maken van schermafbeeldingen. Vervolgens werd DPGuard aangepast zodat de analyse-resultaten in een JSON-formaat konden worden teruggegeven en vanuit de Android-applicatie konden worden verwerkt. Tot slot werden de lokale opslag van detecties, notificaties en het automatisch starten van analyses op basis van interfacewijzigingen geïmplementeerd.
 
 \vspace{1em}
 
-De uiteindelijke applicatie bestaat uit verschillende componenten die samen instaan voor het detecteren, analyseren en weergeven van mogelijke dark patterns. Het proces start bij de \texttt{AccessibilityService}, die veranderingen in de interface van ondersteunde streamingdiensten detecteert. Wanneer een relevante schermwijziging wordt vastgesteld, wordt via de \texttt{ScreenCaptureService} een screenshot van het scherm gemaakt met behulp van de \textit{MediaProjection API}.
+\begin{figure}[H]
+    \centering
+    
+    \includegraphics[width=0.26\textwidth]{poc/poc-melding.jpg}
+    \hspace{0.04\textwidth}
+    \includegraphics[width=0.26\textwidth]{poc/poc-overzicht.jpg}
+    \hspace{0.04\textwidth}
+    \includegraphics[width=0.26\textwidth]{poc/poc-detail.jpg}
+    
+    \caption[Notificatie, overzichts- en detailscherm van de Proof of Concept]{Notificatie, overzichts- en detailscherm van de technisch uitgewerkte Proof of Concept.}
+    \label{fig:app-interface}
+\end{figure}
 
 \vspace{1em}
 
-De screenshot wordt vervolgens door de \texttt{AnalysisManager} doorgestuurd naar de \textit{FastAPI}-API. Deze API maakt gebruik van \textit{DPGuard} om het beeld te analyseren en een analyse-resultaat terug te sturen naar de Android-applicatie. Wanneer een dark pattern wordt gedetecteerd, worden de resultaten lokaal opgeslagen met behulp van \textit{Room}. De detecties kunnen vervolgens via de \acrlong{ui} worden geraadpleegd. Aanvullend ontvangt de gebruiker een notificatie wanneer een nieuwe detectie wordt geregistreerd.
+Om deze stappen uit te voeren, werden verschillende voorbeeldprojecten en officiële documentatie geraadpleegd. Voor de technische uitwerking werd, naast de officiële Android-documentatie, gebruikgemaakt van verschillende voorbeeldprojecten als referentie voor de implementatie en structuur van de applicatie. Hierbij werd onder andere gekeken naar \textit{RecordScreen} \autocite{LacknerRecordScreen} en \textit{CleanArchitectureNoteApp} \autocite{LacknerCleanArchitecture}, evenals naar een voorbeeldimplementatie voor schermopname van \textcite{Ch8nScreenCapture}. Daarnaast werd de officiële documentatie van Android Developers geraadpleegd rond \textit{MediaProjection}, \textit{Retrofit} en \textit{Room} \autocite{AndroidMediaProjection,AndroidRetrofit,AndroidRoom}.
+
+\vspace{1em}
+
+De uiteindelijke applicatie bestaat uit verschillende componenten die samen instaan voor het detecteren, analyseren en weergeven van mogelijke dark patterns. Het proces start bij de \texttt{AccessibilityService}, die veranderingen in de interface van ondersteunde streamingdiensten detecteert. Wanneer een relevante schermwijziging wordt vastgesteld, wordt via de \texttt{ScreenCaptureService} een schermafbeelding van het scherm gemaakt met behulp van de \textit{MediaProjection API}.
+
+\vspace{1em}
+
+De schermafbeelding wordt vervolgens door de \texttt{AnalysisManager} doorgestuurd naar de \textit{FastAPI}-API. Deze API maakt gebruik van \textit{DPGuard} om het beeld te analyseren en een analyse-resultaat terug te sturen naar de Android-applicatie. Wanneer een dark pattern wordt gedetecteerd, worden de resultaten lokaal opgeslagen met behulp van \textit{Room}. De detecties kunnen vervolgens via de \acrlong{ui} worden geraadpleegd. Aanvullend ontvangt de gebruiker een notificatie wanneer een nieuwe detectie wordt geregistreerd.
 
 \vspace{1em}
 
 De Android-applicatie is opgebouwd volgens een gelaagde structuur. De dataopslag wordt beheerd door \textit{Room} en aangestuurd via een repository, terwijl \textit{ViewModels} de gegevens beschikbaar maken voor de \textit{Jetpack Compose}-\acrshort{ui}. \textit{Hilt} wordt gebruikt voor \textit{dependency injection} tussen de verschillende componenten. Op deze manier worden de detectielogica, gegevensverwerking en gebruikersinterface zoveel mogelijk van elkaar gescheiden.
 
-\newpage
+\vspace{1em}
 
 \subsubsection{Aanpassingen aan DPGuard}
 
@@ -399,7 +418,7 @@ Voor de detectie van dark patterns werd gebruikgemaakt van \textit{DPGuard}. Dez
 
 \vspace{1em}
 
-Eerst werd een \textit{FastAPI}-API ontwikkeld die dient als tussenlaag tussen de Android-applicatie en \textit{DPGuard}. Via het endpoint \texttt{/analyze} kan de Android-applicatie een screenshot versturen en wordt deze doorgegeven aan \textit{DPGuard} voor analyse. Het analyse-resultaat wordt vervolgens als JSON-object teruggestuurd naar de Android-applicatie.
+Eerst werd een \textit{FastAPI}-API ontwikkeld die dient als tussenlaag tussen de Android-applicatie en \textit{DPGuard}. Via het endpoint \texttt{/analyze} kan de Android-applicatie een schermafbeelding versturen en wordt deze doorgegeven aan \textit{DPGuard} voor analyse. Het analyse-resultaat wordt vervolgens als JSON-object teruggestuurd naar de Android-applicatie.
 
 \vspace{1em}
 
@@ -418,6 +437,28 @@ De belangrijkste wijzigingen aan de prompt zijn weergegeven in Code~\ref{lst:dpg
 Ten slotte werd het JSON-resultaat uitgebreid met een \texttt{confidence}-waarde. Deze waarde is afkomstig van het binaire model van \textit{DPGuard} die eerst een voorspelling maakt. De waarde geeft de zekerheid weer waarmee het model bepaalt of een afbeelding al dan niet een dark pattern bevat. Als dit binaire model meer dan 50\% zeker is, wordt het pas naar het Large Language Model gestuurd voor verdere analyse. Een vereenvoudigd voorbeeld van de finale response-structuur dat door de API wordt teruggestuurd, is weergegeven in Code~\ref{lst:dpguard-response}.
 
 \vspace{1em}
+
+\begin{listing}[H]
+    \begin{minted}[fontsize=\footnotesize]{json}
+        {
+            "filename": "countdown-1.jpg",
+            "result": {
+                "detected": true,
+                "patterns": [
+                {
+                    "id": 8,
+                    "name": "Countdown Timer",
+                    "description": "...",
+                    "impact": "HIGH"
+                }
+                ],
+                "confidence": 80
+            }
+        }
+    \end{minted}
+    \caption[Voorbeeld van het JSON-resultaat van DPGuard]{Voorbeeld van het JSON-resultaat dat door DPGuard via de FastAPI-backend wordt teruggestuurd.}
+    \label{lst:dpguard-response}
+\end{listing}
 
 \begin{listing}
     \begin{minted}[fontsize=\footnotesize]{text}
@@ -472,37 +513,11 @@ Ten slotte werd het JSON-resultaat uitgebreid met een \texttt{confidence}-waarde
     \label{lst:dpguard-prompt}
 \end{listing}
 
-\vspace{1em}
-
-\begin{listing}
-    \begin{minted}[fontsize=\footnotesize]{json}
-        {
-            "filename": "countdown-1.jpg",
-            "result": {
-                "detected": true,
-                "patterns": [
-                {
-                    "id": 8,
-                    "name": "Countdown Timer",
-                    "description": "...",
-                    "impact": "HIGH"
-                }
-                ],
-                "confidence": 80
-            }
-        }
-    \end{minted}
-    \caption[Voorbeeld van het JSON-resultaat van DPGuard]{Voorbeeld van het JSON-resultaat dat door DPGuard via de FastAPI-backend wordt teruggestuurd.}
-    \label{lst:dpguard-response}
-\end{listing}
+\subsubsection{Schermafbeelding nemen}
 
 \vspace{1em}
 
-\subsubsection{Screenshotcaptatie}
-
-\vspace{1em}
-
-Een tweede uitdaging tijdens de ontwikkeling was het verkrijgen van screenshots van streamingdiensten. Bij het rechtstreeks maken van screenshots bleek dat streamingdiensten zoals \textit{Netflix} en \textit{Prime Video} de scherminhoud konden blokkeren. Hierdoor was deze methode niet bruikbaar voor de detectie binnen de \acrshort{poc}.
+Een tweede uitdaging tijdens de ontwikkeling was het verkrijgen van schermafbeeldingen van streamingdiensten. Bij het rechtstreeks maken van schermafbeeldingen bleek dat streamingdiensten zoals \textit{Netflix} en \textit{Prime Video} de scherminhoud konden blokkeren. Hierdoor was deze methode niet bruikbaar voor de detectie binnen de \acrshort{poc}.
 
 \vspace{1em}
 
@@ -510,7 +525,18 @@ Om na te gaan welke mogelijkheden er wel waren, werd ``Scherm opnemen Video opne
 
 \vspace{1em}
 
-Een gevolg hiervan is dat de gebruiker toestemming moet geven voor schermopname. In de oorspronkelijke mockups werd deze toestemming voorzien tijdens de onboarding van de applicatie. Tijdens de ontwikkeling bleek echter dat de toestemming voor \textit{MediaProjection} per sessie opnieuw moet worden gevraagd. Deze toestemming wordt daarom in de uiteindelijke flow gevraagd wanneer de gebruiker de detector activeert, in plaats van tijdens de onboarding.
+Een gevolg hiervan is dat de gebruiker toestemming moet geven voor schermopname. In de oorspronkelijke mockups werd deze toestemming voorzien tijdens de onboarding van de applicatie. Tijdens de ontwikkeling bleek echter dat de toestemming voor \textit{MediaProjection} per sessie opnieuw moet worden gevraagd. Deze toestemming wordt daarom in de uiteindelijke flow gevraagd wanneer de gebruiker de detector activeert in plaats van tijdens de onboarding. De melding die de gebruiker hierbij te zien krijgt, wordt weergegeven in Figuur~\ref{fig:app-mediaprojection}.
+
+\vspace{1em}
+
+\begin{figure}[H]
+    \centering
+    
+    \includegraphics[width=0.24\textwidth]{poc/poc-mediaprojection.jpg}
+    
+    \caption[Toestemmingsmelding voor schermopname]{Toestemmingsmelding van Android voor het starten van schermopname via \textit{MediaProjection}.}
+    \label{fig:app-mediaprojection}
+\end{figure}
 
 \vspace{1em}
 
@@ -518,11 +544,11 @@ Een gevolg hiervan is dat de gebruiker toestemming moet geven voor schermopname.
 
 \vspace{1em}
 
-Een volgende uitdaging was het bepalen van het moment waarop automatisch een nieuwe analyse moet worden gestart. De \textit{AccessibilityService} ontvangt namelijk meerdere events wanneer de interface van een streamingdienst verandert. Indien bij iedere wijziging een screenshot zou worden gemaakt en een analyse gestart, zou dit leiden tot een zeer groot aantal API-aanvragen op korte tijd. Dit zou niet alleen onnodige analyses veroorzaken, maar ook de belasting van de API en het Large Language Model verhogen.
+Een volgende uitdaging was het bepalen van het moment waarop automatisch een nieuwe analyse moet worden gestart. De \textit{AccessibilityService} ontvangt namelijk meerdere events wanneer de interface van een streamingdienst verandert. Indien bij iedere wijziging een schermafbeelding zou worden gemaakt en een analyse gestart, zou dit leiden tot een zeer groot aantal API-aanvragen op korte tijd. Dit zou niet alleen onnodige analyses veroorzaken, maar ook de belasting van de API en het Large Language Model verhogen.
 
 \vspace{1em}
 
-Daarom werd ervoor gekozen om een analyse pas te starten wanneer een streamingdienst openstaat en wanneer de interface gedurende 500~ms niet meer gewijzigd is. Bij iedere nieuwe interfacewijziging wordt de timer opnieuw gestart. Hierdoor wordt gewacht tot de interface zich stabiliseert voordat een screenshot wordt gemaakt. Daarnaast werd eveneens een cooldown van drie seconden ingevoerd, waardoor er na een analyse minimaal drie seconden moet worden gewacht voordat een nieuwe analyse kan worden gestart. Een codefragment uit de \texttt{AccessibilityService} dat het bepalen van het analysemoment illustreert is weergegeven in Code~\ref{lst:analysis-timing}.
+Daarom werd ervoor gekozen om een analyse pas te starten wanneer een streamingdienst openstaat en wanneer de interface gedurende 500~ms niet meer gewijzigd is. Bij iedere nieuwe interfacewijziging wordt de timer opnieuw gestart. Hierdoor wordt gewacht tot de interface zich stabiliseert voordat een schermafbeelding wordt gemaakt. Daarnaast werd eveneens een cooldown van drie seconden ingevoerd, waardoor er na een analyse minimaal drie seconden moet worden gewacht voordat een nieuwe analyse kan worden gestart. Een codefragment uit de \texttt{AccessibilityService} dat het bepalen van het analysemoment illustreert is weergegeven in Code~\ref{lst:analysis-timing}.
 
 \vspace{1em}
 
@@ -582,7 +608,7 @@ Ondanks de timer en cooldownperiode bleek tijdens het testen dat het aantal API-
     \label{lst:analysis-timing}
 \end{listing}
 
-\newpage
+\vspace{1em}
 
 \subsubsection{Bepalen van het impactniveau}
 
@@ -608,9 +634,21 @@ Wanneer een dark pattern wordt gedetecteerd, ontvangt de gebruiker momenteel een
 
 \vspace{1em}
 
-Tijdens het testen werd daarnaast een onverwachte positieve vaststelling gedaan. Hoewel de \textit{AccessibilityService} ook wijzigingen tijdens het afspelen van videocontent kan waarnemen, bleek dat de videobeelden zelf niet als gewijzigde interface worden gedetecteerd. Hierdoor wordt tijdens het afspelen van een aflevering of film geen nieuwe analyse gestart en ontvangt de gebruiker bijgevolg ook geen notificaties tijdens het bekijken van de inhoud. Analyses vinden voornamelijk plaats wanneer de interface van de streamingdienst opnieuw zichtbaar wordt, bijvoorbeeld bij het starten of beëindigen van het afspelen. Hierdoor wordt voorkomen dat de gebruiker tijdens het bekijken van een aflevering of film voortdurend door notificaties wordt onderbroken.
+Tijdens het testen werd daarnaast een onverwachte positieve vaststelling gedaan. Hoewel de \textit{AccessibilityService} ook wijzigingen tijdens het afspelen van videocontent kan waarnemen, bleek dat de videobeelden zelf niet als gewijzigde interface worden gedetecteerd. Dit is ook zichtbaar in de schermafbeelding die via \textit{MediaProjection} wordt verkregen, zoals weergegeven in Figuur~\ref{fig:app-streamcontent}. Hierdoor wordt tijdens het afspelen van een aflevering of film geen nieuwe analyse gestart en ontvangt de gebruiker bijgevolg ook geen notificaties tijdens het bekijken van de inhoud. Analyses vinden voornamelijk plaats wanneer de interface van de streamingdienst opnieuw zichtbaar wordt, bijvoorbeeld bij het starten of beëindigen van het afspelen. Hierdoor wordt voorkomen dat de gebruiker tijdens het bekijken van een aflevering of film voortdurend door notificaties wordt onderbroken.
 
-\newpage
+\vspace{1em}
+
+\begin{figure}[H]
+    \centering
+    
+    \includegraphics[width=0.48\textwidth]{poc/poc-stream.png}
+    
+    \caption[Schermafbeelding tijdens het afspelen van videocontent]{Schermafbeelding verkregen via MediaProjection tijdens het afspelen van videocontent.}
+    \label{fig:app-streamcontent}
+    
+\end{figure}
+
+\vspace{1em}
 
 \section{Evaluatie}
 \label{sec:evaluatie}
