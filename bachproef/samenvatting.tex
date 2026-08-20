@@ -45,4 +45,17 @@
 
 \chapter*{\IfLanguageName{dutch}{Samenvatting}{Abstract}}
 
-\lipsum[1-4]
+Streamingdiensten zijn niet meer weg te denken uit het leven van Vlaamse jongvolwassenen. Hierdoor worden 18- tot 34-jarigen steeds vaker blootgesteld aan zogenaamde dark patterns. Deze misleidende technieken beïnvloeden gebruikers op een subtiele en vaak onbewuste manier.
+In tegenstelling tot reclame, die gebruikers op een bewuste manier probeert te overtuigen, manipuleren dark patterns vaak onopgemerkt. Dit is bijzonder problematisch omdat gebruikers hierdoor handelingen kunnen doen die ze anders niet zouden uitvoeren en daardoor onbedoeld bijvoorbeeld abonnementen afsluiten of extra onverwachte kosten moeten betalen. Deze bachelorproef onderzoekt daarom hoe dergelijke patronen het gedrag van Vlaamse jongvolwassenen beïnvloeden en hoe ze automatisch kunnen worden opgespoord en gesignaleerd. Er wordt specifiek vertrokken vanuit de centrale onderzoeksvraag ``Hoe kunnen commerciële dark patterns van in Vlaanderen vaak gebruikte streamingdiensten automatisch opgespoord en aan de gebruikers gesignaleerd worden?''.
+
+\vspace{1em}
+
+Het onderzoek heeft als doel een geschikte methode voor het opsporen en signaleren van dark patterns te bepalen en uit te werken in een Proof of Concept. Hiervoor werd een literatuurstudie uitgevoerd en een longlist van bestaande detectietools opgesteld. Op basis van interviews en het literatuuronderzoek werden functionele en niet-functionele requirements opgesteld, waarmee bestaande detectietools werden geëvalueerd. Dit leidde tot de selectie van \textit{DPGuard}, een bestaande open-sourcetool voor de detectie van dark patterns. Screenshotanalyse in combinatie met een Large Language Model bleek voor de Proof of Concept het meest geschikt, omdat hiermee mobiele schermen zonder bots kunnen worden geanalyseerd. \textit{DPGuard} werd daarom uitgebreid met een API-laag en geïntegreerd in een Android-gebaseerde app. De applicatie maakt schermafbeeldingen van streamingdiensten, laat deze automatisch analyseren en signaleert gedetecteerde dark patterns via notificaties. In de applicatie kunnen gebruikers bijkomende informatie vinden over het patroon, zoals de uitleg, mogelijke gevolgen en detectiezekerheid.
+
+\vspace{1em}
+
+De Proof of Concept werd geëvalueerd via een kleinschalige gebruikerstest en een toetsing aan de requirements. De resultaten tonen aan dat technisch screenshotanalyse in combinatie met een Large Language Model haalbaar is voor de detectie van verschillende dark patterns, waaronder \textit{nagging}, \textit{countdown timer}, \textit{preselection} en \textit{roach motel}. Tegelijkertijd is de detectie nog onvoldoende betrouwbaar en stabiel voor breed gebruik. Zo kan \textit{DPGuard} bij meerdere opeenvolgende analyses worden overbelast en werd de detectiebetrouwbaarheid nog niet systematisch bepaald. Daarnaast werd de technische detectie enkel voor de Netflix-app uitgewerkt.
+
+\vspace{1em}
+
+De Proof of Concept vormt daarmee een eerste werkend bewijs van het concept. Verdere ontwikkeling is nodig om de betrouwbaarheid en efficiëntie te verbeteren, de oplossing uit te breiden naar streamingwebsites en de werking op grotere schaal te evalueren.

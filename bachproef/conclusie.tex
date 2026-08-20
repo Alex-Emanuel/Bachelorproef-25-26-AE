@@ -14,18 +14,135 @@
 % Heeft het onderzoek geleid tot nieuwe vragen die uitnodigen tot verder 
 %onderzoek?
 
-\lipsum[76]
+\vspace{1em}
 
-\newpage
-
-
+In dit onderzoek werd onderzocht hoe commerciële dark patterns op populaire streamingdiensten automatisch kunnen worden opgespoord en op een gebruiksvriendelijke manier aan gebruikers gesignaleerd kunnen worden. Om deze hoofdonderzoeksvraag te beantwoorden, is via literatuuronderzoek achterhaald welke dark patterns voorkomen op streamingdiensten, in welke mate gebruikers zich hiervan bewust zijn en welke rol deze patronen spelen binnen de doelstellingen van streamingdiensten. Vervolgens werd nagegaan welke bestaande detectietools beschikbaar zijn, op welke manier detecties aan gebruikers gesignaleerd kunnen worden en aan welke vereisten een geschikte oplossing moet voldoen. Deze inzichten vormden de basis voor de ontwikkeling van een \acrlong{poc}. De resultaten uit het onderzoek en de evaluatie van deze \acrlong{poc} maken het mogelijk om in dit hoofdstuk zowel de deelvragen als de hoofdonderzoeksvraag te beantwoorden.
 
 \vspace{1em}
 
-\section{Besluit}
-\label{sec:besluit}
+\section{Besluit probleemdomein}
+\label{sec:besluit-probleemdomein}
 
 \vspace{1em}
 
-...
+% Welke dark patterns komen het meest voor op websites en apps van populaire streamingdiensten die door Vlamingen tussen 18 en 34 jaar gebruikt worden?
+% Op welk platform (website of mobiele app) komen dark patterns het meest frequent voor?
+De eerste deelvraag onderzocht welke dark patterns het meest voorkomen op websites en apps van populaire streamingdiensten die door Vlamingen tussen 18 en 34 jaar worden gebruikt. Via literatuuronderzoek werd eerst bepaald welke streamingdiensten binnen de doelgroep het meest gebruikt worden en vervolgens welke dark patterns binnen deze diensten voorkomen. Hieruit bleek dat vooral \acrlong{svod}-diensten relevant zijn en dat verschillende dark patterns, waaronder \textit{nagging}, \textit{roach motel}, \textit{preselection} en \textit{hidden information}, voorkomen op zowel websites als mobiele apps. Hoewel de exacte toepassing per platform kan verschillen, is het voorkomen van dark patterns over het algemeen vergelijkbaar tussen beide platformen. Dark patterns kunnen echter op mobiele apparaten een grotere impact hebben door de beperkte schermgrootte en grotere \acrshort{ui}-elementen. Aangezien streaming volgens de literatuur voornamelijk via smartphones gebeurt, werd binnen dit onderzoek daarom gefocust op mobiele apps. Hiermee werd ook de vierde deelvraag ``Op welk platform (website of mobiele app) komen dark patterns het meest frequent voor?'' al beantwoord. Er is met andere woorden geen duidelijk verschil in frequentie tussen websites en mobiele apps, maar dark patterns kunnen op mobiele apparaten wel een grotere impact hebben. De acht geïdentificeerde patronen vormden uiteindelijk de basis voor de selectiecriteria van de detectietool en voor het opstellen van de requirements van de \acrshort{poc}.
 
+\vspace{1em}
+
+% In welke mate zijn gebruikers zich bewust van de aanwezigheid van dark patterns bij het gebruik van streamingdiensten?
+Vervolgens werd onderzocht in welke mate gebruikers zich bewust zijn van de aanwezigheid van dark patterns bij het gebruik van streamingdiensten. Uit het literatuuronderzoek bleek dat het herkennen van dergelijke patronen voor consumenten een uitdaging kan zijn en dat herkennen niet noodzakelijk betekent dat gebruikers ook de mogelijke gevolgen ervan begrijpen. De kleinschalige gebruikerstest sloot hier gedeeltelijk bij aan. Hoewel deelnemers verschillende patronen konden herkennen, bleek het niet altijd vanzelfsprekend om deze correct te benoemen of de gevolgen ervan in te zien. Hieruit blijkt dat naast het signaleren van dark patterns ook het informeren van gebruikers over hun werking en mogelijke gevolgen belangrijk is.
+
+\vspace{1em}
+
+% Welke verbanden bestaan er tussen de aanwezigheid van specifieke dark patterns en de businessdoelstellingen van streamingdiensten?
+De derde deelvraag onderzocht welke verbanden bestaan tussen de aanwezigheid van specifieke dark patterns en de businessdoelstellingen van streamingdiensten. Uit het literatuuronderzoek bleek dat dark patterns kunnen worden ingezet om doelstellingen zoals het aantrekken en behouden van abonnees, het verhogen van inkomsten en kijktijd en het verzamelen van gebruikersdata te ondersteunen. Er bestaat daarmee een duidelijk verband tussen bepaalde dark patterns en de commerciële doelstellingen van streamingdiensten.
+
+\vspace{1em}
+
+% Kunnen technologische tools helpen bij het verhogen van bewustzijn rond bepaalde onderwerpen?
+Tot slot werd onderzocht of technologische tools kunnen bijdragen aan het verhogen van het bewustzijn rond dark patterns. Via literatuuronderzoek naar onder andere phishingdetectors en dark-pattern-detectietools bleek dat technologische ondersteuning gebruikers kan helpen om risico's en patronen beter te herkennen en begrijpen. Hierbij zijn niet alleen de detectie zelf, maar ook voldoende uitleg en context belangrijk. Ook onderzoek naar tools die specifiek gericht zijn op dark patterns wijst erop dat gebruikers na gebruik ervan beter in staat zijn om patronen zelfstandig te herkennen en de impact ervan in te schatten. Technologische tools kunnen daarom een meerwaarde bieden bij het verhogen van het bewustzijn rond dark patterns op voorwaarde dat detecties niet enkel worden weergegeven, maar ook van voldoende uitleg en context worden voorzien. 
+
+\vspace{1em}
+
+\section{Besluit oplossingsdomein}
+\label{sec:besluit-oplossingsdomein}
+
+\vspace{1em}
+
+% Welke wet- en regelgeving bestaat er rond het gebruik van dark patterns in België en de Europese Unie? 
+Nadien werd voor het oplossingsdomein via literatuuronderzoek onderzocht welke wet- en regelgeving bestaat rond het gebruik van dark patterns in België en de Europese Unie. Hieruit bleek dat er geen afzonderlijk juridisch kader voor dark patterns bestaat, maar dat verschillende bestaande regelgevingen manipulatie en misleiding door dark patterns reeds aanpakken. Het juridische kader is daardoor redelijk uitgebreid, maar versnipperd. Het koppelen van gedetecteerde patronen aan relevante wet- en regelgeving vormt daarom een mogelijke uitbreiding van toekomstige detectietools.
+
+\vspace{1em}
+
+Daarnaast moet een detectietool rekening houden met technische en platformgebonden beperkingen. Voor het detecteren van schermwijzigingen binnen Android om een analyse te starten is een \textit{Accessibility Service} nodig. Het gebruik hiervan is echter onderworpen aan specifieke richtlijnen van Google Play, wat de publicatie van de app kan bemoeilijken. Verder beperken streamingdiensten zoals \textit{Netflix} en \textit{Disney+} het gebruik van geautomatiseerde middelen zoals bots. Een geschikte oplossing moet dark patterns daarom kunnen detecteren zonder geautomatiseerde navigatie toe te passen.
+
+\vspace{1em}
+
+% Welke bestaande tools die gebruikers waarschuwen voor dark patterns bestaan er al, en wat zijn hun sterke en zwakke punten?
+De tweede deelvraag binnen het oplossingsdomein onderzocht welke bestaande tools gebruikers reeds kunnen waarschuwen voor dark patterns en wat hun sterke en zwakke punten zijn. Hiervoor werd eerst een longlist opgesteld en werden de tools aan de hand van verschillende criteria vergeleken. Uit deze vergelijking bleek dat de meeste tools open source en gratis te gebruiken waren en geschikt waren voor de analyse van mobiele schermen. De belangrijkste zwakke punten waren het beperkte aantal detecteerbare dark patterns, het ontbreken van een gebruikersinterface en het gebruik van bots voor analyse, waardoor sommige tools niet bruikbaar waren binnen de context van streamingdiensten.
+
+\vspace{1em}
+
+Op basis van de longlist werd nadien een shortlist samengesteld, waarbij vooral werd gekeken naar technische haalbaarheid en detectiemogelijkheden. Tools die screenshotanalyse combineerden met een \textit{Large Language Model} bleken het meest geschikt binnen de context van dit onderzoek, omdat mobiele schermen hiermee kunnen worden geanalyseerd zonder gebruik te maken van bots. \textit{DPGuard} behaalde tijdens de praktische evaluatie de beste detectieresultaten en bood bovendien contextuele uitleg bij detecties en de mogelijkheid om de gebruikte prompt aan te passen. Daarom werd \textit{DPGuard} geselecteerd als basis voor de \acrshort{poc}.
+
+\vspace{1em}
+
+% Op welke manier kunnen dark patterns aan gebruikers gesignaleerd worden zonder dat hun gebruikerservaring negatief beïnvloed wordt?
+Vervolgens werd onderzocht op welke manier dark patterns aan gebruikers kunnen worden gesignaleerd zonder hun gebruikerservaring negatief te beïnvloeden. Via literatuuronderzoek bleek dat signaleringen beknopt moeten zijn en de gebruiker niet mogen verstoren in een handeling. Eveneens moeten gebruikers controle behouden over het aantal meldingen en of ze al dan niet meer informatie wensen. Binnen de \acrshort{poc} werd daarom gekozen voor korte notificaties, met de mogelijkheid om aanvullende informatie over de detectie in de app te raadplegen. De resultaten tonen aan dat detecties op deze manier kunnen worden gesignaleerd zonder de gebruiker tijdens het gebruik van de streamingdienst rechtstreeks te onderbreken.
+
+\vspace{1em}
+
+% Welke digitale of interactieve oplossing is geschikt voor het automatisch detecteren en signaleren van dark patterns op streamingdiensten, en welke (niet-)functionele vereisten zijn hiervoor essentieel?
+De vierde deelvraag binnen het oplossingsdomein onderzocht welke digitale of interactieve oplossing geschikt is voor het automatisch detecteren en signaleren van dark patterns en welke functionele en niet-functionele vereisten hiervoor essentieel zijn. Via een requirementsanalyse werden onder andere automatische detectie, ondersteuning van de geselecteerde dark patterns, een korte verwerkingstijd, correcte classificatie, signalering die handelingen niet verstoord en gebruiksvriendelijke raadpleging als belangrijke vereisten vastgesteld. Op basis hiervan werd een Android-gebaseerde \acrshort{poc} ontwikkeld. Deze combineert een \textit{Accessibility Service} voor het detecteren van schermwijzigingen, de \textit{MediaProjection API} voor het maken van schermafbeeldingen en \textit{DPGuard} voor de analyse. De detectieresultaten worden vervolgens via een eigen \acrshort{ui} aan de gebruiker gesignaleerd. Bij de ontwikkeling werd rekening gehouden met de technische en platformgebonden beperkingen, zoals het gebruik van een \textit{Accessibility Service} en het vermijden van bots.
+
+\vspace{1em}
+
+% In welke mate voldoet de uitgewerkte digitale oplossing aan de opgestelde requirements en welke verbeterpunten kunnen worden geïdentificeerd?
+Tot slot werd geëvalueerd in welke mate de uitgewerkte \acrshort{poc} aan de vooropgestelde requirements voldoet. Uit deze evaluatie bleek dat van de twaalf functionele requirements zeven volledig en vijf gedeeltelijk werden gerealiseerd. Van de niet-functionele requirements werd ongeveer de helft volledig en de andere helft gedeeltelijk gerealiseerd. De \acrshort{poc} kon detecties binnen vijf seconden uitvoeren en verstoorde de normale werking van de streamingapplicatie niet. Niet alle requirements konden echter volledig worden beoordeeld, omdat de classificatienauwkeurigheid, vals-positieve en vals-negatieve detecties en algemene betrouwbaarheid niet systematisch werden getest.
+
+\vspace{1em}
+
+De belangrijkste beperkingen waren het ontbreken van detectie op streamingwebsites, het niet rechtstreeks aanduiden van het gedetecteerde patroon op een genomen screenshot en het ontbreken van enkele functionaliteiten die enkel in de mockups werden uitgewerkt. Daarnaast bleek \textit{DPGuard} niet altijd dezelfde resultaten te geven bij herhaalde analyses en kon het systeem bij meerdere opeenvolgende analyses worden overbelast. De evaluatie toont daarmee aan dat de \acrshort{poc} de technische haalbaarheid van het concept aantoont, maar dat verdere ontwikkeling en systematische evaluatie nodig zijn voordat de oplossing als een volledige en betrouwbare applicatie kan worden beschouwd.
+
+\vspace{1em}
+
+\section{Antwoord op de hoofdonderzoeksvraag}
+\label{sec:antwoord-hoofdonderzoeksvraag}
+
+\vspace{1em}
+
+De hoofdonderzoeksvraag van dit onderzoek luidde: \emph{``Hoe kunnen commerciële dark patterns van in Vlaanderen vaak gebruikte     streamingdiensten automatisch opgespoord en aan de gebruikers gesignaleerd worden?''}
+
+\vspace{1em}
+
+Op basis van de resultaten kan worden geconcludeerd dat commerciële dark patterns automatisch kunnen worden opgespoord door de scherminhoud van een streamingdienst te analyseren met screenshotanalyse en een modelgebaseerde detectielaag. Binnen dit onderzoek werd aangetoond dat deze aanpak kan worden geïntegreerd in een Android-applicatie die schermwijzigingen detecteert, schermafbeeldingen analyseert en gedetecteerde patronen via een \acrshort{ui} aan de gebruiker signaleert. Door detecties te combineren met korte notificaties en contextuele informatie kan de gebruiker worden ondersteund bij het herkennen en begrijpen van dark patterns zonder rechtstreeks te worden onderbroken.
+
+\vspace{1em}
+
+De uitgewerkte \acrshort{poc} vormt echter nog geen volledige oplossing voor het automatisch detecteren van alle dark patterns op alle populaire streamingdiensten. De huidige implementatie werd voornamelijk ontwikkeld en getest binnen de Netflix-app en analyseert enkel schermen die op dat moment zichtbaar zijn. Hierdoor kunnen patronen op pagina's die de gebruiker niet bezoekt onopgemerkt blijven. Daarnaast kon de kwaliteit van de detecties nog niet voldoende geëvalueerd worden en trad regelmatig overbelasting van \textit{DPGuard} op waardoor de betrouwbaarheid nog onvoldoende is. Uiteindelijk toont het onderzoek vooral aan dat de voorgestelde aanpak technisch haalbaar is en dat een dergelijke tool potentieel heeft als detectie- en bewustwordingsoplossing.
+
+\vspace{1em}
+
+\section{Bijdrage aan het onderzoeksdomein}
+\label{sec:bijdrage-onderzoeksdomein}
+
+\vspace{1em}
+
+De bijdrage van dit onderzoek aan het onderzoeksdomein ligt voornamelijk in het samenbrengen van automatische detectie van dark patterns en signalering aan de gebruiker. Bestaand onderzoek naar detectietools richt zich vooral op de technische detectie van dark patterns, zonder deze rechtstreeks te vertalen naar een eindgebruiker. Binnen deze bachelorproef werd daarom onderzocht hoe detecties op een gebruiksvriendelijke en niet-verstorende manier aan gebruikers kunnen worden gesignaleerd. De verwachte meerwaarde voor de doelgroep ligt hierbij in het tijdig herkennen van dark patterns en vooral het beter begrijpen van de mogelijke gevolgen en impact ervan. De \acrshort{poc} toont aan hoe detectielogica en gebruikersgerichte signalering binnen één toepassing kunnen worden gecombineerd. Deze aanpak kan bovendien als uitgangspunt dienen voor gelijkaardige toepassingen in andere domeinen waar dark patterns voorkomen, zoals webshops of reiswebsites.
+
+\vspace{1em}
+
+\section{Reflectie}
+\label{sec:reflectie}
+
+\vspace{1em}
+
+De resultaten liggen grotendeels in lijn met de oorspronkelijke verwachting dat gebruikers ondersteuning kunnen gebruiken bij het
+herkennen van dark patterns. De kleine gebruikerstest geeft ook een eerste indicatie dat de \acrshort{poc} wel degelijk patronen onder de aandacht kan brengen die gebruikers zonder ondersteuning niet altijd herkennen of correct benoemen. Tegelijkertijd werd duidelijk dat automatische detectie complexer is dan oorspronkelijk verwacht. Dark patterns zijn vaak contextafhankelijk en kunnen binnen éénzelfde type verschillende vormen aannemen. Hierdoor is het niet realistisch om te verwachten dat een detectietool iedere vorm van een dark pattern met dezelfde betrouwbaarheid kan herkennen.
+
+\vspace{1em}
+
+Daarnaast had de beperkte ontwikkeltijd een invloed op de uiteindelijke uitwerking van de \acrshort{poc}. Hierdoor konden niet alle vooropgestelde requirements worden gerealiseerd. Zo werd onder andere het configureren van meldingsvoorkeuren niet technisch geïmplementeerd en kon de gedetecteerde locatie van een dark pattern niet rechtstreeks visueel op de screenshot worden aangeduid. Ook werd de \acrshort{poc} slechts op een beperkt aantal streamingdiensten en dark patterns getest. Een langere ontwikkel- en evaluatieperiode zou het mogelijk maken om meer functionaliteiten te implementeren, de detectie verder te verfijnen en de oplossing beter te evalueren.
+
+\vspace{1em}
+
+\section{Toekomstig onderzoek}
+\label{sec:vervolgdoelstelling}
+
+\vspace{1em}
+
+Op basis van de resultaten van dit onderzoek kunnen verschillende richtingen voor toekomstig onderzoek worden geïdentificeerd. Een eerste richting betreft het juridische luik. Hoewel reeds verschillende regelgevingen van toepassing zijn op dark patterns, blijft het onduidelijk hoe een gedetecteerd patroon systematisch aan de relevante wet- en regelgeving kan worden gekoppeld. Verder onderzoek kan daarom nagaan hoe een dergelijk referentiekader kan worden opgebouwd en hoe dit binnen een detectietool kan worden toegepast. Dit kan bijdragen aan een meer consistente juridische opvolging van mogelijke inbreuken.
+
+\vspace{1em}
+
+Daarnaast is verder onderzoek nodig naar de betrouwbaarheid en efficiëntie van de detectie. Tijdens de ontwikkeling bleek dat \textit{DPGuard} overbelast kan raken wanneer op korte tijd meerdere analyses worden uitgevoerd. Er kan daarom onderzocht worden op basis van welke schermwijzigingen een nieuwe analyse noodzakelijk is en wanneer een nieuwe analyse kan worden overgeslagen, zodat het aantal analyses beperkt blijft zonder dat dark patterns worden gemist. Hierbij kan ook worden onderzocht hoe opeenvolgende schermafbeeldingen efficiënter verwerkt kunnen worden.
+
+\vspace{1em}
+
+Ook de beoordeling van de gevolgen en impact van dark patterns vormt een mogelijke richting voor verder onderzoek. Binnen de huidige \acrshort{poc} worden deze aspecten op basis van vooraf bepaalde informatie weergegeven, maar een meer onderbouwde en reproduceerbare methode om impact en mogelijke gevolgen te bepalen zou de betrouwbaarheid van deze informatie kunnen verhogen. Hierbij kan worden onderzocht of een referentiekader kan worden opgesteld waarmee verschillende dark patterns op een consistente manier kunnen worden beoordeeld.
+
+\vspace{1em}
+
+Ten slotte kan toekomstig onderzoek zich richten op het detecteren van dark patterns op streamingdiensten op schermen die de gebruiker niet actief bezoekt. De huidige \acrshort{poc} analyseert enkel het scherm dat op dat moment zichtbaar is, waardoor patronen op andere pagina's onopgemerkt kunnen blijven. Een belangrijke onderzoeksvraag hierbij is hoe relevante schermen vooraf of op een andere manier kunnen worden geanalyseerd zonder gebruik te maken van bots of scrapers.
